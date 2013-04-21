@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58325077172462C000D2C825 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325076172462C000D2C825 /* SystemConfiguration.framework */; };
+		58325079172462C700D2C825 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325078172462C700D2C825 /* MobileCoreServices.framework */; };
+		5832507C172489C100D2C825 /* LigaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5832507B172489C100D2C825 /* LigaTableViewController.m */; };
 		58967B5A171DCE8E003FCF47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B59171DCE8E003FCF47 /* UIKit.framework */; };
 		58967B5C171DCE8E003FCF47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B5B171DCE8E003FCF47 /* Foundation.framework */; };
 		58967B5E171DCE8E003FCF47 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B5D171DCE8E003FCF47 /* CoreGraphics.framework */; };
@@ -79,8 +82,6 @@
 		58967C16171DD69E003FCF47 /* pokergames.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58967C14171DD69E003FCF47 /* pokergames.xcdatamodeld */; };
 		58967C19171DD7E3003FCF47 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967C18171DD7E3003FCF47 /* Player.m */; };
 		58967C1B171DDF58003FCF47 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967C1A171DDF58003FCF47 /* CoreData.framework */; };
-		58967C21171DE255003FCF47 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967C1E171DE255003FCF47 /* DetailViewController.m */; };
-		58967C22171DE255003FCF47 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967C20171DE255003FCF47 /* MasterViewController.m */; };
 		58967C26171DE2A1003FCF47 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967C25171DE2A1003FCF47 /* LoginViewController.m */; };
 		58967C28171DEB62003FCF47 /* iPhoneIcon_Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 58967C27171DEB62003FCF47 /* iPhoneIcon_Small.png */; };
 		58967C2A171DEB6E003FCF47 /* iPhoneIcon_Big.png in Resources */ = {isa = PBXBuildFile; fileRef = 58967C29171DEB6E003FCF47 /* iPhoneIcon_Big.png */; };
@@ -88,6 +89,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		58325076172462C000D2C825 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		58325078172462C700D2C825 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5832507A172489C100D2C825 /* LigaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LigaTableViewController.h; path = LigaView/LigaTableViewController.h; sourceTree = "<group>"; };
+		5832507B172489C100D2C825 /* LigaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LigaTableViewController.m; path = LigaView/LigaTableViewController.m; sourceTree = "<group>"; };
 		58967B56171DCE8E003FCF47 /* PokerGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58967B59171DCE8E003FCF47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58967B5B171DCE8E003FCF47 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -179,10 +184,6 @@
 		58967C17171DD7E3003FCF47 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		58967C18171DD7E3003FCF47 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		58967C1A171DDF58003FCF47 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		58967C1D171DE255003FCF47 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		58967C1E171DE255003FCF47 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		58967C1F171DE255003FCF47 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		58967C20171DE255003FCF47 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		58967C24171DE2A1003FCF47 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		58967C25171DE2A1003FCF47 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		58967C27171DEB62003FCF47 /* iPhoneIcon_Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhoneIcon_Small.png; path = ../../iPhoneIcon_Small.png; sourceTree = "<group>"; };
@@ -196,6 +197,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58325079172462C700D2C825 /* MobileCoreServices.framework in Frameworks */,
+				58325077172462C000D2C825 /* SystemConfiguration.framework in Frameworks */,
 				58967C1B171DDF58003FCF47 /* CoreData.framework in Frameworks */,
 				58967B5A171DCE8E003FCF47 /* UIKit.framework in Frameworks */,
 				58967B5C171DCE8E003FCF47 /* Foundation.framework in Frameworks */,
@@ -206,6 +209,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5832507D172489C700D2C825 /* LigaView */ = {
+			isa = PBXGroup;
+			children = (
+				5832507A172489C100D2C825 /* LigaTableViewController.h */,
+				5832507B172489C100D2C825 /* LigaTableViewController.m */,
+			);
+			name = LigaView;
+			sourceTree = "<group>";
+		};
 		58967B4D171DCE8E003FCF47 = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +238,8 @@
 		58967B58171DCE8E003FCF47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58325076172462C000D2C825 /* SystemConfiguration.framework */,
+				58325078172462C700D2C825 /* MobileCoreServices.framework */,
 				58967C1A171DDF58003FCF47 /* CoreData.framework */,
 				58967B59171DCE8E003FCF47 /* UIKit.framework */,
 				58967B5B171DCE8E003FCF47 /* Foundation.framework */,
@@ -415,10 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				58967C23171DE2A1003FCF47 /* LoginView */,
-				58967C1D171DE255003FCF47 /* DetailViewController.h */,
-				58967C1E171DE255003FCF47 /* DetailViewController.m */,
-				58967C1F171DE255003FCF47 /* MasterViewController.h */,
-				58967C20171DE255003FCF47 /* MasterViewController.m */,
+				5832507D172489C700D2C825 /* LigaView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -572,10 +583,9 @@
 				58967BB4171DD279003FCF47 /* ADVTheme.m in Sources */,
 				58967C16171DD69E003FCF47 /* pokergames.xcdatamodeld in Sources */,
 				58967C19171DD7E3003FCF47 /* Player.m in Sources */,
-				58967C21171DE255003FCF47 /* DetailViewController.m in Sources */,
-				58967C22171DE255003FCF47 /* MasterViewController.m in Sources */,
 				58967C26171DE2A1003FCF47 /* LoginViewController.m in Sources */,
 				589B3B631721DAA100AAC977 /* AFAppDotNetAPIClient.m in Sources */,
+				5832507C172489C100D2C825 /* LigaTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

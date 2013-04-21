@@ -11,13 +11,11 @@
 #import "AppDelegate.h"
 #import "Player.h"
 #import "MBProgressHUD.h"
-
+#import "AFNetworking.h"
 
 @implementation LoginViewController
 
 @synthesize userTextField = _userTextField, passwordTextField = _passwordTextField;
-@synthesize managedObjectContext = _managedObjectContext;
-
 
 - (AppDelegate *)appDelegate {
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -28,7 +26,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Log In";
+        self.title = @"Poker Games";
     }
     return self;
 }
@@ -48,8 +46,7 @@
     
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     
-    
-    self.title = @"PokerGames";
+    self.title = @"Poker Games";
     
     self.loginTableView = [[UITableView alloc] initWithFrame:CGRectMake(16, 50, 294, 110) style:UITableViewStyleGrouped];
     
@@ -76,10 +73,6 @@
     [self.passwordTextField setSecureTextEntry:YES];
     [self.passwordTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     
-    //self.managedObjectContext = [[self.appDelegate coreDataStore] contextForCurrentThread];
-    
-    //self.client = [SMClient defaultClient];
-    
     self.userTextField.delegate = self;
     self.passwordTextField.delegate = self;
 }
@@ -88,7 +81,7 @@
     
     [super viewDidAppear:animated];
     
-    self.title = @"PokerGames";
+    self.title = @"Poker Games";
     
 }
 
@@ -133,12 +126,6 @@
 
 #pragma mark IB Actions
 
-//Show the hidden register view
--(IBAction)signUpPressed:(id)sender
-{
-    [self performSegueWithIdentifier:@"signup" sender:self];
-}
-
 //Login button pressed
 -(IBAction)logInPressed:(id)sender
 {
@@ -148,6 +135,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Autenticando";
     
+    // efetua validacao do login
     [Player efetuaLoginPlayerWithBlock:[self.userTextField text]
                                  passw:[self.passwordTextField text]
              constructingBodyWithBlock:^(Player *player, NSError *error) {
@@ -155,9 +143,23 @@
         [hud hide:YES];
                  
         if (error) {
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+            // Erro ao efetuar login
+            NSInteger httpErrorCode = [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
+            NSLog(@"Http error code %i",httpErrorCode);
+            NSString *msgError = nil;
+            
+            if (httpErrorCode == 401) {
+                msgError = @"Usuário ou senha inválido!";
+            } else {
+                msgError = [NSString stringWithFormat:@"Erro ao autenticar usuário: %d", httpErrorCode];
+                NSLog(@"Error: %@", [error localizedDescription]);
+            }
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Autenticação", nil) message:msgError delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
         } else {
+            // login com sucesso
+            
             NSLog(@"Player: %@", player );
+            [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
         }
      
     }];
@@ -168,7 +170,7 @@
 //            NSLog(@"Logged in");
 //        }
 //        
-//        [self performSegueWithIdentifier:@"list" sender:self];
+//        [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
 //        
 //    } onFailure:^(NSError *error) {
 //        //Something bad has ocurred

@@ -42,7 +42,7 @@
 {
     
     NSString *path = [NSString stringWithFormat:@"Jogadores.svc/CredencialJogador/%@/%@", user, passw];
-    NSLog(@"Path: %@", path);
+    //NSLog(@"Path: %@", path);
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSDictionary *postsFromResponse = [JSON valueForKeyPath:@"CredencialJogadorResult"];
