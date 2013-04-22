@@ -8,12 +8,14 @@
 
 #import "AppDelegate.h"
 #import "ADVDefaultTheme.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [ADVThemeManager customizeAppAppearance];
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {

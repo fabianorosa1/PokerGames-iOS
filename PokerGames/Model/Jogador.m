@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Fabiano Rosa. All rights reserved.
 //
 
-#import "Player.h"
+#import "Jogador.h"
 #import "AFAppDotNetAPIClient.h"
 
-@implementation Player
+@implementation Jogador
 
 @synthesize idPlayer = _idPlayer;
 @synthesize apelido = _apelido;
@@ -17,6 +17,7 @@
 @synthesize nome = _nome;
 @synthesize urlFoto = _urlFoto;
 @synthesize status = _status;
+@synthesize liga = _liga;
 
 - (id)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
@@ -38,7 +39,7 @@
 
 + (void)efetuaLoginPlayerWithBlock:(NSString *)user
                              passw:(NSString *)passw
-         constructingBodyWithBlock:(void (^)(Player *player, NSError *error))block
+         constructingBodyWithBlock:(void (^)(Jogador *player, NSError *error))block
 {
     
     NSString *path = [NSString stringWithFormat:@"Jogadores.svc/CredencialJogador/%@/%@", user, passw];
@@ -47,7 +48,7 @@
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSDictionary *postsFromResponse = [JSON valueForKeyPath:@"CredencialJogadorResult"];
         
-        Player *playerResult = [[Player alloc] initWithAttributes:postsFromResponse];
+        Jogador *playerResult = [[Jogador alloc] initWithAttributes:postsFromResponse];
         
         if (block) {
             block(playerResult, nil);

@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PokerGames/Model/Player.m"
-         timestampString = "388097426.406415"
+         timestampString = "388349824.724407"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "48"
-         endingLineNumber = "48"
+         startingLineNumber = "49"
+         endingLineNumber = "49"
          landmarkName = "+efetuaLoginPlayerWithBlock:passw:constructingBodyWithBlock:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PokerGames/Model/Player.m"
-         timestampString = "388266595.806072"
+         timestampString = "388349824.724407"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "56"
-         endingLineNumber = "56"
+         startingLineNumber = "57"
+         endingLineNumber = "57"
          landmarkName = "+efetuaLoginPlayerWithBlock:passw:constructingBodyWithBlock:"
          landmarkType = "5">
       </FileBreakpoint>

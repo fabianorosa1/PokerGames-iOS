@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "ADVTheme.h"
 #import "AppDelegate.h"
-#import "Player.h"
+#import "Jogador.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
 
@@ -20,7 +20,6 @@
 - (AppDelegate *)appDelegate {
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -136,29 +135,29 @@
     hud.labelText = @"Autenticando";
     
     // efetua validacao do login
-    [Player efetuaLoginPlayerWithBlock:[self.userTextField text]
+    [Jogador efetuaLoginPlayerWithBlock:[self.userTextField text]
                                  passw:[self.passwordTextField text]
-             constructingBodyWithBlock:^(Player *player, NSError *error) {
+             constructingBodyWithBlock:^(Jogador *player, NSError *error) {
         
         [hud hide:YES];
                  
         if (error) {
             // Erro ao efetuar login
             NSInteger httpErrorCode = [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
-            NSLog(@"Http error code %i",httpErrorCode);
+            //NSLog(@"Http error code %i",httpErrorCode);
             NSString *msgError = nil;
             
             if (httpErrorCode == 401) {
                 msgError = @"Usuário ou senha inválido!";
+                [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Autenticação", nil) message:msgError delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
             } else {
-                msgError = [NSString stringWithFormat:@"Erro ao autenticar usuário: %d", httpErrorCode];
-                NSLog(@"Error: %@", [error localizedDescription]);
+                [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
             }
-            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Autenticação", nil) message:msgError delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
         } else {
             // login com sucesso
             
-            NSLog(@"Player: %@", player );
+            //NSLog(@"Player: %@", player );
+            [self appDelegate].playerLogin = player;
             [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
         }
      
