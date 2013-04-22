@@ -36,7 +36,7 @@
             constructingBodyWithBlock:(void (^)(NSArray *campeonatos, NSError *error))block
 {
     
-    NSString *path = [NSString stringWithFormat:@"Campeonatos.svc/TodosCampeonatosLiga/%@", idLiga];
+    NSString *path = [NSString stringWithFormat:@"Campeonatos.svc/CampeonatosLiga/%@/a", idLiga];
     NSLog(@"Path: %@", path);
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {

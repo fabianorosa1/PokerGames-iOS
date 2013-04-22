@@ -58,7 +58,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="43M-7C-Zmz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="173"/>
+            <point key="canvasLocation" x="1124" y="131"/>
+        </scene>
+        <!--Ranking Campeonato View Controller - Ranking Campeonato-->
+        <scene sceneID="vZe-E4-rXb">
+            <objects>
+                <viewController id="Mdc-FB-cSx" customClass="RankingCampeonatoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DU0-Yl-1Ew">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Ranking Campeonato" id="aLH-Gu-Ohj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gr3-De-kP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1132" y="978"/>
         </scene>
         <!--Liga Table View Controller - Poker Games-->
         <scene sceneID="ScY-j7-fhI">
@@ -104,7 +119,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YN2-t4-IkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1643" y="173"/>
+            <point key="canvasLocation" x="1729" y="131"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="flA-A6-rj9">
@@ -117,12 +132,31 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="jhp-cW-b8t" kind="relationship" relationship="rootViewController" id="8ag-ER-iCr"/>
+                        <segue destination="6yU-mv-CW5" kind="relationship" relationship="rootViewController" id="gIY-lj-eBv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mxw-if-X9Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="408" y="173"/>
+            <point key="canvasLocation" x="52" y="131"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="pQo-dv-xjv">
+            <objects>
+                <viewController id="6yU-mv-CW5" customClass="MainViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Mk-oL-GBF">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pkH-id-6w2"/>
+                    <connections>
+                        <segue destination="jhp-cW-b8t" kind="push" identifier="LoginJogador" id="USf-EB-c4V"/>
+                        <segue destination="Mdc-FB-cSx" kind="push" identifier="RankingCampeonato" id="qSj-xq-gMk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Zg-p4-2Bs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="601" y="131"/>
         </scene>
         <!--Campeonato Table View Controller-->
         <scene sceneID="b7g-hg-2EJ">
@@ -166,36 +200,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="jGK-cC-4t3"/>
+                    <connections>
+                        <segue destination="Mdc-FB-cSx" kind="push" identifier="RankingCampeonato" id="4An-Aq-3CL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DV3-Un-4pa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2211" y="173"/>
+            <point key="canvasLocation" x="2253" y="131"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CampeonatoTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CampeonatoTableViewController.h"/>
-        </class>
-        <class className="LigaTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LigaTableViewController.h"/>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logInPressed:"/>
-                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="loginTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="4An-Aq-3CL"/>
+    </inferredMetricsTieBreakers>
 </document>

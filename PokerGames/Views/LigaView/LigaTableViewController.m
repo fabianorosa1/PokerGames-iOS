@@ -62,13 +62,18 @@
   }];
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    self.navigationItem.leftBarButtonItem.title = @"Voltar";
+    self.title = @"Poker Games";
     
     [self buscaLigasPlayer];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.title = @"Voltar";
 }
 
 - (void)viewDidLoad

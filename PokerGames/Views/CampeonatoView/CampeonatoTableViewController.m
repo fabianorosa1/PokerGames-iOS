@@ -62,15 +62,19 @@
   }];
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    self.navigationItem.leftBarButtonItem.title = @"Voltar";
     
     [self buscaCampeonatosLiga];
     
     self.title = [self.appDelegate playerLogin].liga.apelido;
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.title = @"Voltar";
 }
 
 - (void)viewDidLoad
@@ -145,6 +149,8 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
     [self.appDelegate playerLogin].liga.campeonato = arCampeonatos[indexPath.row];
+    
+    [self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
 }
 
 @end

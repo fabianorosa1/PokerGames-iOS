@@ -13,6 +13,8 @@
 		587109AE17257D85001A2455 /* Liga.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109AC17257D85001A2455 /* Liga.m */; };
 		587109B11725B963001A2455 /* Campeonato.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109AF1725B963001A2455 /* Campeonato.m */; };
 		587109B51725BADD001A2455 /* CampeonatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109B41725BADD001A2455 /* CampeonatoTableViewController.m */; };
+		587109BC1725DB95001A2455 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109BB1725DB95001A2455 /* MainViewController.m */; };
+		587109BF1725DC1D001A2455 /* RankingCampeonatoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109BE1725DC1D001A2455 /* RankingCampeonatoViewController.m */; };
 		58967B5A171DCE8E003FCF47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B59171DCE8E003FCF47 /* UIKit.framework */; };
 		58967B5C171DCE8E003FCF47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B5B171DCE8E003FCF47 /* Foundation.framework */; };
 		58967B5E171DCE8E003FCF47 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B5D171DCE8E003FCF47 /* CoreGraphics.framework */; };
@@ -102,6 +104,10 @@
 		587109B01725B963001A2455 /* Campeonato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Campeonato.h; sourceTree = "<group>"; };
 		587109B31725BADD001A2455 /* CampeonatoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampeonatoTableViewController.h; sourceTree = "<group>"; };
 		587109B41725BADD001A2455 /* CampeonatoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampeonatoTableViewController.m; sourceTree = "<group>"; };
+		587109BA1725DB95001A2455 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		587109BB1725DB95001A2455 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		587109BD1725DC1D001A2455 /* RankingCampeonatoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankingCampeonatoViewController.h; path = RankingCampeonatoView/RankingCampeonatoViewController.h; sourceTree = "<group>"; };
+		587109BE1725DC1D001A2455 /* RankingCampeonatoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankingCampeonatoViewController.m; path = RankingCampeonatoView/RankingCampeonatoViewController.m; sourceTree = "<group>"; };
 		58967B56171DCE8E003FCF47 /* PokerGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58967B59171DCE8E003FCF47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58967B5B171DCE8E003FCF47 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -234,6 +240,24 @@
 				587109B41725BADD001A2455 /* CampeonatoTableViewController.m */,
 			);
 			path = CampeonatoView;
+			sourceTree = "<group>";
+		};
+		587109B91725DB95001A2455 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				587109BA1725DB95001A2455 /* MainViewController.h */,
+				587109BB1725DB95001A2455 /* MainViewController.m */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		587109C01725DC2F001A2455 /* RankingCampeonatoView */ = {
+			isa = PBXGroup;
+			children = (
+				587109BD1725DC1D001A2455 /* RankingCampeonatoViewController.h */,
+				587109BE1725DC1D001A2455 /* RankingCampeonatoViewController.m */,
+			);
+			name = RankingCampeonatoView;
 			sourceTree = "<group>";
 		};
 		58967B4D171DCE8E003FCF47 = {
@@ -450,9 +474,11 @@
 		58967C1C171DE255003FCF47 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				587109B91725DB95001A2455 /* MainView */,
 				587109B21725BADD001A2455 /* CampeonatoView */,
 				58967C23171DE2A1003FCF47 /* LoginView */,
 				5832507D172489C700D2C825 /* LigaView */,
+				587109C01725DC2F001A2455 /* RankingCampeonatoView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -612,6 +638,8 @@
 				587109AE17257D85001A2455 /* Liga.m in Sources */,
 				587109B11725B963001A2455 /* Campeonato.m in Sources */,
 				587109B51725BADD001A2455 /* CampeonatoTableViewController.m in Sources */,
+				587109BC1725DB95001A2455 /* MainViewController.m in Sources */,
+				587109BF1725DC1D001A2455 /* RankingCampeonatoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

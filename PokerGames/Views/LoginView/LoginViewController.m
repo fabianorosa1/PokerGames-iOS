@@ -25,7 +25,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Poker Games";
+        
     }
     return self;
 }
@@ -44,8 +44,6 @@
     [super viewDidLoad];
     
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    self.title = @"Poker Games";
     
     self.loginTableView = [[UITableView alloc] initWithFrame:CGRectMake(16, 50, 294, 110) style:UITableViewStyleGrouped];
     
@@ -76,11 +74,25 @@
     self.passwordTextField.delegate = self;
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.title = @"Poker Games";
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.title = @"Voltar";
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
     
-    self.title = @"Poker Games";
+    // remove o botão Back de navegação
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.hidesBackButton = YES;
     
 }
 
