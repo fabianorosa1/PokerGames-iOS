@@ -30,11 +30,11 @@
             constructingBodyWithBlock:(void (^)(NSArray *campeonatos, NSError *error))block
 {
     
-    NSString *path = [NSString stringWithFormat:@"Campeonatos.svc/TodosCampeonatosLiga/%@", idLiga];
+    NSString *path = [NSString stringWithFormat:@"Campeonatos.svc/Todos/%@", idLiga];
     NSLog(@"Path: %@", path);
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSArray *postsFromResponse = [JSON valueForKeyPath:@"TodosCampeonatosLigaResult"];
+        NSArray *postsFromResponse = [JSON valueForKeyPath:@"TodosResult"];
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
         for (NSDictionary *attributes in postsFromResponse) {
             Campeonato *campeonato = [[Campeonato alloc] initWithAttributes:attributes];

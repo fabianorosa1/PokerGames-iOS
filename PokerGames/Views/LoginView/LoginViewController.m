@@ -170,8 +170,8 @@
             
             //NSLog(@"Jogador: %@", jogador );
             [self appDelegate].jogadorLogin = jogador;
-            NSLog(@"JogadorEntity: %@", [Jogador loadJogadorEntity]);
-            [jogador insertJogadorEntity];
+            //NSLog(@"JogadorEntity: %@", [Jogador loadJogadorEntity]);
+            //[jogador insertJogadorEntity];
             
             [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
         }
