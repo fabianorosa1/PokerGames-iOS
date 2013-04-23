@@ -460,11 +460,11 @@
 		58967C10171DD66E003FCF47 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				58967C14171DD69E003FCF47 /* pokergames.xcdatamodeld */,
 				587109AF1725B963001A2455 /* Campeonato.m */,
 				587109B01725B963001A2455 /* Campeonato.h */,
 				587109AC17257D85001A2455 /* Liga.m */,
 				587109AD17257D85001A2455 /* Liga.h */,
-				58967C14171DD69E003FCF47 /* pokergames.xcdatamodeld */,
 				58967C17171DD7E3003FCF47 /* Jogador.h */,
 				58967C18171DD7E3003FCF47 /* Jogador.m */,
 			);

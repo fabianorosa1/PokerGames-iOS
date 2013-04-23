@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class Liga;
+
 @interface Campeonato : NSObject
 
 @property (nonatomic, retain) NSNumber * idCampeonato;
-@property (nonatomic, retain) NSNumber * idLiga;
 @property (nonatomic, retain) NSString * apelido;
 @property (nonatomic, retain) NSString * nome;
 

@@ -38,11 +38,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Buscando ligas";
     
-    Jogador *playerLogin = [self.appDelegate playerLogin];
-    //NSLog(@"Busca ligas do jogador %@", playerLogin.idPlayer);
+    Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
+    //NSLog(@"Busca ligas do jogador %@", jogadorLogin.idJogador);
     
     // busca lista de ligas do jogador
-    [Liga buscaLigasPlayerWithBlock:playerLogin.idPlayer
+    [Liga buscaLigasPlayerWithBlock:jogadorLogin.idJogador
           constructingBodyWithBlock:^(NSArray *ligas, NSError *error) {
               
       [hud hide:YES];
@@ -140,7 +140,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.appDelegate playerLogin].liga = arLiga[indexPath.row];
+    [self.appDelegate jogadorLogin].liga = arLiga[indexPath.row];
     [self performSegueWithIdentifier:@"SelecaoCampeonato" sender:self];
 }
 

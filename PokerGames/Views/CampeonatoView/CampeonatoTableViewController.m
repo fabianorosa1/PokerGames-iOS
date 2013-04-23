@@ -39,11 +39,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Buscando campeonatos";
     
-    Jogador *playerLogin = [self.appDelegate playerLogin];
-    //NSLog(@"Busca campeonatos da liga %@", playerLogin.idPlayer);
+    Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
+    //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
     
     // busca lista de campeonatos da liga
-    [Campeonato buscaCampeonatosLigaWithBlock:playerLogin.liga.idLiga
+    [Campeonato buscaCampeonatosLigaWithBlock:jogadorLogin.liga.idLiga
           constructingBodyWithBlock:^(NSArray *campeonatos, NSError *error) {
               
       [hud hide:YES];
@@ -68,7 +68,7 @@
     
     [self buscaCampeonatosLiga];
     
-    self.title = [self.appDelegate playerLogin].liga.apelido;
+    self.title = [self.appDelegate jogadorLogin].liga.apelido;
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -148,7 +148,7 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    [self.appDelegate playerLogin].liga.campeonato = arCampeonatos[indexPath.row];
+    [self.appDelegate jogadorLogin].liga.campeonato = arCampeonatos[indexPath.row];
     
     [self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
 }

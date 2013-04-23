@@ -11,20 +11,15 @@
 
 @implementation Liga
 
-@synthesize idLiga = _idLiga;
-@synthesize apelido = _apelido;
-@synthesize nome = _nome;
-@synthesize campeonato = _campeonato;
-
 - (id)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
     if (!self) {
         return nil;
     }
     
-    _idLiga = [attributes valueForKeyPath:@"IdLiga"];
-    _apelido = [attributes valueForKeyPath:@"Apelido"];
-    _nome = [attributes valueForKeyPath:@"Nome"];
+    self.idLiga = [attributes valueForKeyPath:@"IdLiga"];
+    self.apelido = [attributes valueForKeyPath:@"Apelido"];
+    self.nome = [attributes valueForKeyPath:@"Nome"];
     
     return self;
 }

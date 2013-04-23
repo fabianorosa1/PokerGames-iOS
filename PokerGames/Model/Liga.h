@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Campeonato;
+@class Jogador;
 
 @interface Liga : NSObject
 

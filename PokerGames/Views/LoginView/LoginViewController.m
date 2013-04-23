@@ -149,7 +149,7 @@
     // efetua validacao do login
     [Jogador efetuaLoginPlayerWithBlock:[self.userTextField text]
                                  passw:[self.passwordTextField text]
-             constructingBodyWithBlock:^(Jogador *player, NSError *error) {
+             constructingBodyWithBlock:^(Jogador *jogador, NSError *error) {
         
         [hud hide:YES];
                  
@@ -168,8 +168,11 @@
         } else {
             // login com sucesso
             
-            //NSLog(@"Player: %@", player );
-            [self appDelegate].playerLogin = player;
+            //NSLog(@"Jogador: %@", jogador );
+            [self appDelegate].jogadorLogin = jogador;
+            NSLog(@"JogadorEntity: %@", [Jogador loadJogadorEntity]);
+            [jogador insertJogadorEntity];
+            
             [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
         }
      
