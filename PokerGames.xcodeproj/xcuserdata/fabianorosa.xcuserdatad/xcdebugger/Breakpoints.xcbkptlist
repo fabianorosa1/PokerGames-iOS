@@ -34,25 +34,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "PokerGames/Model/Jogador.m"
-         timestampString = "388378212.694042"
+         timestampString = "388462729.137572"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "89"
-         endingLineNumber = "89"
-         landmarkName = "-insertJogadorEntity"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "PokerGames/Model/Jogador.m"
-         timestampString = "388378217.024725"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "62"
-         endingLineNumber = "62"
-         landmarkName = "+loadJogadorEntity"
+         startingLineNumber = "199"
+         endingLineNumber = "199"
+         landmarkName = "+excluirTodosJogadoresDependencias"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

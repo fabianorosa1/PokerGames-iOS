@@ -18,6 +18,8 @@
 @property (nonatomic, retain) NSString * nome;
 @property (nonatomic, retain) NSString * status;
 @property (nonatomic, retain) NSString * urlFoto;
+// relacionamento
+@property (nonatomic, retain) NSNumber * idLiga;
 @property (nonatomic, retain) Liga *liga;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
@@ -26,7 +28,8 @@
                              passw:(NSString *)passw
                              constructingBodyWithBlock:(void (^)(Jogador *jogador, NSError *error))block;
 
-+(Jogador*)loadJogadorEntity;
--(void)insertJogadorEntity;
++ (Jogador*) loadJogadorEntity;
+- (void) insertJogadorEntity;
++ (void) excluirTodosJogadoresDependencias;
 
 @end

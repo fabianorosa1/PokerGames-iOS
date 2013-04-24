@@ -16,6 +16,8 @@
 @property (nonatomic, retain) NSNumber * idLiga;
 @property (nonatomic, retain) NSString * apelido;
 @property (nonatomic, retain) NSString * nome;
+// relacionamento
+@property (nonatomic, retain) NSNumber * idCampeonato;
 @property (nonatomic, retain) Campeonato * campeonato;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;

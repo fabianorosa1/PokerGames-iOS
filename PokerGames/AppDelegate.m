@@ -101,7 +101,7 @@
         return _managedObjectModel;
     }
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"pokergames" withExtension:@"momd"];
-    NSLog(@"modelURL: %@", modelURL);
+    //NSLog(@"modelURL: %@", modelURL);
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -115,7 +115,7 @@
     }
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"PokerGames.sqlite"];
-    NSLog(@"storeURL: %@", storeURL);
+    //NSLog(@"storeURL: %@", storeURL);
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

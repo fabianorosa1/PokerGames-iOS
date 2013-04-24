@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		580649B81726EA0D00516B5F /* iPhoneIcon_Big.png in Resources */ = {isa = PBXBuildFile; fileRef = 580649B61726EA0D00516B5F /* iPhoneIcon_Big.png */; };
 		580649B91726EA0D00516B5F /* iPhoneIcon_Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 580649B71726EA0D00516B5F /* iPhoneIcon_Small.png */; };
+		580649BC1727535A00516B5F /* RankingCampeonatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580649BB1727535A00516B5F /* RankingCampeonatoTableViewController.m */; };
 		58325077172462C000D2C825 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325076172462C000D2C825 /* SystemConfiguration.framework */; };
 		58325079172462C700D2C825 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325078172462C700D2C825 /* MobileCoreServices.framework */; };
 		5832507C172489C100D2C825 /* LigaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5832507B172489C100D2C825 /* LigaTableViewController.m */; };
@@ -16,7 +17,6 @@
 		587109B11725B963001A2455 /* Campeonato.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109AF1725B963001A2455 /* Campeonato.m */; };
 		587109B51725BADD001A2455 /* CampeonatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109B41725BADD001A2455 /* CampeonatoTableViewController.m */; };
 		587109BC1725DB95001A2455 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109BB1725DB95001A2455 /* MainViewController.m */; };
-		587109BF1725DC1D001A2455 /* RankingCampeonatoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109BE1725DC1D001A2455 /* RankingCampeonatoViewController.m */; };
 		58967B5A171DCE8E003FCF47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B59171DCE8E003FCF47 /* UIKit.framework */; };
 		58967B5C171DCE8E003FCF47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B5B171DCE8E003FCF47 /* Foundation.framework */; };
 		58967B5E171DCE8E003FCF47 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B5D171DCE8E003FCF47 /* CoreGraphics.framework */; };
@@ -93,6 +93,8 @@
 /* Begin PBXFileReference section */
 		580649B61726EA0D00516B5F /* iPhoneIcon_Big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneIcon_Big.png; sourceTree = "<group>"; };
 		580649B71726EA0D00516B5F /* iPhoneIcon_Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneIcon_Small.png; sourceTree = "<group>"; };
+		580649BA1727535A00516B5F /* RankingCampeonatoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankingCampeonatoTableViewController.h; path = RankingCampeonatoView/RankingCampeonatoTableViewController.h; sourceTree = "<group>"; };
+		580649BB1727535A00516B5F /* RankingCampeonatoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankingCampeonatoTableViewController.m; path = RankingCampeonatoView/RankingCampeonatoTableViewController.m; sourceTree = "<group>"; };
 		58325076172462C000D2C825 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58325078172462C700D2C825 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5832507A172489C100D2C825 /* LigaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LigaTableViewController.h; path = LigaView/LigaTableViewController.h; sourceTree = "<group>"; };
@@ -105,8 +107,6 @@
 		587109B41725BADD001A2455 /* CampeonatoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampeonatoTableViewController.m; sourceTree = "<group>"; };
 		587109BA1725DB95001A2455 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		587109BB1725DB95001A2455 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		587109BD1725DC1D001A2455 /* RankingCampeonatoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankingCampeonatoViewController.h; path = RankingCampeonatoView/RankingCampeonatoViewController.h; sourceTree = "<group>"; };
-		587109BE1725DC1D001A2455 /* RankingCampeonatoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankingCampeonatoViewController.m; path = RankingCampeonatoView/RankingCampeonatoViewController.m; sourceTree = "<group>"; };
 		58967B56171DCE8E003FCF47 /* PokerGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58967B59171DCE8E003FCF47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58967B5B171DCE8E003FCF47 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -248,8 +248,8 @@
 		587109C01725DC2F001A2455 /* RankingCampeonatoView */ = {
 			isa = PBXGroup;
 			children = (
-				587109BD1725DC1D001A2455 /* RankingCampeonatoViewController.h */,
-				587109BE1725DC1D001A2455 /* RankingCampeonatoViewController.m */,
+				580649BA1727535A00516B5F /* RankingCampeonatoTableViewController.h */,
+				580649BB1727535A00516B5F /* RankingCampeonatoTableViewController.m */,
 			);
 			name = RankingCampeonatoView;
 			sourceTree = "<group>";
@@ -627,7 +627,7 @@
 				587109B11725B963001A2455 /* Campeonato.m in Sources */,
 				587109B51725BADD001A2455 /* CampeonatoTableViewController.m in Sources */,
 				587109BC1725DB95001A2455 /* MainViewController.m in Sources */,
-				587109BF1725DC1D001A2455 /* RankingCampeonatoViewController.m in Sources */,
+				580649BC1727535A00516B5F /* RankingCampeonatoTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

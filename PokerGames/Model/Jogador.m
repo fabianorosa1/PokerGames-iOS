@@ -10,6 +10,7 @@
 #import "AFAppDotNetAPIClient.h"
 #import "Liga.h"
 #import "AppDelegate.h"
+#import "Campeonato.h"
 
 @implementation Jogador
 
@@ -62,44 +63,157 @@
     NSManagedObjectContext *context = [Jogador appDelegate].managedObjectContext;
     
     // carrega o jogador, liga e campeonato default
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Jogador"
+    NSFetchRequest *fetchRequestJogador = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityJogador = [NSEntityDescription entityForName:@"Jogador"
                                               inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
+    [fetchRequestJogador setEntity:entityJogador];
     
-    NSError *error;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    NSError *error = nil;
+    NSArray *fetchedObjectsJogador = [context executeFetchRequest:fetchRequestJogador error:&error];
     
-    if (fetchedObjects.count > 0) {
-        NSLog(@"Jogador Entity: %@", fetchedObjects[0]);
-        return fetchedObjects[0];
+    if (fetchedObjectsJogador.count > 0) {
+        Jogador *jogadorEntity = fetchedObjectsJogador[0];
+        NSLog(@"Jogador Entity: %@", jogadorEntity);
+        
+        // cria novo jogador
+        Jogador *newJogador = [[Jogador alloc] init];
+        newJogador.idJogador = jogadorEntity.idJogador;
+        newJogador.nome = jogadorEntity.nome;
+        newJogador.apelido = jogadorEntity.apelido;
+        newJogador.status = jogadorEntity.status;
+        newJogador.email = jogadorEntity.email;
+        newJogador.urlFoto = jogadorEntity.urlFoto;
+        newJogador.idLiga = jogadorEntity.idLiga;
+        
+        // carrega a liga do jogador
+        NSFetchRequest *fetchRequestLiga = [[NSFetchRequest alloc] init];
+        NSPredicate *predicateLiga = [NSPredicate predicateWithFormat:@"idLiga == %@", newJogador.idLiga];
+        NSEntityDescription *entityLiga = [NSEntityDescription entityForName:@"Liga"
+                                                         inManagedObjectContext:context];
+        [fetchRequestLiga setEntity:entityLiga];
+        [fetchRequestLiga setPredicate:predicateLiga];
+        
+        error = nil;
+        NSArray *fetchedObjectsLiga = [context executeFetchRequest:fetchRequestLiga error:&error];
+        
+        if (fetchedObjectsLiga.count > 0) {
+            Liga *ligaEntity = fetchedObjectsLiga[0];
+            NSLog(@"Liga Entity: %@", ligaEntity);
+            
+            Liga *newLiga = [[Liga alloc] init];
+            newLiga.idLiga = ligaEntity.idLiga;
+            newLiga.nome = ligaEntity.nome;
+            newLiga.apelido = ligaEntity.apelido;
+            newLiga.idCampeonato = ligaEntity.idCampeonato;
+            
+            newJogador.liga = newLiga;
+            
+            // carrega o campeonato
+            NSFetchRequest *fetchRequestCampeonato = [[NSFetchRequest alloc] init];
+            NSPredicate *predicateCampeonato = [NSPredicate predicateWithFormat:@"idCampeonato == %@", newLiga.idCampeonato];
+            NSEntityDescription *entityCampeonato = [NSEntityDescription entityForName:@"Campeonato"
+                                                          inManagedObjectContext:context];
+            [fetchRequestCampeonato setEntity:entityCampeonato];
+            [fetchRequestCampeonato setPredicate:predicateCampeonato];
+            
+            error = nil;
+            NSArray *fetchedObjectsCampeonato = [context executeFetchRequest:fetchRequestCampeonato error:&error];
+            
+            if (fetchedObjectsCampeonato.count > 0) {
+                Campeonato *campeonatoEntity = fetchedObjectsCampeonato[0];
+                NSLog(@"Campeonato Entity: %@", campeonatoEntity);
+                
+                Campeonato *newCampeonato = [[Campeonato alloc] init];
+                newCampeonato.idCampeonato = campeonatoEntity.idCampeonato;
+                newCampeonato.apelido = campeonatoEntity.apelido;
+                newCampeonato.nome = campeonatoEntity.nome;
+                
+                newJogador.liga.campeonato = newCampeonato;
+            } else {
+                // não encontrou, configura novamente
+                return nil;
+            }
+        } else {
+            // não encontrou, configura novamente
+            return nil;
+        }
+        return newJogador;
     } else {
+        // não encontrou, configura novamente
         return nil;
     }
-    
-    //for (FailedBankInfo *info in fetchedObjects) {
-    //    NSLog(@"Name: %@", info.name);
-    //    FailedBankDetails *details = info.details;
-    //    NSLog(@"Zip: %@", details.zip);
-    //}
 }
 
 -(void)insertJogadorEntity
 {
     NSManagedObjectContext *context = [Jogador appDelegate].managedObjectContext;
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"Jogador" inManagedObjectContext:context];
     
-    [newManagedObject setValue:self.idJogador forKey:@"idJogador"];
-    [newManagedObject setValue:self.apelido forKey:@"apelido"];
-    [newManagedObject setValue:self.email forKey:@"email"];
-    [newManagedObject setValue:self.nome forKey:@"nome"];
-    [newManagedObject setValue:self.urlFoto forKey:@"urlFoto"];
-    [newManagedObject setValue:self.status forKey:@"status"];
+    // insere o campeonato
+    NSManagedObject *newManagedObjectCampeonato = [NSEntityDescription insertNewObjectForEntityForName:@"Campeonato" inManagedObjectContext:context];
+    [newManagedObjectCampeonato setValue:self.liga.campeonato.idCampeonato forKey:@"idCampeonato"];
+    [newManagedObjectCampeonato setValue:self.liga.campeonato.apelido forKey:@"apelido"];
+    [newManagedObjectCampeonato setValue:self.liga.campeonato.nome forKey:@"nome"];
+    
+    // insere a liga
+    NSManagedObject *newManagedObjectLiga = [NSEntityDescription insertNewObjectForEntityForName:@"Liga" inManagedObjectContext:context];
+    [newManagedObjectLiga setValue:self.liga.idLiga forKey:@"idLiga"];
+    [newManagedObjectLiga setValue:self.liga.apelido forKey:@"apelido"];
+    [newManagedObjectLiga setValue:self.liga.nome forKey:@"nome"];
+    [newManagedObjectLiga setValue:self.liga.idCampeonato forKey:@"idCampeonato"];
+    
+    // insere jogador
+    NSManagedObject *newManagedObjectJogador = [NSEntityDescription insertNewObjectForEntityForName:@"Jogador" inManagedObjectContext:context];
+    
+    [newManagedObjectJogador setValue:self.idJogador forKey:@"idJogador"];
+    [newManagedObjectJogador setValue:self.apelido forKey:@"apelido"];
+    [newManagedObjectJogador setValue:self.email forKey:@"email"];
+    [newManagedObjectJogador setValue:self.nome forKey:@"nome"];
+    [newManagedObjectJogador setValue:self.urlFoto forKey:@"urlFoto"];
+    [newManagedObjectJogador setValue:self.status forKey:@"status"];
+    [newManagedObjectJogador setValue:self.idLiga forKey:@"idLiga"];
     
     NSError *error = nil;
     if (![context save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        NSLog(@"Não foi possível inserir o jogador: %@", [error localizedDescription]);
     }
 }
+
++ (void) deleteAllObjects: (NSString *) entityDescription
+     managedObjectContext:(NSManagedObjectContext *) managedObjectContext
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityDescription inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *items = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    for (NSManagedObject *managedObject in items) {
+    	[managedObjectContext deleteObject:managedObject];
+    	NSLog (@"%@ object deleted", managedObject);
+    }
+}
+
++ (void) excluirTodosJogadoresDependencias
+{
+    NSManagedObjectContext *context = [Jogador appDelegate].managedObjectContext;
+    
+    // exclui campeonatos
+    [Jogador deleteAllObjects:@"Campeonato" managedObjectContext:context];
+
+    // exclui ligas
+    [Jogador deleteAllObjects:@"Liga" managedObjectContext:context];
+    
+    // exclui jogadores
+    [Jogador deleteAllObjects:@"Jogador" managedObjectContext:context];
+    
+     NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Error deleting data - error:%@", error);
+    } else {
+        NSLog(@"Registros excluidos com sucesso.");
+    }
+}
+
 
 @end

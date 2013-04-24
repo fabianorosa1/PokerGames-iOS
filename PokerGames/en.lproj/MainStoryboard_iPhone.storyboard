@@ -60,20 +60,67 @@
             </objects>
             <point key="canvasLocation" x="1124" y="131"/>
         </scene>
-        <!--Ranking Campeonato View Controller - Ranking Campeonato-->
-        <scene sceneID="vZe-E4-rXb">
+        <!--Ranking Campeonato Table View Controller-->
+        <scene sceneID="5Ho-eV-tHc">
             <objects>
-                <viewController id="Mdc-FB-cSx" customClass="RankingCampeonatoViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DU0-Yl-1Ew">
+                <tableViewController id="hS9-mO-OoA" customClass="RankingCampeonatoTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5pw-4a-Llq">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Ranking Campeonato" id="aLH-Gu-Ohj"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gr3-De-kP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="t6V-XE-2Rs">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ranking" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18K-NC-yt8">
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="92" id="Bqv-5A-QIS"/>
+                                        <constraint firstAttribute="height" constant="28" id="KYu-7e-kPK"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="18K-NC-yt8" firstAttribute="centerY" secondItem="t6V-XE-2Rs" secondAttribute="centerY" type="default" id="buI-HI-TP2"/>
+                                <constraint firstItem="18K-NC-yt8" firstAttribute="centerX" secondItem="t6V-XE-2Rs" secondAttribute="centerX" type="default" id="pWi-v5-0ao"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellRanking" textLabel="yN5-mn-Yko" detailTextLabel="eJb-PF-AHi" style="IBUITableViewCellStyleSubtitle" id="g0Z-hh-bcb">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN5-mn-Yko">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJb-PF-AHi">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hS9-mO-OoA" id="YO8-pR-76b"/>
+                            <outlet property="delegate" destination="hS9-mO-OoA" id="WUa-dy-Eah"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="1eU-6w-zVT"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SNu-Eg-sNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1132" y="978"/>
+            <point key="canvasLocation" x="1801" y="982"/>
         </scene>
         <!--Liga Table View Controller - Poker Games-->
         <scene sceneID="ScY-j7-fhI">
@@ -84,7 +131,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellLiga" textLabel="TAy-MK-L1m" detailTextLabel="Ehk-wR-AZJ" style="IBUITableViewCellStyleSubtitle" id="4xG-JV-L4c">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellLiga" textLabel="TAy-MK-L1m" detailTextLabel="Ehk-wR-AZJ" style="IBUITableViewCellStyleSubtitle" id="4xG-JV-L4c">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -151,7 +198,7 @@
                     <navigationItem key="navigationItem" id="pkH-id-6w2"/>
                     <connections>
                         <segue destination="jhp-cW-b8t" kind="push" identifier="LoginJogador" id="USf-EB-c4V"/>
-                        <segue destination="Mdc-FB-cSx" kind="push" identifier="RankingCampeonato" id="qSj-xq-gMk"/>
+                        <segue destination="hS9-mO-OoA" kind="push" identifier="RankingCampeonato" id="gQl-3o-iV7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Zg-p4-2Bs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -167,7 +214,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellLiga" textLabel="7lE-pv-3nP" detailTextLabel="nQ9-FX-1xK" style="IBUITableViewCellStyleSubtitle" id="bnx-aJ-rds">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellCampeonato" textLabel="7lE-pv-3nP" detailTextLabel="nQ9-FX-1xK" style="IBUITableViewCellStyleSubtitle" id="bnx-aJ-rds">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -201,7 +248,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="jGK-cC-4t3"/>
                     <connections>
-                        <segue destination="Mdc-FB-cSx" kind="push" identifier="RankingCampeonato" id="4An-Aq-3CL"/>
+                        <segue destination="hS9-mO-OoA" kind="push" identifier="RankingCampeonato" id="plI-ca-MAe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DV3-Un-4pa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -209,12 +256,39 @@
             <point key="canvasLocation" x="2253" y="131"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CampeonatoTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CampeonatoTableViewController.h"/>
+        </class>
+        <class className="LigaTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LigaTableViewController.h"/>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logInPressed:"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RankingCampeonatoTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RankingCampeonatoTableViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4An-Aq-3CL"/>
+        <segue reference="plI-ca-MAe"/>
     </inferredMetricsTieBreakers>
 </document>

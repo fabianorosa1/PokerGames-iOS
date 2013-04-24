@@ -9,20 +9,20 @@
         <attribute name="apelido" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idJogador" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="idLiga" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="urlFoto" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="liga" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Liga" syncable="YES"/>
     </entity>
     <entity name="Liga" syncable="YES">
         <attribute name="apelido" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idCampeonato" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="idLiga" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="campeonato" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Campeonato" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Campeonato" positionX="423" positionY="288" width="128" height="88"/>
         <element name="Jogador" positionX="0" positionY="0" width="128" height="148"/>
         <element name="Liga" positionX="160" positionY="192" width="128" height="103"/>
-        <element name="Campeonato" positionX="423" positionY="288" width="128" height="88"/>
     </elements>
 </model>

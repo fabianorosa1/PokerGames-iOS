@@ -52,7 +52,7 @@
           [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
       } else {
           // lista de ligas
-          NSLog(@"Ligas: %@", ligas );
+          //NSLog(@"Ligas: %@", ligas );
           arLiga = ligas;
           
           // atualiza table
@@ -140,7 +140,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.appDelegate jogadorLogin].liga = arLiga[indexPath.row];
+    // associa a liga selecionada ao jogador
+    Jogador *jogador = [self.appDelegate jogadorLogin];
+    Liga *liga = [arLiga objectAtIndex:indexPath.row];
+    jogador.liga = liga;
+    jogador.idLiga = liga.idLiga;
+    
     [self performSegueWithIdentifier:@"SelecaoCampeonato" sender:self];
 }
 

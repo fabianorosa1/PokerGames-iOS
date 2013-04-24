@@ -7,6 +7,8 @@
 //
 
 #import "MainViewController.h"
+#import "Jogador.h"
+#import "AppDelegate.h"
 
 @interface MainViewController ()
 
@@ -23,14 +25,25 @@
     return self;
 }
 
+- (AppDelegate *)appDelegate {
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     // verifica se já está logado
-    if (true) {
+    Jogador *jogador = [Jogador loadJogadorEntity];
+    
+    if (jogador == nil) {
+        [self appDelegate].isFirstTime = TRUE;
+        NSLog(@">>> Configuração inicial!");
         [self performSegueWithIdentifier:@"LoginJogador" sender:self];
     } else {
+        [self appDelegate].isFirstTime = FALSE;
+        NSLog(@">>> Já configurado!");
+        [self appDelegate].jogadorLogin = jogador;
         [self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
     }
 }

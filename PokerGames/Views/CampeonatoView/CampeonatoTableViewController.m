@@ -52,7 +52,7 @@
           [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
       } else {
           // lista de campeonatos
-          NSLog(@"Campeonatos: %@", campeonatos );
+          //NSLog(@"Campeonatos: %@", campeonatos );
           arCampeonatos = campeonatos;
           
           // atualiza table
@@ -114,7 +114,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //NSLog(@"cellForRowAtIndexPath");
-    static NSString *CellIdentifier = @"CellLiga";
+    static NSString *CellIdentifier = @"CellCampeonato";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     Campeonato *campeonato = [arCampeonatos objectAtIndex:indexPath.row];
@@ -141,14 +141,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    [self.appDelegate jogadorLogin].liga.campeonato = arCampeonatos[indexPath.row];
+    // associa o campeonato selecionado na liga do jogador
+    Jogador *jogador = [self.appDelegate jogadorLogin];
+    Campeonato *campeonato = [arCampeonatos objectAtIndex:indexPath.row];
+    jogador.liga.campeonato = campeonato;
+    jogador.liga.idCampeonato = campeonato.idCampeonato;
+    
+    // verifica se é configuração inicial ou não
+    if ([self appDelegate].isFirstTime == TRUE) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Salvando dados";
+        
+        // limpa a base de dados
+        [Jogador excluirTodosJogadoresDependencias];
+        
+        // insere o jogador, liga e campeonato
+        [jogador insertJogadorEntity];
+        
+        [hud hide:YES];
+    } else {
+        NSLog(@"Alteracao do campeonato!");
+    }
     
     [self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
 }
