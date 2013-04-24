@@ -10,6 +10,10 @@
 		580649B81726EA0D00516B5F /* iPhoneIcon_Big.png in Resources */ = {isa = PBXBuildFile; fileRef = 580649B61726EA0D00516B5F /* iPhoneIcon_Big.png */; };
 		580649B91726EA0D00516B5F /* iPhoneIcon_Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 580649B71726EA0D00516B5F /* iPhoneIcon_Small.png */; };
 		580649BC1727535A00516B5F /* RankingCampeonatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580649BB1727535A00516B5F /* RankingCampeonatoTableViewController.m */; };
+		580649C317277B8F00516B5F /* NavBarIconLauncher.png in Resources */ = {isa = PBXBuildFile; fileRef = 580649C117277B8F00516B5F /* NavBarIconLauncher.png */; };
+		580649C417277B8F00516B5F /* NavBarIconLauncher@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 580649C217277B8F00516B5F /* NavBarIconLauncher@2x.png */; };
+		580649C717277DA800516B5F /* NavBarIconLogout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 580649C517277DA800516B5F /* NavBarIconLogout@2x.png */; };
+		580649C817277DA800516B5F /* NavBarIconLogout.png in Resources */ = {isa = PBXBuildFile; fileRef = 580649C617277DA800516B5F /* NavBarIconLogout.png */; };
 		58325077172462C000D2C825 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325076172462C000D2C825 /* SystemConfiguration.framework */; };
 		58325079172462C700D2C825 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325078172462C700D2C825 /* MobileCoreServices.framework */; };
 		5832507C172489C100D2C825 /* LigaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5832507B172489C100D2C825 /* LigaTableViewController.m */; };
@@ -95,6 +99,10 @@
 		580649B71726EA0D00516B5F /* iPhoneIcon_Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPhoneIcon_Small.png; sourceTree = "<group>"; };
 		580649BA1727535A00516B5F /* RankingCampeonatoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankingCampeonatoTableViewController.h; path = RankingCampeonatoView/RankingCampeonatoTableViewController.h; sourceTree = "<group>"; };
 		580649BB1727535A00516B5F /* RankingCampeonatoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankingCampeonatoTableViewController.m; path = RankingCampeonatoView/RankingCampeonatoTableViewController.m; sourceTree = "<group>"; };
+		580649C117277B8F00516B5F /* NavBarIconLauncher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBarIconLauncher.png; sourceTree = "<group>"; };
+		580649C217277B8F00516B5F /* NavBarIconLauncher@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBarIconLauncher@2x.png"; sourceTree = "<group>"; };
+		580649C517277DA800516B5F /* NavBarIconLogout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBarIconLogout@2x.png"; sourceTree = "<group>"; };
+		580649C617277DA800516B5F /* NavBarIconLogout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBarIconLogout.png; sourceTree = "<group>"; };
 		58325076172462C000D2C825 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58325078172462C700D2C825 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5832507A172489C100D2C825 /* LigaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LigaTableViewController.h; path = LigaView/LigaTableViewController.h; sourceTree = "<group>"; };
@@ -399,6 +407,10 @@
 		58967BB5171DD2B5003FCF47 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				580649C517277DA800516B5F /* NavBarIconLogout@2x.png */,
+				580649C617277DA800516B5F /* NavBarIconLogout.png */,
+				580649C117277B8F00516B5F /* NavBarIconLauncher.png */,
+				580649C217277B8F00516B5F /* NavBarIconLauncher@2x.png */,
 				580649B61726EA0D00516B5F /* iPhoneIcon_Big.png */,
 				580649B71726EA0D00516B5F /* iPhoneIcon_Small.png */,
 				58967BB6171DD2B5003FCF47 /* backButton.png */,
@@ -593,6 +605,10 @@
 				58967C0F171DD2B6003FCF47 /* sliderThumb@2x.png in Resources */,
 				580649B81726EA0D00516B5F /* iPhoneIcon_Big.png in Resources */,
 				580649B91726EA0D00516B5F /* iPhoneIcon_Small.png in Resources */,
+				580649C317277B8F00516B5F /* NavBarIconLauncher.png in Resources */,
+				580649C417277B8F00516B5F /* NavBarIconLauncher@2x.png in Resources */,
+				580649C717277DA800516B5F /* NavBarIconLogout@2x.png in Resources */,
+				580649C817277DA800516B5F /* NavBarIconLogout.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,12 +38,36 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // botao de configuracoes
+    UIImage* imgConfig = [UIImage imageNamed:@"NavBarIconLauncher.png"];
+    UIBarButtonItem *btnConfig = [[UIBarButtonItem alloc]
+                                   initWithImage:imgConfig
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(configAction)];
+    self.navigationItem.rightBarButtonItem = btnConfig;
+    
+    // botao de logout
+    UIImage* imgLogout = [UIImage imageNamed:@"NavBarIconLogout.png"];
+    UIBarButtonItem *btnLogout = [[UIBarButtonItem alloc]
+                                  initWithImage:imgLogout
+                                  style:UIBarButtonItemStyleBordered
+                                  target:self
+                                  action:@selector(logoutAction)];
+    self.navigationItem.leftBarButtonItem = btnLogout;
+    
+}
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+-(IBAction)configAction
+{
+    
+}
+
+-(IBAction)logoutAction
+{
+    [Jogador excluirTodosJogadoresDependencias];
+    [self performSegueWithIdentifier:@"LoginJogador" sender:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -51,7 +75,7 @@
     [super viewDidAppear:animated];
     
     // remove o botão Back de navegação
-    self.navigationItem.leftBarButtonItem = nil;
+    //self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
     
     [self buscaRanking];
