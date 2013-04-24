@@ -57,6 +57,11 @@
                                   action:@selector(logoutAction)];
     self.navigationItem.leftBarButtonItem = btnLogout;
     
+    // adiciona controle de refresh
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Puxe para atualizar"];
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
 }
 
 -(IBAction)configAction
@@ -222,4 +227,37 @@
      }];
 }
 
+
+-(void) refreshView:(UIRefreshControl *) refresh
+{
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Atualizando dados..."];
+    
+    Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
+    //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
+    
+    // busca lista de campeonatos da liga
+    [self buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
+                              idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
+                 constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
+                     
+     if (error) {
+         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+     } else {
+         // ranking do campeonato
+         //NSLog(@"Ranking: %@", ranking );
+         arRanking = ranking;
+         
+         // atualiza table
+         //[self.tableView reloadData];
+     }
+     
+    }];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"d MMM, h:mm a"];
+    NSString *lastUpdate = [NSString stringWithFormat:@"Última atualização em %@", [formatter stringFromDate:[NSDate date]]];
+    
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdate];
+    [refresh endRefreshing];
+}
 @end
