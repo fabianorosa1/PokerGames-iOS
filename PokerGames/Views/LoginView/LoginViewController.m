@@ -159,7 +159,7 @@
             //NSLog(@"Http error code %i",httpErrorCode);
             NSString *msgError = nil;
             
-            if (httpErrorCode == 404) {
+            if (httpErrorCode == 400) {
                 msgError = @"Usuário ou senha inválido!";
                 [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Autenticação", nil) message:msgError delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
             } else {
