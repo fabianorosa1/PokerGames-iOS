@@ -31,7 +31,7 @@
 {
     
     NSString *path = [NSString stringWithFormat:@"Liga.svc/Liga/%@", idPlayer];
-    NSLog(@"Path: %@", path);
+    //NSLog(@"Path: %@", path);
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"LigaResult"];

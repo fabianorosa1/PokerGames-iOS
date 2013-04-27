@@ -13,6 +13,9 @@
 #import "Campeonato.h"
 #import "AFAppDotNetAPIClient.h"
 #import "MBProgressHUD.h"
+#import "RankingCampeonatoJogadorCell.h"
+#import <QuartzCore/QuartzCore.h>
+#import "ADVTheme.h"
 
 @interface RankingCampeonatoTableViewController () {
     NSArray *arRanking;
@@ -38,6 +41,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // configura o header
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
+    self.viewHeader.layer.borderWidth = 0.7f;
     
     // botao de configuracoes
     UIImage* imgConfig = [UIImage imageNamed:@"NavBarIconLauncher.png"];
@@ -82,8 +91,6 @@
     // remove o botão Back de navegação
     //self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
-    
-    [self buscaRanking];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -91,6 +98,7 @@
     [super viewWillAppear:animated];
     
     self.title = [self.appDelegate jogadorLogin].liga.campeonato.apelido;
+    [self buscaRanking]; 
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,55 +124,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CellRanking";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    RankingCampeonatoJogadorCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     NSDictionary *rankingJogador = arRanking[indexPath.row];
-    
-    cell.textLabel.text = [rankingJogador valueForKey:@"Nome"];
-    cell.detailTextLabel.text = [rankingJogador valueForKey:@"Pontuacao"];
+    cell.row = indexPath.row;
+    cell.dados = rankingJogador;
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -185,7 +153,7 @@
 {
     
     NSString *path = [NSString stringWithFormat:@"Campeonatos.svc/Ranking/%@/%@", idLiga, idCampeonato];
-    NSLog(@"Path: %@", path);
+    //NSLog(@"Path: %@", path);
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"RankingResult"];

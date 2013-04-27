@@ -21,6 +21,9 @@
     // ativa o tema
     [ADVThemeManager customizeAppAppearance];
     
+    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
+    [NSURLCache setSharedURLCache:URLCache];
+    
     // seta indicador de atividade de rede visivel
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     

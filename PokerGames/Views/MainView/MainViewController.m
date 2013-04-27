@@ -38,11 +38,11 @@
     
     if (jogador == nil) {
         [self appDelegate].isFirstTime = TRUE;
-        NSLog(@">>> Configuração inicial!");
+        //NSLog(@">>> Configuração inicial!");
         [self performSegueWithIdentifier:@"LoginJogador" sender:self];
     } else {
         [self appDelegate].isFirstTime = FALSE;
-        NSLog(@">>> Já configurado!");
+        //NSLog(@">>> Já configurado!");
         [self appDelegate].jogadorLogin = jogador;
         [self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
     }

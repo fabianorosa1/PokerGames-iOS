@@ -73,7 +73,7 @@
     
     if (fetchedObjectsJogador.count > 0) {
         Jogador *jogadorEntity = fetchedObjectsJogador[0];
-        NSLog(@"Jogador Entity: %@", jogadorEntity);
+        //NSLog(@"Jogador Entity: %@", jogadorEntity);
         
         // cria novo jogador
         Jogador *newJogador = [[Jogador alloc] init];
@@ -98,7 +98,7 @@
         
         if (fetchedObjectsLiga.count > 0) {
             Liga *ligaEntity = fetchedObjectsLiga[0];
-            NSLog(@"Liga Entity: %@", ligaEntity);
+           // NSLog(@"Liga Entity: %@", ligaEntity);
             
             Liga *newLiga = [[Liga alloc] init];
             newLiga.idLiga = ligaEntity.idLiga;
@@ -121,7 +121,7 @@
             
             if (fetchedObjectsCampeonato.count > 0) {
                 Campeonato *campeonatoEntity = fetchedObjectsCampeonato[0];
-                NSLog(@"Campeonato Entity: %@", campeonatoEntity);
+               // NSLog(@"Campeonato Entity: %@", campeonatoEntity);
                 
                 Campeonato *newCampeonato = [[Campeonato alloc] init];
                 newCampeonato.idCampeonato = campeonatoEntity.idCampeonato;
@@ -210,9 +210,7 @@
      NSError *error;
     if (![context save:&error]) {
         NSLog(@"Error deleting data - error:%@", error);
-    } else {
-        NSLog(@"Registros excluidos com sucesso.");
-    }
+    } 
 }
 
 

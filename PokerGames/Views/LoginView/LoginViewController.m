@@ -56,19 +56,20 @@
     
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     
-    
     [self.loginButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
     [self.loginButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
+    self.loginButton.enabled = FALSE;
     
     self.userTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 260, 50)];
     [self.userTextField setPlaceholder:@"Apelido"];
     [self.userTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-    
+    self.userTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     
     self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 260, 50)];
     [self.passwordTextField setPlaceholder:@"Senha"];
     [self.passwordTextField setSecureTextEntry:YES];
     [self.passwordTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+    self.passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     
     self.userTextField.delegate = self;
     self.passwordTextField.delegate = self;
@@ -116,7 +117,7 @@
     if(indexPath.row == 0){
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsernameCell"];
-        
+
         [cell addSubview:self.userTextField];
         
     }else {
@@ -132,6 +133,24 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    [self validateTextFields];    
+    return YES;
+}
+
+-(void) validateTextFields {
+    if ((self.userTextField.text.length > 0) && (self.passwordTextField.text.length > 0)) {
+        self.loginButton.enabled = YES;
+    } else {
+        self.loginButton.enabled = NO;
+    }
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField{
+    self.loginButton.enabled = NO;
     return YES;
 }
 

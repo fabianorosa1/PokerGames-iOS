@@ -65,14 +65,15 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.title = @"Poker Games";
     
+    self.title = @"Poker Games";
     [self buscaLigasPlayer];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    
     self.title = @"Voltar";
 }
 

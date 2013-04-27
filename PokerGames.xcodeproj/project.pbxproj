@@ -17,6 +17,12 @@
 		58325077172462C000D2C825 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325076172462C000D2C825 /* SystemConfiguration.framework */; };
 		58325079172462C700D2C825 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325078172462C700D2C825 /* MobileCoreServices.framework */; };
 		5832507C172489C100D2C825 /* LigaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5832507B172489C100D2C825 /* LigaTableViewController.m */; };
+		583D9D3C1728B77A00249207 /* profile-image-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 583D9D3A1728B77A00249207 /* profile-image-placeholder.png */; };
+		583D9D3D1728B77A00249207 /* profile-image-placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583D9D3B1728B77A00249207 /* profile-image-placeholder@2x.png */; };
+		583D9D401728B7B500249207 /* RankingCampeonatoJogadorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D9D3F1728B7B500249207 /* RankingCampeonatoJogadorCell.m */; };
+		583D9D441728C42C00249207 /* primeiro.png in Resources */ = {isa = PBXBuildFile; fileRef = 583D9D411728C42C00249207 /* primeiro.png */; };
+		583D9D451728C42C00249207 /* segundo.png in Resources */ = {isa = PBXBuildFile; fileRef = 583D9D421728C42C00249207 /* segundo.png */; };
+		583D9D461728C42C00249207 /* terceiro.png in Resources */ = {isa = PBXBuildFile; fileRef = 583D9D431728C42C00249207 /* terceiro.png */; };
 		587109AE17257D85001A2455 /* Liga.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109AC17257D85001A2455 /* Liga.m */; };
 		587109B11725B963001A2455 /* Campeonato.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109AF1725B963001A2455 /* Campeonato.m */; };
 		587109B51725BADD001A2455 /* CampeonatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109B41725BADD001A2455 /* CampeonatoTableViewController.m */; };
@@ -107,6 +113,13 @@
 		58325078172462C700D2C825 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5832507A172489C100D2C825 /* LigaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LigaTableViewController.h; path = LigaView/LigaTableViewController.h; sourceTree = "<group>"; };
 		5832507B172489C100D2C825 /* LigaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LigaTableViewController.m; path = LigaView/LigaTableViewController.m; sourceTree = "<group>"; };
+		583D9D3A1728B77A00249207 /* profile-image-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-image-placeholder.png"; sourceTree = "<group>"; };
+		583D9D3B1728B77A00249207 /* profile-image-placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-image-placeholder@2x.png"; sourceTree = "<group>"; };
+		583D9D3E1728B7B500249207 /* RankingCampeonatoJogadorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankingCampeonatoJogadorCell.h; path = RankingCampeonatoView/RankingCampeonatoJogadorCell.h; sourceTree = "<group>"; };
+		583D9D3F1728B7B500249207 /* RankingCampeonatoJogadorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankingCampeonatoJogadorCell.m; path = RankingCampeonatoView/RankingCampeonatoJogadorCell.m; sourceTree = "<group>"; };
+		583D9D411728C42C00249207 /* primeiro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = primeiro.png; sourceTree = "<group>"; };
+		583D9D421728C42C00249207 /* segundo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = segundo.png; sourceTree = "<group>"; };
+		583D9D431728C42C00249207 /* terceiro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terceiro.png; sourceTree = "<group>"; };
 		587109AC17257D85001A2455 /* Liga.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Liga.m; sourceTree = "<group>"; };
 		587109AD17257D85001A2455 /* Liga.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Liga.h; sourceTree = "<group>"; };
 		587109AF1725B963001A2455 /* Campeonato.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Campeonato.m; sourceTree = "<group>"; };
@@ -258,6 +271,8 @@
 			children = (
 				580649BA1727535A00516B5F /* RankingCampeonatoTableViewController.h */,
 				580649BB1727535A00516B5F /* RankingCampeonatoTableViewController.m */,
+				583D9D3E1728B7B500249207 /* RankingCampeonatoJogadorCell.h */,
+				583D9D3F1728B7B500249207 /* RankingCampeonatoJogadorCell.m */,
 			);
 			name = RankingCampeonatoView;
 			sourceTree = "<group>";
@@ -407,6 +422,11 @@
 		58967BB5171DD2B5003FCF47 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				583D9D411728C42C00249207 /* primeiro.png */,
+				583D9D421728C42C00249207 /* segundo.png */,
+				583D9D431728C42C00249207 /* terceiro.png */,
+				583D9D3A1728B77A00249207 /* profile-image-placeholder.png */,
+				583D9D3B1728B77A00249207 /* profile-image-placeholder@2x.png */,
 				580649C517277DA800516B5F /* NavBarIconLogout@2x.png */,
 				580649C617277DA800516B5F /* NavBarIconLogout.png */,
 				580649C117277B8F00516B5F /* NavBarIconLauncher.png */,
@@ -609,6 +629,11 @@
 				580649C417277B8F00516B5F /* NavBarIconLauncher@2x.png in Resources */,
 				580649C717277DA800516B5F /* NavBarIconLogout@2x.png in Resources */,
 				580649C817277DA800516B5F /* NavBarIconLogout.png in Resources */,
+				583D9D3C1728B77A00249207 /* profile-image-placeholder.png in Resources */,
+				583D9D3D1728B77A00249207 /* profile-image-placeholder@2x.png in Resources */,
+				583D9D441728C42C00249207 /* primeiro.png in Resources */,
+				583D9D451728C42C00249207 /* segundo.png in Resources */,
+				583D9D461728C42C00249207 /* terceiro.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +669,7 @@
 				587109B51725BADD001A2455 /* CampeonatoTableViewController.m in Sources */,
 				587109BC1725DB95001A2455 /* MainViewController.m in Sources */,
 				580649BC1727535A00516B5F /* RankingCampeonatoTableViewController.m in Sources */,
+				583D9D401728B7B500249207 /* RankingCampeonatoJogadorCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

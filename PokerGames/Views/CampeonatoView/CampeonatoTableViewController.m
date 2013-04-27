@@ -66,14 +66,14 @@
 {
     [super viewWillAppear:animated];
     
-    [self buscaCampeonatosLiga];
-    
     self.title = [self.appDelegate jogadorLogin].liga.apelido;
+    [self buscaCampeonatosLiga];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    
     self.title = @"Voltar";
 }
 
