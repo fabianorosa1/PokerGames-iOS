@@ -190,7 +190,7 @@
     
     for (NSManagedObject *managedObject in items) {
     	[managedObjectContext deleteObject:managedObject];
-    	NSLog (@"%@ object deleted", managedObject);
+    	//NSLog (@"%@ object deleted", managedObject);
     }
 }
 

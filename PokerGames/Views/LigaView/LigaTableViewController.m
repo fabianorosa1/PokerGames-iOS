@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "Jogador.h"
 #import "ADVTheme.h"
+#import "ECSlidingViewController.h"
 
 @interface LigaTableViewController () {
     NSArray *arLiga;
@@ -87,12 +88,22 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     self.tableView.backgroundView = nil;
     [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    
+    // verifica se deve adicionar o botao de menu
+    if (![self appDelegate].isFirstTime) {
+        // botao de configuracoes
+        UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
+                                      initWithImage:[PokerGamesUtil menuImage]
+                                      style:UIBarButtonItemStyleBordered
+                                      target:self
+                                      action:@selector(configAction)];
+        self.navigationItem.leftBarButtonItem = btnMenu;
+    }
 }
 
-- (void)didReceiveMemoryWarning
+-(IBAction)configAction
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 #pragma mark - Table view data source

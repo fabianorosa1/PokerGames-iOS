@@ -45,22 +45,22 @@
     
     // busca lista de campeonatos da liga
     [Campeonato buscaCampeonatosLigaWithBlock:jogadorLogin.liga.idLiga
-          constructingBodyWithBlock:^(NSArray *campeonatos, NSError *error) {
-              
-      [hud hide:YES];
-      
-      if (error) {
-          [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-      } else {
-          // lista de campeonatos
-          //NSLog(@"Campeonatos: %@", campeonatos );
-          arCampeonatos = campeonatos;
-          
-          // atualiza table
-          [self.tableView reloadData];
-      }
-      
-  }];
+                    constructingBodyWithBlock:^(NSArray *campeonatos, NSError *error) {
+                        
+                        [hud hide:YES];
+                        
+                        if (error) {
+                            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+                        } else {
+                            // lista de campeonatos
+                            //NSLog(@"Campeonatos: %@", campeonatos );
+                            arCampeonatos = campeonatos;
+                            
+                            // atualiza table
+                            [self.tableView reloadData];
+                        }
+                        
+                    }];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -88,12 +88,22 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     self.tableView.backgroundView = nil;
     [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    
+    // verifica se deve adicionar o botao de menu
+    if (![self appDelegate].isFirstTime) {
+        // botao de configuracoes
+        UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
+                                    initWithImage:[PokerGamesUtil menuImage]
+                                    style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(configAction)];
+        self.navigationItem.leftBarButtonItem = btnMenu;
+    }
 }
 
-- (void)didReceiveMemoryWarning
+-(IBAction)configAction
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 #pragma mark - Table view data source
@@ -161,16 +171,14 @@
         [jogador insertJogadorEntity];
         
         [hud hide:YES];
-    } else {
-        NSLog(@"Alteracao do campeonato!");
+        
+        // já configurado
+        [self appDelegate].isFirstTime = FALSE;
     }
     
-    
+    // instancia a tela principal do ranking
     ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
-    
     slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
-    
-    //[self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
 }
 
 @end

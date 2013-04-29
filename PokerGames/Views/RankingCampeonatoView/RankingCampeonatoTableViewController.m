@@ -51,13 +51,12 @@
     self.viewHeader.layer.borderWidth = 0.7f;
     
     // botao de configuracoes
-    UIImage* imgConfig = [UIImage imageNamed:@"NavBarIconLauncher.png"];
-    UIBarButtonItem *btnConfig = [[UIBarButtonItem alloc]
-                                   initWithImage:imgConfig
+    UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
+                                   initWithImage:[PokerGamesUtil menuImage]
                                    style:UIBarButtonItemStyleBordered
                                    target:self
                                    action:@selector(configAction)];
-    self.navigationItem.leftBarButtonItem = btnConfig;
+    self.navigationItem.leftBarButtonItem = btnMenu;
     
     // botao de logout
     UIImage* imgLogout = [UIImage imageNamed:@"NavBarIconLogout.png"];
@@ -82,7 +81,12 @@
 -(IBAction)logoutAction
 {
     [Jogador excluirTodosJogadoresDependencias];
-    [self performSegueWithIdentifier:@"LoginJogador" sender:self];
+    // seta não configurado
+    [self appDelegate].isFirstTime = TRUE;
+
+    // instancia a tela principal do ranking
+    ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
+    slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginJogador"];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -229,7 +233,7 @@
          arRanking = ranking;
          
          // atualiza table
-         //[self.tableView reloadData];
+         [self.tableView reloadData];
      }
      
     }];

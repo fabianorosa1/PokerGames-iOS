@@ -15,8 +15,6 @@
 
 @implementation LoginViewController
 
-@synthesize userTextField = _userTextField, passwordTextField = _passwordTextField;
-
 - (AppDelegate *)appDelegate {
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }

@@ -41,7 +41,6 @@
         storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     }
     
-    
     // verifica se já está logado
     Jogador *jogador = [Jogador loadJogadorEntity];
     
