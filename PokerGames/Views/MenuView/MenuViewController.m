@@ -44,6 +44,21 @@
     [self.slidingViewController setAnchorRightRevealAmount:263.0f];
     self.slidingViewController.underLeftWidthLayout = ECFullWidth;
     
+    self.clearsSelectionOnViewWillAppear = NO;
+    
+    // adiciona canto arredonado
+    self.imgViewFoto.layer.cornerRadius = 5.0;
+    self.imgViewFoto.layer.masksToBounds = YES;
+    
+    // adiciona borda
+    self.imgViewFoto.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.imgViewFoto.layer.borderWidth = 1.0;
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     // seta os dados do perfil
     Jogador *jogador = [self.appDelegate jogadorLogin];
     self.lblNome.text = jogador.nome;
@@ -51,9 +66,8 @@
     // seta a foto do jogador
     NSURL *urlFoto = [NSURL URLWithString:jogador.urlFoto];
     [self.imgViewFoto setImageWithURL:urlFoto placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
-    
-    self.clearsSelectionOnViewWillAppear = NO;
 }
+
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];

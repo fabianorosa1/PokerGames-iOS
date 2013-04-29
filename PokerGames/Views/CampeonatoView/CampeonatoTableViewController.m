@@ -85,6 +85,8 @@
     
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     
+    [ADVThemeManager customizeTableView:self.tableView];
+    
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     self.tableView.backgroundView = nil;
     [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];

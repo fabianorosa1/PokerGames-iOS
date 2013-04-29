@@ -25,7 +25,7 @@
     [NSURLCache setSharedURLCache:URLCache];
     
     // seta indicador de atividade de rede visivel
-    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    //[AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {

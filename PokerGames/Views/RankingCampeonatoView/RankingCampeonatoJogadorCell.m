@@ -8,6 +8,7 @@
 
 #import "RankingCampeonatoJogadorCell.h"
 #import "UIImageView+AFNetworking.h"
+#import <QuartzCore/QuartzCore.h>
 
 static UIImage* imgPrimeiro = nil;
 static UIImage* imgSegundo = nil;
@@ -66,7 +67,15 @@ static UIImage* imgTerceiro = nil;
     NSURL *urlFoto = [NSURL URLWithString:[_dados valueForKey:@"Foto"]];
     [self.imgViewFoto setImageWithURL:urlFoto placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
     
-    [self setNeedsLayout];
+    // adiciona canto arredonado
+    self.imgViewFoto.layer.cornerRadius = 5.0;
+    self.imgViewFoto.layer.masksToBounds = YES;
+    
+    // adiciona borda
+    self.imgViewFoto.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.imgViewFoto.layer.borderWidth = 1.0;
+    
+    //[self setNeedsLayout];
 }
 
 @end
