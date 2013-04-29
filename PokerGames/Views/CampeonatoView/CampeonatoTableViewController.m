@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "Jogador.h"
 #import "ADVTheme.h"
+#import "ECSlidingViewController.h"
 
 @interface CampeonatoTableViewController () {
     NSArray *arCampeonatos;
@@ -147,6 +148,7 @@
     jogador.liga.campeonato = campeonato;
     jogador.liga.idCampeonato = campeonato.idCampeonato;
     
+    
     // verifica se é configuração inicial ou não
     if ([self appDelegate].isFirstTime == TRUE) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -163,7 +165,12 @@
         NSLog(@"Alteracao do campeonato!");
     }
     
-    [self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
+    
+    ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
+    
+    slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
+    
+    //[self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
 }
 
 @end

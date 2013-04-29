@@ -16,6 +16,8 @@
 #import "RankingCampeonatoJogadorCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ADVTheme.h"
+#import "ECSlidingViewController.h"
+#import "MenuViewController.h"
 
 @interface RankingCampeonatoTableViewController () {
     NSArray *arRanking;
@@ -55,7 +57,7 @@
                                    style:UIBarButtonItemStyleBordered
                                    target:self
                                    action:@selector(configAction)];
-    self.navigationItem.rightBarButtonItem = btnConfig;
+    self.navigationItem.leftBarButtonItem = btnConfig;
     
     // botao de logout
     UIImage* imgLogout = [UIImage imageNamed:@"NavBarIconLogout.png"];
@@ -64,18 +66,17 @@
                                   style:UIBarButtonItemStyleBordered
                                   target:self
                                   action:@selector(logoutAction)];
-    self.navigationItem.leftBarButtonItem = btnLogout;
+    self.navigationItem.rightBarButtonItem = btnLogout;
     
     // adiciona controle de refresh
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Puxe para atualizar"];
     [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 }
 
 -(IBAction)configAction
 {
-    
+    [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 -(IBAction)logoutAction
@@ -90,7 +91,7 @@
     
     // remove o botão Back de navegação
     //self.navigationItem.leftBarButtonItem = nil;
-    self.navigationItem.hidesBackButton = YES;
+    //self.navigationItem.hidesBackButton = YES;
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -98,7 +99,21 @@
     [super viewWillAppear:animated];
     
     self.title = [self.appDelegate jogadorLogin].liga.campeonato.apelido;
-    [self buscaRanking]; 
+    
+    // shadowPath, shadowOffset, and rotation is handled by ECSlidingViewController.
+    // You just need to set the opacity, radius, and color.
+    self.view.layer.shadowOpacity = 0.75f;
+    self.view.layer.shadowRadius = 10.0f;
+    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    
+    if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
+        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+    }
+    
+    [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+    
+    // busca os rankings
+    [self buscaRanking];
 }
 
 - (void)didReceiveMemoryWarning
@@ -168,7 +183,7 @@
 }
 
 - (void) buscaRanking {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Buscando ranking";
     
     Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
@@ -198,8 +213,6 @@
 
 -(void) refreshView:(UIRefreshControl *) refresh
 {
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Atualizando dados..."];
-    
     Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
     //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
     
@@ -221,11 +234,6 @@
      
     }];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"d MMM, h:mm a"];
-    NSString *lastUpdate = [NSString stringWithFormat:@"Última atualização em %@", [formatter stringFromDate:[NSDate date]]];
-    
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdate];
     [refresh endRefreshing];
 }
 @end

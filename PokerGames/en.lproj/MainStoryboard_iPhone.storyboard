@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kif-VM-CA3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6yU-mv-CW5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -9,7 +9,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" id="jhp-cW-b8t" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ACH-dg-5ui">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTz-hV-xW3">
@@ -58,14 +58,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="43M-7C-Zmz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1250" y="-681"/>
+            <point key="canvasLocation" x="1776" y="-681"/>
         </scene>
-        <!--Ranking Campeonato Table View Controller-->
+        <!--Ranking Campeonato Table View Controller - ranking-->
         <scene sceneID="5Ho-eV-tHc">
             <objects>
-                <tableViewController id="hS9-mO-OoA" customClass="RankingCampeonatoTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="" id="hS9-mO-OoA" customClass="RankingCampeonatoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="53" sectionHeaderHeight="22" sectionFooterHeight="22" id="5pw-4a-Llq">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="t6V-XE-2Rs">
@@ -163,22 +163,21 @@
                             <outlet property="delegate" destination="hS9-mO-OoA" id="WUa-dy-Eah"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="1eU-6w-zVT"/>
+                    <navigationItem key="navigationItem" title="ranking" id="1eU-6w-zVT"/>
                     <connections>
                         <outlet property="viewHeader" destination="t6V-XE-2Rs" id="ixy-bx-JHc"/>
-                        <segue destination="jhp-cW-b8t" kind="push" identifier="LoginJogador" id="8Du-4b-Jhs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SNu-Eg-sNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1965" y="1122"/>
+            <point key="canvasLocation" x="2049" y="1146"/>
         </scene>
         <!--Liga Table View Controller - Poker Games-->
         <scene sceneID="ScY-j7-fhI">
             <objects>
                 <tableViewController id="qlj-MJ-iPo" customClass="LigaTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="7vQ-Fe-fuP">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -217,51 +216,57 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YN2-t4-IkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2169" y="-165"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="flA-A6-rj9">
-            <objects>
-                <navigationController id="kif-VM-CA3" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xmN-cb-0bO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="6yU-mv-CW5" kind="relationship" relationship="rootViewController" id="gIY-lj-eBv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mxw-if-X9Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="52" y="131"/>
+            <point key="canvasLocation" x="2695" y="-165"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="pQo-dv-xjv">
             <objects>
                 <viewController id="6yU-mv-CW5" customClass="MainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Mk-oL-GBF">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="pkH-id-6w2"/>
                     <connections>
-                        <segue destination="jhp-cW-b8t" kind="push" identifier="LoginJogador" id="USf-EB-c4V"/>
-                        <segue destination="hS9-mO-OoA" kind="push" identifier="RankingCampeonato" id="gQl-3o-iV7"/>
+                        <segue destination="YwU-Xs-99V" kind="push" identifier="LoginJogador" id="USf-EB-c4V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Zg-p4-2Bs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="601" y="131"/>
+            <point key="canvasLocation" x="195" y="215"/>
+        </scene>
+        <!--Menu View Controller - Menu-->
+        <scene sceneID="eg2-KF-wIB">
+            <objects>
+                <viewController storyboardIdentifier="Menu" title="Menu" id="XdV-aZ-9ea" customClass="MenuViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="psc-Qs-5LL">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sD-Y7-K0Z">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.65470702490306287" green="1" blue="0.55847548922885992" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="5sD-Y7-K0Z" firstAttribute="leading" secondItem="psc-Qs-5LL" secondAttribute="leading" constant="26" id="I4F-Mk-ib2"/>
+                            <constraint firstItem="5sD-Y7-K0Z" firstAttribute="top" secondItem="psc-Qs-5LL" secondAttribute="top" constant="240" id="Y0X-Yc-gFn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qfs-OH-Ozp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1632" y="176"/>
         </scene>
         <!--Campeonato Table View Controller-->
         <scene sceneID="b7g-hg-2EJ">
             <objects>
                 <tableViewController id="KMH-e0-7xu" customClass="CampeonatoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Mg3-St-OAw">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -298,22 +303,98 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="jGK-cC-4t3"/>
-                    <connections>
-                        <segue destination="hS9-mO-OoA" kind="push" identifier="RankingCampeonato" id="plI-ca-MAe"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DV3-Un-4pa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2925" y="-165"/>
+            <point key="canvasLocation" x="3247" y="-165"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZJr-P0-aGl">
+            <objects>
+                <navigationController storyboardIdentifier="LoginJogador" id="YwU-Xs-99V" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="XcB-VC-9Jz"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kqh-UH-RRi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jhp-cW-b8t" kind="relationship" relationship="rootViewController" id="8QO-ap-OxA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YPn-Fn-pNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1250" y="-681"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Bvs-D0-Nx9">
+            <objects>
+                <navigationController storyboardIdentifier="RankingCampeonato" id="NE8-Cp-CQg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="MRd-BS-LAm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hS9-mO-OoA" kind="relationship" relationship="rootViewController" id="6jt-Kn-XZ9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="el1-xZ-VyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1523" y="1146"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CampeonatoTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CampeonatoTableViewController.h"/>
+        </class>
+        <class className="ECSlidingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECSlidingViewController.h"/>
+        </class>
+        <class className="LigaTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LigaTableViewController.h"/>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logInPressed:"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MainViewController" superclassName="ECSlidingViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+        </class>
+        <class className="MenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RankingCampeonatoJogadorCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RankingCampeonatoJogadorCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imgViewFoto" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imgViewPosicao" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lblNome" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblPontos" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblPosicao" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RankingCampeonatoTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RankingCampeonatoTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="viewHeader" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="8Du-4b-Jhs"/>
-        <segue reference="plI-ca-MAe"/>
-    </inferredMetricsTieBreakers>
 </document>

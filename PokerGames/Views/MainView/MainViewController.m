@@ -33,18 +33,31 @@
 {
     [super viewDidLoad];
 
+    UIStoryboard *storyboard;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    }
+    
+    
     // verifica se já está logado
     Jogador *jogador = [Jogador loadJogadorEntity];
     
     if (jogador == nil) {
         [self appDelegate].isFirstTime = TRUE;
         //NSLog(@">>> Configuração inicial!");
-        [self performSegueWithIdentifier:@"LoginJogador" sender:self];
+        //[self performSegueWithIdentifier:@"LoginJogador" sender:self];
+        
+        self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginJogador"];
     } else {
         [self appDelegate].isFirstTime = FALSE;
         //NSLog(@">>> Já configurado!");
         [self appDelegate].jogadorLogin = jogador;
-        [self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
+        //[self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
+        
+        self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
     }
 }
 

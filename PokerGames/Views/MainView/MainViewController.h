@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ECSlidingViewController.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : ECSlidingViewController
 
 @end
