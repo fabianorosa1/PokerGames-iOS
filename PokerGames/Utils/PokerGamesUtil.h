@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PokerGamesUtil : NSObject
+@interface PokerGamesUtil : NSObject 
 
 + (UIImage *)menuImage;
++ (NSString *)baseURL;
++ (NSString *)baseURLFoto;
+
++ (UIImage *)imgPlaceholder;
++ (UIImage *)imgPrimeiroLugar;
++ (UIImage *)imgSegundoLugar;
++ (UIImage *)imgTerceiroLugar;
 
 @end

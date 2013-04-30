@@ -64,7 +64,7 @@
         <scene sceneID="5Ho-eV-tHc">
             <objects>
                 <tableViewController storyboardIdentifier="" id="hS9-mO-OoA" customClass="RankingCampeonatoTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="53" sectionHeaderHeight="22" sectionFooterHeight="22" id="5pw-4a-Llq">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="5pw-4a-Llq">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -88,20 +88,20 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellRanking" rowHeight="53" id="g0Z-hh-bcb" customClass="RankingCampeonatoJogadorCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="53"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellRanking" rowHeight="48" id="g0Z-hh-bcb" customClass="RankingCampeonatoJogadorCell">
+                                <rect key="frame" x="0.0" y="66" width="320" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="52"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="47"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sF-rr-SUq">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="51" id="TZx-LC-9Oz"/>
-                                                <constraint firstAttribute="height" constant="47" id="pX0-6G-Vlh"/>
+                                                <constraint firstAttribute="width" constant="47" id="AJ0-dO-50c"/>
+                                                <constraint firstAttribute="height" constant="43" id="gL5-j1-6qW"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muf-yh-Rtk">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muf-yh-Rtk">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="24" id="52R-fB-zpk"/>
                                                 <constraint firstAttribute="height" constant="24" id="j4x-fA-hag"/>
@@ -123,7 +123,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10º" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNO-Db-vUi">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNO-Db-vUi">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="ND6-Lf-8je"/>
                                                 <constraint firstAttribute="width" constant="30" id="RHd-O9-z6e"/>
@@ -136,17 +136,17 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="2sF-rr-SUq" firstAttribute="centerY" secondItem="ZNO-Db-vUi" secondAttribute="centerY" type="default" id="CPh-OW-9l8"/>
-                                    <constraint firstItem="itu-3L-83L" firstAttribute="leading" secondItem="ZNO-Db-vUi" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="HRf-lk-ryI"/>
+                                    <constraint firstItem="8iX-Wb-DxJ" firstAttribute="top" secondItem="g0Z-hh-bcb" secondAttribute="top" constant="22" id="1N9-6R-fcc"/>
+                                    <constraint firstItem="itu-3L-83L" firstAttribute="top" secondItem="2sF-rr-SUq" secondAttribute="top" type="default" id="6Ah-3R-wsi"/>
+                                    <constraint firstItem="2sF-rr-SUq" firstAttribute="centerY" secondItem="ZNO-Db-vUi" secondAttribute="centerY" type="default" id="DQE-je-2BB"/>
                                     <constraint firstItem="8iX-Wb-DxJ" firstAttribute="trailing" secondItem="itu-3L-83L" secondAttribute="trailing" type="default" id="KYM-4R-LAn"/>
-                                    <constraint firstItem="8iX-Wb-DxJ" firstAttribute="top" secondItem="g0Z-hh-bcb" secondAttribute="top" constant="25" id="Vzf-Ch-NFQ"/>
-                                    <constraint firstItem="ZNO-Db-vUi" firstAttribute="centerY" secondItem="g0Z-hh-bcb" secondAttribute="centerY" type="default" id="aKV-ol-lw7"/>
-                                    <constraint firstItem="muf-yh-Rtk" firstAttribute="top" secondItem="g0Z-hh-bcb" secondAttribute="top" constant="15" id="ftE-g4-DO3"/>
-                                    <constraint firstItem="itu-3L-83L" firstAttribute="top" secondItem="g0Z-hh-bcb" secondAttribute="top" constant="6" id="jpc-nJ-WYy"/>
-                                    <constraint firstItem="2sF-rr-SUq" firstAttribute="leading" secondItem="g0Z-hh-bcb" secondAttribute="leading" constant="4" id="suC-o8-DR8"/>
-                                    <constraint firstItem="8iX-Wb-DxJ" firstAttribute="leading" secondItem="ZNO-Db-vUi" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="tSx-e9-aiV"/>
-                                    <constraint firstItem="muf-yh-Rtk" firstAttribute="leading" secondItem="ZNO-Db-vUi" secondAttribute="leading" type="default" id="vd8-u3-9f7"/>
-                                    <constraint firstItem="ZNO-Db-vUi" firstAttribute="leading" secondItem="g0Z-hh-bcb" secondAttribute="leading" constant="64" id="xYL-wT-1wn"/>
+                                    <constraint firstItem="2sF-rr-SUq" firstAttribute="top" secondItem="g0Z-hh-bcb" secondAttribute="top" constant="2" id="VdT-PD-vvE"/>
+                                    <constraint firstItem="8iX-Wb-DxJ" firstAttribute="leading" secondItem="itu-3L-83L" secondAttribute="leading" type="default" id="WyS-iL-6WK"/>
+                                    <constraint firstItem="muf-yh-Rtk" firstAttribute="centerY" secondItem="g0Z-hh-bcb" secondAttribute="centerY" type="default" id="jHh-Uf-dRL"/>
+                                    <constraint firstItem="ZNO-Db-vUi" firstAttribute="leading" secondItem="g0Z-hh-bcb" secondAttribute="leading" constant="61" id="juN-4a-cfK"/>
+                                    <constraint firstItem="itu-3L-83L" firstAttribute="leading" secondItem="g0Z-hh-bcb" secondAttribute="leading" constant="102" id="mEJ-yq-8RI"/>
+                                    <constraint firstItem="muf-yh-Rtk" firstAttribute="centerX" secondItem="ZNO-Db-vUi" secondAttribute="centerX" type="default" id="sCQ-Qd-ElV"/>
+                                    <constraint firstItem="2sF-rr-SUq" firstAttribute="leading" secondItem="g0Z-hh-bcb" secondAttribute="leading" constant="7" id="uRL-31-CJd"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="imgViewFoto" destination="2sF-rr-SUq" id="eja-a2-vwc"/>

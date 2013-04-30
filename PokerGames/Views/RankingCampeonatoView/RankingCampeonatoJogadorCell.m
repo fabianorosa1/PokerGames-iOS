@@ -9,19 +9,10 @@
 #import "RankingCampeonatoJogadorCell.h"
 #import "UIImageView+AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
-
-static UIImage* imgPrimeiro = nil;
-static UIImage* imgSegundo = nil;
-static UIImage* imgTerceiro = nil;
+#import "Jogador.h"
 
 @implementation RankingCampeonatoJogadorCell
 
-+(void)initialize
-{
-    imgPrimeiro = [UIImage imageNamed:@"primeiro.png"];
-    imgSegundo = [UIImage imageNamed:@"segundo.png"];
-    imgTerceiro = [UIImage imageNamed:@"terceiro.png"];
-}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -46,27 +37,30 @@ static UIImage* imgTerceiro = nil;
     
     self.lblNome.text = [_dados valueForKey:@"Nome"];
     self.lblPontos.text = [NSString stringWithFormat:@"%@ pontos", [_dados valueForKey:@"Pontos"]];
-
-    self.lblPosicao.hidden = true;
-    self.imgViewPosicao.hidden = false;
     
     // verifica a posicao
     if (self.row == 0) {
-        [self.imgViewPosicao setImage:imgPrimeiro];
+        self.lblPosicao.hidden = true;
+        self.imgViewPosicao.hidden = false;
+        [self.imgViewPosicao setImage:[PokerGamesUtil imgPrimeiroLugar]];
     } else if (self.row == 1) {
-        [self.imgViewPosicao setImage:imgSegundo];
+        self.lblPosicao.hidden = true;
+        self.imgViewPosicao.hidden = false;
+        [self.imgViewPosicao setImage:[PokerGamesUtil imgSegundoLugar]];
     } else if (self.row == 2) {
-        [self.imgViewPosicao setImage:imgTerceiro];
+        self.lblPosicao.hidden = true;
+        self.imgViewPosicao.hidden = false;
+        [self.imgViewPosicao setImage:[PokerGamesUtil imgTerceiroLugar]];
     } else {
         self.lblPosicao.hidden = false;
         self.imgViewPosicao.hidden = true;
         self.lblPosicao.text = [NSString stringWithFormat:@"%@º", [_dados valueForKey:@"Posicao"]];
     }
-    
+
     // seta a foto do jogador
-    NSURL *urlFoto = [NSURL URLWithString:[_dados valueForKey:@"Foto"]];
-    [self.imgViewFoto setImageWithURL:urlFoto placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
-    
+    [self.imgViewFoto setImageWithURL:[Jogador buildUrlFoto:[_dados valueForKey:@"IdJogador"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+
+/* PROBLEMA DE PERFORMANCE!
     // adiciona canto arredonado
     self.imgViewFoto.layer.cornerRadius = 5.0;
     self.imgViewFoto.layer.masksToBounds = YES;
@@ -74,8 +68,8 @@ static UIImage* imgTerceiro = nil;
     // adiciona borda
     self.imgViewFoto.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.imgViewFoto.layer.borderWidth = 1.0;
-    
-    //[self setNeedsLayout];
+*/
+  
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "Liga.h"
 #import "AppDelegate.h"
 #import "Campeonato.h"
+#import "PokerGamesUtil.h"
 
 @implementation Jogador
 
@@ -24,10 +25,15 @@
     self.apelido = [attributes valueForKeyPath:@"Apelido"];
     self.email = [attributes valueForKeyPath:@"Email"];
     self.nome = [attributes valueForKeyPath:@"Nome"];
-    self.urlFoto = [attributes valueForKeyPath:@"FotoUrl"];
+    //self.urlFoto = [attributes valueForKeyPath:@"FotoUrl"];
     self.status = [attributes valueForKeyPath:@"Status"];
     
     return self;
+}
+
++ (NSURL*) buildUrlFoto:(NSNumber*)idJogador {
+    NSString *pathFoto = [NSString stringWithFormat:@"%@jogador%@.jpg", [PokerGamesUtil baseURLFoto],  idJogador];
+    return [NSURL URLWithString:pathFoto];
 }
 
 #pragma mark -
@@ -82,7 +88,7 @@
         newJogador.apelido = jogadorEntity.apelido;
         newJogador.status = jogadorEntity.status;
         newJogador.email = jogadorEntity.email;
-        newJogador.urlFoto = jogadorEntity.urlFoto;
+        //newJogador.urlFoto = jogadorEntity.urlFoto;
         newJogador.idLiga = jogadorEntity.idLiga;
         
         // carrega a liga do jogador
@@ -168,7 +174,7 @@
     [newManagedObjectJogador setValue:self.apelido forKey:@"apelido"];
     [newManagedObjectJogador setValue:self.email forKey:@"email"];
     [newManagedObjectJogador setValue:self.nome forKey:@"nome"];
-    [newManagedObjectJogador setValue:self.urlFoto forKey:@"urlFoto"];
+    //[newManagedObjectJogador setValue:self.urlFoto forKey:@"urlFoto"];
     [newManagedObjectJogador setValue:self.status forKey:@"status"];
     [newManagedObjectJogador setValue:self.idLiga forKey:@"idLiga"];
     

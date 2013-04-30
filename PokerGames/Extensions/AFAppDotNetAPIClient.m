@@ -1,8 +1,7 @@
 #import "AFAppDotNetAPIClient.h"
 #import "AFURLConnectionOperation.h"
 #import "AFJSONRequestOperation.h"
-
-static NSString * const kAFAppDotNetAPIBaseURLString = @"http://pokergames.azurewebsites.net/Services/";
+#import "PokerGamesUtil.h"
 
 @implementation AFAppDotNetAPIClient
 
@@ -10,7 +9,7 @@ static NSString * const kAFAppDotNetAPIBaseURLString = @"http://pokergames.azure
     static AFAppDotNetAPIClient *_sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[AFAppDotNetAPIClient alloc] initWithBaseURL:[NSURL URLWithString:kAFAppDotNetAPIBaseURLString]];
+        _sharedClient = [[AFAppDotNetAPIClient alloc] initWithBaseURL:[NSURL URLWithString:[PokerGamesUtil baseURL]]];
     });
     
     return _sharedClient;

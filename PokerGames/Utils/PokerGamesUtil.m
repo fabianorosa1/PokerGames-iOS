@@ -8,7 +8,21 @@
 
 #import "PokerGamesUtil.h"
 
+// variaveis estaticas
+static UIImage* imgPlaceholder = nil;
+static UIImage* imgPrimeiroLugar = nil;
+static UIImage* imgSegundoLugar = nil;
+static UIImage* imgTerceiroLugar = nil;
+
 @implementation PokerGamesUtil
+
++(void)initialize
+{
+    imgPlaceholder = [UIImage imageNamed:@"profile-image-placeholder"];
+    imgPrimeiroLugar = [UIImage imageNamed:@"primeiro"];
+    imgSegundoLugar = [UIImage imageNamed:@"segundo"];
+    imgTerceiroLugar = [UIImage imageNamed:@"terceiro"];
+}
 
 + (UIImage *)menuImage {
 	static UIImage *defaultImage = nil;
@@ -31,6 +45,31 @@
         
 	});
     return defaultImage;
+}
+
++ (NSString *)baseURL {
+    return @"http://pokergames.azurewebsites.net/Services/";
+}
+
++ (NSString *)baseURLFoto {
+    // http://pokergames.blob.core.windows.net/pokergamesimgs/jogador59.jpg
+    return @"http://pokergames.blob.core.windows.net/pokergamesimgs/";
+}
+
++ (UIImage *) imgPlaceholder {
+    return imgPlaceholder;
+}
+
++ (UIImage *)imgPrimeiroLugar {
+    return imgPrimeiroLugar;
+}
+
++ (UIImage *)imgSegundoLugar {
+    return imgSegundoLugar;
+}
+
++ (UIImage *)imgTerceiroLugar {
+    return imgTerceiroLugar;
 }
 
 @end

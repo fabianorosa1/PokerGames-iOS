@@ -64,8 +64,7 @@
     self.lblNome.text = jogador.nome;
     
     // seta a foto do jogador
-    NSURL *urlFoto = [NSURL URLWithString:jogador.urlFoto];
-    [self.imgViewFoto setImageWithURL:urlFoto placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    [self.imgViewFoto setImageWithURL:[Jogador buildUrlFoto:jogador.idJogador] placeholderImage:[PokerGamesUtil imgPlaceholder]];
 }
 
 
