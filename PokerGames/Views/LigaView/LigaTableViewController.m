@@ -70,7 +70,6 @@
     [super viewWillAppear:animated];
     
     self.title = @"Poker Games";
-    [self buscaLigasPlayer];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -103,6 +102,8 @@
                                       action:@selector(configAction)];
         self.navigationItem.leftBarButtonItem = btnMenu;
     }
+    
+    [self buscaLigasPlayer];
 }
 
 -(IBAction)configAction

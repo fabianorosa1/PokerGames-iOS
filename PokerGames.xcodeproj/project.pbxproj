@@ -41,6 +41,8 @@
 		587109B11725B963001A2455 /* Campeonato.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109AF1725B963001A2455 /* Campeonato.m */; };
 		587109B51725BADD001A2455 /* CampeonatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109B41725BADD001A2455 /* CampeonatoTableViewController.m */; };
 		587109BC1725DB95001A2455 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 587109BB1725DB95001A2455 /* MainViewController.m */; };
+		5882A5A31730BA76009B858C /* DetalhesJogadorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882A5A01730BA76009B858C /* DetalhesJogadorCell.m */; };
+		5882A5A41730BA76009B858C /* DetalhesJogadorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882A5A21730BA76009B858C /* DetalhesJogadorTableViewController.m */; };
 		58967B5A171DCE8E003FCF47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B59171DCE8E003FCF47 /* UIKit.framework */; };
 		58967B5C171DCE8E003FCF47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B5B171DCE8E003FCF47 /* Foundation.framework */; };
 		58967B5E171DCE8E003FCF47 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B5D171DCE8E003FCF47 /* CoreGraphics.framework */; };
@@ -159,6 +161,10 @@
 		587109B41725BADD001A2455 /* CampeonatoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampeonatoTableViewController.m; sourceTree = "<group>"; };
 		587109BA1725DB95001A2455 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		587109BB1725DB95001A2455 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		5882A59F1730BA76009B858C /* DetalhesJogadorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetalhesJogadorCell.h; sourceTree = "<group>"; };
+		5882A5A01730BA76009B858C /* DetalhesJogadorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetalhesJogadorCell.m; sourceTree = "<group>"; };
+		5882A5A11730BA76009B858C /* DetalhesJogadorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetalhesJogadorTableViewController.h; sourceTree = "<group>"; };
+		5882A5A21730BA76009B858C /* DetalhesJogadorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetalhesJogadorTableViewController.m; sourceTree = "<group>"; };
 		58967B56171DCE8E003FCF47 /* PokerGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58967B59171DCE8E003FCF47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58967B5B171DCE8E003FCF47 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -354,6 +360,17 @@
 			name = RankingCampeonatoView;
 			sourceTree = "<group>";
 		};
+		5882A59E1730BA76009B858C /* DetalhesJogadorView */ = {
+			isa = PBXGroup;
+			children = (
+				5882A59F1730BA76009B858C /* DetalhesJogadorCell.h */,
+				5882A5A01730BA76009B858C /* DetalhesJogadorCell.m */,
+				5882A5A11730BA76009B858C /* DetalhesJogadorTableViewController.h */,
+				5882A5A21730BA76009B858C /* DetalhesJogadorTableViewController.m */,
+			);
+			path = DetalhesJogadorView;
+			sourceTree = "<group>";
+		};
 		58967B4D171DCE8E003FCF47 = {
 			isa = PBXGroup;
 			children = (
@@ -537,6 +554,7 @@
 		58967C1C171DE255003FCF47 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5882A59E1730BA76009B858C /* DetalhesJogadorView */,
 				584E506C172C96FC0007D4B7 /* MenuView */,
 				587109B91725DB95001A2455 /* MainView */,
 				587109B21725BADD001A2455 /* CampeonatoView */,
@@ -713,6 +731,8 @@
 				584E50C5172CA3120007D4B7 /* UIImage+ImageWithUIView.m in Sources */,
 				584E50C8172CA3120007D4B7 /* MBProgressHUD.m in Sources */,
 				584E50CF172CA7190007D4B7 /* PokerGamesUtil.m in Sources */,
+				5882A5A31730BA76009B858C /* DetalhesJogadorCell.m in Sources */,
+				5882A5A41730BA76009B858C /* DetalhesJogadorTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -77,8 +77,6 @@
     } else {
         self.title = [self.appDelegate jogadorLogin].liga.apelido;
     }
-    
-    [self buscaCampeonatosLiga];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -111,6 +109,8 @@
                                     action:@selector(configAction)];
         self.navigationItem.leftBarButtonItem = btnMenu;
     }
+    
+    [self buscaCampeonatosLiga];
 }
 
 -(IBAction)configAction

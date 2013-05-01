@@ -18,9 +18,11 @@
 #import "ADVTheme.h"
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
+#import "DetalhesJogadorTableViewController.h"
 
 @interface RankingCampeonatoTableViewController () {
     NSArray *arRanking;
+    NSDictionary *rankingSelecionado;
 }
 
 @end
@@ -76,6 +78,9 @@
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
+    
+    // busca os rankings
+    [self buscaRanking];
 }
 
 -(IBAction)configAction
@@ -114,9 +119,6 @@
     }
     
     [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
-    
-    // busca os rankings
-    [self buscaRanking];
 }
 
 - (void)didReceiveMemoryWarning
@@ -156,13 +158,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    rankingSelecionado = arRanking[indexPath.row];
+    [self performSegueWithIdentifier:@"ResultadosTorneioJogador" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"ResultadosTorneioJogador"])
+    {
+        // Get reference to the destination view controller
+        DetalhesJogadorTableViewController *vc = [segue destinationViewController];
+        
+        // Pass any objects to the view controller here, like...
+        Jogador *jogadorSelecionado = [[Jogador alloc] init];
+        [jogadorSelecionado setIdJogador:[rankingSelecionado valueForKey:@"IdJogador"]];
+        [jogadorSelecionado setApelido:[rankingSelecionado valueForKey:@"Apelido"]];
+        [jogadorSelecionado setNome:[rankingSelecionado valueForKey:@"Nome"]];
+        [jogadorSelecionado setIdLiga:[rankingSelecionado valueForKey:@"IdLiga"]];
+        jogadorSelecionado.liga = [self.appDelegate jogadorLogin].liga;
+        // parametros
+        vc.jogador = jogadorSelecionado;
+    }
 }
 
 - (void)buscaRankingCampeonatosWithBlock:(NSNumber *)idLiga
