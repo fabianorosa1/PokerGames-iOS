@@ -13,9 +13,11 @@
 #import "Jogador.h"
 #import "ADVTheme.h"
 #import "ECSlidingViewController.h"
+#import "CampeonatoTableViewController.h"
 
 @interface LigaTableViewController () {
     NSArray *arLiga;
+    Liga *ligaCorrente;
 }
 
 @end
@@ -155,12 +157,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // associa a liga selecionada ao jogador
-    Jogador *jogador = [self.appDelegate jogadorLogin];
-    Liga *liga = [arLiga objectAtIndex:indexPath.row];
-    jogador.liga = liga;
-    jogador.idLiga = liga.idLiga;
+    ligaCorrente = [arLiga objectAtIndex:indexPath.row];
     
     [self performSegueWithIdentifier:@"SelecaoCampeonato" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"SelecaoCampeonato"])
+    {
+        // Get reference to the destination view controller
+        CampeonatoTableViewController *vc = [segue destinationViewController];
+        
+        // Pass any objects to the view controller here, like...
+        vc.ligaSelecionada = ligaCorrente;
+    }
 }
 
 @end

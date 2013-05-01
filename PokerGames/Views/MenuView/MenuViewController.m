@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "Jogador.h"
 #import "UIImageView+AFNetworking.h"
-
+#import "MBProgressHUD.h"
 
 @interface MenuViewController()
 @end
@@ -44,7 +44,7 @@
     [self.slidingViewController setAnchorRightRevealAmount:263.0f];
     self.slidingViewController.underLeftWidthLayout = ECFullWidth;
     
-    self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = NO;
     
     // adiciona canto arredonado
     self.imgViewFoto.layer.cornerRadius = 5.0;
@@ -95,7 +95,35 @@
 {
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     NSString *identifier = cell.reuseIdentifier;
-    NSLog(@"Menu selecionado: %@", identifier);
+    //NSLog(@"Menu selecionado: %@", identifier);
+    
+    if ([identifier caseInsensitiveCompare:@"desconectar"] == NSOrderedSame) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Deseja realmente desconetar?" delegate:self cancelButtonTitle:@"Não" otherButtonTitles:@"Sim", nil];
+        [alert show];
+    } else {
+        // chama a tela selecionada no menu
+        [self chamaTela:identifier];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // opcao YES
+	if (buttonIndex == 1) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Desconectando";
+        
+		[Jogador excluirTodosJogadoresDependencias];
+        // seta não configurado
+        [self appDelegate].isFirstTime = TRUE;
+        
+        [hud hide:YES];
+        
+        [self chamaTela:@"LoginJogador"];
+	}
+}
+
+-(void) chamaTela:(NSString*)identifier {
     UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
     
     [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
@@ -105,6 +133,5 @@
         [self.slidingViewController resetTopView];
     }];
 }
-
 
 @end

@@ -46,6 +46,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
+            NSLog(@"Path: %@", path);
             block([NSArray array], error);
         }
     }];

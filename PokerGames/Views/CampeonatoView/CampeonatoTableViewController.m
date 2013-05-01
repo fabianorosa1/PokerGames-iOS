@@ -40,34 +40,44 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Buscando campeonatos";
     
-    Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
-    //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
+    NSNumber *idLiga = nil;
+    // verifica se foi passa a liga de parametro
+    if (self.ligaSelecionada) {
+        idLiga = self.ligaSelecionada.idLiga;
+    } else {
+        idLiga = [self.appDelegate jogadorLogin].liga.idLiga;
+    }
     
     // busca lista de campeonatos da liga
-    [Campeonato buscaCampeonatosLigaWithBlock:jogadorLogin.liga.idLiga
+    [Campeonato buscaCampeonatosLigaWithBlock:idLiga
                     constructingBodyWithBlock:^(NSArray *campeonatos, NSError *error) {
-                        
-                        [hud hide:YES];
-                        
-                        if (error) {
-                            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-                        } else {
-                            // lista de campeonatos
-                            //NSLog(@"Campeonatos: %@", campeonatos );
-                            arCampeonatos = campeonatos;
-                            
-                            // atualiza table
-                            [self.tableView reloadData];
-                        }
-                        
-                    }];
+        
+        [hud hide:YES];
+        
+        if (error) {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+        } else {
+            // lista de campeonatos
+            //NSLog(@"Campeonatos: %@", campeonatos );
+            arCampeonatos = campeonatos;
+            
+            // atualiza table
+            [self.tableView reloadData];
+        }
+        
+    }];
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    self.title = [self.appDelegate jogadorLogin].liga.apelido;
+    if (self.ligaSelecionada) {
+        self.title = self.ligaSelecionada.apelido;
+    } else {
+        self.title = [self.appDelegate jogadorLogin].liga.apelido;
+    }
+    
     [self buscaCampeonatosLiga];
 }
 
@@ -92,7 +102,7 @@
     [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     
     // verifica se deve adicionar o botao de menu
-    if (![self appDelegate].isFirstTime) {
+    if ( !((self.ligaSelecionada) || ([self appDelegate].isFirstTime)) ) {
         // botao de configuracoes
         UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
                                     initWithImage:[PokerGamesUtil menuImage]
@@ -154,29 +164,40 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Salvando dados";
+
     // associa o campeonato selecionado na liga do jogador
     Jogador *jogador = [self.appDelegate jogadorLogin];
+    // associa a liga ao jogador
+    
+    // verifica se foi passa a liga de parametro
+    if (self.ligaSelecionada) {
+        jogador.liga = self.ligaSelecionada;
+        jogador.idLiga = self.ligaSelecionada.idLiga;
+    }
+    
+    // associa o campeonato a liga
     Campeonato *campeonato = [arCampeonatos objectAtIndex:indexPath.row];
     jogador.liga.campeonato = campeonato;
     jogador.liga.idCampeonato = campeonato.idCampeonato;
     
-    
     // verifica se é configuração inicial ou não
     if ([self appDelegate].isFirstTime == TRUE) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Salvando dados";
-        
         // limpa a base de dados
         [Jogador excluirTodosJogadoresDependencias];
         
         // insere o jogador, liga e campeonato
         [jogador insertJogadorEntity];
         
-        [hud hide:YES];
-        
         // já configurado
         [self appDelegate].isFirstTime = FALSE;
+    } else {
+        // verifica se foi alterado a liga ou o campeonato
+        [jogador atualizaLigaCampeonatoJogadorEntity];
     }
+    
+    [hud hide:YES];
     
     // instancia a tela principal do ranking
     ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;

@@ -55,6 +55,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
+            NSLog(@"Path: %@", path);
             block(nil, error);
         }
     }];
@@ -213,11 +214,88 @@
     // exclui jogadores
     [Jogador deleteAllObjects:@"Jogador" managedObjectContext:context];
     
-     NSError *error;
+    NSError *error;
     if (![context save:&error]) {
         NSLog(@"Error deleting data - error:%@", error);
     } 
 }
 
+- (void) atualizaLigaCampeonatoJogadorEntity {
+    NSManagedObjectContext *context = [Jogador appDelegate].managedObjectContext;
+    
+    // verifica se a liga associada ao jogador foi alterada
+    // carrega o jogador, liga e campeonato default
+    NSFetchRequest *fetchRequestJogador = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityJogador = [NSEntityDescription entityForName:@"Jogador"
+                                                     inManagedObjectContext:context];
+    [fetchRequestJogador setEntity:entityJogador];
+    
+    NSError *error = nil;
+    NSArray *fetchedObjectsJogador = [context executeFetchRequest:fetchRequestJogador error:&error];
+    
+    if (fetchedObjectsJogador.count > 0) {
+        Jogador *jogadorEntity = fetchedObjectsJogador[0];
+
+        // verifica se a liga é diferente
+        if (self.idLiga != jogadorEntity.idLiga) {
+            // excluio o campeonato e associa a nova liga ao jogador
+            // exclui campeonatos
+            [Jogador deleteAllObjects:@"Campeonato" managedObjectContext:context];
+
+            // exclui liga
+            [Jogador deleteAllObjects:@"Liga" managedObjectContext:context];
+
+            // insere novo campeonato
+            NSManagedObject *newManagedObjectCampeonato = [NSEntityDescription insertNewObjectForEntityForName:@"Campeonato" inManagedObjectContext:context];
+            [newManagedObjectCampeonato setValue:self.liga.campeonato.idCampeonato forKey:@"idCampeonato"];
+            [newManagedObjectCampeonato setValue:self.liga.campeonato.apelido forKey:@"apelido"];
+            [newManagedObjectCampeonato setValue:self.liga.campeonato.nome forKey:@"nome"];
+
+            // insere nova liga
+            NSManagedObject *newManagedObjectLiga = [NSEntityDescription insertNewObjectForEntityForName:@"Liga" inManagedObjectContext:context];
+            [newManagedObjectLiga setValue:self.liga.idLiga forKey:@"idLiga"];
+            [newManagedObjectLiga setValue:self.liga.apelido forKey:@"apelido"];
+            [newManagedObjectLiga setValue:self.liga.nome forKey:@"nome"];
+            [newManagedObjectLiga setValue:self.liga.idCampeonato forKey:@"idCampeonato"];
+            
+            // associa a nova liga ao jogador
+            [jogadorEntity setIdLiga:self.idLiga];
+        } else {
+            // carrega a liga do jogador
+            NSFetchRequest *fetchRequestLiga = [[NSFetchRequest alloc] init];
+            NSPredicate *predicateLiga = [NSPredicate predicateWithFormat:@"idLiga == %@", jogadorEntity.idLiga];
+            NSEntityDescription *entityLiga = [NSEntityDescription entityForName:@"Liga"
+                                                          inManagedObjectContext:context];
+            [fetchRequestLiga setEntity:entityLiga];
+            [fetchRequestLiga setPredicate:predicateLiga];
+            
+            error = nil;
+            NSArray *fetchedObjectsLiga = [context executeFetchRequest:fetchRequestLiga error:&error];
+            
+            if (fetchedObjectsLiga.count > 0) {
+                Liga *ligaEntity = fetchedObjectsLiga[0];
+                // verifica se o campeonato mudou
+                if (self.liga.idCampeonato != ligaEntity.idCampeonato) {
+                    // exclui campeonatos
+                    [Jogador deleteAllObjects:@"Campeonato" managedObjectContext:context];
+
+                    // insere novo campeonato
+                    NSManagedObject *newManagedObjectCampeonato = [NSEntityDescription insertNewObjectForEntityForName:@"Campeonato" inManagedObjectContext:context];
+                    [newManagedObjectCampeonato setValue:self.liga.campeonato.idCampeonato forKey:@"idCampeonato"];
+                    [newManagedObjectCampeonato setValue:self.liga.campeonato.apelido forKey:@"apelido"];
+                    [newManagedObjectCampeonato setValue:self.liga.campeonato.nome forKey:@"nome"];
+                    
+                    // associa o campeonato a liga
+                    [ligaEntity setIdCampeonato:self.liga.idCampeonato];
+                }
+            }
+        }
+        
+        NSError *error;
+        if (![context save:&error]) {
+            NSLog(@"Error deleting data - error:%@", error);
+        }
+    }
+}
 
 @end

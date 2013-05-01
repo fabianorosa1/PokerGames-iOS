@@ -61,6 +61,7 @@
                                    action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
     
+    /*
     // botao de logout
     UIImage* imgLogout = [UIImage imageNamed:@"NavBarIconLogout.png"];
     UIBarButtonItem *btnLogout = [[UIBarButtonItem alloc]
@@ -69,6 +70,7 @@
                                   target:self
                                   action:@selector(logoutAction)];
     self.navigationItem.rightBarButtonItem = btnLogout;
+    */
     
     // adiciona controle de refresh
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
@@ -80,7 +82,7 @@
 {
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
-
+/*
 -(IBAction)logoutAction
 {
     [Jogador excluirTodosJogadoresDependencias];
@@ -91,7 +93,7 @@
     ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
     slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginJogador"];
 }
-
+*/
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
@@ -178,6 +180,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
+            NSLog(@"Path: %@", path);
             block([NSArray array], error);
         }
     }];
@@ -206,6 +209,10 @@
              
              // atualiza table
              [self.tableView reloadData];
+             
+             if (ranking.count <= 0) {
+                  [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum ranking encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+             }
          }
          
      }];
@@ -231,6 +238,10 @@
          
          // atualiza table
          [self.tableView reloadData];
+         
+         if (ranking.count <= 0) {
+             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum ranking encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+         }
      }
      
     }];

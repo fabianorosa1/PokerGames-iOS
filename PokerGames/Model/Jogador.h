@@ -31,6 +31,7 @@
 + (NSURL*) buildUrlFoto:(NSNumber*)idJogador;
 + (Jogador*) loadJogadorEntity;
 - (void) insertJogadorEntity;
+- (void) atualizaLigaCampeonatoJogadorEntity;
 + (void) excluirTodosJogadoresDependencias;
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Liga.h"
 
 @interface CampeonatoTableViewController : UITableViewController
+
+@property (nonatomic, strong) Liga *ligaSelecionada;
 
 @end
