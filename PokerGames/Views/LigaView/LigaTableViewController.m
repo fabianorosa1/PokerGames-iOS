@@ -9,7 +9,6 @@
 #import "LigaTableViewController.h"
 #import "MBProgressHUD.h"
 #import "Liga.h"
-#import "AppDelegate.h"
 #import "Jogador.h"
 #import "ADVTheme.h"
 #import "ECSlidingViewController.h"
@@ -33,19 +32,15 @@
     return self;
 }
 
-- (AppDelegate *)appDelegate {
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
-}
-
 - (void) buscaLigasPlayer {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Buscando ligas";
     
-    Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
+    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
     //NSLog(@"Busca ligas do jogador %@", jogadorLogin.idJogador);
     
     // busca lista de ligas do jogador
-    [PokerGamesFacade buscaLigasPlayerWithBlock:jogadorLogin.idJogador
+    [[PokerGamesFacade sharedInstance] buscaLigasPlayerWithBlock:jogadorLogin.idJogador
           constructingBodyWithBlock:^(NSArray *ligas, NSError *error) {
               
       [hud hide:YES];
@@ -93,7 +88,7 @@
     [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     
     // verifica se deve adicionar o botao de menu
-    if (![self appDelegate].isFirstTime) {
+    if (![[PokerGamesFacade sharedInstance] isFirstTime]) {
         // botao de configuracoes
         UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
                                       initWithImage:[PokerGamesUtil menuImage]

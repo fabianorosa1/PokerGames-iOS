@@ -8,16 +8,11 @@
 
 #import "LoginViewController.h"
 #import "ADVTheme.h"
-#import "AppDelegate.h"
 #import "Jogador.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
 
 @implementation LoginViewController
-
-- (AppDelegate *)appDelegate {
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -162,7 +157,7 @@
     hud.labelText = @"Autenticando";
     
     // efetua validacao do login
-    [PokerGamesFacade efetuaLoginPlayerWithBlock:[self.userTextField text]
+    [[PokerGamesFacade sharedInstance] efetuaLoginPlayerWithBlock:[self.userTextField text]
                                  passw:[self.passwordTextField text]
              constructingBodyWithBlock:^(Jogador *jogador, NSError *error) {
         
@@ -184,9 +179,7 @@
             // login com sucesso
             
             //NSLog(@"Jogador: %@", jogador );
-            [self appDelegate].jogadorLogin = jogador;
-            //NSLog(@"JogadorEntity: %@", [Jogador loadJogadorEntity]);
-            //[jogador insertJogadorEntity];
+            [[PokerGamesFacade sharedInstance] setJogadorLogin:jogador];
             
             [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
         }

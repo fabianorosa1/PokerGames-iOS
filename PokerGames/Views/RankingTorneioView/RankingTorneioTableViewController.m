@@ -113,7 +113,7 @@
     hud.labelText = @"Buscando ranking";
     
     // busca cabecalho dos resultados
-    [PokerGamesFacade buscaCabecalhoRankingWithBlock:self.idTorneio
+    [[PokerGamesFacade sharedInstance] buscaCabecalhoRankingWithBlock:self.idTorneio
                   constructingBodyWithBlock:^(NSDictionary *cabecalho, NSError *error) {
       
       if (error) {
@@ -136,7 +136,7 @@
     }];
     
     // busca lista de ranking do torneio
-    [PokerGamesFacade buscaRankingTorneioWithBlock:self.idTorneio
+    [[PokerGamesFacade sharedInstance] buscaRankingTorneioWithBlock:self.idTorneio
                  constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
                      
          [hud hide:YES];

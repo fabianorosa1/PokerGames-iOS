@@ -42,18 +42,18 @@
     }
     
     // verifica se já está logado
-    Jogador *jogador = [PokerGamesFacade loadJogadorEntity];
+    Jogador *jogador = [[PokerGamesFacade sharedInstance] loadJogadorEntity];
     
     if (jogador == nil) {
-        [self appDelegate].isFirstTime = TRUE;
+        [[PokerGamesFacade sharedInstance] setIsFirstTime:TRUE];
         //NSLog(@">>> Configuração inicial!");
         //[self performSegueWithIdentifier:@"LoginJogador" sender:self];
         
         self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginJogador"];
     } else {
-        [self appDelegate].isFirstTime = FALSE;
+        [[PokerGamesFacade sharedInstance] setIsFirstTime:FALSE];
         //NSLog(@">>> Já configurado!");
-        [self appDelegate].jogadorLogin = jogador;
+        [[PokerGamesFacade sharedInstance] setJogadorLogin:jogador];
         //[self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
         
         self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];

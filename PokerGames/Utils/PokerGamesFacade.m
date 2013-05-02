@@ -15,13 +15,35 @@
 
 @implementation PokerGamesFacade
 
-+ (AppDelegate *)appDelegate {
+#pragma mark Singleton Methods
+
++ (id)sharedInstance {
+    static PokerGamesFacade *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (id)init {
+    if (self = [super init]) {
+        //
+    }
+    return self;
+}
+
+- (void)dealloc {
+    // Should never be called, but just here for clarity really.
+}
+
+- (AppDelegate *)appDelegate {
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 #pragma mark - Métodos do Jogador
 
-+ (void)efetuaLoginPlayerWithBlock:(NSString *)user
+- (void)efetuaLoginPlayerWithBlock:(NSString *)user
                              passw:(NSString *)passw
          constructingBodyWithBlock:(void (^)(Jogador *jogador, NSError *error))block
 {
@@ -45,9 +67,9 @@
     }];
 }
 
-+(Jogador*)loadJogadorEntity
+- (Jogador*)loadJogadorEntity
 {
-    NSManagedObjectContext *context = [PokerGamesFacade appDelegate].managedObjectContext;
+    NSManagedObjectContext *context = [self appDelegate].managedObjectContext;
     
     // carrega o jogador, liga e campeonato default
     NSFetchRequest *fetchRequestJogador = [[NSFetchRequest alloc] init];
@@ -131,9 +153,8 @@
     }
 }
 
-+ (void)insertJogadorEntity:(Jogador*)jogador
-{
-    NSManagedObjectContext *context = [PokerGamesFacade appDelegate].managedObjectContext;
+- (void)insertJogadorEntity:(Jogador*)jogador {
+    NSManagedObjectContext *context = [self appDelegate].managedObjectContext;
     
     // insere o campeonato
     NSManagedObject *newManagedObjectCampeonato = [NSEntityDescription insertNewObjectForEntityForName:@"Campeonato" inManagedObjectContext:context];
@@ -165,7 +186,7 @@
     }
 }
 
-+ (void) deleteAllObjects: (NSString *) entityDescription
+- (void) deleteAllObjects: (NSString *) entityDescription
      managedObjectContext:(NSManagedObjectContext *) managedObjectContext
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -181,18 +202,17 @@
     }
 }
 
-+ (void) excluirTodosJogadoresDependencias
-{
-    NSManagedObjectContext *context = [PokerGamesFacade appDelegate].managedObjectContext;
+- (void) excluirTodosJogadoresDependencias {
+    NSManagedObjectContext *context = [self appDelegate].managedObjectContext;
     
     // exclui campeonatos
-    [PokerGamesFacade deleteAllObjects:@"Campeonato" managedObjectContext:context];
+    [self deleteAllObjects:@"Campeonato" managedObjectContext:context];
     
     // exclui ligas
-    [PokerGamesFacade deleteAllObjects:@"Liga" managedObjectContext:context];
+    [self deleteAllObjects:@"Liga" managedObjectContext:context];
     
     // exclui jogadores
-    [PokerGamesFacade deleteAllObjects:@"Jogador" managedObjectContext:context];
+    [self deleteAllObjects:@"Jogador" managedObjectContext:context];
     
     NSError *error;
     if (![context save:&error]) {
@@ -200,8 +220,8 @@
     }
 }
 
-+ (void) atualizaLigaCampeonatoJogadorEntity:(Jogador*)jogador {
-    NSManagedObjectContext *context = [PokerGamesFacade appDelegate].managedObjectContext;
+- (void) atualizaLigaCampeonatoJogadorEntity:(Jogador*)jogador {
+    NSManagedObjectContext *context = [self appDelegate].managedObjectContext;
     
     // verifica se a liga associada ao jogador foi alterada
     // carrega o jogador, liga e campeonato default
@@ -220,10 +240,10 @@
         if (jogador.idLiga != jogadorEntity.idLiga) {
             // excluio o campeonato e associa a nova liga ao jogador
             // exclui campeonatos
-            [PokerGamesFacade deleteAllObjects:@"Campeonato" managedObjectContext:context];
+            [self deleteAllObjects:@"Campeonato" managedObjectContext:context];
             
             // exclui liga
-            [PokerGamesFacade deleteAllObjects:@"Liga" managedObjectContext:context];
+            [self deleteAllObjects:@"Liga" managedObjectContext:context];
             
             // insere novo campeonato
             NSManagedObject *newManagedObjectCampeonato = [NSEntityDescription insertNewObjectForEntityForName:@"Campeonato" inManagedObjectContext:context];
@@ -257,7 +277,7 @@
                 // verifica se o campeonato mudou
                 if (jogador.liga.idCampeonato != ligaEntity.idCampeonato) {
                     // exclui campeonatos
-                    [PokerGamesFacade deleteAllObjects:@"Campeonato" managedObjectContext:context];
+                    [self deleteAllObjects:@"Campeonato" managedObjectContext:context];
                     
                     // insere novo campeonato
                     NSManagedObject *newManagedObjectCampeonato = [NSEntityDescription insertNewObjectForEntityForName:@"Campeonato" inManagedObjectContext:context];
@@ -278,9 +298,7 @@
     }
 }
 
-#pragma mark -
-
-+ (void)buscaLigasPlayerWithBlock:(NSNumber *)idPlayer
+- (void)buscaLigasPlayerWithBlock:(NSNumber *)idPlayer
         constructingBodyWithBlock:(void (^)(NSArray *ligas, NSError *error))block
 {
     
@@ -308,7 +326,7 @@
 
 #pragma mark - Métodos do Campeonato
 
-+ (void)buscaCampeonatosLigaWithBlock:(NSNumber *)idLiga
+- (void)buscaCampeonatosLigaWithBlock:(NSNumber *)idLiga
             constructingBodyWithBlock:(void (^)(NSArray *campeonatos, NSError *error))block
 {
     
@@ -336,7 +354,7 @@
 
 #pragma mark - Métodos das Views Controllers
 
-+ (void)buscaRankingCampeonatosWithBlock:(NSNumber *)idLiga
+- (void)buscaRankingCampeonatosWithBlock:(NSNumber *)idLiga
                             idCampeonato:(NSNumber *)idCampeonato
                constructingBodyWithBlock:(void (^)(NSArray *ranking, NSError *error))block
 {
@@ -358,7 +376,7 @@
     }];
 }
 
-+ (void)buscaResultadosTorneiosJogadorWithBlock:(NSNumber *)idLiga
+- (void)buscaResultadosTorneiosJogadorWithBlock:(NSNumber *)idLiga
                                    idCampeonato:(NSNumber *)idCampeonato
                                       idJogador:(NSNumber *)idJogador
                       constructingBodyWithBlock:(void (^)(NSArray *resultados, NSError *error))block
@@ -380,7 +398,7 @@
     }];
 }
 
-+ (void)buscaCabecalhoResultadosWithBlock:(NSNumber *)idLiga
+- (void)buscaCabecalhoResultadosWithBlock:(NSNumber *)idLiga
                              idCampeonato:(NSNumber *)idCampeonato
                                 idJogador:(NSNumber *)idJogador
                 constructingBodyWithBlock:(void (^)(NSDictionary *cabecalho, NSError *error))block
@@ -402,7 +420,7 @@
     }];
 }
 
-+ (void)buscaTorneiosConcluidosWithBlock:(NSNumber *)idLiga
+- (void)buscaTorneiosConcluidosWithBlock:(NSNumber *)idLiga
                             idCampeonato:(NSNumber *)idCampeonato
                constructingBodyWithBlock:(void (^)(NSArray *torneios, NSError *error))block
 {
@@ -424,7 +442,7 @@
     }];
 }
 
-+ (void)buscaCabecalhoRankingWithBlock:(NSNumber *)idTorneio
+- (void)buscaCabecalhoRankingWithBlock:(NSNumber *)idTorneio
              constructingBodyWithBlock:(void (^)(NSDictionary *cabecalho, NSError *error))block
 {
     
@@ -445,7 +463,7 @@
     }];
 }
 
-+ (void)buscaRankingTorneioWithBlock:(NSNumber *)idTorneio
+- (void)buscaRankingTorneioWithBlock:(NSNumber *)idTorneio
            constructingBodyWithBlock:(void (^)(NSArray *ranking, NSError *error))block
 {
     

@@ -8,7 +8,6 @@
 
 #import "MenuViewController.h"
 #import "ADVTheme.h"
-#import "AppDelegate.h"
 #import "Jogador.h"
 #import "UIImageView+AFNetworking.h"
 #import "MBProgressHUD.h"
@@ -18,9 +17,6 @@
 
 @implementation MenuViewController
 
-- (AppDelegate *)appDelegate {
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
-}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -62,7 +58,7 @@
     [super viewWillAppear:animated];
     
     // seta os dados do perfil
-    Jogador *jogador = [self.appDelegate jogadorLogin];
+    Jogador *jogador = [[PokerGamesFacade sharedInstance] jogadorLogin];
     self.lblNome.text = jogador.nome;
     
     // seta a foto do jogador
@@ -114,9 +110,9 @@
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"Desconectando";
         
-		[PokerGamesFacade excluirTodosJogadoresDependencias];
+		[[PokerGamesFacade sharedInstance] excluirTodosJogadoresDependencias];
         // seta não configurado
-        [self appDelegate].isFirstTime = TRUE;
+        [[PokerGamesFacade sharedInstance] setIsFirstTime:TRUE];
         
         [hud hide:YES];
         

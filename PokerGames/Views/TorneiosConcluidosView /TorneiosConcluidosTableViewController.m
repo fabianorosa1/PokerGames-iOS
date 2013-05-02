@@ -7,7 +7,6 @@
 //
 
 #import "TorneiosConcluidosTableViewController.h"
-#import "AppDelegate.h"
 #import "Jogador.h"
 #import "Liga.h"
 #import "Campeonato.h"
@@ -34,10 +33,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (AppDelegate *)appDelegate {
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 - (void)viewDidLoad
@@ -86,7 +81,7 @@
 {
     [super viewWillAppear:animated];
     
-    self.title = [self.appDelegate jogadorLogin].liga.campeonato.apelido;
+    self.title = [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido;
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
@@ -147,11 +142,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Buscando torneios";
     
-    Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
+    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
     //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
     
     // busca lista de campeonatos da liga
-    [PokerGamesFacade buscaTorneiosConcluidosWithBlock:jogadorLogin.liga.idLiga
+    [[PokerGamesFacade sharedInstance] buscaTorneiosConcluidosWithBlock:jogadorLogin.liga.idLiga
                               idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
                  constructingBodyWithBlock:^(NSArray *torneios, NSError *error) {
                      

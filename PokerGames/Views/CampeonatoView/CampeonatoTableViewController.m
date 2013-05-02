@@ -10,7 +10,6 @@
 #import "MBProgressHUD.h"
 #import "Campeonato.h"
 #import "Liga.h"
-#import "AppDelegate.h"
 #import "Jogador.h"
 #import "ADVTheme.h"
 #import "ECSlidingViewController.h"
@@ -33,10 +32,6 @@
     return self;
 }
 
-- (AppDelegate *)appDelegate {
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
-}
-
 - (void) buscaCampeonatosLiga {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Buscando campeonatos";
@@ -46,11 +41,11 @@
     if (self.ligaSelecionada) {
         idLiga = self.ligaSelecionada.idLiga;
     } else {
-        idLiga = [self.appDelegate jogadorLogin].liga.idLiga;
+        idLiga = [[PokerGamesFacade sharedInstance] jogadorLogin].liga.idLiga;
     }
     
     // busca lista de campeonatos da liga
-    [PokerGamesFacade buscaCampeonatosLigaWithBlock:idLiga
+    [[PokerGamesFacade sharedInstance] buscaCampeonatosLigaWithBlock:idLiga
                     constructingBodyWithBlock:^(NSArray *campeonatos, NSError *error) {
         
         [hud hide:YES];
@@ -76,7 +71,7 @@
     if (self.ligaSelecionada) {
         self.title = self.ligaSelecionada.apelido;
     } else {
-        self.title = [self.appDelegate jogadorLogin].liga.apelido;
+        self.title = [[PokerGamesFacade sharedInstance] jogadorLogin].liga.apelido;
     }
 }
 
@@ -101,7 +96,7 @@
     [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     
     // verifica se deve adicionar o botao de menu
-    if ( !((self.ligaSelecionada) || ([self appDelegate].isFirstTime)) ) {
+    if ( !((self.ligaSelecionada) || ([[PokerGamesFacade sharedInstance] isFirstTime])) ) {
         // botao de configuracoes
         UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
                                     initWithImage:[PokerGamesUtil menuImage]
@@ -163,7 +158,7 @@
     hud.labelText = @"Salvando dados";
 
     // associa o campeonato selecionado na liga do jogador
-    Jogador *jogador = [self.appDelegate jogadorLogin];
+    Jogador *jogador = [[PokerGamesFacade sharedInstance] jogadorLogin];
     // associa a liga ao jogador
     
     // verifica se foi passa a liga de parametro
@@ -178,18 +173,18 @@
     jogador.liga.idCampeonato = campeonato.idCampeonato;
     
     // verifica se é configuração inicial ou não
-    if ([self appDelegate].isFirstTime == TRUE) {
+    if ([[PokerGamesFacade sharedInstance] isFirstTime]) {
         // limpa a base de dados
-        [PokerGamesFacade excluirTodosJogadoresDependencias];
+        [[PokerGamesFacade sharedInstance] excluirTodosJogadoresDependencias];
         
         // insere o jogador, liga e campeonato
-        [PokerGamesFacade insertJogadorEntity:jogador];
+        [[PokerGamesFacade sharedInstance] insertJogadorEntity:jogador];
         
         // já configurado
-        [self appDelegate].isFirstTime = FALSE;
+        [[PokerGamesFacade sharedInstance] setIsFirstTime:FALSE];
     } else {
         // verifica se foi alterado a liga ou o campeonato
-        [PokerGamesFacade atualizaLigaCampeonatoJogadorEntity:jogador];
+        [[PokerGamesFacade sharedInstance] atualizaLigaCampeonatoJogadorEntity:jogador];
     }
     
     [hud hide:YES];

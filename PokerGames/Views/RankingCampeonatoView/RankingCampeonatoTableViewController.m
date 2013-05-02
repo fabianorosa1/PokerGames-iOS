@@ -7,7 +7,6 @@
 //
 
 #import "RankingCampeonatoTableViewController.h"
-#import "AppDelegate.h"
 #import "Jogador.h"
 #import "Liga.h"
 #import "Campeonato.h"
@@ -34,10 +33,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (AppDelegate *)appDelegate {
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 - (void)viewDidLoad
@@ -91,7 +86,7 @@
 {
     [super viewWillAppear:animated];
     
-    self.title = [self.appDelegate jogadorLogin].liga.campeonato.apelido;
+    self.title = [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido;
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
@@ -151,7 +146,7 @@
         [jogadorSelecionado setApelido:[rankingSelecionado valueForKey:@"Apelido"]];
         [jogadorSelecionado setNome:[rankingSelecionado valueForKey:@"Nome"]];
         [jogadorSelecionado setIdLiga:[rankingSelecionado valueForKey:@"IdLiga"]];
-        jogadorSelecionado.liga = [self.appDelegate jogadorLogin].liga;
+        jogadorSelecionado.liga = [[PokerGamesFacade sharedInstance] jogadorLogin].liga;
         // parametros
         vc.jogador = jogadorSelecionado;
     }
@@ -161,11 +156,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Buscando ranking";
     
-    Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
+    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
     //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
     
     // busca lista de campeonatos da liga
-    [PokerGamesFacade buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
+    [[PokerGamesFacade sharedInstance] buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
                               idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
                  constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
                      
@@ -192,11 +187,11 @@
 
 -(void) refreshView:(UIRefreshControl *) refresh
 {
-    Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
+    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
     //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
     
     // busca lista de campeonatos da liga
-    [PokerGamesFacade buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
+    [[PokerGamesFacade sharedInstance] buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
                               idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
                  constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
                      

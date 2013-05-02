@@ -16,9 +16,6 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-@property (strong, nonatomic) Jogador *jogadorLogin;
-@property (nonatomic) BOOL isFirstTime;
-
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 

@@ -7,7 +7,6 @@
 //
 
 #import "DetalhesJogadorTableViewController.h"
-#import "AppDelegate.h"
 #import "Jogador.h"
 #import "Liga.h"
 #import "Campeonato.h"
@@ -35,10 +34,6 @@
     return self;
 }
 
-- (AppDelegate *)appDelegate {
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -54,7 +49,7 @@
     
     // verifica se foi passado o jogador como parametro
     if (!self.jogador) {
-        self.jogador = [self appDelegate].jogadorLogin;
+        self.jogador = [[PokerGamesFacade sharedInstance] jogadorLogin];
         
         // botao de configuracoes
         UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
@@ -159,7 +154,7 @@
     hud.labelText = @"Buscando resultados";
     
     // busca cabecalho dos resultados
-    [PokerGamesFacade buscaCabecalhoResultadosWithBlock:self.jogador.idLiga
+    [[PokerGamesFacade sharedInstance] buscaCabecalhoResultadosWithBlock:self.jogador.idLiga
                                      idCampeonato:self.jogador.liga.idCampeonato
                                         idJogador:self.jogador.idJogador
                         constructingBodyWithBlock:^(NSDictionary *cabecalho, NSError *error) {
@@ -194,7 +189,7 @@
     }];
     
     // busca resultados dos torneios
-    [PokerGamesFacade buscaResultadosTorneiosJogadorWithBlock:self.jogador.idLiga
+    [[PokerGamesFacade sharedInstance] buscaResultadosTorneiosJogadorWithBlock:self.jogador.idLiga
                               idCampeonato:self.jogador.liga.idCampeonato
                                 idJogador:self.jogador.idJogador
                  constructingBodyWithBlock:^(NSArray *resultados, NSError *error) {
