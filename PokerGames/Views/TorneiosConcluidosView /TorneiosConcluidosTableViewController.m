@@ -6,28 +6,28 @@
 //  Copyright (c) 2013 Fabiano Rosa. All rights reserved.
 //
 
-#import "RankingCampeonatoTableViewController.h"
+#import "TorneiosConcluidosTableViewController.h"
 #import "AppDelegate.h"
 #import "Jogador.h"
 #import "Liga.h"
 #import "Campeonato.h"
 #import "AFAppDotNetAPIClient.h"
 #import "MBProgressHUD.h"
-#import "RankingCampeonatoJogadorCell.h"
+#import "TorneiosConcluidosCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ADVTheme.h"
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
-#import "DetalhesJogadorTableViewController.h"
+#import "RankingTorneioTableViewController.h"
 
-@interface RankingCampeonatoTableViewController () {
-    NSArray *arRanking;
-    NSDictionary *rankingSelecionado;
+@interface TorneiosConcluidosTableViewController () {
+    NSArray *arTorneios;
+    NSDictionary *torneioSelecionado;
 }
 
 @end
 
-@implementation RankingCampeonatoTableViewController
+@implementation TorneiosConcluidosTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -63,13 +63,8 @@
                                    action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
     
-    // adiciona controle de refresh
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refresh;
-    
-    // busca os rankings
-    [self buscaRanking];
+    // busca os torneios concluidos
+    [self buscaTorneiosConcluidos];
 }
 
 -(IBAction)configAction
@@ -113,18 +108,17 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return arRanking.count;
+    return arTorneios.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"CellRanking";
-    RankingCampeonatoJogadorCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"CellTorneio";
+    TorneiosConcluidosCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSDictionary *rankingJogador = arRanking[indexPath.row];
-    cell.row = indexPath.row;
-    cell.dados = rankingJogador;
+    NSDictionary *torneio = arTorneios[indexPath.row];
+    cell.dados = torneio;
     
     return cell;
 }
@@ -133,40 +127,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    rankingSelecionado = arRanking[indexPath.row];
-    [self performSegueWithIdentifier:@"ResultadosTorneioJogador" sender:self];
+    torneioSelecionado = arTorneios[indexPath.row];
+    [self performSegueWithIdentifier:@"RankingTorneio" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Make sure your segue name in storyboard is the same as this line
-    if ([[segue identifier] isEqualToString:@"ResultadosTorneioJogador"])
+    if ([[segue identifier] isEqualToString:@"RankingTorneio"])
     {
         // Get reference to the destination view controller
-        DetalhesJogadorTableViewController *vc = [segue destinationViewController];
+        RankingTorneioTableViewController *vc = [segue destinationViewController];
         
-        // Pass any objects to the view controller here, like...
-        Jogador *jogadorSelecionado = [[Jogador alloc] init];
-        [jogadorSelecionado setIdJogador:[rankingSelecionado valueForKey:@"IdJogador"]];
-        [jogadorSelecionado setApelido:[rankingSelecionado valueForKey:@"Apelido"]];
-        [jogadorSelecionado setNome:[rankingSelecionado valueForKey:@"Nome"]];
-        [jogadorSelecionado setIdLiga:[rankingSelecionado valueForKey:@"IdLiga"]];
-        jogadorSelecionado.liga = [self.appDelegate jogadorLogin].liga;
         // parametros
-        vc.jogador = jogadorSelecionado;
+        vc.idTorneio = [torneioSelecionado valueForKey:@"IdTorneio"];
     }
 }
 
-- (void)buscaRankingCampeonatosWithBlock:(NSNumber *)idLiga
+- (void)buscaTorneiosConcluidosWithBlock:(NSNumber *)idLiga
                                   idCampeonato:(NSNumber *)idCampeonato
-            constructingBodyWithBlock:(void (^)(NSArray *ranking, NSError *error))block
+            constructingBodyWithBlock:(void (^)(NSArray *torneios, NSError *error))block
 {
     
-    NSString *path = [NSString stringWithFormat:@"Campeonatos.svc/Ranking/%@/%@", idLiga, idCampeonato];
+    NSString *path = [NSString stringWithFormat:@"Torneios.svc/Inativos/%@/%@", idLiga, idCampeonato];
     //NSLog(@"Path: %@", path);
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSArray *postsFromResponse = [JSON valueForKeyPath:@"RankingResult"];
+        NSArray *postsFromResponse = [JSON valueForKeyPath:@"InativosResult"];
         if (block) {
             //NSLog(@"postsFromResponse: %@", postsFromResponse);
             block(postsFromResponse, nil);
@@ -179,66 +166,36 @@
     }];
 }
 
-- (void) buscaRanking {
+- (void) buscaTorneiosConcluidos {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.labelText = @"Buscando ranking";
+    hud.labelText = @"Buscando torneios";
     
     Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
     //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
     
     // busca lista de campeonatos da liga
-    [self buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
+    [self buscaTorneiosConcluidosWithBlock:jogadorLogin.liga.idLiga
                               idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
-                 constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
+                 constructingBodyWithBlock:^(NSArray *torneios, NSError *error) {
                      
          [hud hide:YES];
          
          if (error) {
              [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
          } else {
-             // ranking do campeonato
-             //NSLog(@"Ranking: %@", ranking );
-             arRanking = ranking;
+             // torneios concluidos
+             //NSLog(@"torneios: %@", torneios );
+             arTorneios = torneios;
              
              // atualiza table
              [self.tableView reloadData];
              
-             if (ranking.count <= 0) {
-                  [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum ranking encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+             if (torneios.count <= 0) {
+                  [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum torneio encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
              }
          }
          
      }];
 }
 
-
--(void) refreshView:(UIRefreshControl *) refresh
-{
-    Jogador *jogadorLogin = [self.appDelegate jogadorLogin];
-    //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
-    
-    // busca lista de campeonatos da liga
-    [self buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
-                              idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
-                 constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
-                     
-     if (error) {
-         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-     } else {
-         // ranking do campeonato
-         //NSLog(@"Ranking: %@", ranking );
-         arRanking = ranking;
-         
-         // atualiza table
-         [self.tableView reloadData];
-         
-         if (ranking.count <= 0) {
-             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum ranking encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-         }
-     }
-     
-    }];
-    
-    [refresh endRefreshing];
-}
 @end

@@ -17,9 +17,11 @@
 #import "ADVTheme.h"
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
+#import "RankingTorneioTableViewController.h"
 
 @interface DetalhesJogadorTableViewController () {
     NSArray *arResultadosTorneios;
+    NSDictionary *dicTorneioSelecionado;
 }
 
 @end
@@ -136,13 +138,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    dicTorneioSelecionado = arResultadosTorneios[indexPath.row];
+    [self performSegueWithIdentifier:@"RankingTorneio" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"RankingTorneio"])
+    {
+        // Get reference to the destination view controller
+        RankingTorneioTableViewController *vc = [segue destinationViewController];
+        
+        // parametros
+        vc.idTorneio = [dicTorneioSelecionado valueForKey:@"IdTorneio"];
+    }
 }
 
 - (void)buscaResultadosTorneiosJogadorWithBlock:(NSNumber *)idLiga
@@ -152,7 +162,7 @@
 {
     
     NSString *path = [NSString stringWithFormat:@"Jogadores.svc/ResultadosTorneios/%@/%@/%@", idLiga, idCampeonato, idJogador];
-    NSLog(@"Path: %@", path);
+    //NSLog(@"Path: %@", path);
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"ResultadosTorneiosResult"];
@@ -174,7 +184,7 @@
 {
     
     NSString *path = [NSString stringWithFormat:@"Jogadores.svc/ResumoResultados/%@/%@/%@", idLiga, idCampeonato, idJogador];
-    NSLog(@"Path: %@", path);
+    //NSLog(@"Path: %@", path);
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSDictionary *postsFromResponse = [JSON valueForKeyPath:@"ResumoResultadosResult"];
@@ -198,9 +208,10 @@
                                      idCampeonato:self.jogador.liga.idCampeonato
                                         idJogador:self.jogador.idJogador
                         constructingBodyWithBlock:^(NSDictionary *cabecalho, NSError *error) {
-        [hud hide:YES];
                             
         if (error) {
+            [hud hide:YES];
+            
             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
         } else {
             // cabecalho do resultados
