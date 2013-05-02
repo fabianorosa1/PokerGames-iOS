@@ -9,7 +9,6 @@
 #import "RankingTorneioCell.h"
 #import "UIImageView+AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
-#import "Jogador.h"
 
 @implementation RankingTorneioCell
 
@@ -59,7 +58,7 @@
     }
 
     // seta a foto do jogador
-    [self.imgViewFoto setImageWithURL:[Jogador buildUrlFoto:[_dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+    [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:[_dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
     
     NSNumber *saldoValue = [_dados valueForKey:@"Saldo"];
     double saldo = [saldoValue doubleValue];

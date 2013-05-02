@@ -92,7 +92,6 @@
     // remove o botão Back de navegação
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
-    
 }
 
 - (void)viewDidUnload
@@ -104,7 +103,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return 2;
 }
 
@@ -164,7 +162,7 @@
     hud.labelText = @"Autenticando";
     
     // efetua validacao do login
-    [Jogador efetuaLoginPlayerWithBlock:[self.userTextField text]
+    [PokerGamesFacade efetuaLoginPlayerWithBlock:[self.userTextField text]
                                  passw:[self.passwordTextField text]
              constructingBodyWithBlock:^(Jogador *jogador, NSError *error) {
         
@@ -193,22 +191,7 @@
             [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
         }
      
-    }];
-    
-//    [self.client loginWithUsername:self.userTextField.text password:self.passwordTextField.text onSuccess:^(NSDictionary *results) {
-//        
-//        if ([[[self appDelegate] client] isLoggedIn]) {
-//            NSLog(@"Logged in");
-//        }
-//        
-//        [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
-//        
-//    } onFailure:^(NSError *error) {
-//        //Something bad has ocurred
-//        NSString *errorString = [error localizedDescription];
-//        UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-//        [errorAlertView show];
-//    }];
+    }];    
 }
 
 @end

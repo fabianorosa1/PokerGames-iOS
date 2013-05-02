@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 EdgeCase. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
 
 @interface MenuViewController : UITableViewController

@@ -9,10 +9,8 @@
 #import "DetalhesJogadorCell.h"
 #import "UIImageView+AFNetworking.h"
 #import <QuartzCore/QuartzCore.h>
-#import "Jogador.h"
 
 @implementation DetalhesJogadorCell
-
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

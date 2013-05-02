@@ -7,7 +7,6 @@
 //
 
 #import "Liga.h"
-#import "AFAppDotNetAPIClient.h"
 
 @implementation Liga
 
@@ -22,34 +21,6 @@
     self.nome = [attributes valueForKeyPath:@"Nome"];
     
     return self;
-}
-
-#pragma mark -
-
-+ (void)buscaLigasPlayerWithBlock:(NSNumber *)idPlayer
-        constructingBodyWithBlock:(void (^)(NSArray *ligas, NSError *error))block
-{
-    
-    NSString *path = [NSString stringWithFormat:@"Liga.svc/Liga/%@", idPlayer];
-    //NSLog(@"Path: %@", path);
-    
-    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSArray *postsFromResponse = [JSON valueForKeyPath:@"LigaResult"];
-        NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
-        for (NSDictionary *attributes in postsFromResponse) {
-            Liga *liga = [[Liga alloc] initWithAttributes:attributes];
-            [mutablePosts addObject:liga];
-        }
-        
-        if (block) {
-            block([NSArray arrayWithArray:mutablePosts], nil);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
-            NSLog(@"Path: %@", path);
-            block([NSArray array], error);
-        }
-    }];
 }
 
 @end

@@ -1,4 +1,3 @@
-#import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
 
 @interface AFAppDotNetAPIClient : AFHTTPClient

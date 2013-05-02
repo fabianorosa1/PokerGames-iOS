@@ -1,5 +1,5 @@
 //
-//  RankingCampeonatoJogadorCell.m
+//  TorneiosConcluidosCell.m
 //  PokerGames
 //
 //  Created by Fabiano Rosa on 24/04/13.
@@ -8,8 +8,6 @@
 
 #import "TorneiosConcluidosCell.h"
 #import "UIImageView+AFNetworking.h"
-#import <QuartzCore/QuartzCore.h>
-#import "Jogador.h"
 
 @implementation TorneiosConcluidosCell
 
@@ -44,7 +42,7 @@
     self.lblVencedor.text = [_dados valueForKey:@"Vencedor"];
 
     // seta a foto do jogador
-    [self.imgViewFoto setImageWithURL:[Jogador buildUrlFoto:[_dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+    [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:[_dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
 }
 
 @end

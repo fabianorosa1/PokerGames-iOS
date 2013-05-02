@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Fabiano Rosa. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface PokerGamesUtil : NSObject 
 
 + (UIImage *)menuImage;
@@ -20,5 +18,7 @@
 + (UIImage *)imgTerceiroLugar;
 
 + (NSNumberFormatter*) currencyFormatter;
+
++ (NSURL*) buildUrlFoto:(NSString*)fileFoto;
 
 @end

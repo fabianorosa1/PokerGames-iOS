@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Fabiano Rosa. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface RankingTorneioCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel* lblNome;

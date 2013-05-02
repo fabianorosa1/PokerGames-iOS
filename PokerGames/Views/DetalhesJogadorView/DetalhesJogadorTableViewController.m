@@ -1,5 +1,5 @@
 //
-//  RankingCampeonatoTableViewController.m
+//  DetalhesJogadorTableViewController.m
 //  PokerGames
 //
 //  Created by Fabiano Rosa on 23/04/13.
@@ -11,7 +11,6 @@
 #import "Jogador.h"
 #import "Liga.h"
 #import "Campeonato.h"
-#import "AFAppDotNetAPIClient.h"
 #import "MBProgressHUD.h"
 #import "DetalhesJogadorCell.h"
 #import "ADVTheme.h"
@@ -21,7 +20,6 @@
 
 @interface DetalhesJogadorTableViewController () {
     NSArray *arResultadosTorneios;
-    NSDictionary *dicTorneioSelecionado;
 }
 
 @end
@@ -138,7 +136,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    dicTorneioSelecionado = arResultadosTorneios[indexPath.row];
     [self performSegueWithIdentifier:@"RankingTorneio" sender:self];
 }
 
@@ -151,52 +148,10 @@
         RankingTorneioTableViewController *vc = [segue destinationViewController];
         
         // parametros
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSDictionary *dicTorneioSelecionado = arResultadosTorneios[indexPath.row];
         vc.idTorneio = [dicTorneioSelecionado valueForKey:@"IdTorneio"];
     }
-}
-
-- (void)buscaResultadosTorneiosJogadorWithBlock:(NSNumber *)idLiga
-                                  idCampeonato:(NSNumber *)idCampeonato
-                                      idJogador:(NSNumber *)idJogador
-            constructingBodyWithBlock:(void (^)(NSArray *resultados, NSError *error))block
-{
-    
-    NSString *path = [NSString stringWithFormat:@"Jogadores.svc/ResultadosTorneios/%@/%@/%@", idLiga, idCampeonato, idJogador];
-    //NSLog(@"Path: %@", path);
-    
-    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSArray *postsFromResponse = [JSON valueForKeyPath:@"ResultadosTorneiosResult"];
-        if (block) {
-            block(postsFromResponse, nil);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
-            NSLog(@"Path: %@", path);
-            block([NSArray array], error);
-        }
-    }];
-}
-
-- (void)buscaCabecalhoResultadosWithBlock:(NSNumber *)idLiga
-                                   idCampeonato:(NSNumber *)idCampeonato
-                                      idJogador:(NSNumber *)idJogador
-                      constructingBodyWithBlock:(void (^)(NSDictionary *cabecalho, NSError *error))block
-{
-    
-    NSString *path = [NSString stringWithFormat:@"Jogadores.svc/ResumoResultados/%@/%@/%@", idLiga, idCampeonato, idJogador];
-    //NSLog(@"Path: %@", path);
-    
-    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSDictionary *postsFromResponse = [JSON valueForKeyPath:@"ResumoResultadosResult"];
-        if (block) {
-            block(postsFromResponse, nil);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
-            NSLog(@"Path: %@", path);
-            block([NSDictionary dictionary], error);
-        }
-    }];
 }
 
 - (void) buscaResultadosTorneio {
@@ -204,7 +159,7 @@
     hud.labelText = @"Buscando resultados";
     
     // busca cabecalho dos resultados
-    [self buscaCabecalhoResultadosWithBlock:self.jogador.idLiga
+    [PokerGamesFacade buscaCabecalhoResultadosWithBlock:self.jogador.idLiga
                                      idCampeonato:self.jogador.liga.idCampeonato
                                         idJogador:self.jogador.idJogador
                         constructingBodyWithBlock:^(NSDictionary *cabecalho, NSError *error) {
@@ -239,7 +194,7 @@
     }];
     
     // busca resultados dos torneios
-    [self buscaResultadosTorneiosJogadorWithBlock:self.jogador.idLiga
+    [PokerGamesFacade buscaResultadosTorneiosJogadorWithBlock:self.jogador.idLiga
                               idCampeonato:self.jogador.liga.idCampeonato
                                 idJogador:self.jogador.idJogador
                  constructingBodyWithBlock:^(NSArray *resultados, NSError *error) {

@@ -42,7 +42,7 @@
     }
     
     // verifica se já está logado
-    Jogador *jogador = [Jogador loadJogadorEntity];
+    Jogador *jogador = [PokerGamesFacade loadJogadorEntity];
     
     if (jogador == nil) {
         [self appDelegate].isFirstTime = TRUE;
@@ -58,12 +58,6 @@
         
         self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

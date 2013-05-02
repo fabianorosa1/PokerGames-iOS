@@ -8,7 +8,6 @@
 
 #import "RankingCampeonatoJogadorCell.h"
 #import "UIImageView+AFNetworking.h"
-#import <QuartzCore/QuartzCore.h>
 #import "Jogador.h"
 
 @implementation RankingCampeonatoJogadorCell
@@ -58,7 +57,7 @@
     }
 
     // seta a foto do jogador
-    [self.imgViewFoto setImageWithURL:[Jogador buildUrlFoto:[_dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+    [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:[_dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
 
 /* PROBLEMA DE PERFORMANCE NESTE BLOCO
     // adiciona canto arredonado

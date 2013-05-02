@@ -66,9 +66,8 @@
     self.lblNome.text = jogador.nome;
     
     // seta a foto do jogador
-    [self.imgViewFoto setImageWithURL:[Jogador buildUrlFoto:jogador.foto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+    [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:jogador.foto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
 }
-
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
@@ -115,7 +114,7 @@
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"Desconectando";
         
-		[Jogador excluirTodosJogadoresDependencias];
+		[PokerGamesFacade excluirTodosJogadoresDependencias];
         // seta não configurado
         [self appDelegate].isFirstTime = TRUE;
         

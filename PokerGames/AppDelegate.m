@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "ADVDefaultTheme.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import <CoreData/CoreData.h>
 
 @implementation AppDelegate
 

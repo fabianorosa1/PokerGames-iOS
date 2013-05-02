@@ -50,7 +50,7 @@
     }
     
     // busca lista de campeonatos da liga
-    [Campeonato buscaCampeonatosLigaWithBlock:idLiga
+    [PokerGamesFacade buscaCampeonatosLigaWithBlock:idLiga
                     constructingBodyWithBlock:^(NSArray *campeonatos, NSError *error) {
         
         [hud hide:YES];
@@ -129,21 +129,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    //NSLog(@"numberOfSectionsInTableView");
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    //NSLog(@">> numberOfRowsInSection: %@", arCampeonatos);
     return arCampeonatos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSLog(@"cellForRowAtIndexPath");
     static NSString *CellIdentifier = @"CellCampeonato";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
@@ -154,13 +149,6 @@
     cell.detailTextLabel.text = campeonato.nome;
     
     return cell;
-}
-
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return NO;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -192,16 +180,16 @@
     // verifica se é configuração inicial ou não
     if ([self appDelegate].isFirstTime == TRUE) {
         // limpa a base de dados
-        [Jogador excluirTodosJogadoresDependencias];
+        [PokerGamesFacade excluirTodosJogadoresDependencias];
         
         // insere o jogador, liga e campeonato
-        [jogador insertJogadorEntity];
+        [PokerGamesFacade insertJogadorEntity:jogador];
         
         // já configurado
         [self appDelegate].isFirstTime = FALSE;
     } else {
         // verifica se foi alterado a liga ou o campeonato
-        [jogador atualizaLigaCampeonatoJogadorEntity];
+        [PokerGamesFacade atualizaLigaCampeonatoJogadorEntity:jogador];
     }
     
     [hud hide:YES];

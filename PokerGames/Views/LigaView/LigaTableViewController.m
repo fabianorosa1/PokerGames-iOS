@@ -18,7 +18,6 @@
 
 @interface LigaTableViewController () {
     NSArray *arLiga;
-    Liga *ligaCorrente;
 }
 
 @end
@@ -46,7 +45,7 @@
     //NSLog(@"Busca ligas do jogador %@", jogadorLogin.idJogador);
     
     // busca lista de ligas do jogador
-    [Liga buscaLigasPlayerWithBlock:jogadorLogin.idJogador
+    [PokerGamesFacade buscaLigasPlayerWithBlock:jogadorLogin.idJogador
           constructingBodyWithBlock:^(NSArray *ligas, NSError *error) {
               
       [hud hide:YES];
@@ -164,9 +163,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // associa a liga selecionada ao jogador
-    ligaCorrente = [arLiga objectAtIndex:indexPath.row];
-    
     [self performSegueWithIdentifier:@"SelecaoCampeonato" sender:self];
 }
 
@@ -179,7 +175,8 @@
         CampeonatoTableViewController *vc = [segue destinationViewController];
         
         // Pass any objects to the view controller here, like...
-        vc.ligaSelecionada = ligaCorrente;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        vc.ligaSelecionada = [arLiga objectAtIndex:indexPath.row];
     }
 }
 

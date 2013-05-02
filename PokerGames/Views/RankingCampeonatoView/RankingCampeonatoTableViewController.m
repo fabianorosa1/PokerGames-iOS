@@ -11,7 +11,6 @@
 #import "Jogador.h"
 #import "Liga.h"
 #import "Campeonato.h"
-#import "AFAppDotNetAPIClient.h"
 #import "MBProgressHUD.h"
 #import "RankingCampeonatoJogadorCell.h"
 #import <QuartzCore/QuartzCore.h>
@@ -22,7 +21,6 @@
 
 @interface RankingCampeonatoTableViewController () {
     NSArray *arRanking;
-    NSDictionary *rankingSelecionado;
 }
 
 @end
@@ -133,7 +131,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    rankingSelecionado = arRanking[indexPath.row];
     [self performSegueWithIdentifier:@"ResultadosTorneioJogador" sender:self];
 }
 
@@ -146,6 +143,9 @@
         DetalhesJogadorTableViewController *vc = [segue destinationViewController];
         
         // Pass any objects to the view controller here, like...
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSDictionary *rankingSelecionado = arRanking[indexPath.row];
+        
         Jogador *jogadorSelecionado = [[Jogador alloc] init];
         [jogadorSelecionado setIdJogador:[rankingSelecionado valueForKey:@"IdJogador"]];
         [jogadorSelecionado setApelido:[rankingSelecionado valueForKey:@"Apelido"]];
@@ -157,28 +157,6 @@
     }
 }
 
-- (void)buscaRankingCampeonatosWithBlock:(NSNumber *)idLiga
-                                  idCampeonato:(NSNumber *)idCampeonato
-            constructingBodyWithBlock:(void (^)(NSArray *ranking, NSError *error))block
-{
-    
-    NSString *path = [NSString stringWithFormat:@"Campeonatos.svc/Ranking/%@/%@", idLiga, idCampeonato];
-    //NSLog(@"Path: %@", path);
-    
-    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSArray *postsFromResponse = [JSON valueForKeyPath:@"RankingResult"];
-        if (block) {
-            //NSLog(@"postsFromResponse: %@", postsFromResponse);
-            block(postsFromResponse, nil);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
-            NSLog(@"Path: %@", path);
-            block([NSArray array], error);
-        }
-    }];
-}
-
 - (void) buscaRanking {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Buscando ranking";
@@ -187,7 +165,7 @@
     //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
     
     // busca lista de campeonatos da liga
-    [self buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
+    [PokerGamesFacade buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
                               idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
                  constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
                      
@@ -218,7 +196,7 @@
     //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
     
     // busca lista de campeonatos da liga
-    [self buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
+    [PokerGamesFacade buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
                               idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
                  constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
                      

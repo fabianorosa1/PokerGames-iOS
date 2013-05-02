@@ -6,9 +6,6 @@
 //  Copyright (c) 2013 App Design Vault. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-
 @interface LoginViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UITextField *userTextField;

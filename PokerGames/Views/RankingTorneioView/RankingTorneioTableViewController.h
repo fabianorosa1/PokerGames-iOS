@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Fabiano Rosa. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface RankingTorneioTableViewController : UITableViewController
 
 @property (nonatomic, strong) IBOutlet UIView* viewHeader;

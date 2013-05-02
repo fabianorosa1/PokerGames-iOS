@@ -79,4 +79,9 @@ static NSNumberFormatter *numberFormatter;
     return numberFormatter;
 }
 
++ (NSURL*) buildUrlFoto:(NSString*)fileFoto {
+    NSString *pathFoto = [NSString stringWithFormat:@"%@%@", [PokerGamesUtil baseURLFoto],  fileFoto];
+    return [NSURL URLWithString:pathFoto];
+}
+
 @end

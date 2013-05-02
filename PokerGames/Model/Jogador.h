@@ -6,9 +6,7 @@
 //  Copyright (c) 2013 Fabiano Rosa. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@class Liga;
+#import "Liga.h"
 
 @interface Jogador : NSObject
 
@@ -23,15 +21,5 @@
 @property (nonatomic, retain) Liga *liga;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
-
-+ (void)efetuaLoginPlayerWithBlock:(NSString *)user
-                             passw:(NSString *)passw
-                             constructingBodyWithBlock:(void (^)(Jogador *jogador, NSError *error))block;
-
-+ (NSURL*) buildUrlFoto:(NSString*)fileFoto;
-+ (Jogador*) loadJogadorEntity;
-- (void) insertJogadorEntity;
-- (void) atualizaLigaCampeonatoJogadorEntity;
-+ (void) excluirTodosJogadoresDependencias;
 
 @end

@@ -11,7 +11,6 @@
 #import "Jogador.h"
 #import "Liga.h"
 #import "Campeonato.h"
-#import "AFAppDotNetAPIClient.h"
 #import "MBProgressHUD.h"
 #import "RankingTorneioCell.h"
 #import <QuartzCore/QuartzCore.h>
@@ -22,7 +21,6 @@
 
 @interface RankingTorneioTableViewController () {
     NSArray *arRanking;
-    NSDictionary *rankingSelecionado;
 }
 
 @end
@@ -110,81 +108,12 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //rankingSelecionado = arRanking[indexPath.row];
-    //[self performSegueWithIdentifier:@"ResultadosTorneioJogador" sender:self];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Make sure your segue name in storyboard is the same as this line
-    if ([[segue identifier] isEqualToString:@"ResultadosTorneioJogador"])
-    {
-        // Get reference to the destination view controller
-        DetalhesJogadorTableViewController *vc = [segue destinationViewController];
-        
-        // Pass any objects to the view controller here, like...
-        Jogador *jogadorSelecionado = [[Jogador alloc] init];
-        [jogadorSelecionado setIdJogador:[rankingSelecionado valueForKey:@"IdJogador"]];
-        [jogadorSelecionado setApelido:[rankingSelecionado valueForKey:@"Apelido"]];
-        [jogadorSelecionado setNome:[rankingSelecionado valueForKey:@"Nome"]];
-        [jogadorSelecionado setIdLiga:[rankingSelecionado valueForKey:@"IdLiga"]];
-        jogadorSelecionado.liga = [self.appDelegate jogadorLogin].liga;
-        // parametros
-        vc.jogador = jogadorSelecionado;
-    }
-}
-
-- (void)buscaCabecalhoRankingWithBlock:(NSNumber *)idTorneio
-                constructingBodyWithBlock:(void (^)(NSDictionary *cabecalho, NSError *error))block
-{
-    
-    NSString *path = [NSString stringWithFormat:@"Torneios.svc/Cabecalho/%@", idTorneio];
-    //NSLog(@"Path: %@", path);
-    
-    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSDictionary *postsFromResponse = [JSON valueForKeyPath:@"CabecalhoResult"];
-        if (block) {
-            //NSLog(@"postsFromResponse: %@", postsFromResponse);
-            block(postsFromResponse, nil);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
-            NSLog(@"Path: %@", path);
-            block([NSDictionary dictionary], error);
-        }
-    }];
-}
-
-
-- (void)buscaRankingTorneioWithBlock:(NSNumber *)idTorneio
-            constructingBodyWithBlock:(void (^)(NSArray *ranking, NSError *error))block
-{
-    
-    NSString *path = [NSString stringWithFormat:@"Torneios.svc/Ranking/%@", idTorneio];
-    //NSLog(@"Path: %@", path);
-    
-    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSArray *postsFromResponse = [JSON valueForKeyPath:@"RankingResult"];
-        if (block) {
-           // NSLog(@"postsFromResponse: %@", postsFromResponse);
-            block(postsFromResponse, nil);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
-            NSLog(@"Path: %@", path);
-            block([NSArray array], error);
-        }
-    }];
-}
-
 - (void) buscaRanking {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Buscando ranking";
     
     // busca cabecalho dos resultados
-    [self buscaCabecalhoRankingWithBlock:self.idTorneio
+    [PokerGamesFacade buscaCabecalhoRankingWithBlock:self.idTorneio
                   constructingBodyWithBlock:^(NSDictionary *cabecalho, NSError *error) {
       
       if (error) {
@@ -207,7 +136,7 @@
     }];
     
     // busca lista de ranking do torneio
-    [self buscaRankingTorneioWithBlock:self.idTorneio
+    [PokerGamesFacade buscaRankingTorneioWithBlock:self.idTorneio
                  constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
                      
          [hud hide:YES];

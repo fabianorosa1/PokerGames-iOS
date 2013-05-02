@@ -6,10 +6,7 @@
 //  Copyright (c) 2013 Fabiano Rosa. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@class Campeonato;
-@class Jogador;
+#import "Campeonato.h"
 
 @interface Liga : NSObject
 
@@ -21,8 +18,5 @@
 @property (nonatomic, retain) Campeonato * campeonato;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
-
-+ (void)buscaLigasPlayerWithBlock:(NSNumber *)idPlayer
-                             constructingBodyWithBlock:(void (^)(NSArray *ligas, NSError *error))block;
 
 @end

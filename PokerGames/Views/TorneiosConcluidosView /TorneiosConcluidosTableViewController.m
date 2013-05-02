@@ -1,5 +1,5 @@
 //
-//  RankingCampeonatoTableViewController.m
+//  TorneiosConcluidosTableViewController.m
 //  PokerGames
 //
 //  Created by Fabiano Rosa on 23/04/13.
@@ -11,7 +11,6 @@
 #import "Jogador.h"
 #import "Liga.h"
 #import "Campeonato.h"
-#import "AFAppDotNetAPIClient.h"
 #import "MBProgressHUD.h"
 #import "TorneiosConcluidosCell.h"
 #import <QuartzCore/QuartzCore.h>
@@ -22,7 +21,6 @@
 
 @interface TorneiosConcluidosTableViewController () {
     NSArray *arTorneios;
-    NSDictionary *torneioSelecionado;
 }
 
 @end
@@ -127,7 +125,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    torneioSelecionado = arTorneios[indexPath.row];
     [self performSegueWithIdentifier:@"RankingTorneio" sender:self];
 }
 
@@ -140,30 +137,10 @@
         RankingTorneioTableViewController *vc = [segue destinationViewController];
         
         // parametros
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+         NSDictionary *torneioSelecionado = arTorneios[indexPath.row];
         vc.idTorneio = [torneioSelecionado valueForKey:@"IdTorneio"];
     }
-}
-
-- (void)buscaTorneiosConcluidosWithBlock:(NSNumber *)idLiga
-                                  idCampeonato:(NSNumber *)idCampeonato
-            constructingBodyWithBlock:(void (^)(NSArray *torneios, NSError *error))block
-{
-    
-    NSString *path = [NSString stringWithFormat:@"Torneios.svc/Inativos/%@/%@", idLiga, idCampeonato];
-    //NSLog(@"Path: %@", path);
-    
-    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSArray *postsFromResponse = [JSON valueForKeyPath:@"InativosResult"];
-        if (block) {
-            //NSLog(@"postsFromResponse: %@", postsFromResponse);
-            block(postsFromResponse, nil);
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
-            NSLog(@"Path: %@", path);
-            block([NSArray array], error);
-        }
-    }];
 }
 
 - (void) buscaTorneiosConcluidos {
@@ -174,7 +151,7 @@
     //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
     
     // busca lista de campeonatos da liga
-    [self buscaTorneiosConcluidosWithBlock:jogadorLogin.liga.idLiga
+    [PokerGamesFacade buscaTorneiosConcluidosWithBlock:jogadorLogin.liga.idLiga
                               idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
                  constructingBodyWithBlock:^(NSArray *torneios, NSError *error) {
                      

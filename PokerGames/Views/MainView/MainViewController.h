@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Fabiano Rosa. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
 
 @interface MainViewController : ECSlidingViewController
