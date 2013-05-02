@@ -238,7 +238,7 @@
         <scene sceneID="9Od-Bn-f3t">
             <objects>
                 <tableViewController storyboardIdentifier="Menu" title="Menu" id="cIJ-Ve-JaG" customClass="MenuViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gNg-eU-jFe">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gNg-eU-jFe">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1281,6 +1281,121 @@
             <point key="canvasLocation" x="4585" y="1223"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CampeonatoTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CampeonatoTableViewController.h"/>
+        </class>
+        <class className="DetalhesJogadorCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetalhesJogadorCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imgViewPosicao" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lblData" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblEtapa" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblPontos" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblPosicao" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblValor" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="DetalhesJogadorTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetalhesJogadorTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="headerNomeCamp" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblAlgoz" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblColocacao" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblITM" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblMedia" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblParticipacoes" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblPontos" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblSaldo" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblVitima" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="viewHeader" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ECSlidingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECSlidingViewController.h"/>
+        </class>
+        <class className="LigaTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LigaTableViewController.h"/>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logInPressed:"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MainViewController" superclassName="ECSlidingViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+        </class>
+        <class className="MenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imgViewFoto" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lblNome" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RankingCampeonatoJogadorCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RankingCampeonatoJogadorCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imgViewFoto" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imgViewPosicao" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lblNome" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblPontos" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblPosicao" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RankingCampeonatoTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RankingCampeonatoTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="viewHeader" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="RankingTorneioCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RankingTorneioCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imgViewFoto" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imgViewPosicao" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lblNome" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblNomeAlgoz" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblPontos" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblPosicao" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblSaldo" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="RankingTorneioTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RankingTorneioTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lblData" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblIncritos" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblQtInscritos" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblSaldoJack" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="viewHeader" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="TorneiosConcluidosCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TorneiosConcluidosCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imgViewFoto" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lblDataRealizacao" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblNome" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblQtInscritos" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblSaldoJack" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lblVencedor" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TorneiosConcluidosTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TorneiosConcluidosTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="viewHeader" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
