@@ -58,7 +58,7 @@
     }
 
     // seta a foto do jogador
-    [self.imgViewFoto setImageWithURL:[Jogador buildUrlFoto:[_dados valueForKey:@"IdJogador"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+    [self.imgViewFoto setImageWithURL:[Jogador buildUrlFoto:[_dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
 
 /* PROBLEMA DE PERFORMANCE NESTE BLOCO
     // adiciona canto arredonado

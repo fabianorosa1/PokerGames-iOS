@@ -13,6 +13,7 @@ static UIImage* imgPlaceholder = nil;
 static UIImage* imgPrimeiroLugar = nil;
 static UIImage* imgSegundoLugar = nil;
 static UIImage* imgTerceiroLugar = nil;
+static NSNumberFormatter *numberFormatter;
 
 @implementation PokerGamesUtil
 
@@ -22,6 +23,7 @@ static UIImage* imgTerceiroLugar = nil;
     imgPrimeiroLugar = [UIImage imageNamed:@"primeiro"];
     imgSegundoLugar = [UIImage imageNamed:@"segundo"];
     imgTerceiroLugar = [UIImage imageNamed:@"terceiro"];
+    numberFormatter = [[NSNumberFormatter alloc] init];
 }
 
 + (UIImage *)menuImage {
@@ -70,6 +72,11 @@ static UIImage* imgTerceiroLugar = nil;
 
 + (UIImage *)imgTerceiroLugar {
     return imgTerceiroLugar;
+}
+
++ (NSNumberFormatter*) currencyFormatter {
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    return numberFormatter;
 }
 
 @end

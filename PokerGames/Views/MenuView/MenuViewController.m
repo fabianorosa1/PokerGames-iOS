@@ -53,6 +53,8 @@
     // adiciona borda
     self.imgViewFoto.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.imgViewFoto.layer.borderWidth = 1.0;
+    
+    self.tableView.separatorColor = [UIColor clearColor];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -64,7 +66,7 @@
     self.lblNome.text = jogador.nome;
     
     // seta a foto do jogador
-    [self.imgViewFoto setImageWithURL:[Jogador buildUrlFoto:jogador.idJogador] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+    [self.imgViewFoto setImageWithURL:[Jogador buildUrlFoto:jogador.foto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
 }
 
 

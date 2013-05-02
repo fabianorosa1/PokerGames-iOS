@@ -25,14 +25,14 @@
     self.apelido = [attributes valueForKeyPath:@"Apelido"];
     self.email = [attributes valueForKeyPath:@"Email"];
     self.nome = [attributes valueForKeyPath:@"Nome"];
-    //self.urlFoto = [attributes valueForKeyPath:@"FotoUrl"];
+    self.foto = [attributes valueForKeyPath:@"Foto"];
     self.status = [attributes valueForKeyPath:@"Status"];
     
     return self;
 }
 
-+ (NSURL*) buildUrlFoto:(NSNumber*)idJogador {
-    NSString *pathFoto = [NSString stringWithFormat:@"%@jogador%@.jpg", [PokerGamesUtil baseURLFoto],  idJogador];
++ (NSURL*) buildUrlFoto:(NSString*)fileFoto {
+    NSString *pathFoto = [NSString stringWithFormat:@"%@%@", [PokerGamesUtil baseURLFoto],  fileFoto];
     return [NSURL URLWithString:pathFoto];
 }
 
@@ -49,6 +49,7 @@
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSDictionary *postsFromResponse = [JSON valueForKeyPath:@"CredencialJogadorResult"];
         Jogador *jogador = [[Jogador alloc] initWithAttributes:postsFromResponse];
+        //NSLog(@"postsFromResponse: %@", postsFromResponse);
         
         if (block) {
             block(jogador, nil);
@@ -89,7 +90,7 @@
         newJogador.apelido = jogadorEntity.apelido;
         newJogador.status = jogadorEntity.status;
         newJogador.email = jogadorEntity.email;
-        //newJogador.urlFoto = jogadorEntity.urlFoto;
+        newJogador.foto = jogadorEntity.foto;
         newJogador.idLiga = jogadorEntity.idLiga;
         
         // carrega a liga do jogador
@@ -175,7 +176,7 @@
     [newManagedObjectJogador setValue:self.apelido forKey:@"apelido"];
     [newManagedObjectJogador setValue:self.email forKey:@"email"];
     [newManagedObjectJogador setValue:self.nome forKey:@"nome"];
-    //[newManagedObjectJogador setValue:self.urlFoto forKey:@"urlFoto"];
+    [newManagedObjectJogador setValue:self.foto forKey:@"foto"];
     [newManagedObjectJogador setValue:self.status forKey:@"status"];
     [newManagedObjectJogador setValue:self.idLiga forKey:@"idLiga"];
     

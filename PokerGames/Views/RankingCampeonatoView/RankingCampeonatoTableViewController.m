@@ -53,7 +53,7 @@
     
     [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.7f;
+    self.viewHeader.layer.borderWidth = 0.4f;
     
     // botao de configuracoes
     UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
@@ -62,17 +62,6 @@
                                    target:self
                                    action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
-    
-    /*
-    // botao de logout
-    UIImage* imgLogout = [UIImage imageNamed:@"NavBarIconLogout.png"];
-    UIBarButtonItem *btnLogout = [[UIBarButtonItem alloc]
-                                  initWithImage:imgLogout
-                                  style:UIBarButtonItemStyleBordered
-                                  target:self
-                                  action:@selector(logoutAction)];
-    self.navigationItem.rightBarButtonItem = btnLogout;
-    */
     
     // adiciona controle de refresh
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
@@ -87,25 +76,17 @@
 {
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
-/*
--(IBAction)logoutAction
-{
-    [Jogador excluirTodosJogadoresDependencias];
-    // seta não configurado
-    [self appDelegate].isFirstTime = TRUE;
 
-    // instancia a tela principal do ranking
-    ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
-    slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginJogador"];
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    self.title = @"Voltar";
 }
-*/
+
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
-    
-    // remove o botão Back de navegação
-    //self.navigationItem.leftBarButtonItem = nil;
-    //self.navigationItem.hidesBackButton = YES;
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -193,6 +174,7 @@
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"RankingResult"];
         if (block) {
+            //NSLog(@"postsFromResponse: %@", postsFromResponse);
             block(postsFromResponse, nil);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

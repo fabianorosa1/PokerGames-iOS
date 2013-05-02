@@ -44,13 +44,13 @@
 		<string>armv7</string>
 	</array>
 	<key>UIStatusBarHidden</key>
-	<true/>
+	<false/>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>
 		<dict>
 			<key>Style</key>
-			<string>UIBarStyleDefault</string>
+			<string>UIBarStyleBlack</string>
 			<key>Translucent</key>
 			<false/>
 		</dict>

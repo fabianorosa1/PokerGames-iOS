@@ -14,6 +14,7 @@
 #import "ADVTheme.h"
 #import "ECSlidingViewController.h"
 #import "CampeonatoTableViewController.h"
+#import "MenuViewController.h"
 
 @interface LigaTableViewController () {
     NSArray *arLiga;
@@ -101,6 +102,12 @@
                                       target:self
                                       action:@selector(configAction)];
         self.navigationItem.leftBarButtonItem = btnMenu;
+        
+        if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
+            self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+        }
+        
+        [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
     }
     
     [self buscaLigasPlayer];

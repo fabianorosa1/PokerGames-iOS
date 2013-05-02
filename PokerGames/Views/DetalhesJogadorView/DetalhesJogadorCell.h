@@ -10,18 +10,14 @@
 
 @interface DetalhesJogadorCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel* lblNome;
-
-@property (nonatomic, strong) IBOutlet UILabel* lblPontos;
-
 @property (nonatomic, strong) IBOutlet UILabel* lblPosicao;
-
-@property (nonatomic, strong) IBOutlet UIImageView* imgViewFoto;
-
+@property (nonatomic, strong) IBOutlet UILabel* lblEtapa;
+@property (nonatomic, strong) IBOutlet UILabel* lblPontos;
+@property (nonatomic, strong) IBOutlet UILabel* lblData;
+@property (nonatomic, strong) IBOutlet UILabel* lblValor;
 @property (nonatomic, strong) IBOutlet UIImageView* imgViewPosicao;
 
 @property (nonatomic, strong) NSDictionary *dados;
 
-@property (nonatomic) NSInteger row;
 
 @end

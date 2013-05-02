@@ -19,4 +19,6 @@
 + (UIImage *)imgSegundoLugar;
 + (UIImage *)imgTerceiroLugar;
 
++ (NSNumberFormatter*) currencyFormatter;
+
 @end

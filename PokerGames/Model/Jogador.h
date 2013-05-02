@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSNumber * idJogador;
 @property (nonatomic, retain) NSString * nome;
 @property (nonatomic, retain) NSString * status;
-//@property (nonatomic, retain) NSString * urlFoto;
+@property (nonatomic, retain) NSString * foto;
 // relacionamento
 @property (nonatomic, retain) NSNumber * idLiga;
 @property (nonatomic, retain) Liga *liga;
@@ -28,7 +28,7 @@
                              passw:(NSString *)passw
                              constructingBodyWithBlock:(void (^)(Jogador *jogador, NSError *error))block;
 
-+ (NSURL*) buildUrlFoto:(NSNumber*)idJogador;
++ (NSURL*) buildUrlFoto:(NSString*)fileFoto;
 + (Jogador*) loadJogadorEntity;
 - (void) insertJogadorEntity;
 - (void) atualizaLigaCampeonatoJogadorEntity;

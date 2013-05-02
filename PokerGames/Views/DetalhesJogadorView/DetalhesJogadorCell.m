@@ -35,19 +35,23 @@
 {
     _dados = dados;
     
-    self.lblNome.text = [_dados valueForKey:@"Nome"];
+    self.lblData.text = [_dados valueForKey:@"Data"];
     self.lblPontos.text = [NSString stringWithFormat:@"%@ pontos", [_dados valueForKey:@"Pontos"]];
+    self.lblEtapa.text = [_dados valueForKey:@"Etapa"];
+    
+    NSNumber *posicaoValue = [_dados valueForKey:@"Posicao"];
+    int posicao = [posicaoValue intValue];
     
     // verifica a posicao
-    if (self.row == 0) {
+    if (posicao == 1) {
         self.lblPosicao.hidden = true;
         self.imgViewPosicao.hidden = false;
         [self.imgViewPosicao setImage:[PokerGamesUtil imgPrimeiroLugar]];
-    } else if (self.row == 1) {
+    } else if (posicao == 2) {
         self.lblPosicao.hidden = true;
         self.imgViewPosicao.hidden = false;
         [self.imgViewPosicao setImage:[PokerGamesUtil imgSegundoLugar]];
-    } else if (self.row == 2) {
+    } else if (posicao == 3) {
         self.lblPosicao.hidden = true;
         self.imgViewPosicao.hidden = false;
         [self.imgViewPosicao setImage:[PokerGamesUtil imgTerceiroLugar]];
@@ -56,19 +60,16 @@
         self.imgViewPosicao.hidden = true;
         self.lblPosicao.text = [NSString stringWithFormat:@"%@º", [_dados valueForKey:@"Posicao"]];
     }
-
-    // seta a foto do jogador
-    [self.imgViewFoto setImageWithURL:[Jogador buildUrlFoto:[_dados valueForKey:@"IdJogador"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
-
-/* PROBLEMA DE PERFORMANCE NESTE BLOCO
-    // adiciona canto arredonado
-    self.imgViewFoto.layer.cornerRadius = 5.0;
-    self.imgViewFoto.layer.masksToBounds = YES;
     
-    // adiciona borda
-    self.imgViewFoto.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.imgViewFoto.layer.borderWidth = 1.0;  
-*/ 
+    NSNumber *saldoValue = [_dados valueForKey:@"Saldo"];
+    double saldo = [saldoValue doubleValue];
+
+    if (saldo < 0) {
+        self.lblValor.textColor = [UIColor redColor];
+    } else {
+        self.lblValor.textColor = [UIColor colorWithRed:(46/255.f) green:(139/255.f) blue:(87/255.f) alpha:1.0f];
+    }
+    self.lblValor.text = [[PokerGamesUtil currencyFormatter] stringFromNumber:saldoValue];
 }
 
 @end
