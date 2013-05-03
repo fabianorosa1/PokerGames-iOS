@@ -35,8 +35,14 @@
     _dados = dados;
     
     self.lblNome.text = [_dados valueForKey:@"Nome"];
-    self.lblPontos.text = [NSString stringWithFormat:@"%@ pts", [_dados valueForKey:@"Pontuacao"]];
-    self.lblNomeAlgoz.text = [_dados valueForKey:@"NomeAlgoz"];
+    self.lblPontos.text = [NSString stringWithFormat:@"%@ pontos", [_dados valueForKey:@"Pontuacao"]];
+    
+    NSString *algoz = [_dados valueForKey:@"NomeAlgoz"];
+    if (![algoz isEqualToString:@""]) {
+        self.lblNomeAlgoz.text = [NSString stringWithFormat:@"Algoz: %@", algoz];
+    } else {
+        self.lblNomeAlgoz.text = @"";
+    }
     
     // verifica a posicao
     if (self.row == 0) {

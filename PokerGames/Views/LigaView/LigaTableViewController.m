@@ -64,7 +64,7 @@
 {
     [super viewWillAppear:animated];
     
-    self.title = @"Poker Games";
+    self.title = @"Liga";
 }
 
 -(void) viewDidDisappear:(BOOL)animated

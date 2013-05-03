@@ -7,7 +7,6 @@
 //
 
 #import "RankingTorneioTableViewController.h"
-#import "AppDelegate.h"
 #import "Jogador.h"
 #import "Liga.h"
 #import "Campeonato.h"
@@ -17,7 +16,6 @@
 #import "ADVTheme.h"
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
-#import "DetalhesJogadorTableViewController.h"
 
 @interface RankingTorneioTableViewController () {
     NSArray *arRanking;
@@ -34,10 +32,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (AppDelegate *)appDelegate {
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 - (void)viewDidLoad
@@ -77,6 +71,8 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.title = @"Ranking Torneio";
 }
 
 #pragma mark - Table view data source
@@ -106,6 +102,17 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *rankingJogador = arRanking[indexPath.row];
+    NSString *algoz = [rankingJogador valueForKey:@"NomeAlgoz"];
+    if ([algoz isEqualToString:@""]) {
+        return 62;
+    }
+
+    return 72;
+}
+
 #pragma mark - Table view delegate
 
 - (void) buscaRanking {
@@ -124,7 +131,7 @@
           // cabecalho do resultados
           //NSLog(@"cabecalho: %@", cabecalho );
           
-          self.title = [cabecalho valueForKey:@"Nome"];;
+          self.lblTorneio.text = [NSString stringWithFormat:@"Torneio: %@", [cabecalho valueForKey:@"Nome"]];
           self.lblData.text = [NSString stringWithFormat:@"%@ - %@", [cabecalho valueForKey:@"Data"], [cabecalho valueForKey:@"Hora"]];
           self.lblIncritos.hidden = false;
           self.lblQtInscritos.text = [cabecalho valueForKey:@"QtInscritos"];

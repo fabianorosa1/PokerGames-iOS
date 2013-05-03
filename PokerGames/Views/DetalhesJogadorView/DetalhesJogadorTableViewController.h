@@ -11,8 +11,9 @@
 @interface DetalhesJogadorTableViewController : UITableViewController
 
 @property (nonatomic, strong) IBOutlet UIView* viewHeader;
-@property (nonatomic, strong) IBOutlet UILabel* headerNomeCamp;
-
+@property (nonatomic, strong) IBOutlet UILabel* lblJogador;
+@property (nonatomic, strong) IBOutlet UILabel* lblCampeonato;
+@property (nonatomic, strong) IBOutlet UIImageView* imgViewFoto;
 @property (nonatomic, strong) IBOutlet UILabel* lblAlgoz;
 @property (nonatomic, strong) IBOutlet UILabel* lblColocacao;
 @property (nonatomic, strong) IBOutlet UILabel* lblITM;

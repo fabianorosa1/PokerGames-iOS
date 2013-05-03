@@ -71,7 +71,7 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.title = @"Poker Games";
+    self.title = @"PokerGames";
 }
 
 -(void) viewDidDisappear:(BOOL)animated

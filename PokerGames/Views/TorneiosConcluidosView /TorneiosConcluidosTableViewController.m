@@ -81,7 +81,8 @@
 {
     [super viewWillAppear:animated];
     
-    self.title = [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido;
+    self.title =  @"Torneios Realizados";
+    self.lblCampeonato.text = [NSString stringWithFormat:@"Campeonato: %@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido];
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];

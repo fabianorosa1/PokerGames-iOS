@@ -86,7 +86,8 @@
 {
     [super viewWillAppear:animated];
     
-    self.title = [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido;
+    self.title = @"Ranking Geral";
+    self.lblApelidoCampeonato.text =  [NSString stringWithFormat:@"Campeonato: %@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido];
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
@@ -146,6 +147,7 @@
         [jogadorSelecionado setApelido:[rankingSelecionado valueForKey:@"Apelido"]];
         [jogadorSelecionado setNome:[rankingSelecionado valueForKey:@"Nome"]];
         [jogadorSelecionado setIdLiga:[rankingSelecionado valueForKey:@"IdLiga"]];
+        [jogadorSelecionado setFoto:[rankingSelecionado valueForKey:@"Foto"]];
         jogadorSelecionado.liga = [[PokerGamesFacade sharedInstance] jogadorLogin].liga;
         // parametros
         vc.jogador = jogadorSelecionado;

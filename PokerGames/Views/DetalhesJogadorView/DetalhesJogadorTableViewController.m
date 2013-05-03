@@ -16,6 +16,7 @@
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 #import "RankingTorneioTableViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface DetalhesJogadorTableViewController () {
     NSArray *arResultadosTorneios;
@@ -91,8 +92,11 @@
 {
     [super viewWillAppear:animated];
     
-    self.title = self.jogador.apelido;
-    self.headerNomeCamp.text = self.jogador.liga.campeonato.apelido;
+    self.title = @"Resultados";
+    self.lblJogador.text = self.jogador.apelido;
+    self.lblCampeonato.text = self.jogador.liga.campeonato.apelido;
+    // seta a foto do jogador
+    [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:self.jogador.foto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];

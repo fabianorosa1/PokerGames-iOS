@@ -11,6 +11,7 @@
 @property (nonatomic, strong) IBOutlet UIView* viewHeader;
 @property (nonatomic, strong) NSNumber* idTorneio;
 
+@property (nonatomic, strong) IBOutlet UILabel* lblTorneio;
 @property (nonatomic, strong) IBOutlet UILabel* lblData;
 @property (nonatomic, strong) IBOutlet UILabel* lblQtInscritos;
 @property (nonatomic, strong) IBOutlet UILabel* lblSaldoJack;

@@ -68,10 +68,12 @@
 {
     [super viewWillAppear:animated];
     
+    self.title = @"Campeonato";
+    
     if (self.ligaSelecionada) {
-        self.title = self.ligaSelecionada.apelido;
+        self.lblLiga.text = [NSString stringWithFormat:@"Liga: %@", self.ligaSelecionada.apelido];
     } else {
-        self.title = [[PokerGamesFacade sharedInstance] jogadorLogin].liga.apelido;
+        self.lblLiga.text = [NSString stringWithFormat:@"Liga: %@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.apelido];
     }
 }
 
@@ -85,15 +87,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //NSLog(@"viewDidLoad");
-    
+
+    // configura o header
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     
     [ADVThemeManager customizeTableView:self.tableView];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.tableView.backgroundView = nil;
-    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
+    self.viewHeader.layer.borderWidth = 0.4f;
     
     // verifica se deve adicionar o botao de menu
     if ( !((self.ligaSelecionada) || ([[PokerGamesFacade sharedInstance] isFirstTime])) ) {

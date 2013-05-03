@@ -9,5 +9,6 @@
 @interface RankingCampeonatoTableViewController : UITableViewController
 
 @property (nonatomic, strong) IBOutlet UIView* viewHeader;
+@property (nonatomic, strong) IBOutlet UILabel* lblApelidoCampeonato;
 
 @end
