@@ -562,7 +562,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="el1-xZ-VyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2595" y="223"/>
+            <point key="canvasLocation" x="2875" y="199"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rps-mg-jFs">
@@ -1125,7 +1125,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qK0-Vq-F7R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3931" y="1051"/>
+            <point key="canvasLocation" x="4457" y="1051"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NxP-VC-nJZ">
@@ -1147,7 +1147,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3w-B6-ycx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3133" y="1059"/>
+            <point key="canvasLocation" x="3891" y="1043"/>
         </scene>
         <!--Ranking Torneio Table View Controller - Ranking Torneio-->
         <scene sceneID="fTH-SE-DsB">
@@ -1342,7 +1342,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8c-2H-e2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5111" y="1223"/>
+            <point key="canvasLocation" x="5285" y="1343"/>
         </scene>
         <!--Jack Pot Table View Controller - JackPot-->
         <scene sceneID="A30-Ig-4qK">
@@ -1475,7 +1475,52 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9k-ru-GC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2351" y="1075"/>
+            <point key="canvasLocation" x="2877" y="1075"/>
+        </scene>
+        <!--Lista Jogadores Table View Controller - Lista de Jogadores-->
+        <scene sceneID="yF1-W8-RkN">
+            <objects>
+                <tableViewController id="YMY-W4-R5G" customClass="ListaJogadoresTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tu3-hA-XDR">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="xMt-HL-hL5">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YMY-W4-R5G" id="GX5-Ue-CXA"/>
+                            <outlet property="delegate" destination="YMY-W4-R5G" id="WBL-bb-fqX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Lista de Jogadores" id="hlL-sg-VKm"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SXJ-Yl-ceC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2902" y="1904"/>
+        </scene>
+        <!--Perfil Jogador View Controller - Perfil do Jogador-->
+        <scene sceneID="byv-wX-8cJ">
+            <objects>
+                <viewController id="MOE-v2-tpF" customClass="PerfilJogadorViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qWW-WM-dE6">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Perfil do Jogador" id="bu5-6N-R7k"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4RL-Mb-WvN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1808" y="1520"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V1u-fR-9XJ">
@@ -1493,7 +1538,43 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTm-bY-MD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1825" y="1075"/>
+            <point key="canvasLocation" x="2351" y="1075"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gtm-3H-k7P">
+            <objects>
+                <navigationController storyboardIdentifier="ListaJogadoresView" id="qU0-ma-x25" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hgs-Cs-Exg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YMY-W4-R5G" kind="relationship" relationship="rootViewController" id="aEM-FA-cTY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f83-q5-TR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2376" y="1904"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="A5v-Xi-cZG">
+            <objects>
+                <navigationController storyboardIdentifier="PerfilView" id="Vsf-xZ-VNZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S6M-1w-vty">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MOE-v2-tpF" kind="relationship" relationship="rootViewController" id="WNj-Sx-gHV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="04e-aT-jew" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="1520"/>
         </scene>
     </scenes>
     <classes>
@@ -1554,6 +1635,9 @@
         <class className="LigaTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LigaTableViewController.h"/>
         </class>
+        <class className="ListaJogadoresTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListaJogadoresTableViewController.h"/>
+        </class>
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
@@ -1576,6 +1660,9 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PerfilJogadorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PerfilJogadorViewController.h"/>
         </class>
         <class className="RankingCampeonatoJogadorCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RankingCampeonatoJogadorCell.h"/>

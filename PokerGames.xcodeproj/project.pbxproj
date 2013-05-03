@@ -109,6 +109,8 @@
 		58E546FA1732FDC5000BC308 /* PokerGamesFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546F91732FDC5000BC308 /* PokerGamesFacade.m */; };
 		58E547001734031F000BC308 /* JackPotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FD1734031F000BC308 /* JackPotCell.m */; };
 		58E547011734031F000BC308 /* JackPotTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FF1734031F000BC308 /* JackPotTableViewController.m */; };
+		58E547061734659C000BC308 /* ListaJogadoresTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E547051734659C000BC308 /* ListaJogadoresTableViewController.m */; };
+		58E54709173465DF000BC308 /* PerfilJogadorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E54708173465DF000BC308 /* PerfilJogadorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -255,6 +257,10 @@
 		58E546FD1734031F000BC308 /* JackPotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JackPotCell.m; sourceTree = "<group>"; };
 		58E546FE1734031F000BC308 /* JackPotTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JackPotTableViewController.h; sourceTree = "<group>"; };
 		58E546FF1734031F000BC308 /* JackPotTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JackPotTableViewController.m; sourceTree = "<group>"; };
+		58E547041734659C000BC308 /* ListaJogadoresTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListaJogadoresTableViewController.h; path = ListaJogadoresView/ListaJogadoresTableViewController.h; sourceTree = "<group>"; };
+		58E547051734659C000BC308 /* ListaJogadoresTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListaJogadoresTableViewController.m; path = ListaJogadoresView/ListaJogadoresTableViewController.m; sourceTree = "<group>"; };
+		58E54707173465DF000BC308 /* PerfilJogadorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PerfilJogadorViewController.h; path = PerfilJogadorView/PerfilJogadorViewController.h; sourceTree = "<group>"; };
+		58E54708173465DF000BC308 /* PerfilJogadorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PerfilJogadorViewController.m; path = PerfilJogadorView/PerfilJogadorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -599,6 +605,8 @@
 		58967C1C171DE255003FCF47 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58E5470317346561000BC308 /* ListaJogadoresView */,
+				58E5470217346547000BC308 /* PerfilJogadorView */,
 				58E546FB1734031F000BC308 /* JackPotView */,
 				5875D9DD1731F4D3007A5397 /* RankingTorneioView */,
 				5875D9D61731EA64007A5397 /* TorneiosConcluidosView  */,
@@ -640,6 +648,24 @@
 				58E546FF1734031F000BC308 /* JackPotTableViewController.m */,
 			);
 			path = JackPotView;
+			sourceTree = "<group>";
+		};
+		58E5470217346547000BC308 /* PerfilJogadorView */ = {
+			isa = PBXGroup;
+			children = (
+				58E54707173465DF000BC308 /* PerfilJogadorViewController.h */,
+				58E54708173465DF000BC308 /* PerfilJogadorViewController.m */,
+			);
+			name = PerfilJogadorView;
+			sourceTree = "<group>";
+		};
+		58E5470317346561000BC308 /* ListaJogadoresView */ = {
+			isa = PBXGroup;
+			children = (
+				58E547041734659C000BC308 /* ListaJogadoresTableViewController.h */,
+				58E547051734659C000BC308 /* ListaJogadoresTableViewController.m */,
+			);
+			name = ListaJogadoresView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -799,6 +825,8 @@
 				58E546FA1732FDC5000BC308 /* PokerGamesFacade.m in Sources */,
 				58E547001734031F000BC308 /* JackPotCell.m in Sources */,
 				58E547011734031F000BC308 /* JackPotTableViewController.m in Sources */,
+				58E547061734659C000BC308 /* ListaJogadoresTableViewController.m in Sources */,
+				58E54709173465DF000BC308 /* PerfilJogadorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
