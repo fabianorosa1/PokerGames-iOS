@@ -10,13 +10,10 @@
 
 @interface JackPotCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel* lblNome;
-@property (nonatomic, weak) IBOutlet UILabel* lblPontos;
-@property (nonatomic, weak) IBOutlet UILabel* lblPosicao;
-@property (nonatomic, weak) IBOutlet UIImageView* imgViewFoto;
-@property (nonatomic, weak) IBOutlet UIImageView* imgViewPosicao;
+@property (nonatomic, weak) IBOutlet UILabel* lblValor;
+@property (nonatomic, weak) IBOutlet UILabel* lblData;
+@property (nonatomic, weak) IBOutlet UILabel* lblDescricao;
 
 @property (nonatomic, strong) NSDictionary *dados;
-@property (nonatomic) NSInteger row;
 
 @end

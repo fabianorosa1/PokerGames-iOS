@@ -34,40 +34,19 @@
 {
     _dados = dados;
     
-    self.lblNome.text = [_dados valueForKey:@"Nome"];
-    self.lblPontos.text = [NSString stringWithFormat:@"%@ pontos", [_dados valueForKey:@"Pontos"]];
+    double valor = [[_dados valueForKey:@"Valor"] doubleValue];
     
-    // verifica a posicao
-    if (self.row == 0) {
-        self.lblPosicao.hidden = true;
-        self.imgViewPosicao.hidden = false;
-        [self.imgViewPosicao setImage:[PokerGamesUtil imgPrimeiroLugar]];
-    } else if (self.row == 1) {
-        self.lblPosicao.hidden = true;
-        self.imgViewPosicao.hidden = false;
-        [self.imgViewPosicao setImage:[PokerGamesUtil imgSegundoLugar]];
-    } else if (self.row == 2) {
-        self.lblPosicao.hidden = true;
-        self.imgViewPosicao.hidden = false;
-        [self.imgViewPosicao setImage:[PokerGamesUtil imgTerceiroLugar]];
+    if (valor < 0) {
+        self.lblValor.textColor = [UIColor redColor];
     } else {
-        self.lblPosicao.hidden = false;
-        self.imgViewPosicao.hidden = true;
-        self.lblPosicao.text = [NSString stringWithFormat:@"%@º", [_dados valueForKey:@"Posicao"]];
+        self.lblValor.textColor = [UIColor colorWithRed:(46/255.f) green:(139/255.f) blue:(87/255.f) alpha:1.0f];
     }
-
-    // seta a foto do jogador
-    [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:[_dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
-
-/* PROBLEMA DE PERFORMANCE NESTE BLOCO
-    // adiciona canto arredonado
-    self.imgViewFoto.layer.cornerRadius = 5.0;
-    self.imgViewFoto.layer.masksToBounds = YES;
+    self.lblValor.text = [[PokerGamesUtil currencyFormatter] stringFromNumber:[NSNumber numberWithDouble:valor]];;
     
-    // adiciona borda
-    self.imgViewFoto.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.imgViewFoto.layer.borderWidth = 1.0;  
-*/ 
+    self.lblDescricao.numberOfLines = 2;
+    [self.lblDescricao setLineBreakMode:NSLineBreakByWordWrapping];
+    self.lblDescricao.text = [_dados valueForKey:@"Descricao"];
+    self.lblData.text = [_dados valueForKey:@"Data"];
 }
 
 @end

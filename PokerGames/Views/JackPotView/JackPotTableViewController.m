@@ -109,9 +109,8 @@
     JackPotCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSDictionary *rankingJogador = arJackPot[indexPath.row];
-    cell.row = indexPath.row;
-    cell.dados = rankingJogador;
+    NSDictionary *jackpot = arJackPot[indexPath.row];
+    cell.dados = jackpot;
     
     return cell;
 }
@@ -135,14 +134,14 @@
             // cabecalho do resultados
             //NSLog(@"saldo: %@", saldo );
             
-            double valorSaldo = [saldo doubleValue];
+            double saldoValue = [saldo doubleValue];
             
-            if (saldo < 0) {
+            if (saldoValue < 0) {
                 self.lblSaldo.textColor = [UIColor redColor];
             } else {
                 self.lblSaldo.textColor = [UIColor colorWithRed:(46/255.f) green:(139/255.f) blue:(87/255.f) alpha:1.0f];
             }
-            self.lblSaldo.text = [[PokerGamesUtil currencyFormatter] stringFromNumber:[NSNumber numberWithDouble:valorSaldo]];;
+            self.lblSaldo.text = [[PokerGamesUtil currencyFormatter] stringFromNumber:[NSNumber numberWithDouble:saldoValue]];;
         }
         
     }];

@@ -511,11 +511,11 @@
            constructingBodyWithBlock:(void (^)(NSArray *jackpots, NSError *error))block
 {
     
-    NSString *path = [NSString stringWithFormat:@"Torneios.svc/Ranking/%@", idLiga];
+    NSString *path = [NSString stringWithFormat:@"Jacks.svc/Extrato/%@", idLiga];
     //NSLog(@"Path: %@", path);
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSArray *postsFromResponse = [JSON valueForKeyPath:@"RankingResult"];
+        NSArray *postsFromResponse = [JSON valueForKeyPath:@"ExtratoResult"];
         if (block) {
             // NSLog(@"postsFromResponse: %@", postsFromResponse);
             block(postsFromResponse, nil);
