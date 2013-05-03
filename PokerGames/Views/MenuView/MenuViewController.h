@@ -10,8 +10,8 @@
 
 @interface MenuViewController : UITableViewController
 
-@property (nonatomic, strong) IBOutlet UILabel* lblNome;
-@property (nonatomic, strong) IBOutlet UIImageView* imgViewFoto;
+@property (nonatomic, weak) IBOutlet UILabel* lblNome;
+@property (nonatomic, weak) IBOutlet UIImageView* imgViewFoto;
 
 
 @end

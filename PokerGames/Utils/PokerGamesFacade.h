@@ -67,4 +67,12 @@
 - (void)buscaRankingTorneioWithBlock:(NSNumber *)idTorneio
            constructingBodyWithBlock:(void (^)(NSArray *ranking, NSError *error))block;
 
+// métodos da tela do JackPot
+
+- (void)buscaCabecalhoJackPotWithBlock:(NSNumber *)idLiga
+             constructingBodyWithBlock:(void (^)(NSString *saldo, NSError *error))block;
+
+- (void)buscaJackPotWithBlock:(NSNumber *)idLiga
+    constructingBodyWithBlock:(void (^)(NSArray *jackpots, NSError *error))block;
+
 @end

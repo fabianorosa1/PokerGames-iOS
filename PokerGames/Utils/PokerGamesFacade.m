@@ -484,4 +484,48 @@
     }];
 }
 
+// métodos da tela do JackPot
+
+- (void)buscaCabecalhoJackPotWithBlock:(NSNumber *)idLiga
+             constructingBodyWithBlock:(void (^)(NSString *saldo, NSError *error))block
+{
+    
+    NSString *path = [NSString stringWithFormat:@"Jacks.svc/Saldo/%@", idLiga];
+    //NSLog(@"Path: %@", path);
+    
+    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+        NSString *postsFromResponse = [JSON valueForKeyPath:@"SaldoResult"];
+        if (block) {
+            //NSLog(@"postsFromResponse: %@", postsFromResponse);
+            block(postsFromResponse, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            NSLog(@"Path: %@", path);
+            block(@"", error);
+        }
+    }];
+}
+
+- (void)buscaJackPotWithBlock:(NSNumber *)idLiga
+           constructingBodyWithBlock:(void (^)(NSArray *jackpots, NSError *error))block
+{
+    
+    NSString *path = [NSString stringWithFormat:@"Torneios.svc/Ranking/%@", idLiga];
+    //NSLog(@"Path: %@", path);
+    
+    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+        NSArray *postsFromResponse = [JSON valueForKeyPath:@"RankingResult"];
+        if (block) {
+            // NSLog(@"postsFromResponse: %@", postsFromResponse);
+            block(postsFromResponse, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            NSLog(@"Path: %@", path);
+            block([NSArray array], error);
+        }
+    }];
+}
+
 @end

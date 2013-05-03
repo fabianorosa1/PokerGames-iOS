@@ -107,6 +107,8 @@
 		58967C26171DE2A1003FCF47 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967C25171DE2A1003FCF47 /* LoginViewController.m */; };
 		589B3B631721DAA100AAC977 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 589B3B621721DAA100AAC977 /* AFAppDotNetAPIClient.m */; };
 		58E546FA1732FDC5000BC308 /* PokerGamesFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546F91732FDC5000BC308 /* PokerGamesFacade.m */; };
+		58E547001734031F000BC308 /* JackPotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FD1734031F000BC308 /* JackPotCell.m */; };
+		58E547011734031F000BC308 /* JackPotTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FF1734031F000BC308 /* JackPotTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -249,6 +251,10 @@
 		589B3B621721DAA100AAC977 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
 		58E546F81732FDC5000BC308 /* PokerGamesFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerGamesFacade.h; sourceTree = "<group>"; };
 		58E546F91732FDC5000BC308 /* PokerGamesFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PokerGamesFacade.m; sourceTree = "<group>"; };
+		58E546FC1734031F000BC308 /* JackPotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JackPotCell.h; sourceTree = "<group>"; };
+		58E546FD1734031F000BC308 /* JackPotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JackPotCell.m; sourceTree = "<group>"; };
+		58E546FE1734031F000BC308 /* JackPotTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JackPotTableViewController.h; sourceTree = "<group>"; };
+		58E546FF1734031F000BC308 /* JackPotTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JackPotTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -593,6 +599,7 @@
 		58967C1C171DE255003FCF47 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58E546FB1734031F000BC308 /* JackPotView */,
 				5875D9DD1731F4D3007A5397 /* RankingTorneioView */,
 				5875D9D61731EA64007A5397 /* TorneiosConcluidosView  */,
 				5882A59E1730BA76009B858C /* DetalhesJogadorView */,
@@ -622,6 +629,17 @@
 				589B3B621721DAA100AAC977 /* AFAppDotNetAPIClient.m */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		58E546FB1734031F000BC308 /* JackPotView */ = {
+			isa = PBXGroup;
+			children = (
+				58E546FC1734031F000BC308 /* JackPotCell.h */,
+				58E546FD1734031F000BC308 /* JackPotCell.m */,
+				58E546FE1734031F000BC308 /* JackPotTableViewController.h */,
+				58E546FF1734031F000BC308 /* JackPotTableViewController.m */,
+			);
+			path = JackPotView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -779,6 +797,8 @@
 				5875D9E21731F4D3007A5397 /* RankingTorneioCell.m in Sources */,
 				5875D9E31731F4D3007A5397 /* RankingTorneioTableViewController.m in Sources */,
 				58E546FA1732FDC5000BC308 /* PokerGamesFacade.m in Sources */,
+				58E547001734031F000BC308 /* JackPotCell.m in Sources */,
+				58E547011734031F000BC308 /* JackPotTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

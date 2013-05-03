@@ -8,7 +8,7 @@
 
 @interface RankingCampeonatoTableViewController : UITableViewController
 
-@property (nonatomic, strong) IBOutlet UIView* viewHeader;
-@property (nonatomic, strong) IBOutlet UILabel* lblApelidoCampeonato;
+@property (nonatomic, weak) IBOutlet UIView* viewHeader;
+@property (nonatomic, weak) IBOutlet UILabel* lblApelidoCampeonato;
 
 @end

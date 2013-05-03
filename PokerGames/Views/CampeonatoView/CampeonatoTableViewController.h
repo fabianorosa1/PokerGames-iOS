@@ -10,8 +10,8 @@
 
 @interface CampeonatoTableViewController : UITableViewController
 
-@property (nonatomic, strong) IBOutlet UIView* viewHeader;
-@property (nonatomic, strong) IBOutlet UILabel* lblLiga;
+@property (nonatomic, weak) IBOutlet UIView* viewHeader;
+@property (nonatomic, weak) IBOutlet UILabel* lblLiga;
 @property (nonatomic, strong) Liga *ligaSelecionada;
 
 @end

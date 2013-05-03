@@ -8,12 +8,12 @@
 
 @interface TorneiosConcluidosCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UIImageView* imgViewFoto;
-@property (nonatomic, strong) IBOutlet UILabel* lblDataRealizacao;
-@property (nonatomic, strong) IBOutlet UILabel* lblNome;
-@property (nonatomic, strong) IBOutlet UILabel* lblQtInscritos;
-@property (nonatomic, strong) IBOutlet UILabel* lblSaldoJack;
-@property (nonatomic, strong) IBOutlet UILabel* lblVencedor;
+@property (nonatomic, weak) IBOutlet UIImageView* imgViewFoto;
+@property (nonatomic, weak) IBOutlet UILabel* lblDataRealizacao;
+@property (nonatomic, weak) IBOutlet UILabel* lblNome;
+@property (nonatomic, weak) IBOutlet UILabel* lblQtInscritos;
+@property (nonatomic, weak) IBOutlet UILabel* lblSaldoJack;
+@property (nonatomic, weak) IBOutlet UILabel* lblVencedor;
 
 @property (nonatomic, strong) NSDictionary *dados;
 

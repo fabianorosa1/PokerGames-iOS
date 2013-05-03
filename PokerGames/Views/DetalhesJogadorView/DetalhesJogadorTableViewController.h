@@ -10,18 +10,18 @@
 
 @interface DetalhesJogadorTableViewController : UITableViewController
 
-@property (nonatomic, strong) IBOutlet UIView* viewHeader;
-@property (nonatomic, strong) IBOutlet UILabel* lblJogador;
-@property (nonatomic, strong) IBOutlet UILabel* lblCampeonato;
-@property (nonatomic, strong) IBOutlet UIImageView* imgViewFoto;
-@property (nonatomic, strong) IBOutlet UILabel* lblAlgoz;
-@property (nonatomic, strong) IBOutlet UILabel* lblColocacao;
-@property (nonatomic, strong) IBOutlet UILabel* lblITM;
-@property (nonatomic, strong) IBOutlet UILabel* lblMedia;
-@property (nonatomic, strong) IBOutlet UILabel* lblParticipacoes;
-@property (nonatomic, strong) IBOutlet UILabel* lblPontos;
-@property (nonatomic, strong) IBOutlet UILabel* lblSaldo;
-@property (nonatomic, strong) IBOutlet UILabel* lblVitima;
+@property (nonatomic, weak) IBOutlet UIView* viewHeader;
+@property (nonatomic, weak) IBOutlet UILabel* lblJogador;
+@property (nonatomic, weak) IBOutlet UILabel* lblCampeonato;
+@property (nonatomic, weak) IBOutlet UIImageView* imgViewFoto;
+@property (nonatomic, weak) IBOutlet UILabel* lblAlgoz;
+@property (nonatomic, weak) IBOutlet UILabel* lblColocacao;
+@property (nonatomic, weak) IBOutlet UILabel* lblITM;
+@property (nonatomic, weak) IBOutlet UILabel* lblMedia;
+@property (nonatomic, weak) IBOutlet UILabel* lblParticipacoes;
+@property (nonatomic, weak) IBOutlet UILabel* lblPontos;
+@property (nonatomic, weak) IBOutlet UILabel* lblSaldo;
+@property (nonatomic, weak) IBOutlet UILabel* lblVitima;
 
 @property (nonatomic, strong) Jogador *jogador;
 

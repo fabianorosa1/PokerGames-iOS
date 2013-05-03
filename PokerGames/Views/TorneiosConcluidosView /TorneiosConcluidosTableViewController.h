@@ -8,7 +8,7 @@
 
 @interface TorneiosConcluidosTableViewController : UITableViewController
 
-@property (nonatomic, strong) IBOutlet UIView* viewHeader;
-@property (nonatomic, strong) IBOutlet UILabel* lblCampeonato;
+@property (nonatomic, weak) IBOutlet UIView* viewHeader;
+@property (nonatomic, weak) IBOutlet UILabel* lblCampeonato;
 
 @end

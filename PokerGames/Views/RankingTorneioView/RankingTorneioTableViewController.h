@@ -8,14 +8,13 @@
 
 @interface RankingTorneioTableViewController : UITableViewController
 
-@property (nonatomic, strong) IBOutlet UIView* viewHeader;
+@property (nonatomic, weak) IBOutlet UIView* viewHeader;
+@property (nonatomic, weak) IBOutlet UILabel* lblTorneio;
+@property (nonatomic, weak) IBOutlet UILabel* lblData;
+@property (nonatomic, weak) IBOutlet UILabel* lblQtInscritos;
+@property (nonatomic, weak) IBOutlet UILabel* lblSaldoJack;
+@property (nonatomic, weak) IBOutlet UILabel* lblIncritos;
+
 @property (nonatomic, strong) NSNumber* idTorneio;
-
-@property (nonatomic, strong) IBOutlet UILabel* lblTorneio;
-@property (nonatomic, strong) IBOutlet UILabel* lblData;
-@property (nonatomic, strong) IBOutlet UILabel* lblQtInscritos;
-@property (nonatomic, strong) IBOutlet UILabel* lblSaldoJack;
-
-@property (nonatomic, strong) IBOutlet UILabel* lblIncritos;
 
 @end

@@ -10,18 +10,12 @@
 
 @interface RankingCampeonatoJogadorCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel* lblNome;
-
-@property (nonatomic, strong) IBOutlet UILabel* lblPontos;
-
-@property (nonatomic, strong) IBOutlet UILabel* lblPosicao;
-
-@property (nonatomic, strong) IBOutlet UIImageView* imgViewFoto;
-
-@property (nonatomic, strong) IBOutlet UIImageView* imgViewPosicao;
-
+@property (nonatomic, weak) IBOutlet UILabel* lblNome;
+@property (nonatomic, weak) IBOutlet UILabel* lblPontos;
+@property (nonatomic, weak) IBOutlet UILabel* lblPosicao;
+@property (nonatomic, weak) IBOutlet UIImageView* imgViewFoto;
+@property (nonatomic, weak) IBOutlet UIImageView* imgViewPosicao;
 @property (nonatomic, strong) NSDictionary *dados;
-
 @property (nonatomic) NSInteger row;
 
 @end
