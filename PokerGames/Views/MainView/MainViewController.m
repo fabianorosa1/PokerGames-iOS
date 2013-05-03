@@ -8,7 +8,6 @@
 
 #import "MainViewController.h"
 #import "Jogador.h"
-#import "AppDelegate.h"
 
 @interface MainViewController ()
 
@@ -23,10 +22,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (AppDelegate *)appDelegate {
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 - (void)viewDidLoad
