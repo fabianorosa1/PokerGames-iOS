@@ -75,4 +75,9 @@
 - (void)buscaJackPotWithBlock:(NSNumber *)idLiga
     constructingBodyWithBlock:(void (^)(NSArray *jackpots, NSError *error))block;
 
+// metodos da tela de lista de jogadores
+
+- (void)buscaListaJogadoresPotWithBlock:(NSNumber *)idLiga
+              constructingBodyWithBlock:(void (^)(NSArray *jogadores, NSError *error))block;
+
 @end

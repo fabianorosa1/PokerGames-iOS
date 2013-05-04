@@ -10,4 +10,7 @@
 
 @interface ListaJogadoresTableViewController : UITableViewController
 
+@property (nonatomic, weak) IBOutlet UIView* viewHeader;
+@property (nonatomic, weak) IBOutlet UILabel* lblLiga;
+
 @end

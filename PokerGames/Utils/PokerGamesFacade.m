@@ -528,4 +528,32 @@
     }];
 }
 
+// metodos da tela de lista de jogadores
+
+- (void)buscaListaJogadoresPotWithBlock:(NSNumber *)idLiga
+    constructingBodyWithBlock:(void (^)(NSArray *jogadores, NSError *error))block
+{
+    
+    NSString *path = [NSString stringWithFormat:@"Jogadores.svc/Ativos/%@", idLiga];
+    //NSLog(@"Path: %@", path);
+    
+    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+        NSArray *postsFromResponse = [JSON valueForKeyPath:@"AtivosResult"];
+        NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
+        for (NSDictionary *attributes in postsFromResponse) {
+            Jogador *jogador = [[Jogador alloc] initWithAttributes:attributes];
+            [mutablePosts addObject:jogador];
+        }
+        
+        if (block) {
+            block([NSArray arrayWithArray:mutablePosts], nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            NSLog(@"Path: %@", path);
+            block([NSArray array], error);
+        }
+    }];
+}
+
 @end
