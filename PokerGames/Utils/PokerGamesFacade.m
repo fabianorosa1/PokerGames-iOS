@@ -13,7 +13,9 @@
 #import "Campeonato.h"
 #import <CoreData/CoreData.h>
 
-@implementation PokerGamesFacade
+@implementation PokerGamesFacade {
+    BOOL *indLog;
+}
 
 #pragma mark Singleton Methods
 
@@ -28,7 +30,8 @@
 
 - (id)init {
     if (self = [super init]) {
-        //
+        // configuracao de log
+        indLog = FALSE;
     }
     return self;
 }
@@ -41,7 +44,24 @@
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
+- (void) logServicos:(NSString*)label text:(NSString*)text {
+    if (indLog) {
+        //NSLog(@"%@: %@", label, text);
+    }
+}
+
 #pragma mark - Métodos do Jogador
+
+- (void)efetuaLogout {
+    // limpa dados de configuracao
+    [self excluirTodosJogadoresDependencias];
+    
+    // seta não configurado
+    [self setIsFirstTime:TRUE];
+    
+    // limpa o cache de reanking geral
+    self.arRankingGeral = nil;
+}
 
 - (void)efetuaLoginPlayerWithBlock:(NSString *)user
                              passw:(NSString *)passw
@@ -49,6 +69,7 @@
 {
     
     NSString *path = [NSString stringWithFormat:@"Jogadores.svc/CredencialJogador/%@/%@", user, passw];
+    //logServicos(@"Path", path);
     //NSLog(@"Path: %@", path);
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
@@ -61,7 +82,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block(nil, error);
         }
     }];
@@ -82,7 +103,7 @@
     
     if (fetchedObjectsJogador.count > 0) {
         Jogador *jogadorEntity = fetchedObjectsJogador[0];
-        //NSLog(@"Jogador Entity: %@", jogadorEntity);
+        ////NSLog(@"Jogador Entity: %@", jogadorEntity);
         
         // cria novo jogador
         Jogador *newJogador = [[Jogador alloc] init];
@@ -107,7 +128,7 @@
         
         if (fetchedObjectsLiga.count > 0) {
             Liga *ligaEntity = fetchedObjectsLiga[0];
-            // NSLog(@"Liga Entity: %@", ligaEntity);
+            // //NSLog(@"Liga Entity: %@", ligaEntity);
             
             Liga *newLiga = [[Liga alloc] init];
             newLiga.idLiga = ligaEntity.idLiga;
@@ -130,7 +151,7 @@
             
             if (fetchedObjectsCampeonato.count > 0) {
                 Campeonato *campeonatoEntity = fetchedObjectsCampeonato[0];
-                // NSLog(@"Campeonato Entity: %@", campeonatoEntity);
+                // //NSLog(@"Campeonato Entity: %@", campeonatoEntity);
                 
                 Campeonato *newCampeonato = [[Campeonato alloc] init];
                 newCampeonato.idCampeonato = campeonatoEntity.idCampeonato;
@@ -182,7 +203,7 @@
     
     NSError *error = nil;
     if (![context save:&error]) {
-        NSLog(@"Não foi possível inserir o jogador: %@", [error localizedDescription]);
+        //NSLog(@"Não foi possível inserir o jogador: %@", [error localizedDescription]);
     }
 }
 
@@ -198,7 +219,7 @@
     
     for (NSManagedObject *managedObject in items) {
     	[managedObjectContext deleteObject:managedObject];
-    	//NSLog (@"%@ object deleted", managedObject);
+    	////NSLog (@"%@ object deleted", managedObject);
     }
 }
 
@@ -216,7 +237,7 @@
     
     NSError *error;
     if (![context save:&error]) {
-        NSLog(@"Error deleting data - error:%@", error);
+        //NSLog(@"Error deleting data - error:%@", error);
     }
 }
 
@@ -293,7 +314,7 @@
         
         NSError *error;
         if (![context save:&error]) {
-            NSLog(@"Error deleting data - error:%@", error);
+            //NSLog(@"Error deleting data - error:%@", error);
         }
     }
 }
@@ -307,6 +328,8 @@
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"LigaResult"];
+        //NSLog(@"postsFromResponse: %@", postsFromResponse);
+
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
         for (NSDictionary *attributes in postsFromResponse) {
             Liga *liga = [[Liga alloc] initWithAttributes:attributes];
@@ -318,7 +341,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block([NSArray array], error);
         }
     }];
@@ -335,6 +358,8 @@
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"TodosResult"];
+        //NSLog(@"postsFromResponse: %@", postsFromResponse);
+        
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
         for (NSDictionary *attributes in postsFromResponse) {
             Campeonato *campeonato = [[Campeonato alloc] initWithAttributes:attributes];
@@ -346,7 +371,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block([NSArray array], error);
         }
     }];
@@ -370,7 +395,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block([NSArray array], error);
         }
     }];
@@ -388,11 +413,12 @@
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"ResultadosTorneiosResult"];
         if (block) {
+            //NSLog(@"postsFromResponse: %@", postsFromResponse);
             block(postsFromResponse, nil);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block([NSArray array], error);
         }
     }];
@@ -410,11 +436,12 @@
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSDictionary *postsFromResponse = [JSON valueForKeyPath:@"ResumoResultadosResult"];
         if (block) {
+            //NSLog(@"postsFromResponse: %@", postsFromResponse);
             block(postsFromResponse, nil);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block([NSDictionary dictionary], error);
         }
     }];
@@ -436,7 +463,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block([NSArray array], error);
         }
     }];
@@ -457,7 +484,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block([NSDictionary dictionary], error);
         }
     }];
@@ -473,12 +500,12 @@
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"RankingResult"];
         if (block) {
-            // NSLog(@"postsFromResponse: %@", postsFromResponse);
+            //NSLog(@"postsFromResponse: %@", postsFromResponse);
             block(postsFromResponse, nil);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block([NSArray array], error);
         }
     }];
@@ -501,7 +528,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block(@"", error);
         }
     }];
@@ -517,12 +544,12 @@
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"ExtratoResult"];
         if (block) {
-            // NSLog(@"postsFromResponse: %@", postsFromResponse);
+            //NSLog(@"postsFromResponse: %@", postsFromResponse);
             block(postsFromResponse, nil);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block([NSArray array], error);
         }
     }];
@@ -534,11 +561,13 @@
     constructingBodyWithBlock:(void (^)(NSArray *jogadores, NSError *error))block
 {
     
-    NSString *path = [NSString stringWithFormat:@"Jogadores.svc/Ativos/%@", idLiga];
+    NSString *path = [NSString stringWithFormat:@"Jogadores.svc/Todos/%@", idLiga];
     //NSLog(@"Path: %@", path);
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSArray *postsFromResponse = [JSON valueForKeyPath:@"AtivosResult"];
+        NSArray *postsFromResponse = [JSON valueForKeyPath:@"TodosResult"];
+        //NSLog(@"postsFromResponse: %@", postsFromResponse);
+        
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
         for (NSDictionary *attributes in postsFromResponse) {
             Jogador *jogador = [[Jogador alloc] initWithAttributes:attributes];
@@ -550,7 +579,7 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {
-            NSLog(@"Path: %@", path);
+            //NSLog(@"Path: %@", path);
             block([NSArray array], error);
         }
     }];

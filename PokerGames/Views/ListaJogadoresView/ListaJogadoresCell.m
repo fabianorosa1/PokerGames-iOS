@@ -37,6 +37,16 @@
     self.lblNome.text = jogador.nome;
     self.lblApelido.text = jogador.apelido;
     self.lblEmail.text = jogador.email;
+    self.lblFone.text = jogador.fone;
+    
+    [self.imgFicha setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg", jogador.imgClas]]];
+    
+    // verifica o status
+    if ([jogador.status caseInsensitiveCompare:@"I"] == NSOrderedSame) {
+        self.lblNome.textColor = [UIColor redColor];
+    } else {
+        self.lblNome.textColor = [UIColor blackColor];
+    }
     
     // seta a foto do jogador
     [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:jogador.foto] placeholderImage:[PokerGamesUtil imgPlaceholder]];

@@ -22,6 +22,8 @@
     self.nome = [attributes valueForKeyPath:@"Nome"];
     self.foto = [attributes valueForKeyPath:@"Foto"];
     self.status = [attributes valueForKeyPath:@"Status"];
+    self.imgClas = [attributes valueForKeyPath:@"ImgClas"];
+    self.fone = [attributes valueForKeyPath:@"Fone"];
     
     return self;
 }

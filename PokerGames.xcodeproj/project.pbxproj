@@ -108,6 +108,11 @@
 		58967C1B171DDF58003FCF47 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967C1A171DDF58003FCF47 /* CoreData.framework */; };
 		58967C26171DE2A1003FCF47 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967C25171DE2A1003FCF47 /* LoginViewController.m */; };
 		589B3B631721DAA100AAC977 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 589B3B621721DAA100AAC977 /* AFAppDotNetAPIClient.m */; };
+		589B83DD1739B5D80024F972 /* fazul.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83D81739B5D80024F972 /* fazul.jpg */; };
+		589B83DE1739B5D80024F972 /* fbranca.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83D91739B5D80024F972 /* fbranca.jpg */; };
+		589B83DF1739B5D80024F972 /* fpreta.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83DA1739B5D80024F972 /* fpreta.jpg */; };
+		589B83E01739B5D80024F972 /* fverde.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83DB1739B5D80024F972 /* fverde.jpg */; };
+		589B83E11739B5D80024F972 /* fvermelha.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83DC1739B5D80024F972 /* fvermelha.jpg */; };
 		58E546FA1732FDC5000BC308 /* PokerGamesFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546F91732FDC5000BC308 /* PokerGamesFacade.m */; };
 		58E547001734031F000BC308 /* JackPotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FD1734031F000BC308 /* JackPotCell.m */; };
 		58E547011734031F000BC308 /* JackPotTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FF1734031F000BC308 /* JackPotTableViewController.m */; };
@@ -257,6 +262,11 @@
 		58967C25171DE2A1003FCF47 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		589B3B611721DAA100AAC977 /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
 		589B3B621721DAA100AAC977 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
+		589B83D81739B5D80024F972 /* fazul.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fazul.jpg; sourceTree = "<group>"; };
+		589B83D91739B5D80024F972 /* fbranca.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fbranca.jpg; sourceTree = "<group>"; };
+		589B83DA1739B5D80024F972 /* fpreta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fpreta.jpg; sourceTree = "<group>"; };
+		589B83DB1739B5D80024F972 /* fverde.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fverde.jpg; sourceTree = "<group>"; };
+		589B83DC1739B5D80024F972 /* fvermelha.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fvermelha.jpg; sourceTree = "<group>"; };
 		58E546F81732FDC5000BC308 /* PokerGamesFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerGamesFacade.h; sourceTree = "<group>"; };
 		58E546F91732FDC5000BC308 /* PokerGamesFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PokerGamesFacade.m; sourceTree = "<group>"; };
 		58E546FC1734031F000BC308 /* JackPotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JackPotCell.h; sourceTree = "<group>"; };
@@ -547,6 +557,11 @@
 		58967BB5171DD2B5003FCF47 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				589B83D81739B5D80024F972 /* fazul.jpg */,
+				589B83D91739B5D80024F972 /* fbranca.jpg */,
+				589B83DA1739B5D80024F972 /* fpreta.jpg */,
+				589B83DB1739B5D80024F972 /* fverde.jpg */,
+				589B83DC1739B5D80024F972 /* fvermelha.jpg */,
 				583D9D411728C42C00249207 /* primeiro.png */,
 				583D9D421728C42C00249207 /* segundo.png */,
 				583D9D431728C42C00249207 /* terceiro.png */,
@@ -794,6 +809,11 @@
 				583D9D461728C42C00249207 /* terceiro.png in Resources */,
 				584E50C6172CA3120007D4B7 /* .gitattributes in Resources */,
 				584E50C7172CA3120007D4B7 /* .gitignore in Resources */,
+				589B83DD1739B5D80024F972 /* fazul.jpg in Resources */,
+				589B83DE1739B5D80024F972 /* fbranca.jpg in Resources */,
+				589B83DF1739B5D80024F972 /* fpreta.jpg in Resources */,
+				589B83E01739B5D80024F972 /* fverde.jpg in Resources */,
+				589B83E11739B5D80024F972 /* fvermelha.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

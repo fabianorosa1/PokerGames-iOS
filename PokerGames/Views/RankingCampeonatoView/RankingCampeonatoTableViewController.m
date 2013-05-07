@@ -87,7 +87,7 @@
     [super viewWillAppear:animated];
     
     self.title = @"Ranking Geral";
-    self.lblApelidoCampeonato.text =  [NSString stringWithFormat:@"Campeonato: %@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido];
+    self.lblApelidoCampeonato.text =  [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido];
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];

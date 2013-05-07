@@ -110,9 +110,7 @@
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"Desconectando";
         
-		[[PokerGamesFacade sharedInstance] excluirTodosJogadoresDependencias];
-        // seta não configurado
-        [[PokerGamesFacade sharedInstance] setIsFirstTime:TRUE];
+		[[PokerGamesFacade sharedInstance] efetuaLogout];
         
         [hud hide:YES];
         

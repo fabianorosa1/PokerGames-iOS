@@ -59,15 +59,6 @@
     // seta a foto do jogador
     [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:[_dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
 
-/* PROBLEMA DE PERFORMANCE NESTE BLOCO
-    // adiciona canto arredonado
-    self.imgViewFoto.layer.cornerRadius = 5.0;
-    self.imgViewFoto.layer.masksToBounds = YES;
-    
-    // adiciona borda
-    self.imgViewFoto.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.imgViewFoto.layer.borderWidth = 1.0;  
-*/ 
 }
 
 @end

@@ -11,7 +11,9 @@
 @property (nonatomic, weak) IBOutlet UILabel* lblApelido;
 @property (nonatomic, weak) IBOutlet UILabel* lblEmail;
 @property (nonatomic, weak) IBOutlet UILabel* lblNome;
+@property (nonatomic, weak) IBOutlet UILabel* lblFone;
 @property (nonatomic, weak) IBOutlet UIImageView* imgViewFoto;
+@property (nonatomic, weak) IBOutlet UIImageView* imgFicha;
 
 @property (nonatomic, strong) Jogador *jogador;
 

@@ -13,6 +13,8 @@
 @property (strong, nonatomic) Jogador *jogadorLogin;
 @property (nonatomic) BOOL isFirstTime;
 
+// lista de rankign em cache
+@property (strong, nonatomic) NSArray *arRankingGeral;
 
 #pragma mark Singleton Methods
 
@@ -24,7 +26,7 @@
                              passw:(NSString *)passw
          constructingBodyWithBlock:(void (^)(Jogador *jogador, NSError *error))block;
 
-
+- (void) efetuaLogout;
 - (Jogador*) loadJogadorEntity;
 - (void)insertJogadorEntity:(Jogador*)jogador;
 - (void) atualizaLigaCampeonatoJogadorEntity:(Jogador*)jogador;

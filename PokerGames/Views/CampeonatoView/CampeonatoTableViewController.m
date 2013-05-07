@@ -71,9 +71,9 @@
     self.title = @"Campeonato";
     
     if (self.ligaSelecionada) {
-        self.lblLiga.text = [NSString stringWithFormat:@"Liga: %@", self.ligaSelecionada.apelido];
+        self.lblLiga.text = [NSString stringWithFormat:@"%@", self.ligaSelecionada.apelido];
     } else {
-        self.lblLiga.text = [NSString stringWithFormat:@"Liga: %@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.apelido];
+        self.lblLiga.text = [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.apelido];
     }
 }
 
