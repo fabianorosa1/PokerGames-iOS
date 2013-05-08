@@ -46,6 +46,8 @@
     self.lblDescricao.numberOfLines = 2;
     [self.lblDescricao setLineBreakMode:NSLineBreakByWordWrapping];
     self.lblDescricao.text = [_dados valueForKey:@"Descricao"];
+    [self.lblDescricao sizeToFit];
+    
     self.lblData.text = [_dados valueForKey:@"Data"];
 }
 

@@ -155,64 +155,49 @@
 }
 
 - (void) buscaRanking {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.labelText = @"Buscando ranking";
-    
-    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
-    //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
-    
-    // busca lista de campeonatos da liga
-    [[PokerGamesFacade sharedInstance] buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
-                              idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
-                 constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
-                     
-         [hud hide:YES];
-         
-         if (error) {
-             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-         } else {
-             // ranking do campeonato
-             //NSLog(@"Ranking: %@", ranking );
-             arRanking = ranking;
+    // verifica se o array do ranking esta no cache
+    arRanking = [[PokerGamesFacade sharedInstance] arRankingGeral];
+    if (arRanking == nil) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        hud.labelText = @"Buscando ranking";
+        
+        Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
+        //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
+        
+        // busca lista de campeonatos da liga
+        [[PokerGamesFacade sharedInstance] buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
+                                  idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
+                     constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
+                         
+             [hud hide:YES];
              
-             // atualiza table
-             [self.tableView reloadData];
-             
-             if (ranking.count <= 0) {
-                  [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum ranking encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+             if (error) {
+                 [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+             } else {
+                 // ranking do campeonato
+                 //NSLog(@"Ranking: %@", ranking );
+                 arRanking = ranking;
+                 [[PokerGamesFacade sharedInstance] setArRankingGeral:ranking];
+                 
+                 // atualiza table
+                 [self.tableView reloadData];
+                 
+                 if (ranking.count <= 0) {
+                      [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum ranking encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+                 }
              }
-         }
-         
-     }];
+             
+         }];
+    }
 }
 
 
 -(void) refreshView:(UIRefreshControl *) refresh
 {
-    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
-    //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
+    //[[PokerGamesFacade sharedInstance] setArRankingGeral:nil];
     
-    // busca lista de campeonatos da liga
-    [[PokerGamesFacade sharedInstance] buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
-                              idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
-                 constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
-                     
-     if (error) {
-         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-     } else {
-         // ranking do campeonato
-         //NSLog(@"Ranking: %@", ranking );
-         arRanking = ranking;
-         
-         // atualiza table
-         [self.tableView reloadData];
-         
-         if (ranking.count <= 0) {
-             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum ranking encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-         }
-     }
-     
-    }];
+    // busca os rankings
+    [self buscaRanking];
     
     [refresh endRefreshing];
 }

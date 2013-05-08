@@ -141,7 +141,7 @@
             } else {
                 self.lblSaldo.textColor = [UIColor colorWithRed:(46/255.f) green:(139/255.f) blue:(87/255.f) alpha:1.0f];
             }
-            self.lblSaldo.text = [[PokerGamesUtil currencyFormatter] stringFromNumber:[NSNumber numberWithDouble:saldoValue]];;
+            self.lblSaldo.text = [NSString stringWithFormat:@"Saldo: %@", [[PokerGamesUtil currencyFormatter] stringFromNumber:[NSNumber numberWithDouble:saldoValue]]];
         }
         
     }];
