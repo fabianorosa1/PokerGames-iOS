@@ -19,5 +19,5 @@ Pendencias PokerGames iOS
 - Colocar data e valor em uma linha na tela de jackpot - OK
 - Mostrar o logo da liga na tela inicial
 - Tela About
-- Colocar método log
+- Colocar método log - OK
 - Colocar label Saldo do Jack no UILabel - OK

@@ -1739,6 +1739,7 @@
         <class className="CampeonatoTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CampeonatoTableViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="imgViewLiga" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="lblLiga" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="viewHeader" candidateClass="UIView"/>
             </relationships>
