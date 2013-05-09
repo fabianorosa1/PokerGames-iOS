@@ -31,7 +31,7 @@
 - (id)init {
     if (self = [super init]) {
         // configuracao de log
-        indLog = true;
+        indLog = FALSE;
     }
     return self;
 }
