@@ -187,6 +187,9 @@
     } else {
         // verifica se foi alterado a liga ou o campeonato
         [[PokerGamesFacade sharedInstance] atualizaLigaCampeonatoJogadorEntity:jogador];
+        
+        // zera o cache do ranking
+        [[PokerGamesFacade sharedInstance] setArRankingGeral:nil];
     }
     
     [hud hide:YES];

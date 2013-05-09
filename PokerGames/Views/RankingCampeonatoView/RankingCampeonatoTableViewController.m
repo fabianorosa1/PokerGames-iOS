@@ -156,8 +156,7 @@
 
 - (void) buscaRanking {
     // verifica se o array do ranking esta no cache
-    arRanking = [[PokerGamesFacade sharedInstance] arRankingGeral];
-    if (arRanking == nil) {
+    if ([[PokerGamesFacade sharedInstance] arRankingGeral] == nil) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         hud.labelText = @"Buscando ranking";
         
@@ -186,15 +185,19 @@
                       [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum ranking encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
                  }
              }
-             
          }];
+    } else {
+        arRanking = [[PokerGamesFacade sharedInstance] arRankingGeral];
+        
+        // atualiza table
+        [self.tableView reloadData];
     }
 }
 
 
 -(void) refreshView:(UIRefreshControl *) refresh
 {
-    //[[PokerGamesFacade sharedInstance] setArRankingGeral:nil];
+    [[PokerGamesFacade sharedInstance] setArRankingGeral:nil];
     
     // busca os rankings
     [self buscaRanking];

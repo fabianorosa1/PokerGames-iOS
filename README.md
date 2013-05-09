@@ -14,10 +14,10 @@ Pendencias PokerGames iOS
 
 07/05/2013
 - Fazer cache na tela Raking Geral - OK
-- Adicionar apelido na tela de Resultados (Ranking Geral)
+- Adicionar apelido na tela de Resultados (Ranking Geral) - OK
 - Alinhar TOP descricao jackpot
 - Colocar data e valor em uma linha na tela de jackpot - OK
-- Mostrar o logo da liga na tela inicial
+- Mostrar o logo da liga na tela inicial - Em analise
 - Tela About
 - Colocar método log - OK
 - Colocar label Saldo do Jack no UILabel - OK

@@ -31,7 +31,7 @@
 - (id)init {
     if (self = [super init]) {
         // configuracao de log
-        indLog = FALSE;
+        indLog = true;
     }
     return self;
 }
@@ -219,7 +219,7 @@
     
     for (NSManagedObject *managedObject in items) {
     	[managedObjectContext deleteObject:managedObject];
-    	NSLog (@"%@ object deleted", managedObject);
+    	//NSLog (@"%@ object deleted", managedObject);
     }
 }
 

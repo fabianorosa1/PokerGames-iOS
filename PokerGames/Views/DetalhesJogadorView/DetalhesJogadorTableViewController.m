@@ -178,7 +178,8 @@
             self.lblParticipacoes.text = [cabecalho valueForKey:@"Participacoes"];
             self.lblPontos.text = [cabecalho valueForKey:@"Pontos"];
             self.lblVitima.text = [cabecalho valueForKey:@"Vitima"];
-            self.lblJogador.text = [cabecalho valueForKey:@"Apelido"];
+            self.lblJogador.text = [cabecalho valueForKey:@"Nome"];
+            self.lblApelido.text = [cabecalho valueForKey:@"Apelido"];
             
             NSNumber *saldoValue = [cabecalho valueForKey:@"Saldo"];
             double saldo = [saldoValue doubleValue];

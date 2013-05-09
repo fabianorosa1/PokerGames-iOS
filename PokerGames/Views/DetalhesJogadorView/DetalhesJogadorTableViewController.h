@@ -12,6 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet UIView* viewHeader;
 @property (nonatomic, weak) IBOutlet UILabel* lblJogador;
+@property (nonatomic, weak) IBOutlet UILabel* lblApelido;
 @property (nonatomic, weak) IBOutlet UILabel* lblCampeonato;
 @property (nonatomic, weak) IBOutlet UIImageView* imgViewFoto;
 @property (nonatomic, weak) IBOutlet UILabel* lblAlgoz;
