@@ -82,4 +82,10 @@
 - (void)buscaListaJogadoresPotWithBlock:(NSNumber *)idLiga
               constructingBodyWithBlock:(void (^)(NSArray *jogadores, NSError *error))block;
 
+// metodos da tela de torneios disponiveis
+
+- (void)buscaTorneiosDisponiveisWithBlock:(NSNumber *)idLiga
+                             idCampeonato:(NSNumber *)idCampeonato
+                constructingBodyWithBlock:(void (^)(NSArray *torneios, NSError *error))block;
+
 @end

@@ -585,4 +585,28 @@
     }];
 }
 
+// metodos da tela de torneios disponiveis
+
+- (void)buscaTorneiosDisponiveisWithBlock:(NSNumber *)idLiga
+                            idCampeonato:(NSNumber *)idCampeonato
+               constructingBodyWithBlock:(void (^)(NSArray *torneios, NSError *error))block
+{
+    
+    NSString *path = [NSString stringWithFormat:@"Torneios.svc/Ativos/%@/%@", idLiga, idCampeonato];
+    [self logServicos:@"Path" text:path];
+    
+    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+        NSArray *postsFromResponse = [JSON valueForKeyPath:@"AtivosResult"];
+        if (block) {
+            [self logServicos:@"postsFromResponse" text:postsFromResponse];
+            block(postsFromResponse, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            [self logServicos:@"Path" text:path];
+            block([NSArray array], error);
+        }
+    }];
+}
+
 @end

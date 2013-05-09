@@ -113,6 +113,7 @@
 		589B83DF1739B5D80024F972 /* fpreta.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83DA1739B5D80024F972 /* fpreta.jpg */; };
 		589B83E01739B5D80024F972 /* fverde.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83DB1739B5D80024F972 /* fverde.jpg */; };
 		589B83E11739B5D80024F972 /* fvermelha.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83DC1739B5D80024F972 /* fvermelha.jpg */; };
+		58AB88CB173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AB88C9173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m */; };
 		58E546FA1732FDC5000BC308 /* PokerGamesFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546F91732FDC5000BC308 /* PokerGamesFacade.m */; };
 		58E547001734031F000BC308 /* JackPotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FD1734031F000BC308 /* JackPotCell.m */; };
 		58E547011734031F000BC308 /* JackPotTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FF1734031F000BC308 /* JackPotTableViewController.m */; };
@@ -267,6 +268,8 @@
 		589B83DA1739B5D80024F972 /* fpreta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fpreta.jpg; sourceTree = "<group>"; };
 		589B83DB1739B5D80024F972 /* fverde.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fverde.jpg; sourceTree = "<group>"; };
 		589B83DC1739B5D80024F972 /* fvermelha.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fvermelha.jpg; sourceTree = "<group>"; };
+		58AB88C9173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TorneiosDisponiveisCell.m; path = TorneiosDisponiveisView/TorneiosDisponiveisCell.m; sourceTree = "<group>"; };
+		58AB88CA173BEBB100F0F7B8 /* TorneiosDisponiveisCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TorneiosDisponiveisCell.h; path = TorneiosDisponiveisView/TorneiosDisponiveisCell.h; sourceTree = "<group>"; };
 		58E546F81732FDC5000BC308 /* PokerGamesFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerGamesFacade.h; sourceTree = "<group>"; };
 		58E546F91732FDC5000BC308 /* PokerGamesFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PokerGamesFacade.m; sourceTree = "<group>"; };
 		58E546FC1734031F000BC308 /* JackPotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JackPotCell.h; sourceTree = "<group>"; };
@@ -430,6 +433,8 @@
 		5875D9E61734A089007A5397 /* TorneiosDisponiveisView */ = {
 			isa = PBXGroup;
 			children = (
+				58AB88C9173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m */,
+				58AB88CA173BEBB100F0F7B8 /* TorneiosDisponiveisCell.h */,
 				5875D9E71734A0B9007A5397 /* TorneiosDisponiveisTableViewController.h */,
 				5875D9E81734A0B9007A5397 /* TorneiosDisponiveisTableViewController.m */,
 			);
@@ -867,6 +872,7 @@
 				58E54709173465DF000BC308 /* PerfilJogadorViewController.m in Sources */,
 				5875D9E91734A0B9007A5397 /* TorneiosDisponiveisTableViewController.m in Sources */,
 				5875D9EC1734A3DD007A5397 /* ListaJogadoresCell.m in Sources */,
+				58AB88CB173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

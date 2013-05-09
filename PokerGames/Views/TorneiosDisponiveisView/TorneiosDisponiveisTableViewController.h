@@ -10,4 +10,7 @@
 
 @interface TorneiosDisponiveisTableViewController : UITableViewController
 
+@property (nonatomic, weak) IBOutlet UIView* viewHeader;
+@property (nonatomic, weak) IBOutlet UILabel* lblCampeonato;
+
 @end

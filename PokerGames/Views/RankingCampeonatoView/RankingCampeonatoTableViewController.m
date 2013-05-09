@@ -187,10 +187,8 @@
              }
          }];
     } else {
+        // lista de ranking do cache
         arRanking = [[PokerGamesFacade sharedInstance] arRankingGeral];
-        
-        // atualiza table
-        [self.tableView reloadData];
     }
 }
 
