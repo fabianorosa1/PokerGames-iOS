@@ -103,7 +103,7 @@
     
     if (fetchedObjectsJogador.count > 0) {
         Jogador *jogadorEntity = fetchedObjectsJogador[0];
-        [self logServicos:@"Jogador Entity" text:jogadorEntity];
+        // [self logServicos:@"Jogador Entity" text:jogadorEntity];
         
         // cria novo jogador
         Jogador *newJogador = [[Jogador alloc] init];
@@ -203,7 +203,7 @@
     
     NSError *error = nil;
     if (![context save:&error]) {
-        [self logServicos:@"Não foi possível inserir o jogador" text:[error localizedDescription]];
+        NSLog(@"Não foi possível inserir o jogador: %@" ,[error localizedDescription]);
     }
 }
 
@@ -608,5 +608,29 @@
         }
     }];
 }
+
+// métodos da tela de confirmação de participação do torneio
+
+- (void)buscaDadosConfirmacaoParticipacaoWithBlock:(NSNumber *)idTorneio
+                constructingBodyWithBlock:(void (^)(NSDictionary *dados, NSError *error))block
+{
+    
+    NSString *path = [NSString stringWithFormat:@"Torneios.svc/Torneio/%@", idTorneio];
+    [self logServicos:@"Path" text:path];
+    
+    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+        NSDictionary *postsFromResponse = [JSON valueForKeyPath:@"TorneioResult"];
+        if (block) {
+            [self logServicos:@"postsFromResponse" text:postsFromResponse];
+            block(postsFromResponse, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            [self logServicos:@"Path" text:path];
+            block([NSDictionary dictionary], error);
+        }
+    }];
+}
+
 
 @end

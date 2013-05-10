@@ -12,6 +12,7 @@
 #import "ADVTheme.h"
 #import "TorneiosDisponiveisCell.h"
 #import "MBProgressHUD.h"
+#import "ConfirmarParticipacaoViewController.h"
 
 @interface TorneiosDisponiveisTableViewController () {
     NSArray *arTorneios;
@@ -119,7 +120,7 @@
     Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
     //NSLog(@"Busca jogadores da liga %@", jogadorLogin.idJogador);
     
-    // busca lista de jackpots da liga
+    // busca lista de torneios disponiveis do campeonato
     [[PokerGamesFacade sharedInstance] buscaTorneiosDisponiveisWithBlock:jogadorLogin.idLiga
                                                             idCampeonato:jogadorLogin.liga.idCampeonato
                                              constructingBodyWithBlock:^(NSArray *torneios, NSError *error) {
@@ -129,19 +130,44 @@
      if (error) {
          [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
      } else {
-         // lista de jogadores da liga
-         //NSLog(@"jogadores: %@", jogadores );
+         // lista lista de torneios disponiveis do campeonato
+         //NSLog(@"torneios: %@", torneios );
          arTorneios = torneios;
          
          // atualiza table
          [self.tableView reloadData];
          
          if (torneios.count <= 0) {
-             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum torneio encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum torneio disponível!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
          }
      }
      
     }];
 }
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"ConfirmarParticipacao" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"ConfirmarParticipacao"])
+    {
+        // Get reference to the destination view controller
+        ConfirmarParticipacaoViewController *vc = [segue destinationViewController];
+        
+        // Pass any objects to the view controller here, like...
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSDictionary *torneioSelecionado = arTorneios[indexPath.row];
+        
+        // passa o parametro
+        vc.idCampeonato = [torneioSelecionado valueForKey:@"IdTorneio"];
+    }
+}
+
 
 @end

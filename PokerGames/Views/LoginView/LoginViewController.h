@@ -11,7 +11,7 @@
 @property (nonatomic, strong) IBOutlet UITextField *userTextField;
 @property (nonatomic, strong) IBOutlet UITextField *passwordTextField;
 @property (nonatomic, strong) IBOutlet UITableView *loginTableView;
-@property (nonatomic, weak) IBOutlet UIButton *loginButton;
+@property (nonatomic, strong) IBOutlet UIButton *loginButton;
 
 -(IBAction)logInPressed:(id)sender;
 

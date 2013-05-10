@@ -41,7 +41,7 @@
     } else {
         self.lblValor.textColor = [UIColor colorWithRed:(46/255.f) green:(139/255.f) blue:(87/255.f) alpha:1.0f];
     }
-    self.lblValor.text = [[PokerGamesUtil currencyFormatter] stringFromNumber:[NSNumber numberWithDouble:valor]];;
+    self.lblValor.text = [[PokerGamesUtil currencyFormatter] stringFromNumber:[NSNumber numberWithDouble:valor]];
     
     self.lblDescricao.numberOfLines = 2;
     [self.lblDescricao setLineBreakMode:NSLineBreakByWordWrapping];

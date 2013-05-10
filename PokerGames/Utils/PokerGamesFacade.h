@@ -88,4 +88,9 @@
                              idCampeonato:(NSNumber *)idCampeonato
                 constructingBodyWithBlock:(void (^)(NSArray *torneios, NSError *error))block;
 
+// métodos da tela de confirmação de participação do torneio
+
+- (void)buscaDadosConfirmacaoParticipacaoWithBlock:(NSNumber *)idTorneio
+                         constructingBodyWithBlock:(void (^)(NSDictionary *dados, NSError *error))block;
+
 @end

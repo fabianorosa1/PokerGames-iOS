@@ -7,7 +7,6 @@
 //
 
 #import "TorneiosDisponiveisCell.h"
-#import <QuartzCore/QuartzCore.h>
 
 @implementation TorneiosDisponiveisCell
 
@@ -35,8 +34,8 @@
     
     self.lblNome.text = [_dados valueForKey:@"Nome"];
     self.lblQtInscritos.text = [_dados valueForKey:@"QtInscritos"];
-    self.lblDataRealizacao.text = [_dados valueForKey:@"DataRealizacao"];
-    self.lblHoraRealizacao.text = [_dados valueForKey:@"HoraRealizacao"];
+    self.lblDataRealizacao.text = [_dados valueForKey:@"Data"];
+    self.lblHoraRealizacao.text = [_dados valueForKey:@"Hora"];
     self.lblLocal.text = [_dados valueForKey:@"Local"];
 }
 
