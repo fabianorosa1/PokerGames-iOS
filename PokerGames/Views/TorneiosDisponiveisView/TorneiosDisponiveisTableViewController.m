@@ -165,7 +165,7 @@
         NSDictionary *torneioSelecionado = arTorneios[indexPath.row];
         
         // passa o parametro
-        vc.idCampeonato = [torneioSelecionado valueForKey:@"IdTorneio"];
+        vc.dicDadosConfirmacao = torneioSelecionado;
     }
 }
 

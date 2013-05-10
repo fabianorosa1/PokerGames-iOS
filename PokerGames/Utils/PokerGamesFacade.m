@@ -632,5 +632,28 @@
     }];
 }
 
+- (void)confirmarParticipacaoWithBlock:(NSNumber *)idTorneio
+                             idJogador:(NSNumber*)idJogador
+                             indParticipar:(NSString*)indParticipar
+                         constructingBodyWithBlock:(void (^)(NSString *result, NSError *error))block
+{
+    
+    NSString *path = [NSString stringWithFormat:@"Torneios.svc/Inscricao/%@/%@/%@", idTorneio, idJogador, indParticipar];
+    [self logServicos:@"Path" text:path];
+    
+    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+        NSString *postsFromResponse = [JSON valueForKeyPath:@"InscricaoResult"];
+        if (block) {
+            [self logServicos:@"postsFromResponse" text:postsFromResponse];
+            block(postsFromResponse, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            [self logServicos:@"Path" text:path];
+            block(@"", error);
+        }
+    }];
+}
+
 
 @end

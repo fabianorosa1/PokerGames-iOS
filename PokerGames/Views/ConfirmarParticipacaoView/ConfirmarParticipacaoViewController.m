@@ -47,6 +47,11 @@
     self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
     self.viewHeader.layer.borderWidth = 0.4f;
 
+    // popula dados cabecalho
+    self.lblNome.text = [self.dicDadosConfirmacao valueForKey:@"Nome"];
+    self.lblData.text = [self.dicDadosConfirmacao valueForKey:@"Data"];
+    self.lblHora.text = [self.dicDadosConfirmacao valueForKey:@"Hora"];
+
     // mostra os dados na tela
     [self buscaDadosConfirmacao];
 }
@@ -108,14 +113,20 @@
     if (confirmado) {
         // Confirmou!
         
-        //NSLog(@"Pergunta se deseja adicionar o evento");
+        NSLog(@"Pergunta se deseja adicionar o evento");
         
         // Pergunta se deseja adicionar o evento
-        //dispatch_async(dispatch_get_main_queue(), ^{
+        EKAuthorizationStatus eventAuthStatus = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
+        NSLog(@"Autorizacao: %d", eventAuthStatus);
+        
+        if (eventAuthStatus == EKAuthorizationStatusAuthorized || eventAuthStatus == EKAuthorizationStatusNotDetermined) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Participação confirmada! Deseja adicionar este evento ao calendário?" delegate:self cancelButtonTitle:@"Não" otherButtonTitles:@"Sim", nil];
             alert.tag = 2;
             [alert show];
-        //});
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Participção confirmada!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+        }
+
     } else {
         // Não confirmou!
         
@@ -124,30 +135,30 @@
 }
 
 - (void) saiTela {
-    //NSLog(@" saiTela");
+    NSLog(@" saiTela");
     // instancia a tela principal do ranking
     ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
-    slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
+    slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveisView"];
+    
+    //[self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (void) adicionaEventoCalendario {
-    //NSLog(@"adicionaEventoCalendario");
-    
+    NSLog(@"adicionaEventoCalendario");
+        
     EKEventStore *eventStore = [[EKEventStore alloc] init];
     
-    if ([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)])
-    {
-        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error)
-         {
-             if (granted)
-             {
-                 //NSLog(@" granted");
+    if ([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)]) {
+        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+             if (granted) {
+                 NSLog(@" granted");
                  // cria o evento
                  EKEvent *event  = [EKEvent eventWithEventStore:eventStore];
                  event.title     = [NSString stringWithFormat:@"Torneio de Poker: %@", [self lblNome].text];
                  event.location  = [NSString stringWithFormat:@"%@ - %@", [self lblLocal].text, [self lblEndereco].text];
                  event.notes     = @"Evento criado pelo aplicativo PokerGames.";
-                 
+                 event.allDay = NO;
+
                  NSDateFormatter *df = [[NSDateFormatter alloc] init];
                  [df setDateFormat:@"dd/MM/yyyy HH:mm"];
                  //NSLog(@"Data: %@", [NSString stringWithFormat:@"%@ %@", [self lblData].text, [self lblHora].text]);
@@ -161,29 +172,21 @@
                  // salva o evento
                  [event setCalendar:[eventStore defaultCalendarForNewEvents]];
                  NSError *error;
-                 [eventStore saveEvent:event span:EKSpanThisEvent error:&error];
+                 [eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&error];
                  
                  // verifica se houve erro ao salvar
                  if (error) {
-                     NSLog(@"Error: %@", error);
-                     [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-                 } else {
-                     //NSLog(@" sucesso!");
-                     [[[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Evento adicionado ao calendário com sucesso." delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+                     NSLog(@"Erro ao adicionar evento ao calendário: %@", error);
                  }
-             }
-             else
-             {
-                 [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:@"Não autorizado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-                 [self saiTela];
+             } else {
+                NSLog(@"Sem permissão para adicionar evento ao calendário.");
              }
          }];
+    } else {
+        NSLog(@"eventStore não respondeu ao selector");
     }
-    else
-    {
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:@"Não foi possível adicionar o evento" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-    }
-    //NSLog(@" fim metodo");
+    
+    NSLog(@" fim metodo");
 }
 
 - (void) buscaDadosConfirmacao {
@@ -191,7 +194,7 @@
     hud.labelText = @"Buscando dados";
     
     // busca dados da participacao do torneio
-    [[PokerGamesFacade sharedInstance] buscaDadosConfirmacaoParticipacaoWithBlock:self.idCampeonato
+    [[PokerGamesFacade sharedInstance] buscaDadosConfirmacaoParticipacaoWithBlock:[self.dicDadosConfirmacao valueForKey:@"IdTorneio"]
                                             constructingBodyWithBlock:^(NSDictionary *dados, NSError *error) {
                     
         [hud hide:YES];
@@ -199,11 +202,8 @@
         if (error) {
             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
         } else {
-            // dados
-            self.lblNome.text = [dados valueForKey:@"Nome"];
+            // dados            
             self.lblContato.text = [dados valueForKey:@"Contato"];
-            self.lblData.text = [dados valueForKey:@"Data"];
-            self.lblHora.text = [dados valueForKey:@"Hora"];
             self.lblLocal.text = [dados valueForKey:@"Local"];
             self.lblQtInscritos.text = [dados valueForKey:@"QtInscritos"];
             self.lblVlAddOn.text = [dados valueForKey:@"VlAddOn"];
@@ -220,9 +220,7 @@
             [self.lblEndereco setLineBreakMode:NSLineBreakByWordWrapping];
             self.lblEndereco.text = [dados valueForKey:@"Endereco"];
             [self.lblEndereco sizeToFit];
-
         }
-        
     }];
 }
 

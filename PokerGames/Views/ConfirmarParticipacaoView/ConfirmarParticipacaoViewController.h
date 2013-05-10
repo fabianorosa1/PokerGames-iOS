@@ -27,7 +27,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *btnParticipar;
 @property (nonatomic, weak) IBOutlet UIButton *btnNaoParticipar;
 
-@property (nonatomic, strong) NSNumber* idCampeonato;
+@property (nonatomic, strong) NSDictionary* dicDadosConfirmacao;
 
 -(IBAction)participarPressed:(id)sender;
 -(IBAction)NaoParticiparPressed:(id)sender;
