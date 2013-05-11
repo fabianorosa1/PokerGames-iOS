@@ -149,13 +149,14 @@
     EKEventStore *eventStore = [[EKEventStore alloc] init];
     
     if ([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)]) {
+        ConfirmarParticipacaoViewController * __weak weakSelf = self; // avoid capturing self in the block
         [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
              if (granted) {
                  NSLog(@" granted");
                  // cria o evento
                  EKEvent *event  = [EKEvent eventWithEventStore:eventStore];
-                 event.title     = [NSString stringWithFormat:@"Torneio de Poker: %@", [self lblNome].text];
-                 event.location  = [NSString stringWithFormat:@"%@ - %@", [self lblLocal].text, [self lblEndereco].text];
+                 event.title     = [NSString stringWithFormat:@"Torneio de Poker: %@", [weakSelf lblNome].text];
+                 event.location  = [NSString stringWithFormat:@"%@ - %@", [weakSelf lblLocal].text, [weakSelf lblEndereco].text];
                  event.notes     = @"Evento criado pelo aplicativo PokerGames.";
                  event.allDay = NO;
 
@@ -163,7 +164,7 @@
                  [df setDateFormat:@"dd/MM/yyyy HH:mm"];
                  //NSLog(@"Data: %@", [NSString stringWithFormat:@"%@ %@", [self lblData].text, [self lblHora].text]);
                  
-                 NSDate *dateEvent = [df dateFromString: [NSString stringWithFormat:@"%@ %@", [self lblData].text, [self lblHora].text]];
+                 NSDate *dateEvent = [df dateFromString: [NSString stringWithFormat:@"%@ %@", [weakSelf lblData].text, [weakSelf lblHora].text]];
                  //NSLog(@"Date: %@", dateEvent);
                  
                  event.startDate = dateEvent;//[[NSDate alloc] init];

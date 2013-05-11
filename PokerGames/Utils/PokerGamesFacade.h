@@ -82,6 +82,8 @@
 - (void)buscaListaJogadoresPotWithBlock:(NSNumber *)idLiga
               constructingBodyWithBlock:(void (^)(NSArray *jogadores, NSError *error))block;
 
+- (void) adicionaJogadorAosContatos:(Jogador*)jogador;
+
 // metodos da tela de torneios disponiveis
 
 - (void)buscaTorneiosDisponiveisWithBlock:(NSNumber *)idLiga

@@ -15,6 +15,7 @@
 
 @interface ListaJogadoresTableViewController () {
     NSArray *arJogadores;
+    Jogador *jogadorPressionado;
 }
 
 @end
@@ -51,8 +52,124 @@
                                 action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
     
+    // reconhecimento de long press na table
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 1.5; //seconds
+    lpgr.delegate = self;
+    [self.tableView addGestureRecognizer:lpgr];
+        
     // busca os jogadores da liga
     [self buscaJogadores];
+}
+
+- (IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        CGPoint p = [gestureRecognizer locationInView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+        if (indexPath) {
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            if (cell.isHighlighted) {
+                //NSLog(@"long press on table view at section %d row %d", indexPath.section, indexPath.row);
+                
+                jogadorPressionado = arJogadores[indexPath.row];
+                
+                // Create the sheet without buttons
+                UIActionSheet *sheet = [[UIActionSheet alloc]
+                                        initWithTitle:nil
+                                        delegate:self
+                                        cancelButtonTitle:nil
+                                        destructiveButtonTitle:nil
+                                        otherButtonTitles:nil];
+                
+                // adiciona os botoes
+                if (![[jogadorPressionado fone] isEqualToString:@""]) {
+                    [sheet addButtonWithTitle:@"Telefonar"];
+                }
+                
+                if (![[jogadorPressionado email] isEqualToString:@""]) {
+                    [sheet addButtonWithTitle:@"Enviar e-mail"];
+                }
+                
+                [sheet addButtonWithTitle:@"Adicionar aos contatos"];
+                sheet.cancelButtonIndex = [sheet addButtonWithTitle:@"Cancelar"];
+
+                [sheet showInView:self.view];
+            }
+        }
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        return;
+    }
+    
+    // Get the name of the current pressed button
+    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    
+    if  ([buttonTitle isEqualToString:@"Telefonar"]) {
+        //NSLog(@"Telefonar: %@", jogadorPressionado.fone);
+        
+        // efetua ligacao para o numero do cadastro
+        UIDevice *device = [UIDevice currentDevice];
+        if ([[device model] isEqualToString:@"iPhone"] ) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", jogadorPressionado.fone]]];
+        }
+    } else if ([buttonTitle isEqualToString:@"Enviar e-mail"]) {
+        //NSLog(@"Email: %@", jogadorPressionado.email);
+        
+        // envia email para o jogador
+        if ([MFMailComposeViewController canSendMail])
+        {
+            MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+            mailer.mailComposeDelegate = self;
+            [mailer setSubject:@"Mensagem do PokerGames"];
+            NSArray *toRecipients = [NSArray arrayWithObjects:jogadorPressionado.email, nil];
+            [mailer setToRecipients:toRecipients];
+            
+            UIImage *myImage = [UIImage imageNamed:@"iPhoneIcon_Big.png"];
+            NSData *imageData = UIImagePNGRepresentation(myImage);
+            [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"pokergames"];
+            
+            Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
+            NSString *emailBody = [NSString stringWithFormat:@"Olá, vamos jogar poker?\n\nAt,\n%@", jogadorLogin.nome];
+            [mailer setMessageBody:emailBody isHTML:NO];
+
+            // ipad: mailer.modalPresentationStyle = UIModalPresentationPageSheet;
+            [self presentViewController:mailer animated:TRUE completion:nil];
+        }
+    } else if ([buttonTitle isEqualToString:@"Adicionar aos contatos"]) {
+        //NSLog(@"Contatos: %@", jogadorPressionado.nome);
+        [[PokerGamesFacade sharedInstance] adicionaJogadorAosContatos:jogadorPressionado];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    /*
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+            break;
+        default:
+            NSLog(@"Mail not sent.");
+            break;
+    }
+    */
+    
+    // Remove the mail view
+    [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 -(IBAction)configAction
@@ -108,7 +225,7 @@
     // Configure the cell...
     Jogador *jogador = arJogadores[indexPath.row];
     cell.jogador = jogador;
-    
+
     return cell;
 }
 
@@ -123,23 +240,22 @@
     [[PokerGamesFacade sharedInstance] buscaListaJogadoresPotWithBlock:jogadorLogin.idLiga
                                    constructingBodyWithBlock:^(NSArray *jogadores, NSError *error) {
                                        
-    [hud hide:YES];
+        [hud hide:YES];
 
-    if (error) {
-       [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-    } else {
-       // lista de jogadores da liga
-       //NSLog(@"jogadores: %@", jogadores );
-       arJogadores = jogadores;
-       
-       // atualiza table
-       [self.tableView reloadData];
-       
-       if (jogadores.count <= 0) {
-           [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum jogador encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-       }
-    }
-
+        if (error) {
+           [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+        } else {
+           // lista de jogadores da liga
+           //NSLog(@"jogadores: %@", jogadores );
+           arJogadores = jogadores;
+           
+           // atualiza table
+           [self.tableView reloadData];
+           
+           if (jogadores.count <= 0) {
+               [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Atenção", nil) message:@"Nenhum jogador encontrado!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+           }
+        }
     }];
 }
 

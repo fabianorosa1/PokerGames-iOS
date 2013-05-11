@@ -426,7 +426,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Desconectar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Oni-Vy-UmE">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Sobre" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Oni-Vy-UmE">
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="34"/>
+                                                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Desconectar" textLabel="tQr-IG-CQo" rowHeight="35" style="IBUITableViewCellStyleDefault" id="WzL-cz-zQG">
+                                        <rect key="frame" x="0.0" y="421" width="320" height="35"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Desconectar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tQr-IG-CQo">
                                                     <rect key="frame" x="10" y="0.0" width="300" height="34"/>
                                                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1916,7 +1933,7 @@
         <scene sceneID="yF1-W8-RkN">
             <objects>
                 <tableViewController id="YMY-W4-R5G" customClass="ListaJogadoresTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="47" sectionHeaderHeight="22" sectionFooterHeight="22" id="tu3-hA-XDR">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="52" sectionHeaderHeight="22" sectionFooterHeight="22" id="tu3-hA-XDR">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1941,11 +1958,11 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellListaJogador" rowHeight="47" id="xMt-HL-hL5" customClass="ListaJogadoresCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="47"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellListaJogador" rowHeight="52" id="xMt-HL-hL5" customClass="ListaJogadoresCell">
+                                <rect key="frame" x="0.0" y="66" width="320" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="46"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="51"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaK-n2-I2t">
@@ -1995,12 +2012,12 @@
                                     <constraint firstItem="VaK-n2-I2t" firstAttribute="leading" secondItem="xMt-HL-hL5" secondAttribute="leading" constant="6" id="EKD-QZ-5eU"/>
                                     <constraint firstItem="lv7-Ux-fgT" firstAttribute="leading" secondItem="xMt-HL-hL5" secondAttribute="leading" constant="58" id="Go5-Ib-QYN"/>
                                     <constraint firstItem="lv7-Ux-fgT" firstAttribute="leading" secondItem="n71-gj-lbR" secondAttribute="leading" type="default" id="H2g-pW-i37"/>
-                                    <constraint firstAttribute="bottom" secondItem="n71-gj-lbR" secondAttribute="bottom" constant="2" id="PDo-de-OGQ"/>
                                     <constraint firstAttribute="trailing" secondItem="H2Z-Vc-VHh" secondAttribute="trailing" constant="27" id="bVJ-mA-vae"/>
                                     <constraint firstItem="lv7-Ux-fgT" firstAttribute="trailing" secondItem="hbJ-Me-DCY" secondAttribute="trailing" type="default" id="nm4-H4-ZGr"/>
                                     <constraint firstItem="lv7-Ux-fgT" firstAttribute="top" secondItem="xMt-HL-hL5" secondAttribute="top" constant="4" id="qB6-Nh-Eat"/>
                                     <constraint firstItem="VaK-n2-I2t" firstAttribute="centerY" secondItem="xMt-HL-hL5" secondAttribute="centerY" type="default" id="sX0-kf-a00"/>
                                     <constraint firstItem="H2Z-Vc-VHh" firstAttribute="top" secondItem="xMt-HL-hL5" secondAttribute="top" constant="9" id="tKM-if-PEw"/>
+                                    <constraint firstItem="n71-gj-lbR" firstAttribute="bottom" secondItem="VaK-n2-I2t" secondAttribute="bottom" type="default" id="wIO-RW-6SW"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="imgFicha" destination="H2Z-Vc-VHh" id="84m-ko-JWV"/>
@@ -2206,6 +2223,7 @@
         <class className="ListaJogadoresTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ListaJogadoresTableViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="jogadorSearchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="lblLiga" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="viewHeader" candidateClass="UIView"/>
             </relationships>

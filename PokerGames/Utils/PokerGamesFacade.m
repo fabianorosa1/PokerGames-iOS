@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "Campeonato.h"
 #import <CoreData/CoreData.h>
+#import <AddressBook/AddressBook.h>
 
 @implementation PokerGamesFacade {
     BOOL *indLog;
@@ -583,6 +584,114 @@
             block([NSArray array], error);
         }
     }];
+}
+
+- (void) adicionaJogadorAosContatos:(Jogador*)jogador {
+    // cria objeto de contatos
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+
+    ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
+    PokerGamesFacade * __weak weakSelf = self; // avoid capturing self in the block
+    
+    ABAddressBookRequestAccessCompletionHandler completion = ^(bool granted, CFErrorRef error) {
+        if (granted) {
+            NSLog(@"Autorizado!!!");
+            
+            if ([weakSelf criaNovoContato:addressBook jogador:jogador] != 0){
+                [[[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Jogador adicionado aos contatos!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+            }
+        } else {
+            // update the UI on the main thread
+            //dispatch_async(dispatch_get_main_queue(), ^{
+            //    [contacts removeAllObjects];
+            //    [self.tableView reloadData];
+            //});
+            NSLog(@"NAO autorizado");
+        }
+    };
+    
+    // ask the user for access if necessary
+    switch (status) {
+        case kABAuthorizationStatusNotDetermined:
+            ABAddressBookRequestAccessWithCompletion(addressBook, completion);
+            break;
+        case kABAuthorizationStatusAuthorized:
+            completion(YES, NULL);
+            break;
+        case kABAuthorizationStatusDenied:
+        case kABAuthorizationStatusRestricted:
+            completion(NO, NULL);
+            break;
+    }
+    
+}
+
+- (NSUInteger)criaNovoContato:(ABAddressBookRef)addressBook jogador:(Jogador*)jogador {
+    NSUInteger addressbookId = 0;
+    
+    UIImage *imgContact = [UIImage imageWithData:[NSData dataWithContentsOfURL:[PokerGamesUtil buildUrlFoto:jogador.foto]]];
+    NSString *firstName= jogador.nome;
+    NSString *nickName= jogador.apelido;
+    NSString *workPhone = jogador.fone;
+    NSString *workEmail = jogador.email;
+    
+    ABRecordRef aRecord = ABPersonCreate();
+    CFErrorRef  anError = NULL;
+    ABRecordSetValue(aRecord, kABPersonFirstNameProperty, (__bridge CFTypeRef)(firstName), &anError);
+    ABRecordSetValue(aRecord, kABPersonNicknameProperty, (__bridge CFTypeRef)(nickName), &anError);
+    
+    if (anError != NULL) {
+        NSLog(@"error while creating kABPerson Properties..%@", anError);
+    }
+    
+    if(imgContact){
+        NSData *data = UIImagePNGRepresentation(imgContact);
+        if(ABPersonSetImageData(aRecord, (__bridge CFDataRef)data, &anError)){
+        }
+    }
+    
+    //(@"adding email");
+    if(workEmail){
+        ABMutableMultiValueRef emails = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+        ABMultiValueAddValueAndLabel(emails,  (__bridge CFTypeRef)(workEmail), kABWorkLabel, NULL);
+        ABRecordSetValue(aRecord, kABPersonEmailProperty, emails, &anError);
+        CFRelease(emails);
+    }
+    
+    //(@"adding phonee");
+    ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+    
+    if(workPhone) ABMultiValueAddValueAndLabel(multi, (__bridge CFTypeRef)(workPhone), kABWorkLabel, NULL) ;
+    if(workPhone){
+        ABRecordSetValue(aRecord, kABPersonPhoneProperty, multi, &anError);
+        if (anError != NULL) {
+            NSLog(@"error while creating ABMutableMultiValueRef..%@", anError);
+        }
+    }
+    
+    CFRelease(multi);
+
+    CFErrorRef error = NULL;
+    
+    ABAddressBookAddRecord (addressBook, aRecord, &error);
+    if (error != NULL) {
+        NSLog(@"ABAddressBookAddRecord %@", error);
+    }
+    error = NULL;
+    
+    if(ABAddressBookSave ( addressBook,  &error)){
+        addressbookId =  ABRecordGetRecordID (aRecord);
+    }
+    
+    if (error != NULL) {
+        NSLog(@"ABAddressBookSave %@", error);
+    }
+    
+    NSLog(@"addressbookId: %lu", (unsigned long)addressbookId);
+    CFRelease(aRecord);
+    CFRelease(addressBook);
+    
+    return addressbookId;
 }
 
 // metodos da tela de torneios disponiveis

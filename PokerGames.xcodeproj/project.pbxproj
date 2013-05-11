@@ -14,6 +14,8 @@
 		580649C817277DA800516B5F /* NavBarIconLogout.png in Resources */ = {isa = PBXBuildFile; fileRef = 580649C617277DA800516B5F /* NavBarIconLogout.png */; };
 		580986DD173C771F006FA46B /* ConfirmarParticipacaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580986DC173C771F006FA46B /* ConfirmarParticipacaoViewController.m */; };
 		580986DF173C87A1006FA46B /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580986DE173C87A1006FA46B /* EventKit.framework */; };
+		580986E1173DD67F006FA46B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580986E0173DD67F006FA46B /* MessageUI.framework */; };
+		580986E3173DE40D006FA46B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580986E2173DE40C006FA46B /* AddressBook.framework */; };
 		58325077172462C000D2C825 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325076172462C000D2C825 /* SystemConfiguration.framework */; };
 		58325079172462C700D2C825 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325078172462C700D2C825 /* MobileCoreServices.framework */; };
 		5832507C172489C100D2C825 /* LigaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5832507B172489C100D2C825 /* LigaTableViewController.m */; };
@@ -133,6 +135,8 @@
 		580986DB173C771F006FA46B /* ConfirmarParticipacaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfirmarParticipacaoViewController.h; path = ConfirmarParticipacaoView/ConfirmarParticipacaoViewController.h; sourceTree = "<group>"; };
 		580986DC173C771F006FA46B /* ConfirmarParticipacaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfirmarParticipacaoViewController.m; path = ConfirmarParticipacaoView/ConfirmarParticipacaoViewController.m; sourceTree = "<group>"; };
 		580986DE173C87A1006FA46B /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		580986E0173DD67F006FA46B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		580986E2173DE40C006FA46B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		58325076172462C000D2C825 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58325078172462C700D2C825 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5832507A172489C100D2C825 /* LigaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LigaTableViewController.h; path = LigaView/LigaTableViewController.h; sourceTree = "<group>"; };
@@ -292,6 +296,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580986E3173DE40D006FA46B /* AddressBook.framework in Frameworks */,
+				580986E1173DD67F006FA46B /* MessageUI.framework in Frameworks */,
 				580986DF173C87A1006FA46B /* EventKit.framework in Frameworks */,
 				58325079172462C700D2C825 /* MobileCoreServices.framework in Frameworks */,
 				58325077172462C000D2C825 /* SystemConfiguration.framework in Frameworks */,
@@ -487,6 +493,8 @@
 		58967B58171DCE8E003FCF47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				580986E2173DE40C006FA46B /* AddressBook.framework */,
+				580986E0173DD67F006FA46B /* MessageUI.framework */,
 				580986DE173C87A1006FA46B /* EventKit.framework */,
 				58325076172462C000D2C825 /* SystemConfiguration.framework */,
 				58325078172462C700D2C825 /* MobileCoreServices.framework */,
