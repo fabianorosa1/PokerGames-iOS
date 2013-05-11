@@ -9,7 +9,6 @@
 @interface  ListaJogadoresCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel* lblApelido;
-@property (nonatomic, weak) IBOutlet UILabel* lblEmail;
 @property (nonatomic, weak) IBOutlet UILabel* lblNome;
 @property (nonatomic, weak) IBOutlet UILabel* lblFone;
 @property (nonatomic, weak) IBOutlet UIImageView* imgViewFoto;

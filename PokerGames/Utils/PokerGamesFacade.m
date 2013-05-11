@@ -589,14 +589,15 @@
 
 - (void)buscaTorneiosDisponiveisWithBlock:(NSNumber *)idLiga
                             idCampeonato:(NSNumber *)idCampeonato
+                            idJogador:(NSNumber *)idJogador
                constructingBodyWithBlock:(void (^)(NSArray *torneios, NSError *error))block
 {
     
-    NSString *path = [NSString stringWithFormat:@"Torneios.svc/Ativos/%@/%@", idLiga, idCampeonato];
+    NSString *path = [NSString stringWithFormat:@"Torneios.svc/Disponiveis/%@/%@/%@", idLiga, idCampeonato, idJogador];
     [self logServicos:@"Path" text:path];
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        NSArray *postsFromResponse = [JSON valueForKeyPath:@"AtivosResult"];
+        NSArray *postsFromResponse = [JSON valueForKeyPath:@"DisponiveisResult"];
         if (block) {
             [self logServicos:@"postsFromResponse" text:postsFromResponse];
             block(postsFromResponse, nil);

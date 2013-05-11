@@ -86,6 +86,7 @@
 
 - (void)buscaTorneiosDisponiveisWithBlock:(NSNumber *)idLiga
                              idCampeonato:(NSNumber *)idCampeonato
+                                idJogador:(NSNumber *)idJogador
                 constructingBodyWithBlock:(void (^)(NSArray *torneios, NSError *error))block;
 
 // métodos da tela de confirmação de participação do torneio

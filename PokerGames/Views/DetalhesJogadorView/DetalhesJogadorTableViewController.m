@@ -93,11 +93,13 @@
     [super viewWillAppear:animated];
     
     self.title = @"Resultados";
-    self.lblJogador.text = self.jogador.apelido;
+    
+    self.lblJogador.text = self.jogador.nome;
     self.lblCampeonato.text = self.jogador.liga.campeonato.apelido;
+    
     // seta a foto do jogador
     [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:self.jogador.foto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
-    
+
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
@@ -171,6 +173,7 @@
             // cabecalho do resultados
             //NSLog(@"cabecalho: %@", cabecalho );
             
+            self.lblApelido.text = [cabecalho valueForKey:@"Apelido"];
             self.lblAlgoz.text = [cabecalho valueForKey:@"Algoz"];
             self.lblColocacao.text = [NSString stringWithFormat:@"%@º", [cabecalho valueForKey:@"Colocacao"]];            
             self.lblITM.text = [cabecalho valueForKey:@"ITM"];
@@ -178,8 +181,6 @@
             self.lblParticipacoes.text = [cabecalho valueForKey:@"Participacoes"];
             self.lblPontos.text = [cabecalho valueForKey:@"Pontos"];
             self.lblVitima.text = [cabecalho valueForKey:@"Vitima"];
-            self.lblJogador.text = [cabecalho valueForKey:@"Nome"];
-            self.lblApelido.text = [cabecalho valueForKey:@"Apelido"];
             
             NSNumber *saldoValue = [cabecalho valueForKey:@"Saldo"];
             double saldo = [saldoValue doubleValue];

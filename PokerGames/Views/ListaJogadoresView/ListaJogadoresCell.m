@@ -36,7 +36,6 @@
     
     self.lblNome.text = jogador.nome;
     self.lblApelido.text = jogador.apelido;
-    self.lblEmail.text = jogador.email;
     self.lblFone.text = jogador.fone;
     
     [self.imgFicha setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg", jogador.imgClas]]];

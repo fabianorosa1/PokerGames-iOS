@@ -123,6 +123,7 @@
     // busca lista de torneios disponiveis do campeonato
     [[PokerGamesFacade sharedInstance] buscaTorneiosDisponiveisWithBlock:jogadorLogin.idLiga
                                                             idCampeonato:jogadorLogin.liga.idCampeonato
+                                                               idJogador:jogadorLogin.idJogador
                                              constructingBodyWithBlock:^(NSArray *torneios, NSError *error) {
                                                  
      [hud hide:YES];
