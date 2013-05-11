@@ -22,7 +22,7 @@
     // ativa o tema
     [ADVThemeManager customizeAppAppearance];
     
-    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
+    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:@"nsurlcache"];
     [NSURLCache setSharedURLCache:URLCache];
     
     // seta indicador de atividade de rede visivel
@@ -34,9 +34,22 @@
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
     }
+    
+    // verifica se foi passado parametros para o app
+    NSArray *args = [[NSProcessInfo processInfo] arguments];    
+    if ([args containsObject:[PokerGamesFacade paramDebugApp]]) {
+        [[PokerGamesFacade sharedInstance] setIsDebugApp:YES];
+    } else {
+        [[PokerGamesFacade sharedInstance] setIsDebugApp:NO];
+    }
+
     return YES;
 }
-							
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

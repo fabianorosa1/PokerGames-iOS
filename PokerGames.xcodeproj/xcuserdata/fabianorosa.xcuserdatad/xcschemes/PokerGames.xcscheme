@@ -62,6 +62,10 @@
             argument = "-com.apple.CoreData.SQLDebug 1"
             isEnabled = "NO">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-br.com.pokergames.Pokergames.debug"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>

@@ -12,9 +12,12 @@
 
 @property (strong, nonatomic) Jogador *jogadorLogin;
 @property (nonatomic) BOOL isFirstTime;
+@property (nonatomic) BOOL isDebugApp;
 
 // lista de rankign em cache
 @property (strong, nonatomic) NSArray *arRankingGeral;
+
++ (NSString*) paramDebugApp;
 
 #pragma mark Singleton Methods
 
