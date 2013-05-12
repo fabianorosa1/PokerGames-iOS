@@ -7,6 +7,7 @@
 //
 
 #import "Jogador.h"
+#import <MessageUI/MessageUI.h>
 
 @interface PokerGamesFacade : NSObject
 
@@ -84,6 +85,8 @@
 
 - (void)buscaListaJogadoresPotWithBlock:(NSNumber *)idLiga
               constructingBodyWithBlock:(void (^)(NSArray *jogadores, NSError *error))block;
+
+- (MFMailComposeViewController *) enviaEmailJogador:(NSString*)email delegate:(id<MFMailComposeViewControllerDelegate>)delegate;
 
 - (void) adicionaJogadorAosContatos:(Jogador*)jogador;
 

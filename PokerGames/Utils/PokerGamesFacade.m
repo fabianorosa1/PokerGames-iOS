@@ -586,6 +586,28 @@
     }];
 }
 
+- (MFMailComposeViewController *) enviaEmailJogador:(NSString*)email delegate:(id<MFMailComposeViewControllerDelegate>)delegate {
+    // envia email para o jogador
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+        mailer.mailComposeDelegate = delegate;
+        [mailer setSubject:@"Mensagem do PokerGames"];
+        NSArray *toRecipients = [NSArray arrayWithObjects:email, nil];
+        [mailer setToRecipients:toRecipients];
+        
+        UIImage *myImage = [UIImage imageNamed:@"iPhoneIcon_Big.png"];
+        NSData *imageData = UIImagePNGRepresentation(myImage);
+        [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"pokergames"];
+        
+        NSString *emailBody = [NSString stringWithFormat:@"Olá, vamos jogar poker?\n\nAt,\n%@", [self jogadorLogin].nome];
+        [mailer setMessageBody:emailBody isHTML:NO];
+        
+        return mailer;
+    }
+    return nil;
+}
+
 - (void) adicionaJogadorAosContatos:(Jogador*)jogador {
     // cria objeto de contatos
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
@@ -595,18 +617,15 @@
     
     ABAddressBookRequestAccessCompletionHandler completion = ^(bool granted, CFErrorRef error) {
         if (granted) {
-            NSLog(@"Autorizado!!!");
+            [self logServicos:@"AdicionarContatos" text:@"Autorizado"];
             
             [weakSelf criaNovoContato:addressBook jogador:jogador];
             
             [[[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Jogador adicionado aos contatos!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
         } else {
-            // update the UI on the main thread
-            //dispatch_async(dispatch_get_main_queue(), ^{
-            //    [contacts removeAllObjects];
-            //    [self.tableView reloadData];
-            //});
-            NSLog(@"NAO autorizado");
+            [self logServicos:@"AdicionarContatos" text:@"NÃO Autorizado"];
+            
+            [[[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Sem autorização para acessar os contatos!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
         }
     };
     
@@ -688,7 +707,8 @@
             NSLog(@"ABAddressBookSave %@", error);
         }
         
-        NSLog(@"addressbookId: %lu", (unsigned long)addressbookId);
+        [self logServicos:@"Contato criado - AddressbookId" text:[NSString stringWithFormat:@"%lu", (unsigned long)addressbookId]];
+        
         CFRelease(aRecord);
         CFRelease(addressBook);
     });

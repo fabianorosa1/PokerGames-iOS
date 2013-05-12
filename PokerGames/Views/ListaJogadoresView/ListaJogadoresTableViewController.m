@@ -118,25 +118,8 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", jogadorPressionado.fone]]];
         }
     } else if ([buttonTitle isEqualToString:@"Enviar e-mail"]) {
-        //NSLog(@"Email: %@", jogadorPressionado.email);
-        
-        // envia email para o jogador
-        if ([MFMailComposeViewController canSendMail])
-        {
-            MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
-            mailer.mailComposeDelegate = self;
-            [mailer setSubject:@"Mensagem do PokerGames"];
-            NSArray *toRecipients = [NSArray arrayWithObjects:jogadorPressionado.email, nil];
-            [mailer setToRecipients:toRecipients];
-            
-            UIImage *myImage = [UIImage imageNamed:@"iPhoneIcon_Big.png"];
-            NSData *imageData = UIImagePNGRepresentation(myImage);
-            [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"pokergames"];
-            
-            Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
-            NSString *emailBody = [NSString stringWithFormat:@"Olá, vamos jogar poker?\n\nAt,\n%@", jogadorLogin.nome];
-            [mailer setMessageBody:emailBody isHTML:NO];
-
+        MFMailComposeViewController *mailer = [[PokerGamesFacade sharedInstance] enviaEmailJogador:jogadorPressionado.email delegate:self];
+        if (mailer) {
             // ipad: mailer.modalPresentationStyle = UIModalPresentationPageSheet;
             [self presentViewController:mailer animated:TRUE completion:nil];
         }

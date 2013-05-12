@@ -13,7 +13,9 @@
 #import "MBProgressHUD.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface PerfilJogadorViewController ()
+@interface PerfilJogadorViewController () {
+    NSDictionary *dadosPerfilJogador;
+}
 
 @end
 
@@ -74,8 +76,61 @@
 }
 
 -(IBAction)opcoesPressed:(id)sender {
+    // Create the sheet without buttons
+    UIActionSheet *sheet = [[UIActionSheet alloc]
+                            initWithTitle:nil
+                            delegate:self
+                            cancelButtonTitle:nil
+                            destructiveButtonTitle:nil
+                            otherButtonTitles:nil];
     
+    // adiciona os botoes
+    if (![self.lblTelefone.text isEqualToString:@""]) {
+        [sheet addButtonWithTitle:@"Telefonar"];
+    }
+    
+    if (![self.lblEmail.text isEqualToString:@""]) {
+        [sheet addButtonWithTitle:@"Enviar e-mail"];
+    }
+    
+    [sheet addButtonWithTitle:@"Adicionar aos contatos"];
+    sheet.cancelButtonIndex = [sheet addButtonWithTitle:@"Cancelar"];
+    
+    [sheet showInView:self.view];
 }
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        return;
+    }
+    
+    // Get the name of the current pressed button
+    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    
+    if  ([buttonTitle isEqualToString:@"Telefonar"]) {
+        // efetua ligacao para o numero do cadastro
+        UIDevice *device = [UIDevice currentDevice];
+        if ([[device model] isEqualToString:@"iPhone"] ) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", self.lblTelefone.text]]];
+        }
+    } else if ([buttonTitle isEqualToString:@"Enviar e-mail"]) {
+        MFMailComposeViewController *mailer = [[PokerGamesFacade sharedInstance] enviaEmailJogador:self.lblEmail.text delegate:self];
+        if (mailer) {
+            // ipad: mailer.modalPresentationStyle = UIModalPresentationPageSheet;
+            [self presentViewController:mailer animated:TRUE completion:nil];   
+        }
+    } else if ([buttonTitle isEqualToString:@"Adicionar aos contatos"]) {
+        Jogador *jogador = [[Jogador alloc] initWithAttributes:dadosPerfilJogador];
+        [[PokerGamesFacade sharedInstance] adicionaJogadorAosContatos:jogador];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    // Remove the mail view
+    [self dismissViewControllerAnimated:TRUE completion:nil];
+}
+
 
 - (void) buscaPerfilJogador {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -98,9 +153,11 @@
             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
         } else {
             // dados
+            dadosPerfilJogador = dados;
+            
             self.lblNome.text = [dados valueForKey:@"Nome"];
             self.lblApelido.text = [dados valueForKey:@"Apelido"];
-            self.lblTelefone.text = [dados valueForKey:@"Telefone"];
+            self.lblTelefone.text = [dados valueForKey:@"Fone"];
             self.lblEmail.text = [dados valueForKey:@"Email"];
             self.lblNascimento.text = [dados valueForKey:@"Nascimento"];
             self.lblNaturalidade.text = [dados valueForKey:@"Naturalidade"];

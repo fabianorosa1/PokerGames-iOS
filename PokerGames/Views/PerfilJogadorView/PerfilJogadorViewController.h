@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface PerfilJogadorViewController : UIViewController
+@interface PerfilJogadorViewController : UIViewController <UIGestureRecognizerDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel* lblNome;
 @property (nonatomic, weak) IBOutlet UILabel* lblApelido;
