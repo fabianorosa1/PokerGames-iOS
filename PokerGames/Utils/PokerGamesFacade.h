@@ -99,4 +99,9 @@
 - (void)buscaDadosConfirmacaoParticipacaoWithBlock:(NSNumber *)idTorneio
                          constructingBodyWithBlock:(void (^)(NSDictionary *dados, NSError *error))block;
 
+// métodos da tela de perfil do jogador
+
+- (void)buscaPerfilJogadorWithBlock:(NSNumber *)idJogador
+          constructingBodyWithBlock:(void (^)(NSDictionary *dados, NSError *error))block;
+
 @end

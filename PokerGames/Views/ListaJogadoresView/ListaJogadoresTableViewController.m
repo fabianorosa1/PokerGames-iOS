@@ -12,6 +12,7 @@
 #import "ADVTheme.h"
 #import "ListaJogadoresCell.h"
 #import "MBProgressHUD.h"
+#import "PerfilJogadorViewController.h"
 
 @interface ListaJogadoresTableViewController () {
     NSArray *arJogadores;
@@ -227,6 +228,26 @@
     cell.jogador = jogador;
 
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"PerfilJogador" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"PerfilJogador"])
+    {
+        // Get reference to the destination view controller
+        PerfilJogadorViewController *vc = [segue destinationViewController];
+        
+        // Pass any objects to the view controller here, like...
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Jogador *jogador = [arJogadores objectAtIndex:indexPath.row];
+        vc.idJogadorParametro = jogador.idJogador;
+    }
 }
 
 - (void) buscaJogadores {

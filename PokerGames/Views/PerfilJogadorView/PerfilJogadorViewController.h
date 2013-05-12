@@ -10,4 +10,18 @@
 
 @interface PerfilJogadorViewController : UIViewController
 
+@property (nonatomic, weak) IBOutlet UILabel* lblNome;
+@property (nonatomic, weak) IBOutlet UILabel* lblApelido;
+@property (nonatomic, weak) IBOutlet UILabel* lblEmail;
+@property (nonatomic, weak) IBOutlet UILabel* lblNascimento;
+@property (nonatomic, weak) IBOutlet UILabel* lblNaturalidade;
+@property (nonatomic, weak) IBOutlet UILabel* lblTelefone;
+@property (nonatomic, weak) IBOutlet UIImageView* imgViewFoto;
+
+@property (nonatomic, weak) IBOutlet UIButton *btnOpcoes;
+
+@property (nonatomic, strong) NSNumber* idJogadorParametro;
+
+-(IBAction)opcoesPressed:(id)sender;
+
 @end

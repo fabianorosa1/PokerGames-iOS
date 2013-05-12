@@ -187,4 +187,8 @@
     }];    
 }
 
+- (IBAction)demoPressed:(id)sender {
+    [[[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Em breve!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+}
+
 @end

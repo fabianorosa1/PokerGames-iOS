@@ -14,5 +14,6 @@
 @property (nonatomic, strong) IBOutlet UIButton *loginButton;
 
 -(IBAction)logInPressed:(id)sender;
+-(IBAction)demoPressed:(id)sender;
 
 @end

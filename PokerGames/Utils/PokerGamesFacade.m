@@ -765,5 +765,28 @@
     }];
 }
 
+// métodos da tela de perfil do jogador
+
+- (void)buscaPerfilJogadorWithBlock:(NSNumber *)idJogador
+                         constructingBodyWithBlock:(void (^)(NSDictionary *dados, NSError *error))block
+{
+    
+    NSString *path = [NSString stringWithFormat:@"Jogadores.svc/Jogador/%@", idJogador];
+    [self logServicos:@"Path" text:path];
+    
+    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+        NSDictionary *postsFromResponse = [JSON valueForKeyPath:@"JogadorResult"];
+        if (block) {
+            [self logServicos:@"postsFromResponse" text:postsFromResponse];
+            block(postsFromResponse, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            [self logServicos:@"Path" text:path];
+            block([NSDictionary dictionary], error);
+        }
+    }];
+}
+
 
 @end
