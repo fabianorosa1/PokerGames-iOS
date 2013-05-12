@@ -102,6 +102,11 @@
 - (void)buscaDadosConfirmacaoParticipacaoWithBlock:(NSNumber *)idTorneio
                          constructingBodyWithBlock:(void (^)(NSDictionary *dados, NSError *error))block;
 
+- (void)confirmarParticipacaoWithBlock:(NSNumber *)idTorneio
+                             idJogador:(NSNumber*)idJogador
+                         indParticipar:(NSString*)indParticipar
+             constructingBodyWithBlock:(void (^)(NSString *result, NSError *error))block;
+
 // métodos da tela de perfil do jogador
 
 - (void)buscaPerfilJogadorWithBlock:(NSNumber *)idJogador

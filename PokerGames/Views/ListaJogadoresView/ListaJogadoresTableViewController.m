@@ -56,7 +56,7 @@
     // reconhecimento de long press na table
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
                                           initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 1.5; //seconds
+    lpgr.minimumPressDuration = 1.0; //seconds
     lpgr.delegate = self;
     [self.tableView addGestureRecognizer:lpgr];
         
