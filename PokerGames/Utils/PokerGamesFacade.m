@@ -646,7 +646,7 @@
 }
 
 - (void)criaNovoContato:(ABAddressBookRef)addressBook jogador:(Jogador*)jogador {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSUInteger addressbookId = 0;
         
         UIImage *imgContact = [UIImage imageWithData:[NSData dataWithContentsOfURL:[PokerGamesUtil buildUrlFoto:jogador.foto]]];
