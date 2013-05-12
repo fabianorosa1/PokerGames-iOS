@@ -37,6 +37,18 @@
     self.lblDataRealizacao.text = [_dados valueForKey:@"Data"];
     self.lblHoraRealizacao.text = [_dados valueForKey:@"Hora"];
     self.lblLocal.text = [_dados valueForKey:@"Local"];
+    
+    NSString *statusIncricao = [_dados valueForKey:@"Inscrito"];
+    NSString *imgStatus = nil;
+    
+    if ([statusIncricao isEqualToString:@"S"]) {
+        imgStatus = @"confirmado.png";
+    } else if ([statusIncricao isEqualToString:@"N"]) {
+        imgStatus = @"nao-confirmado.png";
+    } else {
+        imgStatus = @"pendente-confirmacao.png";
+    }
+    [self.imgViewStatus setImage:[UIImage imageNamed:imgStatus]];
 }
 
 @end

@@ -13,6 +13,7 @@
 @property (nonatomic, weak) IBOutlet UILabel* lblDataRealizacao;
 @property (nonatomic, weak) IBOutlet UILabel* lblHoraRealizacao;
 @property (nonatomic, weak) IBOutlet UILabel* lblLocal;
+@property (nonatomic, weak) IBOutlet UIImageView* imgViewStatus;
 
 @property (nonatomic, strong) NSDictionary *dados;
 

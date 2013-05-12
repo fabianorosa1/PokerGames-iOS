@@ -54,6 +54,14 @@
     self.lblData.text = [self.dicDadosConfirmacao valueForKey:@"Data"];
     self.lblHora.text = [self.dicDadosConfirmacao valueForKey:@"Hora"];
 
+    // verifica se habilita ou não os botões
+    NSString *statusIncricao = [self.dicDadosConfirmacao valueForKey:@"Inscrito"];
+    if ([statusIncricao isEqualToString:@"S"]) {
+        self.btnParticipar.enabled = FALSE;
+    } else if ([statusIncricao isEqualToString:@"N"]) {
+        self.btnNaoParticipar.enabled = FALSE;
+    }
+    
     // inicializa o Calendar
     eventStore = [[EKEventStore alloc] init];
     
