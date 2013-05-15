@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import <AddressBookUI/AddressBookUI.h>
 
-@interface ListaJogadoresTableViewController : UITableViewController <UIGestureRecognizerDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
+@interface ListaJogadoresTableViewController : UITableViewController <UIGestureRecognizerDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, ABNewPersonViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView* viewHeader;
 @property (nonatomic, weak) IBOutlet UILabel* lblLiga;

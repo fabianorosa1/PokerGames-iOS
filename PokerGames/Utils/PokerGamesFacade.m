@@ -12,7 +12,6 @@
 #import "AppDelegate.h"
 #import "Campeonato.h"
 #import <CoreData/CoreData.h>
-#import <AddressBook/AddressBook.h>
 
 @implementation PokerGamesFacade
 
@@ -608,47 +607,7 @@
     return nil;
 }
 
-- (void) adicionaJogadorAosContatos:(Jogador*)jogador {
-    // cria objeto de contatos
-    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-
-    ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
-    PokerGamesFacade * __weak weakSelf = self; // avoid capturing self in the block
-    
-    ABAddressBookRequestAccessCompletionHandler completion = ^(bool granted, CFErrorRef error) {
-        if (granted) {
-            [self logServicos:@"AdicionarContatos" text:@"Autorizado"];
-            
-            [weakSelf criaNovoContato:addressBook jogador:jogador];
-            
-            [[[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Jogador adicionado aos contatos!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-        } else {
-            [self logServicos:@"AdicionarContatos" text:@"NÃO Autorizado"];
-            
-            [[[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Sem autorização para acessar os contatos!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-        }
-    };
-    
-    // ask the user for access if necessary
-    switch (status) {
-        case kABAuthorizationStatusNotDetermined:
-            ABAddressBookRequestAccessWithCompletion(addressBook, completion);
-            break;
-        case kABAuthorizationStatusAuthorized:
-            completion(YES, NULL);
-            break;
-        case kABAuthorizationStatusDenied:
-        case kABAuthorizationStatusRestricted:
-            completion(NO, NULL);
-            break;
-    }
-    
-}
-
-- (void)criaNovoContato:(ABAddressBookRef)addressBook jogador:(Jogador*)jogador {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSUInteger addressbookId = 0;
-        
+- (ABRecordRef)retornaContatoJogador:(Jogador*)jogador {
         UIImage *imgContact = [UIImage imageWithData:[NSData dataWithContentsOfURL:[PokerGamesUtil buildUrlFoto:jogador.foto]]];
         NSString *firstName= jogador.nome;
         NSString *nickName= jogador.apelido;
@@ -691,27 +650,32 @@
         
         CFRelease(multi);
 
-        CFErrorRef error = NULL;
-        
-        ABAddressBookAddRecord (addressBook, aRecord, &error);
-        if (error != NULL) {
-            NSLog(@"ABAddressBookAddRecord %@", error);
-        }
-        error = NULL;
-        
-        if(ABAddressBookSave ( addressBook,  &error)){
-            addressbookId =  ABRecordGetRecordID (aRecord);
-        }
-        
-        if (error != NULL) {
-            NSLog(@"ABAddressBookSave %@", error);
-        }
-        
-        [self logServicos:@"Contato criado - AddressbookId" text:[NSString stringWithFormat:@"%lu", (unsigned long)addressbookId]];
-        
-        CFRelease(aRecord);
-        CFRelease(addressBook);
-    });
+        return aRecord;
+}
+
+- (void) gravaNovoContato:(ABRecordRef)person {
+    CFErrorRef error = NULL;
+    NSUInteger addressbookId = 0;
+    
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(nil, nil);
+    ABAddressBookAddRecord (addressBook, person, &error);
+    if (error != NULL) {
+        NSLog(@"ABAddressBookAddRecord %@", error);
+    }
+    error = NULL;
+    
+    if(ABAddressBookSave ( addressBook,  &error)){
+        addressbookId =  ABRecordGetRecordID (person);
+    }
+    
+    if (error != NULL) {
+        NSLog(@"ABAddressBookSave %@", error);
+    }
+    
+    [self logServicos:@"Contato criado - AddressbookId" text:[NSString stringWithFormat:@"%lu", (unsigned long)addressbookId]];
+    
+    CFRelease(person);
+    CFRelease(addressBook);
 }
 
 // metodos da tela de torneios disponiveis

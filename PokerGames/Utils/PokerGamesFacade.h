@@ -8,6 +8,7 @@
 
 #import "Jogador.h"
 #import <MessageUI/MessageUI.h>
+#import <AddressBook/AddressBook.h>
 
 @interface PokerGamesFacade : NSObject
 
@@ -88,7 +89,8 @@
 
 - (MFMailComposeViewController *) enviaEmailJogador:(NSString*)email delegate:(id<MFMailComposeViewControllerDelegate>)delegate;
 
-- (void) adicionaJogadorAosContatos:(Jogador*)jogador;
+- (ABRecordRef)retornaContatoJogador:(Jogador*)jogador;
+- (void) gravaNovoContato:(ABRecordRef)person;
 
 // metodos da tela de torneios disponiveis
 

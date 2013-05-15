@@ -125,8 +125,24 @@
         }
     } else if ([buttonTitle isEqualToString:@"Adicionar aos contatos"]) {
         //NSLog(@"Contatos: %@", jogadorPressionado.nome);
-        [[PokerGamesFacade sharedInstance] adicionaJogadorAosContatos:jogadorPressionado];
+        
+        // mostra view do iOS para criar novo contato
+        ABNewPersonViewController* npvc = [ABNewPersonViewController new];
+        npvc.newPersonViewDelegate = self;
+        npvc.displayedPerson = [[PokerGamesFacade sharedInstance] retornaContatoJogador:jogadorPressionado];
+        
+        UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:npvc];
+        [self presentViewController:nc animated:YES completion:nil];
     }
+}
+
+#pragma mark Adress book delegate methods
+
+- (void)newPersonViewController:(ABNewPersonViewController*)newPersonViewController didCompleteWithNewPerson:(ABRecordRef)person {
+    if (person) {
+        [[PokerGamesFacade sharedInstance] gravaNovoContato:person];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
