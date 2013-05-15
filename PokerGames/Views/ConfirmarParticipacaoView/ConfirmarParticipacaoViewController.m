@@ -11,11 +11,8 @@
 #import "MBProgressHUD.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ECSlidingViewController.h"
-#import <EventKit/EventKit.h>
 
-@interface ConfirmarParticipacaoViewController () {
-    EKEventStore *eventStore;
-}
+@interface ConfirmarParticipacaoViewController ()
 
 @end
 
@@ -61,10 +58,7 @@
     } else if ([statusIncricao isEqualToString:@"N"]) {
         self.btnNaoParticipar.enabled = FALSE;
     }
-    
-    // inicializa o Calendar
-    eventStore = [[EKEventStore alloc] init];
-    
+        
     // mostra os dados na tela
     [self buscaDadosConfirmacao];
 }
@@ -157,7 +151,9 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     // workarround para fazer o alert modal
-    if (alertView.tag == 2 || alertView.tag == 3) {
+    if (alertView.tag == 2 && buttonIndex == 0) {
+        [self saiTela];
+    } else if (alertView.tag == 3) {
         [self saiTela];
     }
 }
@@ -169,62 +165,65 @@
 }
 
 - (void) verificaAdicaoEventoCalendario {
-    // Verifica se adiciona evento ao calendario
-    EKAuthorizationStatus status = [EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent];
-    EKEventStoreRequestAccessCompletionHandler completion = ^(BOOL granted, NSError *error) {
-        if (granted) {
-            [self criaEventoCalendario];
-        }
-    };
+    EKEventStore* eventStore = [[EKEventStore alloc] init];
     
-    // ask the user for access if necessary
-    switch (status) {
-        case EKAuthorizationStatusNotDetermined:
-            [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:completion];
-            break;
-            
-        case EKAuthorizationStatusAuthorized:
-            completion(YES, NULL);
-            break;
-            
-        case EKAuthorizationStatusDenied:
-        case EKAuthorizationStatusRestricted:
-            completion(NO, NULL);
-            break;
+    // iOS 6 introduced a requirement where the app must
+    // explicitly request access to the user's calendar. This
+    // function is built to support the new iOS6 requirement,
+    // as well as earlier versions of the OS.
+    if([eventStore respondsToSelector:
+        @selector(requestAccessToEntityType:completion:)]) {
+        // iOS 6 and later
+        [eventStore
+         requestAccessToEntityType:EKEntityTypeEvent
+         completion:^(BOOL granted, NSError *error) {
+             [self performSelectorOnMainThread:
+              @selector(presentEventEditViewControllerWithEventStore:)
+                                    withObject:eventStore
+                                 waitUntilDone:NO];
+         }];
+    } else {
+        // iOS 5
+        [self presentEventEditViewControllerWithEventStore:eventStore];
     }
 }
 
-- (void) criaEventoCalendario {
-    //NSLog(@"criaEventoCalendario");
-    ConfirmarParticipacaoViewController * __weak weakSelf = self; // avoid capturing self in the block
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // cria o evento
-        EKEvent *event  = [EKEvent eventWithEventStore:eventStore];
-        event.title     = [NSString stringWithFormat:@"Torneio de Poker: %@", [weakSelf lblNome].text];
-        event.location  = [weakSelf lblEndereco].text;
-        event.notes     = [NSString stringWithFormat:@"Local do Torneio: %@\nEste evento é gerenciado pelo PokerGames.", [weakSelf lblLocal].text];
-        event.allDay = NO;
+- (void)presentEventEditViewControllerWithEventStore:(EKEventStore*)eventStore
+{
+    EKEventEditViewController* vc = [[EKEventEditViewController alloc] init];
+    vc.eventStore = eventStore;
+    
+    EKEvent* event = [EKEvent eventWithEventStore:eventStore];
+    // Prepopulate all kinds of useful information with you event.
+    event.title     = [NSString stringWithFormat:@"Torneio de Poker: %@", [self lblNome].text];
+    event.location  = [self lblEndereco].text;
+    event.notes     = [NSString stringWithFormat:@"Local do Torneio: %@\nEste evento é gerenciado pelo PokerGames.", [self lblLocal].text];
+    event.allDay = NO;
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"dd/MM/yyyy HH:mm"];
+    //NSLog(@"Data: %@", [NSString stringWithFormat:@"%@ %@", [self lblData].text, [self lblHora].text]);
+    
+    NSDate *dateEvent = [df dateFromString: [NSString stringWithFormat:@"%@ %@", [self lblData].text, [self lblHora].text]];
+    //NSLog(@"Date: %@", dateEvent);
+    
+    event.startDate = dateEvent;//[[NSDate alloc] init];
+    event.endDate   = [[NSDate alloc] initWithTimeInterval:10800 sinceDate:dateEvent];//event.startDate];
+    [event setCalendar:[eventStore defaultCalendarForNewEvents]];
+    
+    vc.event = event;
+    vc.editViewDelegate = self;
+    
+    [self presentViewController:vc animated:YES completion:nil];
+}
 
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"dd/MM/yyyy HH:mm"];
-        //NSLog(@"Data: %@", [NSString stringWithFormat:@"%@ %@", [self lblData].text, [self lblHora].text]);
+#pragma EKEventEditViewDelegate
 
-        NSDate *dateEvent = [df dateFromString: [NSString stringWithFormat:@"%@ %@", [weakSelf lblData].text, [weakSelf lblHora].text]];
-        //NSLog(@"Date: %@", dateEvent);
-
-        event.startDate = dateEvent;//[[NSDate alloc] init];
-        event.endDate   = [[NSDate alloc] initWithTimeInterval:10800 sinceDate:dateEvent];//event.startDate];
-
-        // salva o evento
-        [event setCalendar:[eventStore defaultCalendarForNewEvents]];
-        NSError *error;
-        [eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&error];
-
-        // verifica se houve erro ao salvar
-        if (error) {
-            NSLog(@"Erro ao adicionar evento ao calendário: %@", error);
-        } 
-    });
+- (void)eventEditViewController:(EKEventEditViewController*)controller
+          didCompleteWithAction:(EKEventEditViewAction)action
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    [self saiTela];
 }
 
 - (void) buscaDadosConfirmacao {

@@ -52,6 +52,8 @@
                                 action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
     
+    self.lblCampeonato.text =  [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido];
+
     // busca os torneios disponiveis do campeonato
     [self buscaTorneios];
 }
@@ -78,7 +80,6 @@
     [super viewWillAppear:animated];
     
     self.title = @"Torneios Disponíveis";
-    self.lblCampeonato.text =  [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido];
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];

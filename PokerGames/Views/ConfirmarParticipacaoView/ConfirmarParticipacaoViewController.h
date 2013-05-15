@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <EventKit/EventKit.h>
+#import <EventKitUI/EventKitUI.h>
 
-@interface ConfirmarParticipacaoViewController : UIViewController <UIAlertViewDelegate>
+@interface ConfirmarParticipacaoViewController : UIViewController <UIAlertViewDelegate, EKEventEditViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView* viewHeader;
 
