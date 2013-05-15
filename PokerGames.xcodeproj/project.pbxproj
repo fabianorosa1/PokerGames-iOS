@@ -122,6 +122,7 @@
 		58AB88CB173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AB88C9173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m */; };
 		58B610AF1743138D00BA5CC2 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B610AE1743138D00BA5CC2 /* AddressBookUI.framework */; };
 		58B610B11743261400BA5CC2 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B610B01743261400BA5CC2 /* EventKitUI.framework */; };
+		58BEF5AF174445DA00F0E335 /* jogador.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BEF5AE174445DA00F0E335 /* jogador.png */; };
 		58E546FA1732FDC5000BC308 /* PokerGamesFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546F91732FDC5000BC308 /* PokerGamesFacade.m */; };
 		58E547001734031F000BC308 /* JackPotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FD1734031F000BC308 /* JackPotCell.m */; };
 		58E547011734031F000BC308 /* JackPotTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FF1734031F000BC308 /* JackPotTableViewController.m */; };
@@ -287,6 +288,7 @@
 		58AB88CA173BEBB100F0F7B8 /* TorneiosDisponiveisCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TorneiosDisponiveisCell.h; path = TorneiosDisponiveisView/TorneiosDisponiveisCell.h; sourceTree = "<group>"; };
 		58B610AE1743138D00BA5CC2 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		58B610B01743261400BA5CC2 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		58BEF5AE174445DA00F0E335 /* jogador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jogador.png; sourceTree = "<group>"; };
 		58E546F81732FDC5000BC308 /* PokerGamesFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerGamesFacade.h; sourceTree = "<group>"; };
 		58E546F91732FDC5000BC308 /* PokerGamesFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PokerGamesFacade.m; sourceTree = "<group>"; };
 		58E546FC1734031F000BC308 /* JackPotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JackPotCell.h; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 		58967BB5171DD2B5003FCF47 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				58BEF5AE174445DA00F0E335 /* jogador.png */,
 				580986E4173F458F006FA46B /* confirmado.png */,
 				580986E5173F458F006FA46B /* nao-confirmado.png */,
 				580986E6173F458F006FA46B /* pendente-confirmacao.png */,
@@ -863,6 +866,7 @@
 				580986E7173F458F006FA46B /* confirmado.png in Resources */,
 				580986E8173F458F006FA46B /* nao-confirmado.png in Resources */,
 				580986E9173F458F006FA46B /* pendente-confirmacao.png in Resources */,
+				58BEF5AF174445DA00F0E335 /* jogador.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

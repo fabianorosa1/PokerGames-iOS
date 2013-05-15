@@ -55,10 +55,14 @@
         self.imgViewPosicao.hidden = true;
         self.lblPosicao.text = [NSString stringWithFormat:@"%@º", [_dados valueForKey:@"Posicao"]];
     }
-
+    
     // seta a foto do jogador
-    [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:[_dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
-
+    NSString *foto = [dados valueForKey:@"Foto"];
+    if (foto && [foto isEqualToString:@""]) {
+        [self.imgViewFoto setImage:[UIImage imageNamed:@"jogador.png"]];
+    } else {
+        [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:[dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+    }
 }
 
 @end

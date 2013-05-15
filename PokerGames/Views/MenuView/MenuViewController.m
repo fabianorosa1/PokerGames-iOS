@@ -62,7 +62,11 @@
     self.lblNome.text = jogador.nome;
     
     // seta a foto do jogador
-    [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:jogador.foto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+    if (jogador.foto && [jogador.foto isEqualToString:@""]) {
+        [self.imgViewFoto setImage:[UIImage imageNamed:@"jogador.png"]];
+    } else {
+        [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:jogador.foto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
