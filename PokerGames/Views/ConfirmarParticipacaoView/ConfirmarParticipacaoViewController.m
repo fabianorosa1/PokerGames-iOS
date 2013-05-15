@@ -243,16 +243,13 @@
             // dados            
             self.lblContato.text = [dados valueForKey:@"Contato"];
             self.lblLocal.text = [dados valueForKey:@"Local"];
-            self.lblQtInscritos.text = [dados valueForKey:@"QtInscritos"];
-            self.lblVlAddOn.text = [dados valueForKey:@"VlAddOn"];
-            
-            double valorBuyIn = [[dados valueForKey:@"VlBuyIn"] doubleValue];
-            self.lblVlBuyIn.text = [[PokerGamesUtil currencyFormatter] stringFromNumber:[NSNumber numberWithDouble:valorBuyIn]];
-
-            double valorRebuy = [[dados valueForKey:@"VlRebuy"] doubleValue];
-            self.lblVlRebuy.text = [[PokerGamesUtil currencyFormatter] stringFromNumber:[NSNumber numberWithDouble:valorRebuy]];
-
-            self.lblVlEliminacao.text = [dados valueForKey:@"VlEliminacao"];
+            self.lblQtInscritos.text = [dados valueForKey:@"QtConfirmados"]; // agora é QtConfirmados
+                        
+            // formata e verifica se os campos são numéricos
+            [self formataCampo:self.lblVlAddOn dados:dados key:@"VlAddOn"];
+            [self formataCampo:self.lblVlBuyIn dados:dados key:@"VlBuyIn"];
+            [self formataCampo:self.lblVlRebuy dados:dados key:@"VlRebuy"];
+            [self formataCampo:self.lblVlEliminacao dados:dados key:@"VlEliminacao"];
             
             self.lblEndereco.numberOfLines = 2;
             [self.lblEndereco setLineBreakMode:NSLineBreakByWordWrapping];
@@ -260,6 +257,26 @@
             [self.lblEndereco sizeToFit];
         }
     }];
+}
+
+- (void) formataCampo:(UILabel*)label dados:(NSDictionary*)dados key:(NSString*)key {
+    NSString *strValue = [dados valueForKey:key];
+    if ([self isNumeric:strValue]) {
+        double valor = [[dados valueForKey:key] doubleValue];
+        label.text = [[PokerGamesUtil currencyFormatter] stringFromNumber:[NSNumber numberWithDouble:valor]];
+    } else {
+        label.text = strValue;
+    }
+}
+
+- (BOOL)isNumeric:(NSString *)code{
+    NSScanner *ns = [NSScanner scannerWithString:code];
+    float the_value;
+    if ( [ns scanFloat:&the_value] ) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end
