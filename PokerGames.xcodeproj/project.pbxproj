@@ -63,7 +63,6 @@
 		58967B66171DCE8E003FCF47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967B65171DCE8E003FCF47 /* main.m */; };
 		58967B6A171DCE8E003FCF47 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967B69171DCE8E003FCF47 /* AppDelegate.m */; };
 		58967B73171DCE8E003FCF47 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58967B71171DCE8E003FCF47 /* MainStoryboard_iPhone.storyboard */; };
-		58967B76171DCE8E003FCF47 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58967B74171DCE8E003FCF47 /* MainStoryboard_iPad.storyboard */; };
 		58967BB2171DD279003FCF47 /* ADVDefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967BAB171DD279003FCF47 /* ADVDefaultTheme.m */; };
 		58967BB3171DD279003FCF47 /* ADVFitpulseTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967BAE171DD279003FCF47 /* ADVFitpulseTheme.m */; };
 		58967BB4171DD279003FCF47 /* ADVTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967BB1171DD279003FCF47 /* ADVTheme.m */; };
@@ -222,7 +221,6 @@
 		58967B68171DCE8E003FCF47 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58967B69171DCE8E003FCF47 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		58967B72171DCE8E003FCF47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		58967B75171DCE8E003FCF47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		58967BAA171DD279003FCF47 /* ADVDefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADVDefaultTheme.h; sourceTree = "<group>"; };
 		58967BAB171DD279003FCF47 /* ADVDefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADVDefaultTheme.m; sourceTree = "<group>"; };
 		58967BAD171DD279003FCF47 /* ADVFitpulseTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADVFitpulseTheme.h; sourceTree = "<group>"; };
@@ -533,7 +531,6 @@
 				58967B68171DCE8E003FCF47 /* AppDelegate.h */,
 				58967B69171DCE8E003FCF47 /* AppDelegate.m */,
 				58967B71171DCE8E003FCF47 /* MainStoryboard_iPhone.storyboard */,
-				58967B74171DCE8E003FCF47 /* MainStoryboard_iPad.storyboard */,
 				58967B60171DCE8E003FCF47 /* Supporting Files */,
 			);
 			path = PokerGames;
@@ -801,7 +798,6 @@
 			files = (
 				58967B64171DCE8E003FCF47 /* InfoPlist.strings in Resources */,
 				58967B73171DCE8E003FCF47 /* MainStoryboard_iPhone.storyboard in Resources */,
-				58967B76171DCE8E003FCF47 /* MainStoryboard_iPad.storyboard in Resources */,
 				58967BE3171DD2B6003FCF47 /* backButton.png in Resources */,
 				58967BE4171DD2B6003FCF47 /* backButton@2x.png in Resources */,
 				58967BE5171DD2B6003FCF47 /* background.png in Resources */,
@@ -941,14 +937,6 @@
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		58967B74171DCE8E003FCF47 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				58967B75171DCE8E003FCF47 /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1018,6 +1006,7 @@
 				INFOPLIST_FILE = "PokerGames/PokerGames-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1030,6 +1019,7 @@
 				INFOPLIST_FILE = "PokerGames/PokerGames-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1071,6 +1061,7 @@
 				INFOPLIST_FILE = "PokerGames/PokerGames-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Distribution;

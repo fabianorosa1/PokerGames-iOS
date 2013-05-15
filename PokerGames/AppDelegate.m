@@ -27,14 +27,7 @@
     
     // seta indicador de atividade de rede visivel
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    
-    // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-        splitViewController.delegate = (id)navigationController.topViewController;
-    }
-    
+        
     // verifica se foi passado parametros para o app
     NSArray *args = [[NSProcessInfo processInfo] arguments];    
     if ([args containsObject:[PokerGamesFacade paramDebugApp]]) {
