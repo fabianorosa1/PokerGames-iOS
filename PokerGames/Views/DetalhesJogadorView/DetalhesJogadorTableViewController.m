@@ -98,11 +98,7 @@
     self.lblCampeonato.text = self.jogador.liga.campeonato.apelido;
     
     // seta a foto do jogador
-    if (self.jogador.foto && [self.jogador.foto isEqualToString:@""]) {
-        [self.imgViewFoto setImage:[UIImage imageNamed:@"jogador.png"]];
-    } else {
-        [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:self.jogador.foto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
-    }
+    [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:self.jogador.foto];
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];

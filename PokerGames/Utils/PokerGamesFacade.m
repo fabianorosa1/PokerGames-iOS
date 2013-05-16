@@ -608,7 +608,7 @@
 }
 
 - (ABRecordRef)retornaContatoJogador:(Jogador*)jogador {
-        UIImage *imgContact = [UIImage imageWithData:[NSData dataWithContentsOfURL:[PokerGamesUtil buildUrlFoto:jogador.foto]]];
+        UIImage *imgContact = [UIImage imageWithData:[NSData dataWithContentsOfURL:[PokerGamesUtil retornaUrlFoto:jogador.foto]]];
         NSString *firstName= jogador.nome;
         NSString *nickName= jogador.apelido;
         NSString *workPhone = jogador.fone;

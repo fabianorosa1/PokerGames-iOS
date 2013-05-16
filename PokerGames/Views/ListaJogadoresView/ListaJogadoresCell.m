@@ -48,11 +48,7 @@
     }
     
     // seta a foto do jogador
-    if (jogador.foto && [jogador.foto isEqualToString:@""]) {
-        [self.imgViewFoto setImage:[UIImage imageNamed:@"jogador.png"]];
-    } else {
-        [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:jogador.foto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
-    }
+    [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:jogador.foto];
 }
 
 @end

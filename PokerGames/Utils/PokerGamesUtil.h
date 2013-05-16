@@ -19,6 +19,7 @@
 
 + (NSNumberFormatter*) currencyFormatter;
 
-+ (NSURL*) buildUrlFoto:(NSString*)fileFoto;
-
++ (void) setaImagemJogador:(UIImageView*)imgViewFoto foto:(NSString*)foto;
++ (NSURL*) retornaUrlFoto:(NSString*)fileFoto;
+    
 @end

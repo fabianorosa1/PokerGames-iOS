@@ -7,12 +7,15 @@
 //
 
 #import "PokerGamesUtil.h"
+#import "UIImageView+AFNetworking.h"
 
 // variaveis estaticas
 static UIImage* imgPlaceholder = nil;
 static UIImage* imgPrimeiroLugar = nil;
 static UIImage* imgSegundoLugar = nil;
 static UIImage* imgTerceiroLugar = nil;
+static UIImage* imgFotoJogador = nil;
+
 static NSNumberFormatter *numberFormatter;
 
 @implementation PokerGamesUtil
@@ -23,6 +26,7 @@ static NSNumberFormatter *numberFormatter;
     imgPrimeiroLugar = [UIImage imageNamed:@"primeiro"];
     imgSegundoLugar = [UIImage imageNamed:@"segundo"];
     imgTerceiroLugar = [UIImage imageNamed:@"terceiro"];
+    imgFotoJogador = [UIImage imageNamed:@"jogador"];    
     numberFormatter = [[NSNumberFormatter alloc] init];
 }
 
@@ -58,6 +62,22 @@ static NSNumberFormatter *numberFormatter;
     return @"http://pokergames.blob.core.windows.net/pokergamesimgs/";
 }
 
++ (void) setaImagemJogador:(UIImageView*)imgViewFoto foto:(NSString*)foto {
+    // seta a foto do jogador
+    //NSLog(@">>> FOTO: %@", foto);
+    if ([foto isKindOfClass:[NSNull class]] || [@"" isEqualToString:foto]) {
+        [imgViewFoto setImage:imgFotoJogador];
+    } else {
+         NSString *pathFoto = [NSString stringWithFormat:@"%@%@", [PokerGamesUtil baseURLFoto],  foto];
+        [imgViewFoto setImageWithURL:[NSURL URLWithString:pathFoto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+    }
+}
+
++ (NSURL*) retornaUrlFoto:(NSString*)fileFoto {
+    NSString *pathFoto = [NSString stringWithFormat:@"%@%@", [PokerGamesUtil baseURLFoto],  fileFoto];
+    return [NSURL URLWithString:pathFoto];
+}
+
 + (UIImage *) imgPlaceholder {
     return imgPlaceholder;
 }
@@ -77,11 +97,6 @@ static NSNumberFormatter *numberFormatter;
 + (NSNumberFormatter*) currencyFormatter {
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     return numberFormatter;
-}
-
-+ (NSURL*) buildUrlFoto:(NSString*)fileFoto {
-    NSString *pathFoto = [NSString stringWithFormat:@"%@%@", [PokerGamesUtil baseURLFoto],  fileFoto];
-    return [NSURL URLWithString:pathFoto];
 }
 
 @end

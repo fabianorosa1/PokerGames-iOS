@@ -42,12 +42,7 @@
     self.lblVencedor.text = [_dados valueForKey:@"Vencedor"];
 
     // seta a foto do jogador
-    NSString *foto = [dados valueForKey:@"Foto"];
-    if (foto && [foto isEqualToString:@""]) {
-        [self.imgViewFoto setImage:[UIImage imageNamed:@"jogador.png"]];
-    } else {
-        [self.imgViewFoto setImageWithURL:[PokerGamesUtil buildUrlFoto:[dados valueForKey:@"Foto"]] placeholderImage:[PokerGamesUtil imgPlaceholder]];
-    }
+    [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:[dados valueForKey:@"Foto"]];
 }
 
 @end
