@@ -58,9 +58,6 @@
     
     // seta não configurado
     [self setIsFirstTime:TRUE];
-    
-    // limpa o cache de reanking geral
-    self.arRankingGeral = nil;
 }
 
 - (void)efetuaLoginPlayerWithBlock:(NSString *)user
