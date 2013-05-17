@@ -36,7 +36,38 @@
         [[PokerGamesFacade sharedInstance] setIsDebugApp:NO];
     }
 
+    // registra para receber o push da APNS
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
     return YES;
+}
+
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {    
+	NSString* newToken = [deviceToken description];
+	newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+	newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+	NSLog(@"My token is: %@", newToken);
+    
+    UIDevice *myDevice=[UIDevice currentDevice];
+    NSString *UUID = [[myDevice identifierForVendor] UUIDString];
+    NSLog(@"identifierForVendor: %@", UUID);
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+	NSLog(@"Failed to get token, error: %@", error);
+}
+
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
+{
+	NSLog(@"Received notification: %@", userInfo);
+    
+    //NSString* alertValue = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
+	//NSMutableArray* parts = [NSMutableArray arrayWithArray:[alertValue componentsSeparatedByString:@": "]];
+	//message.senderName = [parts objectAtIndex:0];
+	//[parts removeObjectAtIndex:0];
+	//message.text = [parts componentsJoinedByString:@": "];
 }
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
