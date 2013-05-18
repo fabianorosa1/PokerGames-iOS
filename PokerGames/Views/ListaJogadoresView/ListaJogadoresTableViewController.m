@@ -16,6 +16,7 @@
 
 @interface ListaJogadoresTableViewController () {
     NSArray *arJogadores;
+    NSMutableArray *arFilteredJogadores;
     Jogador *jogadorPressionado;
 }
 
@@ -35,15 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // configura o header
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
+        
     [ADVThemeManager customizeTableView:self.tableView];
-    
-    [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
     
     // botao de configuracoes
     UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
@@ -52,6 +46,11 @@
                                 target:self
                                 action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
+     
+    // Hide the search bar until user scrolls up
+    CGRect newBounds = self.tableView.bounds;
+    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height + 44;
+    self.tableView.bounds = newBounds;
     
     // reconhecimento de long press na table
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
@@ -62,6 +61,13 @@
         
     // busca os jogadores da liga
     [self buscaJogadores];
+}
+
+-(IBAction)goToSearch:(id)sender {
+    // If you're worried that your users might not catch on to the fact that a search bar is available if they scroll to reveal it, a search icon will help them
+    // If you don't hide your search bar in your app, don’t include this, as it would be redundant
+    [self.searchDisplayController setActive:YES];
+    [self.searchBar becomeFirstResponder];
 }
 
 - (IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer {
@@ -194,7 +200,6 @@
     [super viewWillAppear:animated];
     
     self.title = @"Lista de Jogadores";
-    self.lblLiga.text =  [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.apelido];
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
@@ -214,24 +219,65 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return arJogadores.count;
+    // Check to see whether the normal table or search results table is being displayed and return the count from the appropriate array
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [arFilteredJogadores count];
+    } else {
+        return [arJogadores count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CellListaJogador";
-    ListaJogadoresCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    ListaJogadoresCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
-    Jogador *jogador = arJogadores[indexPath.row];
+    Jogador *jogador = nil;
+    
+    // Check to see whether the normal table or search results table is being displayed and set the Candy object from the appropriate array
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        jogador = [arFilteredJogadores objectAtIndex:indexPath.row];
+    } else {
+        jogador = [arJogadores objectAtIndex:indexPath.row];
+    }
+    
     cell.jogador = jogador;
 
     return cell;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,44)];
+    
+    // configura o header
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    
+    [ADVThemeManager customizeTableView:self.tableView];
+    
+    [headerView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    headerView.layer.borderColor = [UIColor grayColor].CGColor;
+    headerView.layer.borderWidth = 0.4f;
+
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, headerView.frame.size.width, headerView.frame.size.height)];
+    
+    headerLabel.textAlignment = NSTextAlignmentCenter;
+    headerLabel.text = [[PokerGamesFacade sharedInstance] jogadorLogin].liga.apelido;
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:19.0f];
+    [headerView addSubview:headerLabel];
+    
+    return headerView;
+}
+
+-(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return  44.0;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"PerfilJogador" sender:self];
+    [self performSegueWithIdentifier:@"PerfilJogador" sender:tableView];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -242,11 +288,52 @@
         // Get reference to the destination view controller
         PerfilJogadorViewController *vc = [segue destinationViewController];
         
-        // Pass any objects to the view controller here, like...
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Jogador *jogador = [arJogadores objectAtIndex:indexPath.row];
-        vc.idJogadorParametro = jogador.idJogador;
+        // In order to manipulate the destination view controller, another check on which table (search or normal) is displayed is needed
+        if(sender == self.searchDisplayController.searchResultsTableView) {
+            NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            Jogador *jogador = [arFilteredJogadores objectAtIndex:indexPath.row];
+            vc.idJogadorParametro = jogador.idJogador;
+        }
+        else {
+             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            Jogador *jogador = [arJogadores objectAtIndex:indexPath.row];
+            vc.idJogadorParametro = jogador.idJogador;
+        }
     }
+}
+
+#pragma mark Content Filtering
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    // Update the filtered array based on the search text and scope.
+    // Remove all objects from the filtered search array
+    [arFilteredJogadores removeAllObjects];
+    // Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.nome contains[c] %@",searchText];
+    arFilteredJogadores = [NSMutableArray arrayWithArray:[arJogadores filteredArrayUsingPredicate:predicate]];
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    // Tells the table data source to reload when scope bar selection changes
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    // Hide the search bar until user scrolls up
+    CGRect newBounds = self.tableView.bounds;
+    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height + 44;
+    self.tableView.bounds = newBounds;
 }
 
 - (void) buscaJogadores {
@@ -269,6 +356,8 @@
            //NSLog(@"jogadores: %@", jogadores );
            arJogadores = jogadores;
            
+           arFilteredJogadores = [NSMutableArray arrayWithCapacity:[arJogadores count]];
+            
            // atualiza table
            [self.tableView reloadData];
            

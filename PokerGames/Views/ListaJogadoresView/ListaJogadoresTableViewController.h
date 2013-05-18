@@ -10,9 +10,10 @@
 #import <MessageUI/MessageUI.h>
 #import <AddressBookUI/AddressBookUI.h>
 
-@interface ListaJogadoresTableViewController : UITableViewController <UIGestureRecognizerDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, ABNewPersonViewControllerDelegate>
+@interface ListaJogadoresTableViewController : UITableViewController <UIGestureRecognizerDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, ABNewPersonViewControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
-@property (nonatomic, weak) IBOutlet UIView* viewHeader;
-@property (nonatomic, weak) IBOutlet UILabel* lblLiga;
+@property (nonatomic, weak) IBOutlet UISearchBar* searchBar;
+
+-(IBAction)goToSearch:(id)sender;
 
 @end

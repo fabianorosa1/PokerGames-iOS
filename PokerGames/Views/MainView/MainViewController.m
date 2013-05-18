@@ -28,13 +28,7 @@
 {
     [super viewDidLoad];
 
-    UIStoryboard *storyboard;
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    }
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     
     // verifica se já está logado
     Jogador *jogador = [[PokerGamesFacade sharedInstance] loadJogadorEntity];
