@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Ranking.h"
 
 @interface RankingCampeonatoJogadorCell : UITableViewCell
 
@@ -15,7 +16,9 @@
 @property (nonatomic, weak) IBOutlet UILabel* lblPosicao;
 @property (nonatomic, weak) IBOutlet UIImageView* imgViewFoto;
 @property (nonatomic, weak) IBOutlet UIImageView* imgViewPosicao;
-@property (nonatomic, strong) NSDictionary *dados;
+
+@property (nonatomic, strong) Ranking *ranking;
+
 @property (nonatomic) NSInteger row;
 
 @end

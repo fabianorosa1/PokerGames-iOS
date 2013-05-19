@@ -88,26 +88,14 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="t6V-XE-2Rs">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="bEg-kg-gOI">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18K-NC-yt8">
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="28" id="Hue-nw-478"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="18K-NC-yt8" firstAttribute="trailing" secondItem="t6V-XE-2Rs" secondAttribute="trailing" type="default" id="80J-zh-9Xy"/>
-                                <constraint firstItem="18K-NC-yt8" firstAttribute="centerY" secondItem="t6V-XE-2Rs" secondAttribute="centerY" type="default" id="buI-HI-TP2"/>
-                                <constraint firstItem="18K-NC-yt8" firstAttribute="leading" secondItem="t6V-XE-2Rs" secondAttribute="leading" type="default" id="hpg-Ux-f9k"/>
-                            </constraints>
-                        </view>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="hS9-mO-OoA" id="bRU-R9-fgb"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellRanking" rowHeight="48" id="g0Z-hh-bcb" customClass="RankingCampeonatoJogadorCell">
                                 <rect key="frame" x="0.0" y="66" width="320" height="48"/>
@@ -184,14 +172,28 @@
                             <outlet property="delegate" destination="hS9-mO-OoA" id="WUa-dy-Eah"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Ranking Geral" id="1eU-6w-zVT"/>
+                    <navigationItem key="navigationItem" title="Ranking Geral" id="1eU-6w-zVT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="Qxt-ej-EDI">
+                            <connections>
+                                <action selector="goToSearch:" destination="hS9-mO-OoA" id="w94-Xc-01m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="lblApelidoCampeonato" destination="18K-NC-yt8" id="8YX-Ta-7wc"/>
-                        <outlet property="viewHeader" destination="t6V-XE-2Rs" id="ixy-bx-JHc"/>
+                        <outlet property="searchDisplayController" destination="Kpn-xr-o3b" id="3QP-7F-IKI"/>
                         <segue destination="7Aq-Po-nlE" kind="push" identifier="ResultadosTorneioJogador" id="Ltl-x1-qLh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SNu-Eg-sNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Kpn-xr-o3b">
+                    <connections>
+                        <outlet property="delegate" destination="hS9-mO-OoA" id="ZFH-Eq-7wu"/>
+                        <outlet property="searchBar" destination="bEg-kg-gOI" id="e0P-1d-MeC"/>
+                        <outlet property="searchContentsController" destination="hS9-mO-OoA" id="M2H-nT-8SK"/>
+                        <outlet property="searchResultsDataSource" destination="hS9-mO-OoA" id="C3T-O6-hWz"/>
+                        <outlet property="searchResultsDelegate" destination="hS9-mO-OoA" id="Sya-ya-j2j"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="3393" y="215"/>
         </scene>
@@ -1766,19 +1768,19 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="aD3-fA-8ts" firstAttribute="leading" secondItem="Qi8-Kv-bPU" secondAttribute="leading" type="default" id="6Kv-4O-JdB"/>
-                                    <constraint firstItem="3PH-Ux-VNu" firstAttribute="centerY" secondItem="RI3-Y6-Wr5" secondAttribute="centerY" type="default" id="96T-Rz-rGp"/>
                                     <constraint firstItem="Mm3-t2-Bt6" firstAttribute="top" secondItem="AeA-H6-9O5" secondAttribute="top" constant="20" type="default" id="D5M-kG-wfG"/>
                                     <constraint firstItem="3PH-Ux-VNu" firstAttribute="leading" secondItem="AeA-H6-9O5" secondAttribute="leading" constant="66" id="GSa-Dd-tZP"/>
-                                    <constraint firstItem="RI3-Y6-Wr5" firstAttribute="top" secondItem="AeA-H6-9O5" secondAttribute="top" constant="7" id="IEB-3S-HVL"/>
                                     <constraint firstItem="Mm3-t2-Bt6" firstAttribute="leading" secondItem="AeA-H6-9O5" secondAttribute="leading" constant="68" id="LqL-Qv-gwX"/>
                                     <constraint firstItem="aD3-fA-8ts" firstAttribute="top" secondItem="AeA-H6-9O5" secondAttribute="top" constant="35" id="Okm-BH-XYk"/>
                                     <constraint firstItem="Qi8-Kv-bPU" firstAttribute="leading" secondItem="ORU-hv-B6g" secondAttribute="leading" type="default" id="WRP-oL-Nlg"/>
                                     <constraint firstItem="Mm3-t2-Bt6" firstAttribute="bottom" secondItem="Qi8-Kv-bPU" secondAttribute="bottom" type="default" id="cMQ-2Y-rMv"/>
+                                    <constraint firstItem="RI3-Y6-Wr5" firstAttribute="centerY" secondItem="3PH-Ux-VNu" secondAttribute="centerY" type="default" id="e9Q-ST-Atw"/>
                                     <constraint firstItem="aD3-fA-8ts" firstAttribute="baseline" secondItem="Ayo-XL-4JL" secondAttribute="baseline" type="default" id="gvk-eV-Ona"/>
                                     <constraint firstItem="Qi8-Kv-bPU" firstAttribute="top" secondItem="AeA-H6-9O5" secondAttribute="top" constant="20" type="default" id="hL4-Y4-o54"/>
                                     <constraint firstItem="Ayo-XL-4JL" firstAttribute="leading" secondItem="AeA-H6-9O5" secondAttribute="leading" constant="143" id="knc-N1-ltx"/>
                                     <constraint firstItem="aD3-fA-8ts" firstAttribute="top" secondItem="Ayo-XL-4JL" secondAttribute="top" type="default" id="oq7-t2-dw5"/>
                                     <constraint firstItem="ORU-hv-B6g" firstAttribute="leading" secondItem="AeA-H6-9O5" secondAttribute="leading" constant="99" id="s7S-Ex-fgL"/>
+                                    <constraint firstItem="RI3-Y6-Wr5" firstAttribute="top" secondItem="AeA-H6-9O5" secondAttribute="top" constant="7" id="tUh-xh-BU4"/>
                                     <constraint firstItem="ORU-hv-B6g" firstAttribute="top" secondItem="AeA-H6-9O5" secondAttribute="top" constant="2" id="vts-vq-MGR"/>
                                     <constraint firstItem="RI3-Y6-Wr5" firstAttribute="leading" secondItem="AeA-H6-9O5" secondAttribute="leading" constant="9" id="vus-FP-4Ka"/>
                                     <constraint firstItem="eQN-hI-EBg" firstAttribute="leading" secondItem="aD3-fA-8ts" secondAttribute="leading" type="default" id="vxX-VU-6He"/>
@@ -2391,6 +2393,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ListaJogadoresTableViewController.h"/>
             <relationships>
                 <relationship kind="action" name="goToSearch:"/>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
             </relationships>
         </class>
@@ -2445,8 +2448,8 @@
         <class className="RankingCampeonatoTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RankingCampeonatoTableViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="lblApelidoCampeonato" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="viewHeader" candidateClass="UIView"/>
+                <relationship kind="action" name="goToSearch:"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
             </relationships>
         </class>
         <class className="RankingTorneioCell" superclassName="UITableViewCell">

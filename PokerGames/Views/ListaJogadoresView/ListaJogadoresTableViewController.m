@@ -47,10 +47,7 @@
                                 action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
      
-    // Hide the search bar until user scrolls up
-    CGRect newBounds = self.tableView.bounds;
-    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height + 44;
-    self.tableView.bounds = newBounds;
+    [self hideSearchBar];
     
     // reconhecimento de long press na table
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
@@ -58,7 +55,12 @@
     lpgr.minimumPressDuration = 1.0; //seconds
     lpgr.delegate = self;
     [self.tableView addGestureRecognizer:lpgr];
-        
+    
+    // adiciona controle de refresh
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+    
     // busca os jogadores da liga
     [self buscaJogadores];
 }
@@ -140,6 +142,13 @@
         UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:npvc];
         [self presentViewController:nc animated:YES completion:nil];
     }
+}
+
+- (void) hideSearchBar {
+    // Hide the search bar until user scrolls up
+    CGRect newBounds = self.tableView.bounds;
+    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height + 44;
+    self.tableView.bounds = newBounds;    
 }
 
 #pragma mark Adress book delegate methods
@@ -230,7 +239,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CellListaJogador";
-    ListaJogadoresCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ListaJogadoresCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     Jogador *jogador = nil;
@@ -331,9 +340,7 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     // Hide the search bar until user scrolls up
-    CGRect newBounds = self.tableView.bounds;
-    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height + 44;
-    self.tableView.bounds = newBounds;
+    [self hideSearchBar];
 }
 
 - (void) buscaJogadores {
@@ -366,6 +373,13 @@
            }
         }
     }];
+}
+
+-(void) refreshView:(UIRefreshControl *) refresh {
+    // busca os jogadores
+    [self buscaJogadores];
+    
+    [refresh endRefreshing];
 }
 
 @end

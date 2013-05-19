@@ -124,6 +124,7 @@
 		58B610B11743261400BA5CC2 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B610B01743261400BA5CC2 /* EventKitUI.framework */; };
 		58BCC5E11747FE67006D1752 /* searchBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BCC5DF1747FE67006D1752 /* searchBackground.png */; };
 		58BCC5E21747FE67006D1752 /* searchBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BCC5E01747FE67006D1752 /* searchBackground@2x.png */; };
+		58BCC5E517484408006D1752 /* Ranking.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BCC5E317484408006D1752 /* Ranking.m */; };
 		58BEF5AF174445DA00F0E335 /* jogador.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BEF5AE174445DA00F0E335 /* jogador.png */; };
 		58E546FA1732FDC5000BC308 /* PokerGamesFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546F91732FDC5000BC308 /* PokerGamesFacade.m */; };
 		58E547001734031F000BC308 /* JackPotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FD1734031F000BC308 /* JackPotCell.m */; };
@@ -292,6 +293,8 @@
 		58B610B01743261400BA5CC2 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		58BCC5DF1747FE67006D1752 /* searchBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchBackground.png; sourceTree = "<group>"; };
 		58BCC5E01747FE67006D1752 /* searchBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBackground@2x.png"; sourceTree = "<group>"; };
+		58BCC5E317484408006D1752 /* Ranking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ranking.m; sourceTree = "<group>"; };
+		58BCC5E417484408006D1752 /* Ranking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ranking.h; sourceTree = "<group>"; };
 		58BEF5AE174445DA00F0E335 /* jogador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jogador.png; sourceTree = "<group>"; };
 		58E546F81732FDC5000BC308 /* PokerGamesFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerGamesFacade.h; sourceTree = "<group>"; };
 		58E546F91732FDC5000BC308 /* PokerGamesFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PokerGamesFacade.m; sourceTree = "<group>"; };
@@ -676,6 +679,8 @@
 			isa = PBXGroup;
 			children = (
 				58967C14171DD69E003FCF47 /* pokergames.xcdatamodeld */,
+				58BCC5E317484408006D1752 /* Ranking.m */,
+				58BCC5E417484408006D1752 /* Ranking.h */,
 				587109AF1725B963001A2455 /* Campeonato.m */,
 				587109B01725B963001A2455 /* Campeonato.h */,
 				587109AC17257D85001A2455 /* Liga.m */,
@@ -930,6 +935,7 @@
 				5875D9EC1734A3DD007A5397 /* ListaJogadoresCell.m in Sources */,
 				58AB88CB173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m in Sources */,
 				580986DD173C771F006FA46B /* ConfirmarParticipacaoViewController.m in Sources */,
+				58BCC5E517484408006D1752 /* Ranking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -56,6 +56,11 @@
                                    action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
     
+    // adiciona controle de refresh
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+    
     // busca os torneios concluidos
     [self buscaTorneiosConcluidos];
 }
@@ -169,6 +174,13 @@
          }
          
      }];
+}
+
+-(void) refreshView:(UIRefreshControl *) refresh {
+    // busca os rankings
+    [self buscaTorneiosConcluidos];
+    
+    [refresh endRefreshing];
 }
 
 @end

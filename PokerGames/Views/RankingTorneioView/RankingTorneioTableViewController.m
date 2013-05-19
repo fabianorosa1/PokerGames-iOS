@@ -47,6 +47,11 @@
     self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
     self.viewHeader.layer.borderWidth = 0.4f;
     
+    // adiciona controle de refresh
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+    
     // busca os rankings
     [self buscaRanking];
 }
@@ -164,6 +169,13 @@
          }
          
      }];
+}
+
+-(void) refreshView:(UIRefreshControl *) refresh {
+    // busca os rankings
+    [self buscaRanking];
+    
+    [refresh endRefreshing];
 }
 
 @end

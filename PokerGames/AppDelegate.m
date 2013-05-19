@@ -22,7 +22,7 @@
     // ativa o tema
     [ADVThemeManager customizeAppAppearance];
     
-    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:@"nsurlcache"];
+    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
     
     // seta indicador de atividade de rede visivel
@@ -52,6 +52,10 @@
     UIDevice *myDevice=[UIDevice currentDevice];
     NSString *UUID = [[myDevice identifierForVendor] UUIDString];
     NSLog(@"identifierForVendor: %@", UUID);
+    
+    // My token is: 5be57ac3f7d8fe65829f30e29dcd45d136a27b58d68291bcde34cb824ffa6c3f
+    // identifierForVendor: 20CFD341-254E-4424-9AAD-635B02EF1363
+
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error

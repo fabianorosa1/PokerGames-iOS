@@ -8,7 +8,6 @@
 
 #import "RankingCampeonatoJogadorCell.h"
 #import "UIImageView+AFNetworking.h"
-#import "Jogador.h"
 
 @implementation RankingCampeonatoJogadorCell
 
@@ -30,12 +29,12 @@
     // Configure the view for the selected state
 }
 
-- (void)setDados:(NSDictionary *)dados
+- (void)setRanking:(Ranking *)ranking
 {
-    _dados = dados;
+    _ranking = ranking;
     
-    self.lblNome.text = [_dados valueForKey:@"Nome"];
-    self.lblPontos.text = [NSString stringWithFormat:@"%@ pontos", [_dados valueForKey:@"Pontos"]];
+    self.lblNome.text = ranking.nome;
+    self.lblPontos.text = [NSString stringWithFormat:@"%@ pontos", ranking.pontos];
     
     // verifica a posicao
     if (self.row == 0) {
@@ -53,11 +52,11 @@
     } else {
         self.lblPosicao.hidden = false;
         self.imgViewPosicao.hidden = true;
-        self.lblPosicao.text = [NSString stringWithFormat:@"%@º", [_dados valueForKey:@"Posicao"]];
+        self.lblPosicao.text = ranking.posicao;
     }
     
     // seta a foto do jogador
-    [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:[dados valueForKey:@"Foto"]];
+    [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:ranking.foto];
 }
 
 @end

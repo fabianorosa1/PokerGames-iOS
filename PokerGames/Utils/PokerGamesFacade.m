@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "Campeonato.h"
 #import <CoreData/CoreData.h>
+#import "Ranking.h"
 
 @implementation PokerGamesFacade
 
@@ -58,6 +59,8 @@
     
     // seta não configurado
     [self setIsFirstTime:TRUE];
+    
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 - (void)efetuaLoginPlayerWithBlock:(NSString *)user
@@ -386,9 +389,16 @@
     
     [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"RankingResult"];
+        [self logServicos:@"postsFromResponse" text:postsFromResponse];
+        
+        NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
+        for (NSDictionary *attributes in postsFromResponse) {
+            Ranking *ranking = [[Ranking alloc] initWithAttributes:attributes];
+            [mutablePosts addObject:ranking];
+        }
+        
         if (block) {
-            [self logServicos:@"postsFromResponse" text:postsFromResponse];
-            block(postsFromResponse, nil);
+            block([NSArray arrayWithArray:mutablePosts], nil);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (block) {

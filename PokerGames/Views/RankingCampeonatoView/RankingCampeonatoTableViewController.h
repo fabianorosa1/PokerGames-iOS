@@ -8,7 +8,8 @@
 
 @interface RankingCampeonatoTableViewController : UITableViewController
 
-@property (nonatomic, weak) IBOutlet UIView* viewHeader;
-@property (nonatomic, weak) IBOutlet UILabel* lblApelidoCampeonato;
+@property (nonatomic, weak) IBOutlet UISearchBar* searchBar;
+
+-(IBAction)goToSearch:(id)sender;
 
 @end

@@ -20,6 +20,7 @@
 
 @interface RankingCampeonatoTableViewController () {
     NSArray *arRanking;
+    NSMutableArray *arFilteredRanking;
 }
 
 @end
@@ -39,14 +40,7 @@
 {
     [super viewDidLoad];
     
-    // configura o header
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
     [ADVThemeManager customizeTableView:self.tableView];
-    
-    [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
     
     // botao de configuracoes
     UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
@@ -55,6 +49,8 @@
                                    target:self
                                    action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
+    
+    [self hideSearchBar];
     
     // adiciona controle de refresh
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
@@ -87,7 +83,6 @@
     [super viewWillAppear:animated];
     
     self.title = @"Ranking Geral";
-    self.lblApelidoCampeonato.text =  [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido;
     
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
@@ -107,27 +102,68 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return arRanking.count;
+    // Check to see whether the normal table or search results table is being displayed and return the count from the appropriate array
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [arFilteredRanking count];
+    } else {
+        return [arRanking count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CellRanking";
-    RankingCampeonatoJogadorCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    RankingCampeonatoJogadorCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    NSDictionary *rankingJogador = arRanking[indexPath.row];
+    Ranking *rankingJogador = nil;
+    
+    // Check to see whether the normal table or search results table is being displayed and set the Candy object from the appropriate array
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        rankingJogador = [arFilteredRanking objectAtIndex:indexPath.row];
+    } else {
+        rankingJogador = [arRanking objectAtIndex:indexPath.row];
+    }
     cell.row = indexPath.row;
-    cell.dados = rankingJogador;
+    cell.ranking = rankingJogador;
     
     return cell;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,44)];
+    
+    // configura o header
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    
+    [ADVThemeManager customizeTableView:self.tableView];
+    
+    [headerView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    headerView.layer.borderColor = [UIColor grayColor].CGColor;
+    headerView.layer.borderWidth = 0.4f;
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, headerView.frame.size.width, headerView.frame.size.height)];
+    
+    headerLabel.textAlignment = NSTextAlignmentCenter;
+    headerLabel.text = [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido;
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:19.0f];
+    [headerView addSubview:headerLabel];
+    
+    return headerView;
+}
+
+-(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return  44.0;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"ResultadosTorneioJogador" sender:self];
+    [self performSegueWithIdentifier:@"ResultadosTorneioJogador" sender:tableView];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -138,20 +174,73 @@
         // Get reference to the destination view controller
         DetalhesJogadorTableViewController *vc = [segue destinationViewController];
         
-        // Pass any objects to the view controller here, like...
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDictionary *rankingSelecionado = arRanking[indexPath.row];
+        Ranking *rankingSelecionado = nil;
+        // In order to manipulate the destination view controller, another check on which table (search or normal) is displayed is needed
+        if(sender == self.searchDisplayController.searchResultsTableView) {
+            NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            rankingSelecionado = [arFilteredRanking objectAtIndex:indexPath.row];
+        }
+        else {
+            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            rankingSelecionado = [arRanking objectAtIndex:indexPath.row];
+        }
         
         Jogador *jogadorSelecionado = [[Jogador alloc] init];
-        [jogadorSelecionado setIdJogador:[rankingSelecionado valueForKey:@"IdJogador"]];
-        [jogadorSelecionado setApelido:[rankingSelecionado valueForKey:@"Apelido"]];
-        [jogadorSelecionado setNome:[rankingSelecionado valueForKey:@"Nome"]];
-        [jogadorSelecionado setIdLiga:[rankingSelecionado valueForKey:@"IdLiga"]];
-        [jogadorSelecionado setFoto:[rankingSelecionado valueForKey:@"Foto"]];
+        [jogadorSelecionado setIdJogador:rankingSelecionado.idJogador];
+        [jogadorSelecionado setApelido:rankingSelecionado.apelido];
+        [jogadorSelecionado setNome:rankingSelecionado.nome];
+        [jogadorSelecionado setIdLiga:rankingSelecionado.idLiga];
+        [jogadorSelecionado setFoto:rankingSelecionado.foto];
         jogadorSelecionado.liga = [[PokerGamesFacade sharedInstance] jogadorLogin].liga;
         // parametros
         vc.jogador = jogadorSelecionado;
     }
+}
+
+-(IBAction)goToSearch:(id)sender {
+    // If you're worried that your users might not catch on to the fact that a search bar is available if they scroll to reveal it, a search icon will help them
+    // If you don't hide your search bar in your app, don’t include this, as it would be redundant
+    [self.searchDisplayController setActive:YES];
+    [self.searchBar becomeFirstResponder];
+}
+
+#pragma mark Content Filtering
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    // Update the filtered array based on the search text and scope.
+    // Remove all objects from the filtered search array
+    [arFilteredRanking removeAllObjects];
+    // Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.nome contains[c] %@",searchText];
+    arFilteredRanking = [NSMutableArray arrayWithArray:[arRanking filteredArrayUsingPredicate:predicate]];
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    // Tells the table data source to reload when scope bar selection changes
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    // Hide the search bar until user scrolls up
+    [self hideSearchBar];
+}
+
+- (void) hideSearchBar {
+    // Hide the search bar until user scrolls up
+    CGRect newBounds = self.tableView.bounds;
+    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height + 44;
+    self.tableView.bounds = newBounds;
 }
 
 - (void) buscaRanking {
@@ -175,6 +264,8 @@
              //NSLog(@"Ranking: %@", ranking );
              arRanking = ranking;
              
+             arFilteredRanking = [NSMutableArray arrayWithCapacity:[arRanking count]];
+             
              // atualiza table
              [self.tableView reloadData];
              
@@ -185,11 +276,11 @@
      }];
 }
 
-
 -(void) refreshView:(UIRefreshControl *) refresh {    
     // busca os rankings
     [self buscaRanking];
     
     [refresh endRefreshing];
 }
+
 @end
