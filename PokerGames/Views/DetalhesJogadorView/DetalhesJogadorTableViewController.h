@@ -8,7 +8,7 @@
 
 #import "Jogador.h"
 
-@interface DetalhesJogadorTableViewController : UITableViewController
+@interface DetalhesJogadorTableViewController : UITableViewController <UIGestureRecognizerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIView* viewHeader;
 @property (nonatomic, weak) IBOutlet UILabel* lblJogador;

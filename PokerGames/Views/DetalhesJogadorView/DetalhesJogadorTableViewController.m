@@ -17,6 +17,7 @@
 #import "MenuViewController.h"
 #import "RankingTorneioTableViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import <Social/Social.h>
 
 @interface DetalhesJogadorTableViewController () {
     NSArray *arResultadosTorneios;
@@ -66,6 +67,13 @@
         
         [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
     }
+    
+    // reconhecimento de long press na table
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 1.0; //seconds
+    lpgr.delegate = self;
+    [self.tableView addGestureRecognizer:lpgr];
     
     // busca os resultados dos torneios do jogador
     [self buscaResultadosTorneio];
@@ -219,6 +227,33 @@
          }
          
      }];
+}
+
+- (IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        CGPoint p = [gestureRecognizer locationInView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+        if (indexPath) {
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            if (cell.isHighlighted) {
+                //NSLog(@"long press on table view at section %d row %d", indexPath.section, indexPath.row);
+                
+                NSDictionary *dicTorneioSelecionado = arResultadosTorneios[indexPath.row];
+                
+                // publica na timeline do facebook
+                if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+                    SLComposeViewController*fvc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+                    
+                    NSString *texto = [NSString stringWithFormat:@"Resultado do torneio \"%@\" da liga \"%@\" em %@: %@º lugar e %@ pontos.", [dicTorneioSelecionado valueForKey:@"Etapa"], self.jogador.liga.campeonato.apelido, [dicTorneioSelecionado valueForKey:@"Data"],[dicTorneioSelecionado valueForKey:@"Posicao"], [dicTorneioSelecionado valueForKey:@"Pontos"]];
+                    [fvc setInitialText:texto];
+                    [fvc addURL:[NSURL URLWithString:@"http://pokergames.azurewebsites.net"]];
+                    [fvc addImage:[UIImage imageNamed:@"iPhoneIcon_Big"]];
+
+                    [self presentViewController:fvc animated:YES completion:nil];
+                }
+            }
+        }
+    }
 }
 
 @end
