@@ -308,8 +308,6 @@
 		58E547051734659C000BC308 /* ListaJogadoresTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListaJogadoresTableViewController.m; path = ListaJogadoresView/ListaJogadoresTableViewController.m; sourceTree = "<group>"; };
 		58E54707173465DF000BC308 /* PerfilJogadorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PerfilJogadorViewController.h; path = PerfilJogadorView/PerfilJogadorViewController.h; sourceTree = "<group>"; };
 		58E54708173465DF000BC308 /* PerfilJogadorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PerfilJogadorViewController.m; path = PerfilJogadorView/PerfilJogadorViewController.m; sourceTree = "<group>"; };
-		58F15ECE17442F1700D381B3 /* pt */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = pt; path = pt.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		58F15ECF17442F1700D381B3 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -950,7 +948,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				58967B63171DCE8E003FCF47 /* en */,
-				58F15ECF17442F1700D381B3 /* pt */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -959,7 +956,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				58967B72171DCE8E003FCF47 /* en */,
-				58F15ECE17442F1700D381B3 /* pt */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
