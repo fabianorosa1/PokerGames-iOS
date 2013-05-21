@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ECSlidingViewController.h"
+#import "JogadoresConfirmadosTableViewController.h"
 
 @interface ConfirmarParticipacaoViewController ()
 
@@ -41,7 +42,10 @@
 
     [self.btnNaoParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
     [self.btnNaoParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
-    
+
+    [self.btnListaJogadores setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
+    [self.btnListaJogadores setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
+
     [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
     self.viewHeader.layer.borderWidth = 0.4f;
@@ -276,6 +280,22 @@
     }
     
     return NO;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"JogadoresConfirmados"])
+    {
+        // Get reference to the destination view controller
+        JogadoresConfirmadosTableViewController *vc = [segue destinationViewController];
+                
+        // passa o parametro
+        vc.idTorneio = [self.dicDadosConfirmacao valueForKey:@"IdTorneio"];
+        vc.nomeTorneio = [self.dicDadosConfirmacao valueForKey:@"Nome"];
+        vc.dataTorneio = [self.dicDadosConfirmacao valueForKey:@"Data"];
+        vc.horaTorneio = [self.dicDadosConfirmacao valueForKey:@"Hora"];
+      }
 }
 
 @end

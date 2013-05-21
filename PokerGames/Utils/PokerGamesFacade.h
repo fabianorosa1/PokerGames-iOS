@@ -111,4 +111,9 @@
 - (void)buscaPerfilJogadorWithBlock:(NSNumber *)idJogador
           constructingBodyWithBlock:(void (^)(NSDictionary *dados, NSError *error))block;
 
+// metodos da tela de jogadores confirmados
+
+- (void)buscaJogadoresConfirmadosWithBlock:(NSNumber *)idTorneio
+                 constructingBodyWithBlock:(void (^)(NSArray *jogadores, NSError *error))block;
+
 @end

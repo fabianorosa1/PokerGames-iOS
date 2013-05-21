@@ -779,5 +779,27 @@
     }];
 }
 
+// metodos da tela de jogadores confirmados
+
+- (void)buscaJogadoresConfirmadosWithBlock:(NSNumber *)idTorneio
+                constructingBodyWithBlock:(void (^)(NSArray *jogadores, NSError *error))block
+{
+    
+    NSString *path = [NSString stringWithFormat:@"Jogadores.svc/Confirmados/%@", idTorneio];
+    [self logServicos:@"Path" text:path];
+    
+    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+        NSArray *postsFromResponse = [JSON valueForKeyPath:@"ConfirmadosResult"];
+        if (block) {
+            [self logServicos:@"postsFromResponse" text:postsFromResponse];
+            block(postsFromResponse, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            [self logServicos:@"Path" text:path];
+            block([NSArray array], error);
+        }
+    }];
+}
 
 @end

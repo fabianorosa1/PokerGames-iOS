@@ -28,6 +28,7 @@
 
 @property (nonatomic, weak) IBOutlet UIButton *btnParticipar;
 @property (nonatomic, weak) IBOutlet UIButton *btnNaoParticipar;
+@property (nonatomic, weak) IBOutlet UIButton *btnListaJogadores;
 
 @property (nonatomic, strong) NSDictionary* dicDadosConfirmacao;
 

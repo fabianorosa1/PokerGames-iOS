@@ -120,6 +120,8 @@
 		589B83E01739B5D80024F972 /* fverde.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83DB1739B5D80024F972 /* fverde.jpg */; };
 		589B83E11739B5D80024F972 /* fvermelha.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83DC1739B5D80024F972 /* fvermelha.jpg */; };
 		58A9B7BF17498167007CD178 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A9B7BE17498167007CD178 /* Social.framework */; };
+		58A9B7C5174B00AC007CD178 /* JogadoresConfirmadosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9B7C2174B00AC007CD178 /* JogadoresConfirmadosCell.m */; };
+		58A9B7C6174B00AC007CD178 /* JogadoresConfirmadosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9B7C4174B00AC007CD178 /* JogadoresConfirmadosTableViewController.m */; };
 		58AB88CB173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AB88C9173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m */; };
 		58B610AF1743138D00BA5CC2 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B610AE1743138D00BA5CC2 /* AddressBookUI.framework */; };
 		58B610B11743261400BA5CC2 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B610B01743261400BA5CC2 /* EventKitUI.framework */; };
@@ -289,6 +291,10 @@
 		589B83DB1739B5D80024F972 /* fverde.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fverde.jpg; sourceTree = "<group>"; };
 		589B83DC1739B5D80024F972 /* fvermelha.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fvermelha.jpg; sourceTree = "<group>"; };
 		58A9B7BE17498167007CD178 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		58A9B7C1174B00AC007CD178 /* JogadoresConfirmadosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JogadoresConfirmadosCell.h; sourceTree = "<group>"; };
+		58A9B7C2174B00AC007CD178 /* JogadoresConfirmadosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogadoresConfirmadosCell.m; sourceTree = "<group>"; };
+		58A9B7C3174B00AC007CD178 /* JogadoresConfirmadosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JogadoresConfirmadosTableViewController.h; sourceTree = "<group>"; };
+		58A9B7C4174B00AC007CD178 /* JogadoresConfirmadosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogadoresConfirmadosTableViewController.m; sourceTree = "<group>"; };
 		58AB88C9173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TorneiosDisponiveisCell.m; path = TorneiosDisponiveisView/TorneiosDisponiveisCell.m; sourceTree = "<group>"; };
 		58AB88CA173BEBB100F0F7B8 /* TorneiosDisponiveisCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TorneiosDisponiveisCell.h; path = TorneiosDisponiveisView/TorneiosDisponiveisCell.h; sourceTree = "<group>"; };
 		58B610AE1743138D00BA5CC2 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -696,6 +702,7 @@
 		58967C1C171DE255003FCF47 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58A9B7C0174B00AC007CD178 /* JogadoresConfirmadosView */,
 				580986DA173C76DF006FA46B /* ConfirmarParticipacaoView */,
 				5875D9E61734A089007A5397 /* TorneiosDisponiveisView */,
 				58E5470317346561000BC308 /* ListaJogadoresView */,
@@ -730,6 +737,17 @@
 				589B3B621721DAA100AAC977 /* AFAppDotNetAPIClient.m */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		58A9B7C0174B00AC007CD178 /* JogadoresConfirmadosView */ = {
+			isa = PBXGroup;
+			children = (
+				58A9B7C1174B00AC007CD178 /* JogadoresConfirmadosCell.h */,
+				58A9B7C2174B00AC007CD178 /* JogadoresConfirmadosCell.m */,
+				58A9B7C3174B00AC007CD178 /* JogadoresConfirmadosTableViewController.h */,
+				58A9B7C4174B00AC007CD178 /* JogadoresConfirmadosTableViewController.m */,
+			);
+			path = JogadoresConfirmadosView;
 			sourceTree = "<group>";
 		};
 		58E546FB1734031F000BC308 /* JackPotView */ = {
@@ -938,6 +956,8 @@
 				58AB88CB173BEBB100F0F7B8 /* TorneiosDisponiveisCell.m in Sources */,
 				580986DD173C771F006FA46B /* ConfirmarParticipacaoViewController.m in Sources */,
 				58BCC5E517484408006D1752 /* Ranking.m in Sources */,
+				58A9B7C5174B00AC007CD178 /* JogadoresConfirmadosCell.m in Sources */,
+				58A9B7C6174B00AC007CD178 /* JogadoresConfirmadosTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
