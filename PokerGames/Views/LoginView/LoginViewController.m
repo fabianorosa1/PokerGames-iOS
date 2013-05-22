@@ -150,45 +150,48 @@
 //Login button pressed
 -(IBAction)logInPressed:(id)sender
 {
-    
+    [self efetuaLogin:[self.userTextField text] passw:[self.passwordTextField text]];
+}
+
+- (IBAction)demoPressed:(id)sender {
+    [self efetuaLogin:@"nagel" passw:@"AXSXSX"];
+}
+
+- (void) efetuaLogin:(NSString*)user passw:(NSString*)passw {
     [self.view endEditing:YES];
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Autenticando";
     
     // efetua validacao do login
-    [[PokerGamesFacade sharedInstance] efetuaLoginPlayerWithBlock:[self.userTextField text]
-                                 passw:[self.passwordTextField text]
-             constructingBodyWithBlock:^(Jogador *jogador, NSError *error) {
+    [[PokerGamesFacade sharedInstance] efetuaLoginPlayerWithBlock:user
+                                                            passw:passw
+                                        constructingBodyWithBlock:^(Jogador *jogador, NSError *error) {
+                                            
+    [hud hide:YES];
+    
+    if (error) {
+        // Erro ao efetuar login
+        NSInteger httpErrorCode = [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
+        //NSLog(@"Http error code %i",httpErrorCode);
+        NSString *msgError = nil;
         
-        [hud hide:YES];
-                 
-        if (error) {
-            // Erro ao efetuar login
-            NSInteger httpErrorCode = [[[error userInfo] objectForKey:AFNetworkingOperationFailingURLResponseErrorKey] statusCode];
-            //NSLog(@"Http error code %i",httpErrorCode);
-            NSString *msgError = nil;
-            
-            if (httpErrorCode == 400) {
-                msgError = @"Usuário ou senha inválido!";
-                [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Autenticação", nil) message:msgError delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-            } else {
-                [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
-            }
+        if (httpErrorCode == 400) {
+            msgError = @"Usuário ou senha inválido!";
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Autenticação", nil) message:msgError delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
         } else {
-            // login com sucesso
-            
-            //NSLog(@"Jogador: %@", jogador );
-            [[PokerGamesFacade sharedInstance] setJogadorLogin:jogador];
-            
-            [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Erro", nil) message:[error localizedDescription] delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
         }
-     
-    }];    
-}
-
-- (IBAction)demoPressed:(id)sender {
-    [[[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Em breve!" delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
+    } else {
+        // login com sucesso
+        
+        //NSLog(@"Jogador: %@", jogador );
+        [[PokerGamesFacade sharedInstance] setJogadorLogin:jogador];
+        
+        [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
+    }
+    
+}];
 }
 
 @end

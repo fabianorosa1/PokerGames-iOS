@@ -55,7 +55,9 @@
     
     // My token is: 5be57ac3f7d8fe65829f30e29dcd45d136a27b58d68291bcde34cb824ffa6c3f
     // identifierForVendor: 20CFD341-254E-4424-9AAD-635B02EF1363
-    // apn push "<5be57ac3 f7d8fe65 829f30e2 9dcd45d1 36a27b58 d68291bc de34cb82 4ffa6c3f>" -c /Users/fabianorosa/Developer/PokerGamesFiles/PokerGames-aps_development.pem -m "Hello"
+    // openssl pkcs12 -in apns-dev-cert.p12 -out apns-dev-cert.pem -nodes -clcerts
+    // apn push "<5be57ac3 f7d8fe65 829f30e2 9dcd45d1 36a27b58 d68291bc de34cb82 4ffa6c3f>" -c /Users/fabianorosa/Developer/PokerGamesFiles/PokerGames-aps_development.pem -m "Hello" -s default -d idTorneio=15 -b 1
+    //[UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
 }
 
