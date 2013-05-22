@@ -43,9 +43,6 @@
     [self.btnNaoParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
     [self.btnNaoParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
 
-    [self.btnListaJogadores setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    [self.btnListaJogadores setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
-
     [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
     self.viewHeader.layer.borderWidth = 0.4f;
