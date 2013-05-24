@@ -21,5 +21,7 @@
 
 + (void) setaImagemJogador:(UIImageView*)imgViewFoto foto:(NSString*)foto;
 + (NSURL*) retornaUrlFoto:(NSString*)fileFoto;
-    
+
++ (NSString *)deviceUUID;
+
 @end

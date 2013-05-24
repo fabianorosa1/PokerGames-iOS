@@ -99,4 +99,9 @@ static NSNumberFormatter *numberFormatter;
     return numberFormatter;
 }
 
++ (NSString *)deviceUUID {
+    UIDevice *myDevice=[UIDevice currentDevice];
+    return [[myDevice identifierForVendor] UUIDString];
+}
+
 @end

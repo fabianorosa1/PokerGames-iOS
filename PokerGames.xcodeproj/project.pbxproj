@@ -54,6 +54,8 @@
 		5875D9E31731F4D3007A5397 /* RankingTorneioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5875D9E11731F4D3007A5397 /* RankingTorneioTableViewController.m */; };
 		5875D9E91734A0B9007A5397 /* TorneiosDisponiveisTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5875D9E81734A0B9007A5397 /* TorneiosDisponiveisTableViewController.m */; };
 		5875D9EC1734A3DD007A5397 /* ListaJogadoresCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5875D9EA1734A3DD007A5397 /* ListaJogadoresCell.m */; };
+		587DF22C174EDDDA005893C7 /* exclamation-point-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 587DF22A174EDDDA005893C7 /* exclamation-point-icon.png */; };
+		587DF22D174EDDDA005893C7 /* exclamation-point-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587DF22B174EDDDA005893C7 /* exclamation-point-icon@2x.png */; };
 		5882A5A31730BA76009B858C /* DetalhesJogadorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882A5A01730BA76009B858C /* DetalhesJogadorCell.m */; };
 		5882A5A41730BA76009B858C /* DetalhesJogadorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882A5A21730BA76009B858C /* DetalhesJogadorTableViewController.m */; };
 		58967B5A171DCE8E003FCF47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B59171DCE8E003FCF47 /* UIKit.framework */; };
@@ -213,6 +215,8 @@
 		5875D9E81734A0B9007A5397 /* TorneiosDisponiveisTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TorneiosDisponiveisTableViewController.m; path = TorneiosDisponiveisView/TorneiosDisponiveisTableViewController.m; sourceTree = "<group>"; };
 		5875D9EA1734A3DD007A5397 /* ListaJogadoresCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListaJogadoresCell.m; path = ListaJogadoresView/ListaJogadoresCell.m; sourceTree = "<group>"; };
 		5875D9EB1734A3DD007A5397 /* ListaJogadoresCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListaJogadoresCell.h; path = ListaJogadoresView/ListaJogadoresCell.h; sourceTree = "<group>"; };
+		587DF22A174EDDDA005893C7 /* exclamation-point-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exclamation-point-icon.png"; sourceTree = "<group>"; };
+		587DF22B174EDDDA005893C7 /* exclamation-point-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exclamation-point-icon@2x.png"; sourceTree = "<group>"; };
 		5882A59F1730BA76009B858C /* DetalhesJogadorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetalhesJogadorCell.h; sourceTree = "<group>"; };
 		5882A5A01730BA76009B858C /* DetalhesJogadorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetalhesJogadorCell.m; sourceTree = "<group>"; };
 		5882A5A11730BA76009B858C /* DetalhesJogadorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetalhesJogadorTableViewController.h; sourceTree = "<group>"; };
@@ -616,6 +620,8 @@
 		58967BB5171DD2B5003FCF47 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				587DF22A174EDDDA005893C7 /* exclamation-point-icon.png */,
+				587DF22B174EDDDA005893C7 /* exclamation-point-icon@2x.png */,
 				58BCC5DF1747FE67006D1752 /* searchBackground.png */,
 				58BCC5E01747FE67006D1752 /* searchBackground@2x.png */,
 				58BEF5AE174445DA00F0E335 /* jogador.png */,
@@ -900,6 +906,8 @@
 				58BEF5AF174445DA00F0E335 /* jogador.png in Resources */,
 				58BCC5E11747FE67006D1752 /* searchBackground.png in Resources */,
 				58BCC5E21747FE67006D1752 /* searchBackground@2x.png in Resources */,
+				587DF22C174EDDDA005893C7 /* exclamation-point-icon.png in Resources */,
+				587DF22D174EDDDA005893C7 /* exclamation-point-icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

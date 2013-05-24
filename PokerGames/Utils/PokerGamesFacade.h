@@ -15,6 +15,7 @@
 @property (strong, nonatomic) Jogador *jogadorLogin;
 @property (nonatomic) BOOL isFirstTime;
 @property (nonatomic) BOOL isDebugApp;
+@property (strong, nonatomic) NSString *apnsToken;
 
 + (NSString*) paramDebugApp;
 
@@ -115,5 +116,13 @@
 
 - (void)buscaJogadoresConfirmadosWithBlock:(NSNumber *)idTorneio
                  constructingBodyWithBlock:(void (^)(NSArray *jogadores, NSError *error))block;
+
+
+// métodos de push
+
+- (void)registraDispositivoWithBlock:(NSString *)apnsToken
+                          deviceUUID:(NSString*)deviceUUID
+                           idJogador:(NSNumber*)idJogador
+           constructingBodyWithBlock:(void (^)(NSString *result, NSError *error))block;
 
 @end

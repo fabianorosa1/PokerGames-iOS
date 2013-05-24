@@ -802,4 +802,34 @@
     }];
 }
 
+// métodos de push
+
+- (void)registraDispositivoWithBlock:(NSString *)apnsToken
+                             deviceUUID:(NSString*)deviceUUID
+                         idJogador:(NSNumber*)idJogador
+             constructingBodyWithBlock:(void (^)(NSString *result, NSError *error))block
+{
+    NSString *paramIdJogador = nil;
+    if (idJogador) {
+        paramIdJogador = [idJogador stringValue];
+    } else {
+        paramIdJogador = @"null";
+    }
+    NSString *path = [NSString stringWithFormat:@"Jogadores.svc/RegistraDispositivo/%@/%@/%@", apnsToken, deviceUUID, paramIdJogador];
+    [self logServicos:@"Path" text:path];
+
+    [[AFAppDotNetAPIClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+        NSString *postsFromResponse = [JSON valueForKeyPath:@"RegistraDispositivoResult"];
+        if (block) {
+            [self logServicos:@"postsFromResponse" text:postsFromResponse];
+            block(postsFromResponse, nil);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (block) {
+            [self logServicos:@"Path" text:path];
+            block(@"", error);
+        }
+    }];
+}
+
 @end

@@ -24,13 +24,14 @@
     if (self) {
         // Custom initialization
     }
+    
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  
+    
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     
@@ -51,6 +52,29 @@
     self.imgViewFoto.layer.borderWidth = 1.0;
     
     self.tableView.separatorColor = [UIColor clearColor];
+    
+    // evento de recebimento do push
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(didReceiveRemoteNotification:)
+     name:@"UIApplicationDidReceiveRemoteNotification"
+     object:nil];
+}
+
+-(void)viewDidUnload {
+    // desregistra o evento de push
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:@"UIApplicationDidReceiveRemoteNotification"
+     object:nil];
+}
+
+-(void)didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    // see http://stackoverflow.com/a/2777460/305149
+    //if (self.isViewLoaded && self.view.window) {
+        // handle the notification
+    self.imgViewPush.hidden = NO;
+    //}
 }
 
 -(void) viewWillAppear:(BOOL)animated

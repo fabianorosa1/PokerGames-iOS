@@ -30,7 +30,7 @@
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
     
-    // verifica se já está logado
+    // verifica se já está logado                                
     Jogador *jogador = [[PokerGamesFacade sharedInstance] loadJogadorEntity];
     
     if (jogador == nil) {
@@ -45,7 +45,12 @@
         [[PokerGamesFacade sharedInstance] setJogadorLogin:jogador];
         //[self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
         
-        self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
+        // verifica se recebeu alguma notificacao via push
+        if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
+            self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveisView"];
+        } else {
+            self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];   
+        }
     }
 }
 

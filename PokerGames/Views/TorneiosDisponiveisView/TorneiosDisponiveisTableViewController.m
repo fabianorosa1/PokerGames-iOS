@@ -13,6 +13,7 @@
 #import "TorneiosDisponiveisCell.h"
 #import "MBProgressHUD.h"
 #import "ConfirmarParticipacaoViewController.h"
+#import "MenuViewController.h"
 
 @interface TorneiosDisponiveisTableViewController () {
     NSArray *arTorneios;
@@ -54,12 +55,18 @@
     
     self.lblCampeonato.text =  [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido];
 
+    // adiciona controle de refresh
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+    
     // busca os torneios disponiveis do campeonato
     [self buscaTorneios];
 }
 
 -(IBAction)configAction
 {
+    [self hideWarningPush];   
     [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
@@ -67,7 +74,7 @@
 {
     [super viewDidDisappear:animated];
     
-    self.title = @"Voltar";
+    self.title = @"Voltar"; 
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -86,6 +93,20 @@
     }
     
     [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+    
+    // zera status push que veio do APNS
+    if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    }
+    [self hideWarningPush];
+}
+
+- (void) hideWarningPush {
+    MenuViewController *menu = (MenuViewController *)self.slidingViewController.underLeftViewController;
+    if (!menu.imgViewPush.hidden) {
+        menu.imgViewPush.hidden = YES;
+    }
 }
 
 #pragma mark - Table view data source
@@ -171,5 +192,11 @@
     }
 }
 
+-(void) refreshView:(UIRefreshControl *) refresh {
+    // busca os torneios disponiveis
+    [self buscaTorneios];
+    
+    [refresh endRefreshing];
+}
 
 @end

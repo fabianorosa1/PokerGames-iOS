@@ -12,6 +12,6 @@
 
 @property (nonatomic, weak) IBOutlet UILabel* lblNome;
 @property (nonatomic, weak) IBOutlet UIImageView* imgViewFoto;
-
+@property (nonatomic, weak) IBOutlet UIImageView* imgViewPush;
 
 @end
