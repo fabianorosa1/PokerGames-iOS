@@ -50,8 +50,6 @@
                                    action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
     
-    [self hideSearchBar];
-    
     // adiciona controle de refresh
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
@@ -200,7 +198,7 @@
 -(IBAction)goToSearch:(id)sender {
     // If you're worried that your users might not catch on to the fact that a search bar is available if they scroll to reveal it, a search icon will help them
     // If you don't hide your search bar in your app, don’t include this, as it would be redundant
-    [self.searchDisplayController setActive:YES];
+    //[self.searchDisplayController setActive:YES];
     [self.searchBar becomeFirstResponder];
 }
 
@@ -229,18 +227,6 @@
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
     // Return YES to cause the search result table view to be reloaded.
     return YES;
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    // Hide the search bar until user scrolls up
-    [self hideSearchBar];
-}
-
-- (void) hideSearchBar {
-    // Hide the search bar until user scrolls up
-    CGRect newBounds = self.tableView.bounds;
-    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height + 44;
-    self.tableView.bounds = newBounds;
 }
 
 - (void) buscaRanking {

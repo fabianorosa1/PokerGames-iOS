@@ -53,6 +53,14 @@
         self.navigationItem.leftBarButtonItem = btnMenu;
     }
     
+    // adiciona canto arredonado
+    self.imgViewFoto.layer.cornerRadius = 5.0;
+    self.imgViewFoto.layer.masksToBounds = YES;
+    
+    // adiciona borda
+    self.imgViewFoto.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.imgViewFoto.layer.borderWidth = 1.0;
+    
     [self buscaPerfilJogador];
 }
 

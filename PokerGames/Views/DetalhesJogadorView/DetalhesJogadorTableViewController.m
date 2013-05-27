@@ -75,6 +75,14 @@
     lpgr.delegate = self;
     [self.tableView addGestureRecognizer:lpgr];
     
+    // adiciona canto arredonado
+    self.imgViewFoto.layer.cornerRadius = 5.0;
+    self.imgViewFoto.layer.masksToBounds = YES;
+    
+    // adiciona borda
+    self.imgViewFoto.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.imgViewFoto.layer.borderWidth = 1.0;
+    
     // busca os resultados dos torneios do jogador
     [self buscaResultadosTorneio];
 }
