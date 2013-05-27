@@ -191,9 +191,16 @@
     
     [hud hide:YES];
     
-    // instancia a tela principal do ranking
-    ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
-    slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
+    // verifica se recebeu alguma notificacao via push
+    if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
+        // instancia a tela de torneios disponiveis
+        ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
+        slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveisView"];
+    } else {
+        // instancia a tela principal do ranking
+        ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
+        slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
+    }
 }
 
 @end

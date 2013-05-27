@@ -135,6 +135,17 @@
         hud.labelText = @"Desconectando";
         
 		[[PokerGamesFacade sharedInstance] efetuaLogout];
+		[[PokerGamesFacade sharedInstance] setJogadorLogin:nil];
+        
+        // desregistra o dispositivo
+        [[PokerGamesFacade sharedInstance] registraDispositivoWithBlock:[[PokerGamesFacade sharedInstance] apnsToken]
+                                                             deviceUUID:[PokerGamesUtil deviceUUID]
+                                                              idJogador:nil
+                                              constructingBodyWithBlock:^(NSString *result, NSError *error) {
+            if (error) {
+              NSLog(@"Erro ao desregistrar dispositivo ao efetuar logout: %@", error);
+            }
+        }];
         
         [hud hide:YES];
         

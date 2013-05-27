@@ -78,8 +78,9 @@
      object:self
      userInfo:userInfo];
     
+    // verifica se o app está aberto
     UIApplicationState state = [application applicationState];
-    if (state == UIApplicationStateActive) {
+    if (state == UIApplicationStateActive && [[PokerGamesFacade sharedInstance] jogadorLogin]) {
         application.applicationIconBadgeNumber = 0;
         
         //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
