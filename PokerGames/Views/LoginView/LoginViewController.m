@@ -52,6 +52,9 @@
     [self.loginButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
     [self.loginButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
     self.loginButton.enabled = FALSE;
+
+    [self.demoButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
+    [self.demoButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
     
     self.userTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 260, 50)];
     [self.userTextField setPlaceholder:@"Apelido"];

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6yU-mv-CW5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6yU-mv-CW5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -14,8 +14,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTz-hV-xW3">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="523-8N-Eve"/>
-                                    <constraint firstAttribute="width" constant="128" id="M6O-wq-Rne"/>
+                                    <constraint firstAttribute="width" constant="125" id="oWa-gk-0Fa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
@@ -41,16 +40,16 @@
                                 <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL4-8t-Qst">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL4-8t-Qst">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="J1t-jc-ska"/>
-                                    <constraint firstAttribute="width" constant="250" id="cL2-hD-mks"/>
+                                    <constraint firstAttribute="height" constant="41" id="Q0l-Wt-dBj"/>
+                                    <constraint firstAttribute="width" constant="125" id="Y3J-Ti-o3a"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
-                                <state key="normal" title="Entrar em modo de demonstração">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Demonstração">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -62,16 +61,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XXd-6V-hQa" firstAttribute="leading" secondItem="ACH-dg-5ui" secondAttribute="leading" constant="28" id="5Bi-Sd-cSg"/>
-                            <constraint firstItem="BL4-8t-Qst" firstAttribute="centerX" secondItem="GTz-hV-xW3" secondAttribute="centerX" type="default" id="Aw3-wQ-ziL"/>
+                            <constraint firstItem="BL4-8t-Qst" firstAttribute="top" secondItem="ACH-dg-5ui" secondAttribute="top" constant="164" id="1FR-NE-Q8T"/>
+                            <constraint firstItem="BL4-8t-Qst" firstAttribute="top" secondItem="GTz-hV-xW3" secondAttribute="top" type="default" id="6JY-sZ-ZjD"/>
                             <constraint firstItem="XXd-6V-hQa" firstAttribute="top" secondItem="ACH-dg-5ui" secondAttribute="top" constant="26" id="EbY-lt-Xaj"/>
-                            <constraint firstItem="BL4-8t-Qst" firstAttribute="top" secondItem="GTz-hV-xW3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ZRo-ht-fOw"/>
-                            <constraint firstItem="BL4-8t-Qst" firstAttribute="centerX" secondItem="ACH-dg-5ui" secondAttribute="centerX" type="default" id="h7B-o0-qeA"/>
-                            <constraint firstItem="GTz-hV-xW3" firstAttribute="top" secondItem="ACH-dg-5ui" secondAttribute="top" constant="164" id="lBr-ZJ-E71"/>
+                            <constraint firstItem="GTz-hV-xW3" firstAttribute="baseline" secondItem="BL4-8t-Qst" secondAttribute="baseline" type="default" id="V2w-yh-Ljf"/>
+                            <constraint firstItem="BL4-8t-Qst" firstAttribute="leading" secondItem="XXd-6V-hQa" secondAttribute="leading" type="default" id="dM5-dU-QQw"/>
+                            <constraint firstItem="GTz-hV-xW3" firstAttribute="trailing" secondItem="XXd-6V-hQa" secondAttribute="trailing" type="default" id="u2Y-Oz-Gv0"/>
+                            <constraint firstItem="BL4-8t-Qst" firstAttribute="bottom" secondItem="GTz-hV-xW3" secondAttribute="bottom" type="default" id="xXs-Yn-zGG"/>
+                            <constraint firstItem="XXd-6V-hQa" firstAttribute="leading" secondItem="ACH-dg-5ui" secondAttribute="leading" constant="28" id="yCE-fJ-GE0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rNs-Fb-kEJ"/>
                     <connections>
+                        <outlet property="demoButton" destination="BL4-8t-Qst" id="ce1-g3-2Kl"/>
                         <outlet property="loginButton" destination="GTz-hV-xW3" id="wwU-aA-WQ8"/>
                         <segue destination="qlj-MJ-iPo" kind="push" identifier="SelecaoLiga" id="Uij-jP-E3Y"/>
                     </connections>
@@ -2509,7 +2511,6 @@
         <class className="DetalhesJogadorTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetalhesJogadorTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
                 <relationship kind="outlet" name="imgViewFoto" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="lblAlgoz" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblApelido" candidateClass="UILabel"/>
@@ -2587,6 +2588,7 @@
             <relationships>
                 <relationship kind="action" name="demoPressed:"/>
                 <relationship kind="action" name="logInPressed:"/>
+                <relationship kind="outlet" name="demoButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="passwordTextField" candidateClass="UITextField"/>
