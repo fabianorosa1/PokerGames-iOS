@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+        <dict>
+            <key>Title</key>
+            <string>Sobre</string>
+            <key>Type</key>
+            <string>PSGroupSpecifier</string>
+            <key>FooterText</key>
+            <string>Copyright © 2013 por PokerGames.
+                Todos os direitos reservados.</string>
+        </dict>
+        <dict>
+            <key>DefaultValue</key>
+            <string>1.0</string>
+            <key>Key</key>
+            <string>version_string</string>
+            <key>Title</key>
+            <string>Versão</string>
+            <key>Type</key>
+            <string>PSTitleValueSpecifier</string>
+        </dict>
+        <dict>
+            <key>DefaultValue</key>
+            <string>Fabiano Rosa</string>
+            <key>Key</key>
+            <string>version_string1</string>
+            <key>Title</key>
+            <string>Desenvolvido por</string>
+            <key>Type</key>
+            <string>PSTitleValueSpecifier</string>
+        </dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>

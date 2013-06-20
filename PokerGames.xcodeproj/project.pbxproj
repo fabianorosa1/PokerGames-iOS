@@ -19,6 +19,7 @@
 		580986E7173F458F006FA46B /* confirmado.png in Resources */ = {isa = PBXBuildFile; fileRef = 580986E4173F458F006FA46B /* confirmado.png */; };
 		580986E8173F458F006FA46B /* nao-confirmado.png in Resources */ = {isa = PBXBuildFile; fileRef = 580986E5173F458F006FA46B /* nao-confirmado.png */; };
 		580986E9173F458F006FA46B /* pendente-confirmacao.png in Resources */ = {isa = PBXBuildFile; fileRef = 580986E6173F458F006FA46B /* pendente-confirmacao.png */; };
+		5814AA451773BB0E00AD432F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5814AA441773BB0E00AD432F /* Settings.bundle */; };
 		58325077172462C000D2C825 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325076172462C000D2C825 /* SystemConfiguration.framework */; };
 		58325079172462C700D2C825 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325078172462C700D2C825 /* MobileCoreServices.framework */; };
 		5832507C172489C100D2C825 /* LigaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5832507B172489C100D2C825 /* LigaTableViewController.m */; };
@@ -151,6 +152,7 @@
 		580986E4173F458F006FA46B /* confirmado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmado.png; sourceTree = "<group>"; };
 		580986E5173F458F006FA46B /* nao-confirmado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nao-confirmado.png"; sourceTree = "<group>"; };
 		580986E6173F458F006FA46B /* pendente-confirmacao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pendente-confirmacao.png"; sourceTree = "<group>"; };
+		5814AA441773BB0E00AD432F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		58325076172462C000D2C825 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58325078172462C700D2C825 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5832507A172489C100D2C825 /* LigaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LigaTableViewController.h; path = LigaView/LigaTableViewController.h; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				58967B69171DCE8E003FCF47 /* AppDelegate.m */,
 				58967B71171DCE8E003FCF47 /* MainStoryboard_iPhone.storyboard */,
 				58967B60171DCE8E003FCF47 /* Supporting Files */,
+				5814AA441773BB0E00AD432F /* Settings.bundle */,
 			);
 			path = PokerGames;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				58BCC5E21747FE67006D1752 /* searchBackground@2x.png in Resources */,
 				587DF22C174EDDDA005893C7 /* exclamation-point-icon.png in Resources */,
 				587DF22D174EDDDA005893C7 /* exclamation-point-icon@2x.png in Resources */,
+				5814AA451773BB0E00AD432F /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
