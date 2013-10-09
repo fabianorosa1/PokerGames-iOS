@@ -9,7 +9,6 @@
 #import "PerfilJogadorViewController.h"
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
-#import "ADVTheme.h"
 #import "MBProgressHUD.h"
 #import "UIImageView+AFNetworking.h"
 
@@ -35,12 +34,12 @@
     [super viewDidLoad];
 
     // configura o header
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     
-    [self.btnOpcoes setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    [self.btnOpcoes setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
+    //[self.btnOpcoes setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
+    //[self.btnOpcoes setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
 
     // verifica se foi chamado do menu
     if (!self.idJogadorParametro) {

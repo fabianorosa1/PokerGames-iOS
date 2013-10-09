@@ -7,7 +7,6 @@
 //
 
 #import "MenuViewController.h"
-#import "ADVTheme.h"
 #import "Jogador.h"
 #import "UIImageView+AFNetworking.h"
 #import "MBProgressHUD.h"
@@ -32,10 +31,10 @@
 {
     [super viewDidLoad];
     
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     
-    [ADVThemeManager customizeTableView:self.tableView];
+    //[ADVThemeManager customizeTableView:self.tableView];
     
     // configura menu deslizante
     [self.slidingViewController setAnchorRightRevealAmount:263.0f];
@@ -89,10 +88,11 @@
     [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:jogador.foto];
 }
 
+/*
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     
-    UIImageView *imgBkg = [[UIImageView alloc] initWithImage:[theme tableSectionHeaderBackground]];
+    //UIImageView *imgBkg = [[UIImageView alloc] initWithImage:[theme tableSectionHeaderBackground]];
     UILabel *lblTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 23)];
     
     lblTitle.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"navigationBackground"]];
@@ -111,6 +111,7 @@
     [imgBkg addSubview:lblTitle];
     return imgBkg;
 }
+*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

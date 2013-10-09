@@ -13,7 +13,6 @@
 #import "MBProgressHUD.h"
 #import "TorneiosConcluidosCell.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ADVTheme.h"
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 #import "RankingTorneioTableViewController.h"
@@ -40,11 +39,11 @@
     [super viewDidLoad];
     
     // configura o header
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     
-    [ADVThemeManager customizeTableView:self.tableView];
+    //[ADVThemeManager customizeTableView:self.tableView];
     
-    [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    //[self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
     self.viewHeader.layer.borderWidth = 0.4f;
     

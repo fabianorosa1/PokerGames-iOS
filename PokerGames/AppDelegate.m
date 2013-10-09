@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "ADVDefaultTheme.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import <CoreData/CoreData.h>
 
@@ -20,7 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // ativa o tema
-    [ADVThemeManager customizeAppAppearance];
+    //[ADVThemeManager customizeAppAppearance];
+    [self initAppearance];
     
     NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
@@ -40,6 +40,23 @@
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         
     return YES;
+}
+
+- (void)initAppearance
+{
+    UIColor *byteClubBlue = [UIColor colorWithRed:61/255.0f
+                                            green:154/255.0f
+                                             blue:232/255.0f
+                                            alpha:1.0f];
+    
+    // Set appearance info
+    [[UITabBar appearance] setBarTintColor:byteClubBlue];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    [[UINavigationBar appearance] setBarTintColor:byteClubBlue];
+    
+    [[UIToolbar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    [[UIToolbar appearance] setBarTintColor:byteClubBlue];
+    
 }
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {    

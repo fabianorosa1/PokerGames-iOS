@@ -10,7 +10,6 @@
 #import "MBProgressHUD.h"
 #import "Liga.h"
 #import "Jogador.h"
-#import "ADVTheme.h"
 #import "ECSlidingViewController.h"
 #import "CampeonatoTableViewController.h"
 #import "MenuViewController.h"
@@ -79,13 +78,13 @@
     [super viewDidLoad];
     // NSLog(@"viewDidLoad");
     
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     
-    [ADVThemeManager customizeTableView:self.tableView];
+    //[ADVThemeManager customizeTableView:self.tableView];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     self.tableView.backgroundView = nil;
-    [self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    //[self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     
     // verifica se deve adicionar o botao de menu
     if (![[PokerGamesFacade sharedInstance] isFirstTime]) {

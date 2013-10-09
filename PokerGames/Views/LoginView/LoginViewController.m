@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "ADVTheme.h"
 #import "Jogador.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
@@ -36,7 +35,7 @@
 {
     [super viewDidLoad];
     
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     
     self.loginTableView = [[UITableView alloc] initWithFrame:CGRectMake(16, 50, 294, 110) style:UITableViewStyleGrouped];
     
@@ -47,14 +46,14 @@
     [self.loginTableView setDataSource:self];
     [self.loginTableView setDelegate:self];
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     
-    [self.loginButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    [self.loginButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
+    //[self.loginButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
+    //[self.loginButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
     self.loginButton.enabled = FALSE;
 
-    [self.demoButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    [self.demoButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
+    //[self.demoButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
+    //[self.demoButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
     
     self.userTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 260, 50)];
     [self.userTextField setPlaceholder:@"Apelido"];
