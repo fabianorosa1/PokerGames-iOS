@@ -19,7 +19,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // ativa o tema
-    //[ADVThemeManager customizeAppAppearance];
     [self initAppearance];
     
     NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
@@ -44,9 +43,9 @@
 
 - (void)initAppearance
 {
-    UIColor *byteClubBlue = [UIColor colorWithRed:61/255.0f
-                                            green:154/255.0f
-                                             blue:232/255.0f
+    UIColor *byteClubBlue = [UIColor colorWithRed:140/255.0f
+                                            green:188/255.0f
+                                             blue:64/255.0f
                                             alpha:1.0f];
     
     // Set appearance info
@@ -56,6 +55,8 @@
     
     [[UIToolbar appearance] setBarStyle:UIBarStyleBlackOpaque];
     [[UIToolbar appearance] setBarTintColor:byteClubBlue];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
 }
 
