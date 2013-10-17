@@ -13,9 +13,9 @@
 #import "MBProgressHUD.h"
 #import "RankingCampeonatoJogadorCell.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 #import "DetalhesJogadorTableViewController.h"
+#import "REFrostedViewController.h"
 
 @interface RankingCampeonatoTableViewController () {
     NSArray *arRanking;
@@ -39,7 +39,8 @@
 {
     [super viewDidLoad];
     
-    //[ADVThemeManager customizeTableView:self.tableView];
+    // adiciona gesto para chamar o menu
+    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     
     // botao de configuracoes
     UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
@@ -60,7 +61,7 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -80,12 +81,14 @@
     [super viewWillAppear:animated];
     
     self.title = @"Ranking Geral";
-    
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-    }
-    
-    [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+}
+
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+{
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 #pragma mark - Table view data source

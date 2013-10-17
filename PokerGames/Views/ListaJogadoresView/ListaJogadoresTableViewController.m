@@ -7,7 +7,6 @@
 //
 
 #import "ListaJogadoresTableViewController.h"
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 #import "ListaJogadoresCell.h"
 #import "MBProgressHUD.h"
@@ -179,7 +178,7 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -200,11 +199,14 @@
     
     self.title = @"Lista de Jogadores";
     
+    //TODO
+    /*
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
     
     [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+     */
 }
 
 #pragma mark - Table view data source

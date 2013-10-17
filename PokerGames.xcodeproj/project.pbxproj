@@ -39,8 +39,6 @@
 		584E50C1172CA3120007D4B7 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 584E50AC172CA3120007D4B7 /* AFURLConnectionOperation.m */; };
 		584E50C2172CA3120007D4B7 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 584E50AE172CA3120007D4B7 /* AFXMLRequestOperation.m */; };
 		584E50C3172CA3120007D4B7 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 584E50B0172CA3120007D4B7 /* UIImageView+AFNetworking.m */; };
-		584E50C4172CA3120007D4B7 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 584E50B3172CA3120007D4B7 /* ECSlidingViewController.m */; };
-		584E50C5172CA3120007D4B7 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 584E50B5172CA3120007D4B7 /* UIImage+ImageWithUIView.m */; };
 		584E50C6172CA3120007D4B7 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 584E50B7172CA3120007D4B7 /* .gitattributes */; };
 		584E50C7172CA3120007D4B7 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 584E50B8172CA3120007D4B7 /* .gitignore */; };
 		584E50C8172CA3120007D4B7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 584E50BA172CA3120007D4B7 /* MBProgressHUD.m */; };
@@ -127,6 +125,7 @@
 		58BCC5E21747FE67006D1752 /* searchBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BCC5E01747FE67006D1752 /* searchBackground@2x.png */; };
 		58BCC5E517484408006D1752 /* Ranking.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BCC5E317484408006D1752 /* Ranking.m */; };
 		58BEF5AF174445DA00F0E335 /* jogador.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BEF5AE174445DA00F0E335 /* jogador.png */; };
+		58C7E631180F7755002F3E55 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C7E630180F7755002F3E55 /* Accelerate.framework */; };
 		58DEBA45180CE3710099A76B /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DEBA3A180CE3710099A76B /* RECommonFunctions.m */; };
 		58DEBA46180CE3710099A76B /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DEBA3C180CE3710099A76B /* REFrostedContainerViewController.m */; };
 		58DEBA47180CE3710099A76B /* REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DEBA3E180CE3710099A76B /* REFrostedViewController.m */; };
@@ -188,10 +187,6 @@
 		584E50AE172CA3120007D4B7 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		584E50AF172CA3120007D4B7 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		584E50B0172CA3120007D4B7 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		584E50B2172CA3120007D4B7 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
-		584E50B3172CA3120007D4B7 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
-		584E50B4172CA3120007D4B7 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
-		584E50B5172CA3120007D4B7 /* UIImage+ImageWithUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithUIView.m"; sourceTree = "<group>"; };
 		584E50B7172CA3120007D4B7 /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		584E50B8172CA3120007D4B7 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		584E50B9172CA3120007D4B7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -303,6 +298,7 @@
 		58BCC5E317484408006D1752 /* Ranking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ranking.m; sourceTree = "<group>"; };
 		58BCC5E417484408006D1752 /* Ranking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ranking.h; sourceTree = "<group>"; };
 		58BEF5AE174445DA00F0E335 /* jogador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jogador.png; sourceTree = "<group>"; };
+		58C7E630180F7755002F3E55 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		58DEBA39180CE3710099A76B /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
 		58DEBA3A180CE3710099A76B /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
 		58DEBA3B180CE3710099A76B /* REFrostedContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedContainerViewController.h; sourceTree = "<group>"; };
@@ -332,6 +328,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C7E631180F7755002F3E55 /* Accelerate.framework in Frameworks */,
 				58A9B7BF17498167007CD178 /* Social.framework in Frameworks */,
 				58B610B11743261400BA5CC2 /* EventKitUI.framework in Frameworks */,
 				58B610AF1743138D00BA5CC2 /* AddressBookUI.framework in Frameworks */,
@@ -402,18 +399,6 @@
 			);
 			name = AFNetworking;
 			path = Libraries/AFNetworking;
-			sourceTree = "<group>";
-		};
-		584E50B1172CA3120007D4B7 /* ECSlidingViewController */ = {
-			isa = PBXGroup;
-			children = (
-				584E50B2172CA3120007D4B7 /* ECSlidingViewController.h */,
-				584E50B3172CA3120007D4B7 /* ECSlidingViewController.m */,
-				584E50B4172CA3120007D4B7 /* UIImage+ImageWithUIView.h */,
-				584E50B5172CA3120007D4B7 /* UIImage+ImageWithUIView.m */,
-			);
-			name = ECSlidingViewController;
-			path = Libraries/ECSlidingViewController;
 			sourceTree = "<group>";
 		};
 		584E50B6172CA3120007D4B7 /* MBProgressHUD */ = {
@@ -532,6 +517,7 @@
 		58967B58171DCE8E003FCF47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58C7E630180F7755002F3E55 /* Accelerate.framework */,
 				58A9B7BE17498167007CD178 /* Social.framework */,
 				58B610B01743261400BA5CC2 /* EventKitUI.framework */,
 				58B610AE1743138D00BA5CC2 /* AddressBookUI.framework */,
@@ -582,7 +568,6 @@
 			children = (
 				58DEBA38180CE3710099A76B /* REFrostedViewController */,
 				584E509D172CA3120007D4B7 /* AFNetworking */,
-				584E50B1172CA3120007D4B7 /* ECSlidingViewController */,
 				584E50B6172CA3120007D4B7 /* MBProgressHUD */,
 			);
 			name = Libraries;
@@ -933,8 +918,6 @@
 				584E50C1172CA3120007D4B7 /* AFURLConnectionOperation.m in Sources */,
 				584E50C2172CA3120007D4B7 /* AFXMLRequestOperation.m in Sources */,
 				584E50C3172CA3120007D4B7 /* UIImageView+AFNetworking.m in Sources */,
-				584E50C4172CA3120007D4B7 /* ECSlidingViewController.m in Sources */,
-				584E50C5172CA3120007D4B7 /* UIImage+ImageWithUIView.m in Sources */,
 				584E50C8172CA3120007D4B7 /* MBProgressHUD.m in Sources */,
 				584E50CF172CA7190007D4B7 /* PokerGamesUtil.m in Sources */,
 				5882A5A31730BA76009B858C /* DetalhesJogadorCell.m in Sources */,

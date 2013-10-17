@@ -10,7 +10,6 @@
 #import "MBProgressHUD.h"
 #import "Liga.h"
 #import "Jogador.h"
-#import "ECSlidingViewController.h"
 #import "CampeonatoTableViewController.h"
 #import "MenuViewController.h"
 
@@ -96,11 +95,14 @@
                                       action:@selector(configAction)];
         self.navigationItem.leftBarButtonItem = btnMenu;
         
+        /* 
+         //TODO
         if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
             self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
         }
         
         [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+         */
     }
     
     [self buscaLigasPlayer];
@@ -108,7 +110,7 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 #pragma mark - Table view data source

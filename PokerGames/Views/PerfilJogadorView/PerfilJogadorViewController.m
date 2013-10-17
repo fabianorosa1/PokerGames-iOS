@@ -7,7 +7,6 @@
 //
 
 #import "PerfilJogadorViewController.h"
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 #import "MBProgressHUD.h"
 #import "UIImageView+AFNetworking.h"
@@ -65,7 +64,7 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -74,11 +73,14 @@
     
     // verifica se foi chamado do menu
     if (!self.idJogadorParametro) {
+        //TODO
+        /*
         if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
             self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
         }
         
         [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];        
+         */
     }
 }
 

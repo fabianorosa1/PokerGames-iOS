@@ -13,7 +13,6 @@
 #import "MBProgressHUD.h"
 #import "RankingTorneioCell.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 
 @interface RankingTorneioTableViewController () {
@@ -57,7 +56,7 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 -(void) viewDidDisappear:(BOOL)animated

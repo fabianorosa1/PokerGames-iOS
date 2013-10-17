@@ -12,7 +12,6 @@
 #import "Campeonato.h"
 #import "MBProgressHUD.h"
 #import "DetalhesJogadorCell.h"
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 #import "RankingTorneioTableViewController.h"
 #import "UIImageView+AFNetworking.h"
@@ -60,11 +59,14 @@
                                     action:@selector(configAction)];
         self.navigationItem.leftBarButtonItem = btnMenu;
         
+        //TODO
+        /*
         if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
             self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
         }
         
         [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+         */
     }
     
     // reconhecimento de long press na table
@@ -88,7 +90,7 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -115,11 +117,14 @@
     // seta a foto do jogador
     [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:self.jogador.foto];
     
+    //TODO
+    /*
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
     
     [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+     */
 }
 
 #pragma mark - Table view data source

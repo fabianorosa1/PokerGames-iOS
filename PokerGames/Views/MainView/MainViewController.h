@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Fabiano Rosa. All rights reserved.
 //
 
-#import "ECSlidingViewController.h"
+#import "REFrostedViewController.h"
 
-@interface MainViewController : ECSlidingViewController
+@interface MainViewController : REFrostedViewController
 
 @end

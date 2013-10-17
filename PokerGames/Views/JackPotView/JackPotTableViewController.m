@@ -12,7 +12,6 @@
 #import "MBProgressHUD.h"
 #import "JackPotCell.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 
 @interface JackPotTableViewController () {
@@ -59,7 +58,7 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -81,11 +80,14 @@
     self.title = @"JackPot";
     self.lblLiga.text =  [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.apelido];
     
+    //TODO
+    /*
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
     
     [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+     */
 }
 
 #pragma mark - Table view data source

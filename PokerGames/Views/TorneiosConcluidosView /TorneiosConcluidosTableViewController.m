@@ -13,7 +13,6 @@
 #import "MBProgressHUD.h"
 #import "TorneiosConcluidosCell.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 #import "RankingTorneioTableViewController.h"
 
@@ -66,7 +65,7 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -88,11 +87,14 @@
     self.title =  @"Torneios Realizados";
     self.lblCampeonato.text = [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido];
     
+    //TODO
+    /*
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
     
     [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+     */
 }
 
 #pragma mark - Table view data source

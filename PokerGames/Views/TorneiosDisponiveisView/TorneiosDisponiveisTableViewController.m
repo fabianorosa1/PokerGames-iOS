@@ -7,7 +7,6 @@
 //
 
 #import "TorneiosDisponiveisTableViewController.h"
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 #import "TorneiosDisponiveisCell.h"
 #import "MBProgressHUD.h"
@@ -66,7 +65,7 @@
 -(IBAction)configAction
 {
     [self hideWarningPush];   
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -87,11 +86,14 @@
     
     self.title = @"Torneios Disponíveis";
     
+    //TODO
+    /*
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
     
     [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+    */
     
     // zera status push que veio do APNS
     if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
@@ -102,10 +104,13 @@
 }
 
 - (void) hideWarningPush {
+    //TODO
+    /*
     MenuViewController *menu = (MenuViewController *)self.slidingViewController.underLeftViewController;
     if (!menu.imgViewPush.hidden) {
         menu.imgViewPush.hidden = YES;
     }
+     */
 }
 
 #pragma mark - Table view data source

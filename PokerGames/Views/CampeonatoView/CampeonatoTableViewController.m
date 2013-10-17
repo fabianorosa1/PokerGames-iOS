@@ -11,7 +11,6 @@
 #import "Campeonato.h"
 #import "Liga.h"
 #import "Jogador.h"
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 
 @interface CampeonatoTableViewController () {
@@ -106,11 +105,14 @@
                                     action:@selector(configAction)];
         self.navigationItem.leftBarButtonItem = btnMenu;
         
+        //TODO
+        /*
         if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
             self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
         }
         
         [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+         */
     }
     
     [self buscaCampeonatosLiga];
@@ -118,7 +120,7 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
 #pragma mark - Table view data source
@@ -193,12 +195,15 @@
     // verifica se recebeu alguma notificacao via push
     if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
         // instancia a tela de torneios disponiveis
+        //TODO
+        /*
         ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
         slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveisView"];
+         */
     } else {
         // instancia a tela principal do ranking
-        ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
-        slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
+        //TODO ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
+        //TODO slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
     }
 }
 

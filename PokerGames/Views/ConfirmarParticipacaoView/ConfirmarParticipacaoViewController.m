@@ -9,7 +9,6 @@
 #import "ConfirmarParticipacaoViewController.h"
 #import "MBProgressHUD.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ECSlidingViewController.h"
 #import "JogadoresConfirmadosTableViewController.h"
 
 @interface ConfirmarParticipacaoViewController ()
@@ -160,8 +159,8 @@
 
 - (void) saiTela {
     // instancia a tela principal do ranking
-    ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
-    slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveisView"];
+    //TODO ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
+    //TODO slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveisView"];
 }
 
 - (void) verificaAdicaoEventoCalendario {
