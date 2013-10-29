@@ -200,11 +200,19 @@
         ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
         slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveisView"];
          */
+        [self chamaTela:@"TorneiosDisponiveisView"];
     } else {
         // instancia a tela principal do ranking
         //TODO ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
         //TODO slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
+        [self chamaTela:@"RankingCampeonatoView"];
     }
+}
+
+-(void) chamaTela:(NSString*)identifier {
+    UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
+    UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    navigationController.viewControllers = @[newTopViewController];
 }
 
 @end

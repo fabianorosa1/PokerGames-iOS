@@ -136,19 +136,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    /*
-    if (indexPath.section == 0 && indexPath.row == 0) {
-        DEMOHomeViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
-        navigationController.viewControllers = @[homeViewController];
-    } else {
-        DEMOSecondViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"secondController"];
-        navigationController.viewControllers = @[secondViewController];
-    }
-    */
-    
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            [self chamaTela:@"RankingCampeonato"];
+            [self chamaTela:@"RankingCampeonatoView"];
         }
     } else {
         if (indexPath.row == 0) {
@@ -231,22 +221,15 @@
         
         [hud hide:YES];
         
-        [self chamaTela:@"LoginJogador"];
+        self.frostedViewController.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginJogador"];
+        //[self chamaTela:@"LoginJogador"];
 	}
 }
 
 -(void) chamaTela:(NSString*)identifier {
-    //UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
-    
-    //UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
-    
-    //navigationController.viewControllers = @[newTopViewController];
-    
-    //self.frostedViewController.contentViewController = [self.storyboard  instantiateViewControllerWithIdentifier:identifier];
-    
+    UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
     UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
-    
-    [self.frostedViewController presentViewController:newTopViewController animated:TRUE completion:nil];
+    navigationController.viewControllers = @[newTopViewController];
 }
 
 @end

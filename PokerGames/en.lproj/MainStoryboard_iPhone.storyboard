@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6yU-mv-CW5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6yU-mv-CW5">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="aex-Hp-hrY">
             <objects>
-                <viewController id="jhp-cW-b8t" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginJogadorView" id="jhp-cW-b8t" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f9e-eA-iBW"/>
                         <viewControllerLayoutGuide type="bottom" id="K5G-JK-GmT"/>
@@ -86,7 +86,7 @@
         <!--Ranking Campeonato Table View Controller - Ranking Geral-->
         <scene sceneID="5Ho-eV-tHc">
             <objects>
-                <tableViewController id="hS9-mO-OoA" customClass="RankingCampeonatoTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RankingCampeonatoView" id="hS9-mO-OoA" customClass="RankingCampeonatoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="5pw-4a-Llq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,7 +201,7 @@
         <!--Liga Table View Controller - Liga-->
         <scene sceneID="ScY-j7-fhI">
             <objects>
-                <tableViewController id="qlj-MJ-iPo" customClass="LigaTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LigaView" id="qlj-MJ-iPo" customClass="LigaTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="7vQ-Fe-fuP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -297,7 +297,7 @@
         <!--Campeonato Table View Controller - Campeonato-->
         <scene sceneID="b7g-hg-2EJ">
             <objects>
-                <tableViewController id="KMH-e0-7xu" customClass="CampeonatoTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CampeonatoView" id="KMH-e0-7xu" customClass="CampeonatoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Mg3-St-OAw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -387,6 +387,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Bvs-D0-Nx9">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="el1-xZ-VyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="RankingCampeonato" id="NE8-Cp-CQg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="MRd-BS-LAm">
@@ -402,14 +403,13 @@
                         <segue destination="hS9-mO-OoA" kind="relationship" relationship="rootViewController" id="6jt-Kn-XZ9"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="el1-xZ-VyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2875" y="199"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rps-mg-jFs">
             <objects>
-                <navigationController storyboardIdentifier="LigaView" id="shA-cw-HhX" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Liga" id="shA-cw-HhX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="XgK-su-4or"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="re6-hL-Mbj">
@@ -428,7 +428,7 @@
         <!--Navigation Controller-->
         <scene sceneID="YP5-dr-0L0">
             <objects>
-                <navigationController storyboardIdentifier="CampeonatoView" id="x0V-PG-u9A" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Campeonato" id="x0V-PG-u9A" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ggd-gx-KAJ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HYP-RU-FOY">
@@ -827,7 +827,7 @@
         <!--Torneios Concluidos Table View Controller - Torneios Realizados-->
         <scene sceneID="zix-Se-GBa">
             <objects>
-                <tableViewController id="XQt-Jv-s6Q" customClass="TorneiosConcluidosTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TorneiosConcluidosView" id="XQt-Jv-s6Q" customClass="TorneiosConcluidosTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" id="hQY-Yp-SSI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -997,7 +997,7 @@
         <!--Torneios Disponiveis Table View Controller - Torneios Disponíveis-->
         <scene sceneID="dJw-ui-BmC">
             <objects>
-                <tableViewController id="NZV-yp-NRn" customClass="TorneiosDisponiveisTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TorneiosDisponiveisView" id="NZV-yp-NRn" customClass="TorneiosDisponiveisTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="22" sectionFooterHeight="22" id="o4Q-y9-Mcl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1500,7 +1500,7 @@
         <!--Navigation Controller-->
         <scene sceneID="NxP-VC-nJZ">
             <objects>
-                <navigationController storyboardIdentifier="TorneiosConcluidosView" id="ROn-bj-FcH" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TorneiosConcluidos" id="ROn-bj-FcH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="eET-QQ-i7y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1729,7 +1729,7 @@
         <!--Jack Pot Table View Controller - JackPot-->
         <scene sceneID="A30-Ig-4qK">
             <objects>
-                <tableViewController id="ycB-oQ-sjW" customClass="JackPotTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="JackPotView" id="ycB-oQ-sjW" customClass="JackPotTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="22" sectionFooterHeight="22" id="zfm-O9-KYg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1862,7 +1862,7 @@
         <!--Lista Jogadores Table View Controller - Lista de Jogadores-->
         <scene sceneID="yF1-W8-RkN">
             <objects>
-                <tableViewController id="YMY-W4-R5G" customClass="ListaJogadoresTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListaJogadoresView" id="YMY-W4-R5G" customClass="ListaJogadoresTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="22" sectionFooterHeight="22" id="tu3-hA-XDR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1976,7 +1976,7 @@
         <!--Perfil Jogador View Controller - Jogador-->
         <scene sceneID="byv-wX-8cJ">
             <objects>
-                <viewController id="MOE-v2-tpF" customClass="PerfilJogadorViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PerfilView" id="MOE-v2-tpF" customClass="PerfilJogadorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EIn-7F-MbG"/>
                         <viewControllerLayoutGuide type="bottom" id="UVX-6h-XYb"/>
@@ -2156,7 +2156,8 @@
         <!--Navigation Controller-->
         <scene sceneID="V1u-fR-9XJ">
             <objects>
-                <navigationController storyboardIdentifier="JackPotView" id="aF7-4x-avh" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTm-bY-MD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="JackPot" id="aF7-4x-avh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gY5-rC-Odf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2167,14 +2168,13 @@
                         <segue destination="ycB-oQ-sjW" kind="relationship" relationship="rootViewController" id="pwZ-CA-3es"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NTm-bY-MD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2351" y="1075"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gtm-3H-k7P">
             <objects>
-                <navigationController storyboardIdentifier="ListaJogadoresView" id="qU0-ma-x25" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ListaJogadores" id="qU0-ma-x25" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hgs-Cs-Exg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2192,7 +2192,7 @@
         <!--Navigation Controller-->
         <scene sceneID="A5v-Xi-cZG">
             <objects>
-                <navigationController storyboardIdentifier="PerfilView" id="Vsf-xZ-VNZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Perfil" id="Vsf-xZ-VNZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="S6M-1w-vty">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2210,7 +2210,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ygK-Vk-VVO">
             <objects>
-                <navigationController storyboardIdentifier="TorneiosDisponiveisView" id="X7c-JH-P0i" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TorneiosDisponiveis" id="X7c-JH-P0i" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JCc-k0-j3r">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2377,10 +2377,10 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VGi-e9-KC2"/>
+        <segue reference="0ea-CG-UyT"/>
+        <segue reference="Uij-jP-E3Y"/>
         <segue reference="Ltl-x1-qLh"/>
-        <segue reference="QV1-FV-pyL"/>
-        <segue reference="wMx-77-uqh"/>
-        <segue reference="1f6-CR-ngO"/>
+        <segue reference="WNj-Sx-gHV"/>
+        <segue reference="PSe-3z-4l8"/>
     </inferredMetricsTieBreakers>
 </document>

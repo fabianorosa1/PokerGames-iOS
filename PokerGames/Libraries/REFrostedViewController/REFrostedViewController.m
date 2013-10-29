@@ -109,6 +109,40 @@
     [self.contentViewController endAppearanceTransition];
 }
 
+- (UIViewController *)childViewControllerForStatusBarStyle
+{
+    return self.contentViewController;
+}
+
+- (UIViewController *)childViewControllerForStatusBarHidden
+{
+    return self.contentViewController;
+}
+
+- (void)setContentViewController:(UIViewController *)contentViewController
+{
+    _contentViewController = contentViewController;
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    }
+}
+
+- (void)setMenuViewController:(UIViewController *)menuViewController
+{
+    if (!_menuViewController) {
+        _menuViewController = menuViewController;
+        return;
+    }
+    CGRect frame = _menuViewController.view.frame;
+    [_menuViewController willMoveToParentViewController:nil];
+    [_menuViewController removeFromParentViewController];
+    _menuViewController = menuViewController;
+    [self.containerViewController addChildViewController:menuViewController];
+    menuViewController.view.frame = frame;
+    [self.containerViewController.containerView addSubview:menuViewController.view];
+    [menuViewController didMoveToParentViewController:self];
+}
+
 #pragma mark -
 
 - (void)presentMenuViewController
@@ -121,10 +155,10 @@
     self.containerViewController.animateApperance = animateApperance;
     if (CGSizeEqualToSize(self.minimumMenuViewSize, CGSizeZero)) {
         if (self.direction == REFrostedViewControllerDirectionLeft || self.direction == REFrostedViewControllerDirectionRight)
-            self.minimumMenuViewSize = CGSizeMake(self.view.frame.size.width - 50.0f, self.view.frame.size.height);
+            self.minimumMenuViewSize = CGSizeMake(self.contentViewController.view.frame.size.width - 50.0f, self.contentViewController.view.frame.size.height);
         
         if (self.direction == REFrostedViewControllerDirectionTop || self.direction == REFrostedViewControllerDirectionBottom)
-            self.minimumMenuViewSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - 50.0f);
+            self.minimumMenuViewSize = CGSizeMake(self.contentViewController.view.frame.size.width, self.contentViewController.view.frame.size.height - 50.0f);
     }
     
     if (!self.liveBlur) {
@@ -161,7 +195,27 @@
 
 - (BOOL)shouldAutorotate
 {
-    return !self.visible;
+    return self.contentViewController.shouldAutorotate;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    if (self.visible) {
+        if (self.direction == REFrostedViewControllerDirectionLeft || self.direction == REFrostedViewControllerDirectionRight)
+            self.minimumMenuViewSize = CGSizeMake(self.view.bounds.size.width - 50.0f, self.view.bounds.size.height);
+        
+        if (self.direction == REFrostedViewControllerDirectionTop || self.direction == REFrostedViewControllerDirectionBottom)
+            self.minimumMenuViewSize = CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.height - 50.0f);
+    }
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    if (!self.visible) {
+        self.minimumMenuViewSize = CGSizeZero;
+    }
 }
 
 @end
