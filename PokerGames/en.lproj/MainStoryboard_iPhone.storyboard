@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6yU-mv-CW5">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -387,7 +387,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Bvs-D0-Nx9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="el1-xZ-VyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="RankingCampeonato" id="NE8-Cp-CQg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="MRd-BS-LAm">
@@ -403,6 +402,7 @@
                         <segue destination="hS9-mO-OoA" kind="relationship" relationship="rootViewController" id="6jt-Kn-XZ9"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="el1-xZ-VyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2875" y="199"/>
         </scene>
@@ -447,7 +447,7 @@
         <!--Detalhes Jogador Table View Controller - Resultados-->
         <scene sceneID="stf-m7-iRm">
             <objects>
-                <tableViewController id="7Aq-Po-nlE" customClass="DetalhesJogadorTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MeusResultadosView" id="7Aq-Po-nlE" customClass="DetalhesJogadorTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="M2a-d9-PFg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -808,7 +808,7 @@
         <!--Navigation Controller-->
         <scene sceneID="LhG-iq-2Ga">
             <objects>
-                <navigationController storyboardIdentifier="MeusResultadosView" id="B4K-3x-Dc4" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MeusResultados" id="B4K-3x-Dc4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="W6T-jG-9Pr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xKV-JS-UtU">
@@ -2156,7 +2156,6 @@
         <!--Navigation Controller-->
         <scene sceneID="V1u-fR-9XJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NTm-bY-MD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="JackPot" id="aF7-4x-avh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gY5-rC-Odf">
@@ -2168,6 +2167,7 @@
                         <segue destination="ycB-oQ-sjW" kind="relationship" relationship="rootViewController" id="pwZ-CA-3es"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTm-bY-MD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2351" y="1075"/>
         </scene>
@@ -2377,10 +2377,10 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0ea-CG-UyT"/>
         <segue reference="Uij-jP-E3Y"/>
-        <segue reference="Ltl-x1-qLh"/>
-        <segue reference="WNj-Sx-gHV"/>
         <segue reference="PSe-3z-4l8"/>
+        <segue reference="OQV-Sa-3FH"/>
+        <segue reference="QV1-FV-pyL"/>
+        <segue reference="VGi-e9-KC2"/>
     </inferredMetricsTieBreakers>
 </document>

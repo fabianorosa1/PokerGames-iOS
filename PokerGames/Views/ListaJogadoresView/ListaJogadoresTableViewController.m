@@ -35,7 +35,8 @@
 {
     [super viewDidLoad];
         
-    //[ADVThemeManager customizeTableView:self.tableView];
+    // adiciona gesto para chamar o menu
+    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     
     // botao de configuracoes
     UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
@@ -178,7 +179,15 @@
 
 -(IBAction)configAction
 {
-    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
+}
+
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+{
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -197,16 +206,7 @@
 {
     [super viewWillAppear:animated];
     
-    self.title = @"Lista de Jogadores";
-    
-    //TODO
-    /*
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-    }
-    
-    [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
-     */
+    self.title = @"Lista de Jogadores";    
 }
 
 #pragma mark - Table view data source

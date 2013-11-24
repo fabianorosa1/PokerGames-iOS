@@ -36,23 +36,17 @@
     if (jogador == nil) {
         [[PokerGamesFacade sharedInstance] setIsFirstTime:TRUE];
         //NSLog(@">>> Configuração inicial!");
-        //[self performSegueWithIdentifier:@"LoginJogador" sender:self];
-
         self.contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginJogador"];
-        //[self chamaTela:@"LoginJogadorView"];
     } else {
         [[PokerGamesFacade sharedInstance] setIsFirstTime:FALSE];
         //NSLog(@">>> Já configurado!");
         [[PokerGamesFacade sharedInstance] setJogadorLogin:jogador];
-        //[self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
         
         // verifica se recebeu alguma notificacao via push
         if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
             self.contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveis"];
-            //[self chamaTela:@"TorneiosDisponiveisView"];
         } else {
             self.contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
-            //[self chamaTela:@"RankingCampeonatoView"];
         }
     }
 }

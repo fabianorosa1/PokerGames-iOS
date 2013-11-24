@@ -75,34 +75,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // NSLog(@"viewDidLoad");
-    
-    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    //[ADVThemeManager customizeTableView:self.tableView];
-    
-    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.tableView.backgroundView = nil;
-    //[self.tableView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     
     // verifica se deve adicionar o botao de menu
     if (![[PokerGamesFacade sharedInstance] isFirstTime]) {
+        // adiciona gesto para chamar o menu
+        [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+        
         // botao de configuracoes
         UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
-                                      initWithImage:[PokerGamesUtil menuImage]
-                                      style:UIBarButtonItemStyleBordered
-                                      target:self
-                                      action:@selector(configAction)];
+                                    initWithImage:[PokerGamesUtil menuImage]
+                                    style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(configAction)];
         self.navigationItem.leftBarButtonItem = btnMenu;
-        
-        /* 
-         //TODO
-        if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-            self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-        }
-        
-        [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
-         */
     }
     
     [self buscaLigasPlayer];
@@ -110,7 +95,15 @@
 
 -(IBAction)configAction
 {
-    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
+}
+
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+{
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 #pragma mark - Table view data source

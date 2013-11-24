@@ -37,21 +37,15 @@
 {
     [super viewDidLoad];
     
-    // configura o header
-    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    //[ADVThemeManager customizeTableView:self.tableView];
-    
-    //[self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
+    // adiciona gesto para chamar o menu
+    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     
     // botao de configuracoes
     UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
-                                   initWithImage:[PokerGamesUtil menuImage]
-                                   style:UIBarButtonItemStyleBordered
-                                   target:self
-                                   action:@selector(configAction)];
+                                initWithImage:[PokerGamesUtil menuImage]
+                                style:UIBarButtonItemStyleBordered
+                                target:self
+                                action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
     
     // adiciona controle de refresh
@@ -65,7 +59,15 @@
 
 -(IBAction)configAction
 {
-    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
+}
+
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+{
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 -(void) viewDidDisappear:(BOOL)animated

@@ -32,16 +32,11 @@
 {
     [super viewDidLoad];
 
-    // configura o header
-    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    
-    //[self.btnOpcoes setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    //[self.btnOpcoes setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
-
     // verifica se foi chamado do menu
     if (!self.idJogadorParametro) {
+        // adiciona gesto para chamar o menu
+        [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+        
         // botao de configuracoes
         UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
                                     initWithImage:[PokerGamesUtil menuImage]
@@ -64,24 +59,15 @@
 
 -(IBAction)configAction
 {
-    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
 }
 
--(void) viewWillAppear:(BOOL)animated
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
 {
-    [super viewWillAppear:animated];
-    
-    // verifica se foi chamado do menu
-    if (!self.idJogadorParametro) {
-        //TODO
-        /*
-        if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-            self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-        }
-        
-        [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];        
-         */
-    }
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 -(IBAction)opcoesPressed:(id)sender {

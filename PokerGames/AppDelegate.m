@@ -43,10 +43,12 @@
 
 - (void)initAppearance
 {
-    UIColor *byteClubBlue = [UIColor colorWithRed:140/255.0f
-                                            green:188/255.0f
-                                             blue:64/255.0f
-                                            alpha:1.0f];
+    //UIColor *byteClubBlue = [UIColor colorWithRed:140/255.0f
+    //                                        green:188/255.0f
+    //                                         blue:64/255.0f
+    //                                        alpha:1.0f];
+    
+    UIColor *byteClubBlue = [self colorFromHexString:@"#4CD964" alpha:1.0f];
     
     // Set appearance info
     [[UITabBar appearance] setBarTintColor:byteClubBlue];
@@ -58,6 +60,28 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
+}
+
+- (UIColor *) colorFromHexString:(NSString *)hexString alpha: (CGFloat)alpha{
+    NSString *cleanString = [hexString stringByReplacingOccurrencesOfString:@"#" withString:@""];
+    if([cleanString length] == 3) {
+        cleanString = [NSString stringWithFormat:@"%@%@%@%@%@%@",
+                       [cleanString substringWithRange:NSMakeRange(0, 1)],[cleanString substringWithRange:NSMakeRange(0, 1)],
+                       [cleanString substringWithRange:NSMakeRange(1, 1)],[cleanString substringWithRange:NSMakeRange(1, 1)],
+                       [cleanString substringWithRange:NSMakeRange(2, 1)],[cleanString substringWithRange:NSMakeRange(2, 1)]];
+    }
+    if([cleanString length] == 6) {
+        cleanString = [cleanString stringByAppendingString:@"ff"];
+    }
+    
+    unsigned int baseValue;
+    [[NSScanner scannerWithString:cleanString] scanHexInt:&baseValue];
+    
+    float red = ((baseValue >> 24) & 0xFF)/255.0f;
+    float green = ((baseValue >> 16) & 0xFF)/255.0f;
+    float blue = ((baseValue >> 8) & 0xFF)/255.0f;
+    
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {    

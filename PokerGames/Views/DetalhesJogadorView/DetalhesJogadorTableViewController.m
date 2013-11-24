@@ -38,18 +38,12 @@
 {
     [super viewDidLoad];
     
-    // configura o header
-    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    //[ADVThemeManager customizeTableView:self.tableView];
-    
-    //[self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
-    
     // verifica se foi passado o jogador como parametro
     if (!self.jogador) {
         self.jogador = [[PokerGamesFacade sharedInstance] jogadorLogin];
+        
+        // adiciona gesto para chamar o menu
+        [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
         
         // botao de configuracoes
         UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
@@ -58,15 +52,6 @@
                                     target:self
                                     action:@selector(configAction)];
         self.navigationItem.leftBarButtonItem = btnMenu;
-        
-        //TODO
-        /*
-        if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-            self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-        }
-        
-        [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
-         */
     }
     
     // reconhecimento de long press na table
@@ -90,7 +75,15 @@
 
 -(IBAction)configAction
 {
-    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
+}
+
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+{
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -116,15 +109,6 @@
     
     // seta a foto do jogador
     [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:self.jogador.foto];
-    
-    //TODO
-    /*
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-    }
-    
-    [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
-     */
 }
 
 #pragma mark - Table view data source

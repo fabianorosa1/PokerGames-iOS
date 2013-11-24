@@ -138,23 +138,37 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
+            // Tela de ranking geral
             [self chamaTela:@"RankingCampeonatoView"];
+        } else if (indexPath.row == 1) {
+            // Tela de ranking dos torneios
+            [self chamaTela:@"TorneiosConcluidosView"];
+        } else if (indexPath.row == 2) {
+            // Tela de torneios disponiveis
+            [self chamaTela:@"TorneiosDisponiveisView"];
+        }else if (indexPath.row == 3) {
+            // Tela de meus resultados
+            [self chamaTela:@"MeusResultadosView"];
+        }else if (indexPath.row == 4) {
+            // Tela de lista de jogadores
+            [self chamaTela:@"ListaJogadoresView"];
+        }else if (indexPath.row == 5) {
+            // Tela de JackPot
+            [self chamaTela:@"JackPotView"];
         }
     } else {
         if (indexPath.row == 0) {
-            // liga
+            // Tela de Liga
             [self chamaTela:@"LigaView"];
         } else if (indexPath.row == 1) {
-            // campeonato
+            // Tela de Campeonato
             [self chamaTela:@"CampeonatoView"];
         } else if (indexPath.row == 2) {
-            // desconectar
+            // ação de desconectar
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"PokerGames" message:@"Deseja realmente desconetar?" delegate:self cancelButtonTitle:@"Não" otherButtonTitles:@"Sim", nil];
             [alert show];
         }
     }
-    
-    [self.frostedViewController hideMenuViewController];
 }
 
 #pragma mark -
@@ -221,15 +235,20 @@
         
         [hud hide:YES];
         
-        self.frostedViewController.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginJogador"];
-        //[self chamaTela:@"LoginJogador"];
+        [self chamaTela:@"LoginJogadorView"];
 	}
 }
 
 -(void) chamaTela:(NSString*)identifier {
     UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
+    
     UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    
     navigationController.viewControllers = @[newTopViewController];
+    
+    NSLog(@"chamaTela: %@", newTopViewController);
+    
+    [self.frostedViewController hideMenuViewController];
 }
 
 @end

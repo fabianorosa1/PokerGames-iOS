@@ -34,14 +34,8 @@
 {
     [super viewDidLoad];
     
-    // configura o header
-    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    //[ADVThemeManager customizeTableView:self.tableView];
-    
-    //[self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
+    // adiciona gesto para chamar o menu
+    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     
     // botao de configuracoes
     UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
@@ -68,6 +62,14 @@
     //TODO [self.slidingViewController anchorTopViewTo:ECRight];
 }
 
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+{
+    [self.frostedViewController panGestureRecognized:sender];
+}
+
 -(void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -85,16 +87,7 @@
     [super viewWillAppear:animated];
     
     self.title = @"Torneios Disponíveis";
-    
-    //TODO
-    /*
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-    }
-    
-    [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
-    */
-    
+        
     // zera status push que veio do APNS
     if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
@@ -111,6 +104,7 @@
         menu.imgViewPush.hidden = YES;
     }
      */
+    [self.frostedViewController presentMenuViewController];
 }
 
 #pragma mark - Table view data source
