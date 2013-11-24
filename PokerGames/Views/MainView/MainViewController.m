@@ -30,6 +30,9 @@
 
     self.menuViewController = [storyboard instantiateViewControllerWithIdentifier:@"Menu"];
 
+    // configurações do menu
+    self.limitMenuViewSize = YES;
+    
     // verifica se já está logado
     Jogador *jogador = [[PokerGamesFacade sharedInstance] loadJogadorEntity];
     

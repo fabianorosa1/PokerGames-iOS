@@ -31,19 +31,20 @@
     self.tableView.opaque = NO;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 155.0f)];
-        imgViewFoto = [[UIImageView alloc] initWithFrame:CGRectMake(0, 25, 100, 100)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 140.0f)];
+        
+        imgViewFoto = [[UIImageView alloc] initWithFrame:CGRectMake(0, 25, 80, 80)];
         imgViewFoto.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         //imgViewFoto.image = [UIImage imageNamed:@"avatar.jpg"];
         imgViewFoto.layer.masksToBounds = YES;
-        imgViewFoto.layer.cornerRadius = 50.0;
+        imgViewFoto.layer.cornerRadius = 40.0;
         imgViewFoto.layer.borderColor = [UIColor whiteColor].CGColor;
         imgViewFoto.layer.borderWidth = 3.0f;
         imgViewFoto.layer.rasterizationScale = [UIScreen mainScreen].scale;
         imgViewFoto.layer.shouldRasterize = YES;
         imgViewFoto.clipsToBounds = YES;
         
-        lblNome = [[UILabel alloc] initWithFrame:CGRectMake(0, 130, 250, 24)];
+        lblNome = [[UILabel alloc] initWithFrame:CGRectMake(0, 110, 250, 24)];
         //lblNome.text = @"Roman Efimov";
         lblNome.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
         lblNome.backgroundColor = [UIColor clearColor];
