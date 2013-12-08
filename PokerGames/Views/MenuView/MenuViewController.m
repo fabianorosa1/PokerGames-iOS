@@ -188,7 +188,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 33;
+    if( IS_IPHONE_5 )
+    {
+        return 44;
+    }
+    return 34;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

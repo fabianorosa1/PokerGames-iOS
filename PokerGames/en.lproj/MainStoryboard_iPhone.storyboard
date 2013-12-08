@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTz-hV-xW3">
-                                <rect key="frame" x="176" y="140" width="125" height="41"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTz-hV-xW3">
+                                <rect key="frame" x="176" y="164" width="125" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="oWa-gk-0Fa"/>
                                 </constraints>
@@ -31,8 +31,8 @@
                                     <action selector="logInPressed:" destination="jhp-cW-b8t" eventType="touchDown" id="eJQ-Lo-G3F"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Identificação:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXd-6V-hQa">
-                                <rect key="frame" x="28" y="22" width="273" height="22"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Identificação:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXd-6V-hQa">
+                                <rect key="frame" x="28" y="26" width="273" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="2mG-bK-lBL"/>
                                     <constraint firstAttribute="width" constant="273" id="XGK-vB-oa2"/>
@@ -43,15 +43,14 @@
                                 <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL4-8t-Qst">
-                                <rect key="frame" x="28" y="140" width="125" height="41"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL4-8t-Qst">
+                                <rect key="frame" x="28" y="164" width="125" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="Q0l-Wt-dBj"/>
                                     <constraint firstAttribute="width" constant="125" id="Y3J-Ti-o3a"/>
                                 </constraints>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Demonstração">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -2378,9 +2377,9 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="WNj-Sx-gHV"/>
-        <segue reference="OQV-Sa-3FH"/>
+        <segue reference="Ltl-x1-qLh"/>
         <segue reference="QV1-FV-pyL"/>
-        <segue reference="Uij-jP-E3Y"/>
+        <segue reference="wMx-77-uqh"/>
         <segue reference="PSe-3z-4l8"/>
     </inferredMetricsTieBreakers>
 </document>
