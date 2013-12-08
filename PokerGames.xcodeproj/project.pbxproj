@@ -57,6 +57,7 @@
 		587DF22D174EDDDA005893C7 /* exclamation-point-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587DF22B174EDDDA005893C7 /* exclamation-point-icon@2x.png */; };
 		5882A5A31730BA76009B858C /* DetalhesJogadorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882A5A01730BA76009B858C /* DetalhesJogadorCell.m */; };
 		5882A5A41730BA76009B858C /* DetalhesJogadorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882A5A21730BA76009B858C /* DetalhesJogadorTableViewController.m */; };
+		588EB6C318551BC900E82DDE /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588EB6C218551BC900E82DDE /* Media.xcassets */; };
 		58967B5A171DCE8E003FCF47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B59171DCE8E003FCF47 /* UIKit.framework */; };
 		58967B5C171DCE8E003FCF47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B5B171DCE8E003FCF47 /* Foundation.framework */; };
 		58967B5E171DCE8E003FCF47 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967B5D171DCE8E003FCF47 /* CoreGraphics.framework */; };
@@ -219,6 +220,7 @@
 		5882A5A01730BA76009B858C /* DetalhesJogadorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetalhesJogadorCell.m; sourceTree = "<group>"; };
 		5882A5A11730BA76009B858C /* DetalhesJogadorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetalhesJogadorTableViewController.h; sourceTree = "<group>"; };
 		5882A5A21730BA76009B858C /* DetalhesJogadorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetalhesJogadorTableViewController.m; sourceTree = "<group>"; };
+		588EB6C218551BC900E82DDE /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		58967B56171DCE8E003FCF47 /* PokerGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58967B59171DCE8E003FCF47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		58967B5B171DCE8E003FCF47 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -548,6 +550,7 @@
 				58967B71171DCE8E003FCF47 /* MainStoryboard_iPhone.storyboard */,
 				58967B60171DCE8E003FCF47 /* Supporting Files */,
 				5814AA441773BB0E00AD432F /* Settings.bundle */,
+				588EB6C218551BC900E82DDE /* Media.xcassets */,
 			);
 			path = PokerGames;
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				58967C02171DD2B6003FCF47 /* segmentedBackground.png in Resources */,
 				58967C03171DD2B6003FCF47 /* segmentedBackground@2x.png in Resources */,
 				58967C04171DD2B6003FCF47 /* segmentedBackgroundSelected.png in Resources */,
+				588EB6C318551BC900E82DDE /* Media.xcassets in Resources */,
 				58967C05171DD2B6003FCF47 /* segmentedBackgroundSelected@2x.png in Resources */,
 				58967C06171DD2B6003FCF47 /* segmentedDivider.png in Resources */,
 				58967C07171DD2B6003FCF47 /* segmentedDivider@2x.png in Resources */,
@@ -1026,6 +1030,8 @@
 		58967B80171DCE8E003FCF47 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PokerGames/PokerGames-Prefix.pch";
 				INFOPLIST_FILE = "PokerGames/PokerGames-Info.plist";
@@ -1039,6 +1045,8 @@
 		58967B81171DCE8E003FCF47 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PokerGames/PokerGames-Prefix.pch";
 				INFOPLIST_FILE = "PokerGames/PokerGames-Info.plist";
@@ -1081,6 +1089,8 @@
 		58B610B31743331900BA5CC2 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PokerGames/PokerGames-Prefix.pch";
 				INFOPLIST_FILE = "PokerGames/PokerGames-Info.plist";

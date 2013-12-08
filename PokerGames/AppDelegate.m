@@ -43,12 +43,12 @@
 
 - (void)initAppearance
 {
-    //UIColor *byteClubBlue = [UIColor colorWithRed:140/255.0f
-    //                                        green:188/255.0f
-    //                                         blue:64/255.0f
-    //                                        alpha:1.0f];
+    UIColor *byteClubBlue = [UIColor colorWithRed:98/255.0f
+                                            green:161/255.0f
+                                             blue:37/255.0f
+                                            alpha:1.0f];
     
-    UIColor *byteClubBlue = [self colorFromHexString:@"#4CD964" alpha:1.0f];
+    //UIColor *byteClubBlue = [self colorFromHexString:@"#4CD964" alpha:1.0f];
     
     // Set appearance info
     [[UITabBar appearance] setBarTintColor:byteClubBlue];
