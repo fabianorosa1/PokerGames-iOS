@@ -1,6 +1,6 @@
 //
 //  MenuViewController.m
-//  ECSlidingViewController
+//  REFrostedViewController
 //
 //  Created by Michael Enriquez on 1/23/12.
 //  Copyright (c) 2012 EdgeCase. All rights reserved.
@@ -43,6 +43,9 @@
         imgViewFoto.layer.rasterizationScale = [UIScreen mainScreen].scale;
         imgViewFoto.layer.shouldRasterize = YES;
         imgViewFoto.clipsToBounds = YES;
+        imgViewFoto.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapGestureFoto = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mostraPerfilJogador)];
+        [imgViewFoto addGestureRecognizer:tapGestureFoto];
         
         lblNome = [[UILabel alloc] initWithFrame:CGRectMake(0, 110, 250, 24)];
         //lblNome.text = @"Roman Efimov";
@@ -52,6 +55,9 @@
         lblNome.textAlignment = NSTextAlignmentCenter;
         //[lblNome sizeToFit];
         lblNome.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        lblNome.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapGestureNome = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mostraPerfilJogador)];
+        [lblNome addGestureRecognizer:tapGestureNome];
         
         [view addSubview:imgViewFoto];
         [view addSubview:lblNome];
@@ -65,6 +71,11 @@
      name:@"UIApplicationDidReceiveRemoteNotification"
      object:nil];
 
+}
+
+-(void) mostraPerfilJogador {
+    // Chama a tela do perfil do jogador
+    [self chamaTela:@"PerfilView"];
 }
 
 -(void)viewDidUnload {

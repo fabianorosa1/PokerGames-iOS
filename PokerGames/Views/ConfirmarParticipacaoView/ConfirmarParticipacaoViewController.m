@@ -30,21 +30,6 @@
 {
     [super viewDidLoad];
     
-    // configura o header
-    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    
-    //[self.btnParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    //[self.btnParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
-
-    //[self.btnNaoParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    //[self.btnNaoParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
-
-    //[self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
-
     // popula dados cabecalho
     self.lblNome.text = [self.dicDadosConfirmacao valueForKey:@"Nome"];
     self.lblData.text = [self.dicDadosConfirmacao valueForKey:@"Data"];

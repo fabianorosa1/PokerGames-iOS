@@ -43,7 +43,7 @@
         self.jogador = [[PokerGamesFacade sharedInstance] jogadorLogin];
         
         // adiciona gesto para chamar o menu
-        [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+        [self.navigationController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
         
         // botao de configuracoes
         UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
