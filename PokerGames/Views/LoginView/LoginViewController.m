@@ -35,7 +35,7 @@
 {
     [super viewDidLoad];
         
-    self.loginTableView = [[UITableView alloc] initWithFrame:CGRectMake(16, 50, 294, 110) style:UITableViewStyleGrouped];
+    self.loginTableView = [[UITableView alloc] initWithFrame:CGRectMake(16, 20, 294, 150) style:UITableViewStyleGrouped];
     
     [self.loginTableView setScrollEnabled:NO];
     //[self.loginTableView setBackgroundView:nil];
@@ -112,6 +112,10 @@
     }
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Identificação:";
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

@@ -13,9 +13,6 @@
 + (NSString *)baseURLFoto;
 
 + (UIImage *)imgPlaceholder;
-+ (UIImage *)imgPrimeiroLugar;
-+ (UIImage *)imgSegundoLugar;
-+ (UIImage *)imgTerceiroLugar;
 
 + (NSNumberFormatter*) currencyFormatter;
 

@@ -48,15 +48,15 @@
     if (self.row == 0) {
         self.lblPosicao.hidden = true;
         self.imgViewPosicao.hidden = false;
-        [self.imgViewPosicao setImage:[PokerGamesUtil imgPrimeiroLugar]];
+        [self.imgViewPosicao setImage:[UIImage imageNamed:@"medal_award_gold"]];
     } else if (self.row == 1) {
         self.lblPosicao.hidden = true;
         self.imgViewPosicao.hidden = false;
-        [self.imgViewPosicao setImage:[PokerGamesUtil imgSegundoLugar]];
+        [self.imgViewPosicao setImage:[UIImage imageNamed:@"medal_award_silver"]];
     } else if (self.row == 2) {
         self.lblPosicao.hidden = true;
         self.imgViewPosicao.hidden = false;
-        [self.imgViewPosicao setImage:[PokerGamesUtil imgTerceiroLugar]];
+        [self.imgViewPosicao setImage:[UIImage imageNamed:@"medal_award_bronze"]];
     } else {
         self.lblPosicao.hidden = false;
         self.imgViewPosicao.hidden = true;
@@ -66,6 +66,10 @@
     // seta a foto do jogador
     [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:[dados valueForKey:@"Foto"]];
     
+    // arredonda a imagem
+    self.imgViewFoto.layer.masksToBounds = YES;
+    self.imgViewFoto.layer.cornerRadius = 22.0;
+
     NSNumber *saldoValue = [_dados valueForKey:@"Saldo"];
     double saldo = [saldoValue doubleValue];
     

@@ -38,8 +38,8 @@
         //imgViewFoto.image = [UIImage imageNamed:@"avatar.jpg"];
         imgViewFoto.layer.masksToBounds = YES;
         imgViewFoto.layer.cornerRadius = 40.0;
-        imgViewFoto.layer.borderColor = [UIColor whiteColor].CGColor;
-        imgViewFoto.layer.borderWidth = 3.0f;
+        //imgViewFoto.layer.borderColor = [UIColor whiteColor].CGColor;
+        //imgViewFoto.layer.borderWidth = 1.0f;
         imgViewFoto.layer.rasterizationScale = [UIScreen mainScreen].scale;
         imgViewFoto.layer.shouldRasterize = YES;
         imgViewFoto.clipsToBounds = YES;

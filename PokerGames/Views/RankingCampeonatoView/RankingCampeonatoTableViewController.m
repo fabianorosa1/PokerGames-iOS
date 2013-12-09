@@ -134,12 +134,6 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,44)];
     
-    // configura o header
-    //id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    //[ADVThemeManager customizeTableView:self.tableView];
-    
-    //[headerView setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
     headerView.layer.borderColor = [UIColor grayColor].CGColor;
     headerView.layer.borderWidth = 0.4f;
     

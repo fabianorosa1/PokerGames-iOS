@@ -11,9 +11,6 @@
 
 // variaveis estaticas
 static UIImage* imgPlaceholder = nil;
-static UIImage* imgPrimeiroLugar = nil;
-static UIImage* imgSegundoLugar = nil;
-static UIImage* imgTerceiroLugar = nil;
 static UIImage* imgFotoJogador = nil;
 static UIImage* imgMenu = nil;
 
@@ -24,10 +21,7 @@ static NSNumberFormatter *numberFormatter;
 +(void)initialize
 {
     imgPlaceholder = [UIImage imageNamed:@"profile-image-placeholder"];
-    imgPrimeiroLugar = [UIImage imageNamed:@"primeiro"];
-    imgSegundoLugar = [UIImage imageNamed:@"segundo"];
-    imgTerceiroLugar = [UIImage imageNamed:@"terceiro"];
-    imgFotoJogador = [UIImage imageNamed:@"jogador"];    
+    imgFotoJogador = [UIImage imageNamed:@"jogador"];
     numberFormatter = [[NSNumberFormatter alloc] init];
 }
 
@@ -84,18 +78,6 @@ static NSNumberFormatter *numberFormatter;
 
 + (UIImage *) imgPlaceholder {
     return imgPlaceholder;
-}
-
-+ (UIImage *)imgPrimeiroLugar {
-    return imgPrimeiroLugar;
-}
-
-+ (UIImage *)imgSegundoLugar {
-    return imgSegundoLugar;
-}
-
-+ (UIImage *)imgTerceiroLugar {
-    return imgTerceiroLugar;
 }
 
 + (NSNumberFormatter*) currencyFormatter {
