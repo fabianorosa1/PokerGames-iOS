@@ -33,7 +33,7 @@
 {
     _dados = dados;
     
-    self.lblDataRealizacao.text = [_dados valueForKey:@"DataRealizacao"];
+    self.lblDataRealizacao.text = [_dados valueForKey:@"Data"];
     self.lblNome.text = [_dados valueForKey:@"Nome"];
     self.lblQtInscritos.text = [_dados valueForKey:@"QtInscritos"];
     

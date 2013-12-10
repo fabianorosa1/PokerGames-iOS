@@ -190,9 +190,9 @@
 {
     if( IS_IPHONE_5 )
     {
-        return 44;
+        return 45;
     }
-    return 34;
+    return 35;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
