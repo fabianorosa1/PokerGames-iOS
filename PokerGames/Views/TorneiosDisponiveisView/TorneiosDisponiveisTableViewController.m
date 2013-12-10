@@ -59,7 +59,7 @@
 -(IBAction)configAction
 {
     [self hideWarningPush];   
-    //TODO [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
 }
 
 #pragma mark -
@@ -104,7 +104,6 @@
         menu.imgViewPush.hidden = YES;
     }
      */
-    [self.frostedViewController presentMenuViewController];
 }
 
 #pragma mark - Table view data source
