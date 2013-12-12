@@ -12,9 +12,6 @@
 		580986DF173C87A1006FA46B /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580986DE173C87A1006FA46B /* EventKit.framework */; };
 		580986E1173DD67F006FA46B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580986E0173DD67F006FA46B /* MessageUI.framework */; };
 		580986E3173DE40D006FA46B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580986E2173DE40C006FA46B /* AddressBook.framework */; };
-		580986E7173F458F006FA46B /* confirmado.png in Resources */ = {isa = PBXBuildFile; fileRef = 580986E4173F458F006FA46B /* confirmado.png */; };
-		580986E8173F458F006FA46B /* nao-confirmado.png in Resources */ = {isa = PBXBuildFile; fileRef = 580986E5173F458F006FA46B /* nao-confirmado.png */; };
-		580986E9173F458F006FA46B /* pendente-confirmacao.png in Resources */ = {isa = PBXBuildFile; fileRef = 580986E6173F458F006FA46B /* pendente-confirmacao.png */; };
 		5814AA451773BB0E00AD432F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5814AA441773BB0E00AD432F /* Settings.bundle */; };
 		58325077172462C000D2C825 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325076172462C000D2C825 /* SystemConfiguration.framework */; };
 		58325079172462C700D2C825 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325078172462C700D2C825 /* MobileCoreServices.framework */; };
@@ -98,9 +95,6 @@
 		580986DE173C87A1006FA46B /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		580986E0173DD67F006FA46B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		580986E2173DE40C006FA46B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		580986E4173F458F006FA46B /* confirmado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmado.png; sourceTree = "<group>"; };
-		580986E5173F458F006FA46B /* nao-confirmado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nao-confirmado.png"; sourceTree = "<group>"; };
-		580986E6173F458F006FA46B /* pendente-confirmacao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pendente-confirmacao.png"; sourceTree = "<group>"; };
 		5814AA441773BB0E00AD432F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		58325076172462C000D2C825 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58325078172462C700D2C825 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -482,9 +476,6 @@
 				587DF22A174EDDDA005893C7 /* exclamation-point-icon.png */,
 				587DF22B174EDDDA005893C7 /* exclamation-point-icon@2x.png */,
 				58BEF5AE174445DA00F0E335 /* jogador.png */,
-				580986E4173F458F006FA46B /* confirmado.png */,
-				580986E5173F458F006FA46B /* nao-confirmado.png */,
-				580986E6173F458F006FA46B /* pendente-confirmacao.png */,
 				589B83D81739B5D80024F972 /* fazul.jpg */,
 				589B83D91739B5D80024F972 /* fbranca.jpg */,
 				589B83DA1739B5D80024F972 /* fpreta.jpg */,
@@ -678,9 +669,6 @@
 				589B83DF1739B5D80024F972 /* fpreta.jpg in Resources */,
 				589B83E01739B5D80024F972 /* fverde.jpg in Resources */,
 				589B83E11739B5D80024F972 /* fvermelha.jpg in Resources */,
-				580986E7173F458F006FA46B /* confirmado.png in Resources */,
-				580986E8173F458F006FA46B /* nao-confirmado.png in Resources */,
-				580986E9173F458F006FA46B /* pendente-confirmacao.png in Resources */,
 				58BEF5AF174445DA00F0E335 /* jogador.png in Resources */,
 				587DF22C174EDDDA005893C7 /* exclamation-point-icon.png in Resources */,
 				587DF22D174EDDDA005893C7 /* exclamation-point-icon@2x.png in Resources */,

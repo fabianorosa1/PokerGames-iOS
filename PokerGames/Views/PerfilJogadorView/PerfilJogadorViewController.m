@@ -49,7 +49,16 @@
     // arredonda a imagem
     self.imgViewFoto.layer.masksToBounds = YES;
     self.imgViewFoto.layer.cornerRadius = 40.0;
-        
+    
+    // ajustes layout botoes
+    self.btnOpcoes.layer.borderColor = [UIColor grayColor].CGColor;
+    self.btnOpcoes.layer.backgroundColor = [UIColor colorWithRed:98/255.0f
+                                                             green:161/255.0f
+                                                              blue:37/255.0f
+                                                             alpha:1.0f].CGColor;
+    self.btnOpcoes.layer.borderWidth = 0.5;
+    self.btnOpcoes.layer.cornerRadius = 3;
+
     [self buscaPerfilJogador];
 }
 

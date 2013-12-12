@@ -55,6 +55,10 @@
     [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
+    // corrige o bug do header da table
+    self.tableView.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
+    self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height+44);
+    
     // busca os rankings
     [self buscaRanking];
 }
@@ -142,12 +146,21 @@
     headerLabel.font = [UIFont boldSystemFontOfSize:19.0f];
     [headerView addSubview:headerLabel];
     
+    [headerView bringSubviewToFront:headerLabel];
+    
     return headerView;
 }
 
 -(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     return  44.0;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    return (CGFloat)60.0f;
 }
 
 #pragma mark - Table view delegate
@@ -188,11 +201,18 @@
     }
 }
 
--(IBAction)goToSearch:(id)sender {
+- (IBAction)btSearch:(id)sender {
     // If you're worried that your users might not catch on to the fact that a search bar is available if they scroll to reveal it, a search icon will help them
     // If you don't hide your search bar in your app, don’t include this, as it would be redundant
-    //[self.searchDisplayController setActive:YES];
+    [self.searchBar setHidden:NO];
+    [self.searchDisplayController setActive:YES];
     [self.searchBar becomeFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBar setHidden:YES];
+    [searchBar resignFirstResponder];
 }
 
 #pragma mark Content Filtering

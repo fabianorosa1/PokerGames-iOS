@@ -262,7 +262,7 @@
     
     navigationController.viewControllers = @[newTopViewController];
     
-    NSLog(@"chamaTela: %@", newTopViewController);
+    //NSLog(@"chamaTela: %@", newTopViewController);
     
     [self.frostedViewController hideMenuViewController];
 }

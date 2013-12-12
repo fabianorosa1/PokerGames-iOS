@@ -6,11 +6,10 @@
 //  Copyright (c) 2013 App Design Vault. All rights reserved.
 //
 
-@interface LoginViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface LoginViewController : UIViewController<UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UITextField *userTextField;
 @property (nonatomic, strong) IBOutlet UITextField *passwordTextField;
-@property (nonatomic, strong) IBOutlet UITableView *loginTableView;
 @property (nonatomic, strong) IBOutlet UIButton *loginButton;
 @property (nonatomic, strong) IBOutlet UIButton *demoButton;
 

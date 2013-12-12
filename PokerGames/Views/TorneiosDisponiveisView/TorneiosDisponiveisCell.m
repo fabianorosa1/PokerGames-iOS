@@ -42,11 +42,11 @@
     NSString *imgStatus = nil;
     
     if ([statusIncricao isEqualToString:@"S"]) {
-        imgStatus = @"confirmado.png";
+        imgStatus = @"confirmado";
     } else if ([statusIncricao isEqualToString:@"N"]) {
-        imgStatus = @"nao-confirmado.png";
+        imgStatus = @"nao-confirmado";
     } else {
-        imgStatus = @"pendente-confirmacao.png";
+        imgStatus = @"pendente-confirmacao";
     }
     [self.imgViewStatus setImage:[UIImage imageNamed:imgStatus]];
 }

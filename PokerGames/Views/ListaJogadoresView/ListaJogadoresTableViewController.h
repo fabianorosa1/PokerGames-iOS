@@ -14,6 +14,6 @@
 
 @property (nonatomic, weak) IBOutlet UISearchBar* searchBar;
 
--(IBAction)goToSearch:(id)sender;
+- (IBAction)btSearch:(id)sender;
 
 @end
