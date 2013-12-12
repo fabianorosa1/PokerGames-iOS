@@ -21,4 +21,6 @@
 
 + (NSString *)deviceUUID;
 
++ (UIColor *) colorFromHexString:(NSString *)hexString alpha: (CGFloat)alpha;
+
 @end
