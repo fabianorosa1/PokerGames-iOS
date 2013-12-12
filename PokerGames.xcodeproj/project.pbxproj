@@ -16,8 +16,6 @@
 		58325077172462C000D2C825 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325076172462C000D2C825 /* SystemConfiguration.framework */; };
 		58325079172462C700D2C825 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325078172462C700D2C825 /* MobileCoreServices.framework */; };
 		5832507C172489C100D2C825 /* LigaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5832507B172489C100D2C825 /* LigaTableViewController.m */; };
-		583D9D3C1728B77A00249207 /* profile-image-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 583D9D3A1728B77A00249207 /* profile-image-placeholder.png */; };
-		583D9D3D1728B77A00249207 /* profile-image-placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 583D9D3B1728B77A00249207 /* profile-image-placeholder@2x.png */; };
 		583D9D401728B7B500249207 /* RankingCampeonatoJogadorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D9D3F1728B7B500249207 /* RankingCampeonatoJogadorCell.m */; };
 		584E506F172C96FC0007D4B7 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 584E506E172C96FC0007D4B7 /* MenuViewController.m */; };
 		584E50BB172CA3120007D4B7 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 584E509F172CA3120007D4B7 /* AFHTTPClient.m */; };
@@ -43,8 +41,6 @@
 		5875D9E31731F4D3007A5397 /* RankingTorneioTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5875D9E11731F4D3007A5397 /* RankingTorneioTableViewController.m */; };
 		5875D9E91734A0B9007A5397 /* TorneiosDisponiveisTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5875D9E81734A0B9007A5397 /* TorneiosDisponiveisTableViewController.m */; };
 		5875D9EC1734A3DD007A5397 /* ListaJogadoresCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5875D9EA1734A3DD007A5397 /* ListaJogadoresCell.m */; };
-		587DF22C174EDDDA005893C7 /* exclamation-point-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 587DF22A174EDDDA005893C7 /* exclamation-point-icon.png */; };
-		587DF22D174EDDDA005893C7 /* exclamation-point-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 587DF22B174EDDDA005893C7 /* exclamation-point-icon@2x.png */; };
 		5882A5A31730BA76009B858C /* DetalhesJogadorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882A5A01730BA76009B858C /* DetalhesJogadorCell.m */; };
 		5882A5A41730BA76009B858C /* DetalhesJogadorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882A5A21730BA76009B858C /* DetalhesJogadorTableViewController.m */; };
 		588EB6C318551BC900E82DDE /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588EB6C218551BC900E82DDE /* Media.xcassets */; };
@@ -60,11 +56,6 @@
 		58967C1B171DDF58003FCF47 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58967C1A171DDF58003FCF47 /* CoreData.framework */; };
 		58967C26171DE2A1003FCF47 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58967C25171DE2A1003FCF47 /* LoginViewController.m */; };
 		589B3B631721DAA100AAC977 /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 589B3B621721DAA100AAC977 /* AFAppDotNetAPIClient.m */; };
-		589B83DD1739B5D80024F972 /* fazul.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83D81739B5D80024F972 /* fazul.jpg */; };
-		589B83DE1739B5D80024F972 /* fbranca.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83D91739B5D80024F972 /* fbranca.jpg */; };
-		589B83DF1739B5D80024F972 /* fpreta.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83DA1739B5D80024F972 /* fpreta.jpg */; };
-		589B83E01739B5D80024F972 /* fverde.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83DB1739B5D80024F972 /* fverde.jpg */; };
-		589B83E11739B5D80024F972 /* fvermelha.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 589B83DC1739B5D80024F972 /* fvermelha.jpg */; };
 		58A9B7BF17498167007CD178 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A9B7BE17498167007CD178 /* Social.framework */; };
 		58A9B7C5174B00AC007CD178 /* JogadoresConfirmadosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9B7C2174B00AC007CD178 /* JogadoresConfirmadosCell.m */; };
 		58A9B7C6174B00AC007CD178 /* JogadoresConfirmadosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9B7C4174B00AC007CD178 /* JogadoresConfirmadosTableViewController.m */; };
@@ -72,7 +63,6 @@
 		58B610AF1743138D00BA5CC2 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B610AE1743138D00BA5CC2 /* AddressBookUI.framework */; };
 		58B610B11743261400BA5CC2 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B610B01743261400BA5CC2 /* EventKitUI.framework */; };
 		58BCC5E517484408006D1752 /* Ranking.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BCC5E317484408006D1752 /* Ranking.m */; };
-		58BEF5AF174445DA00F0E335 /* jogador.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BEF5AE174445DA00F0E335 /* jogador.png */; };
 		58C7E631180F7755002F3E55 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C7E630180F7755002F3E55 /* Accelerate.framework */; };
 		58DEBA45180CE3710099A76B /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DEBA3A180CE3710099A76B /* RECommonFunctions.m */; };
 		58DEBA46180CE3710099A76B /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DEBA3C180CE3710099A76B /* REFrostedContainerViewController.m */; };
@@ -100,8 +90,6 @@
 		58325078172462C700D2C825 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5832507A172489C100D2C825 /* LigaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LigaTableViewController.h; path = LigaView/LigaTableViewController.h; sourceTree = "<group>"; };
 		5832507B172489C100D2C825 /* LigaTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LigaTableViewController.m; path = LigaView/LigaTableViewController.m; sourceTree = "<group>"; };
-		583D9D3A1728B77A00249207 /* profile-image-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-image-placeholder.png"; sourceTree = "<group>"; };
-		583D9D3B1728B77A00249207 /* profile-image-placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-image-placeholder@2x.png"; sourceTree = "<group>"; };
 		583D9D3E1728B7B500249207 /* RankingCampeonatoJogadorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankingCampeonatoJogadorCell.h; path = RankingCampeonatoView/RankingCampeonatoJogadorCell.h; sourceTree = "<group>"; };
 		583D9D3F1728B7B500249207 /* RankingCampeonatoJogadorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RankingCampeonatoJogadorCell.m; path = RankingCampeonatoView/RankingCampeonatoJogadorCell.m; sourceTree = "<group>"; };
 		584E506D172C96FC0007D4B7 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -151,8 +139,6 @@
 		5875D9E81734A0B9007A5397 /* TorneiosDisponiveisTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TorneiosDisponiveisTableViewController.m; path = TorneiosDisponiveisView/TorneiosDisponiveisTableViewController.m; sourceTree = "<group>"; };
 		5875D9EA1734A3DD007A5397 /* ListaJogadoresCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListaJogadoresCell.m; path = ListaJogadoresView/ListaJogadoresCell.m; sourceTree = "<group>"; };
 		5875D9EB1734A3DD007A5397 /* ListaJogadoresCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListaJogadoresCell.h; path = ListaJogadoresView/ListaJogadoresCell.h; sourceTree = "<group>"; };
-		587DF22A174EDDDA005893C7 /* exclamation-point-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exclamation-point-icon.png"; sourceTree = "<group>"; };
-		587DF22B174EDDDA005893C7 /* exclamation-point-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exclamation-point-icon@2x.png"; sourceTree = "<group>"; };
 		5882A59F1730BA76009B858C /* DetalhesJogadorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetalhesJogadorCell.h; sourceTree = "<group>"; };
 		5882A5A01730BA76009B858C /* DetalhesJogadorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetalhesJogadorCell.m; sourceTree = "<group>"; };
 		5882A5A11730BA76009B858C /* DetalhesJogadorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetalhesJogadorTableViewController.h; sourceTree = "<group>"; };
@@ -177,11 +163,6 @@
 		58967C25171DE2A1003FCF47 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		589B3B611721DAA100AAC977 /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
 		589B3B621721DAA100AAC977 /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
-		589B83D81739B5D80024F972 /* fazul.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fazul.jpg; sourceTree = "<group>"; };
-		589B83D91739B5D80024F972 /* fbranca.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fbranca.jpg; sourceTree = "<group>"; };
-		589B83DA1739B5D80024F972 /* fpreta.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fpreta.jpg; sourceTree = "<group>"; };
-		589B83DB1739B5D80024F972 /* fverde.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fverde.jpg; sourceTree = "<group>"; };
-		589B83DC1739B5D80024F972 /* fvermelha.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fvermelha.jpg; sourceTree = "<group>"; };
 		58A9B7BE17498167007CD178 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		58A9B7C1174B00AC007CD178 /* JogadoresConfirmadosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JogadoresConfirmadosCell.h; sourceTree = "<group>"; };
 		58A9B7C2174B00AC007CD178 /* JogadoresConfirmadosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JogadoresConfirmadosCell.m; sourceTree = "<group>"; };
@@ -193,7 +174,6 @@
 		58B610B01743261400BA5CC2 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		58BCC5E317484408006D1752 /* Ranking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ranking.m; sourceTree = "<group>"; };
 		58BCC5E417484408006D1752 /* Ranking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ranking.h; sourceTree = "<group>"; };
-		58BEF5AE174445DA00F0E335 /* jogador.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jogador.png; sourceTree = "<group>"; };
 		58C7E630180F7755002F3E55 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		58DEBA39180CE3710099A76B /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
 		58DEBA3A180CE3710099A76B /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
@@ -437,7 +417,6 @@
 				589B3B601721DAA100AAC977 /* Extensions */,
 				58967C1C171DE255003FCF47 /* Views */,
 				58967C10171DD66E003FCF47 /* Model */,
-				58967BB5171DD2B5003FCF47 /* Resources */,
 				58967B82171DD0F1003FCF47 /* Libraries */,
 				58967B68171DCE8E003FCF47 /* AppDelegate.h */,
 				58967B69171DCE8E003FCF47 /* AppDelegate.m */,
@@ -468,23 +447,6 @@
 				584E50B6172CA3120007D4B7 /* MBProgressHUD */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		58967BB5171DD2B5003FCF47 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				587DF22A174EDDDA005893C7 /* exclamation-point-icon.png */,
-				587DF22B174EDDDA005893C7 /* exclamation-point-icon@2x.png */,
-				58BEF5AE174445DA00F0E335 /* jogador.png */,
-				589B83D81739B5D80024F972 /* fazul.jpg */,
-				589B83D91739B5D80024F972 /* fbranca.jpg */,
-				589B83DA1739B5D80024F972 /* fpreta.jpg */,
-				589B83DB1739B5D80024F972 /* fverde.jpg */,
-				589B83DC1739B5D80024F972 /* fvermelha.jpg */,
-				583D9D3A1728B77A00249207 /* profile-image-placeholder.png */,
-				583D9D3B1728B77A00249207 /* profile-image-placeholder@2x.png */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		58967C10171DD66E003FCF47 /* Model */ = {
@@ -660,18 +622,8 @@
 				58967B64171DCE8E003FCF47 /* InfoPlist.strings in Resources */,
 				58967B73171DCE8E003FCF47 /* MainStoryboard_iPhone.storyboard in Resources */,
 				588EB6C318551BC900E82DDE /* Media.xcassets in Resources */,
-				583D9D3C1728B77A00249207 /* profile-image-placeholder.png in Resources */,
-				583D9D3D1728B77A00249207 /* profile-image-placeholder@2x.png in Resources */,
 				584E50C6172CA3120007D4B7 /* .gitattributes in Resources */,
 				584E50C7172CA3120007D4B7 /* .gitignore in Resources */,
-				589B83DD1739B5D80024F972 /* fazul.jpg in Resources */,
-				589B83DE1739B5D80024F972 /* fbranca.jpg in Resources */,
-				589B83DF1739B5D80024F972 /* fpreta.jpg in Resources */,
-				589B83E01739B5D80024F972 /* fverde.jpg in Resources */,
-				589B83E11739B5D80024F972 /* fvermelha.jpg in Resources */,
-				58BEF5AF174445DA00F0E335 /* jogador.png in Resources */,
-				587DF22C174EDDDA005893C7 /* exclamation-point-icon.png in Resources */,
-				587DF22D174EDDDA005893C7 /* exclamation-point-icon@2x.png in Resources */,
 				5814AA451773BB0E00AD432F /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

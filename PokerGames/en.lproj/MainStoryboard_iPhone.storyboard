@@ -1915,7 +1915,7 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2Z-Vc-VHh">
-                                            <rect key="frame" x="252" y="12" width="30" height="30"/>
+                                            <rect key="frame" x="252" y="15" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="2FY-DB-71h"/>
                                                 <constraint firstAttribute="height" constant="30" id="saS-1Y-nKX"/>
@@ -1950,7 +1950,7 @@
                                     <constraint firstItem="lv7-Ux-fgT" firstAttribute="trailing" secondItem="hbJ-Me-DCY" secondAttribute="trailing" constant="6" id="OOp-gP-JAL"/>
                                     <constraint firstItem="lv7-Ux-fgT" firstAttribute="top" secondItem="xMt-HL-hL5" secondAttribute="top" constant="8" id="XhV-qE-vHG"/>
                                     <constraint firstAttribute="trailing" secondItem="H2Z-Vc-VHh" secondAttribute="trailing" constant="38" id="aNf-8h-ab6"/>
-                                    <constraint firstItem="H2Z-Vc-VHh" firstAttribute="top" secondItem="xMt-HL-hL5" secondAttribute="top" constant="12" id="bDd-yc-BVj"/>
+                                    <constraint firstItem="H2Z-Vc-VHh" firstAttribute="top" secondItem="xMt-HL-hL5" secondAttribute="top" constant="15" id="bDd-yc-BVj"/>
                                     <constraint firstItem="lv7-Ux-fgT" firstAttribute="leading" secondItem="n71-gj-lbR" secondAttribute="leading" id="dnd-Im-OKm"/>
                                     <constraint firstItem="hbJ-Me-DCY" firstAttribute="baseline" secondItem="n71-gj-lbR" secondAttribute="baseline" id="f0m-ny-xv7"/>
                                     <constraint firstItem="hbJ-Me-DCY" firstAttribute="top" secondItem="n71-gj-lbR" secondAttribute="top" id="g85-rf-nBG"/>

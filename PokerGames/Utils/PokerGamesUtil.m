@@ -10,8 +10,6 @@
 #import "UIImageView+AFNetworking.h"
 
 // variaveis estaticas
-static UIImage* imgPlaceholder = nil;
-static UIImage* imgFotoJogador = nil;
 static UIImage* imgMenu = nil;
 
 static NSNumberFormatter *numberFormatter;
@@ -20,8 +18,6 @@ static NSNumberFormatter *numberFormatter;
 
 +(void)initialize
 {
-    imgPlaceholder = [UIImage imageNamed:@"profile-image-placeholder"];
-    imgFotoJogador = [UIImage imageNamed:@"jogador"];
     numberFormatter = [[NSNumberFormatter alloc] init];
 }
 
@@ -64,20 +60,16 @@ static NSNumberFormatter *numberFormatter;
     // seta a foto do jogador
     //NSLog(@">>> FOTO: %@", foto);
     if ([foto isKindOfClass:[NSNull class]] || [@"" isEqualToString:foto]) {
-        [imgViewFoto setImage:imgFotoJogador];
+        [imgViewFoto setImage:[UIImage imageNamed:@"jogador"]];
     } else {
          NSString *pathFoto = [NSString stringWithFormat:@"%@%@", [PokerGamesUtil baseURLFoto],  foto];
-        [imgViewFoto setImageWithURL:[NSURL URLWithString:pathFoto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+        [imgViewFoto setImageWithURL:[NSURL URLWithString:pathFoto] placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
     }
 }
 
 + (NSURL*) retornaUrlFoto:(NSString*)fileFoto {
     NSString *pathFoto = [NSString stringWithFormat:@"%@%@", [PokerGamesUtil baseURLFoto],  fileFoto];
     return [NSURL URLWithString:pathFoto];
-}
-
-+ (UIImage *) imgPlaceholder {
-    return imgPlaceholder;
 }
 
 + (NSNumberFormatter*) currencyFormatter {
