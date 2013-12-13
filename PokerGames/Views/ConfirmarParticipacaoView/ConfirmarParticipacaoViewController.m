@@ -36,6 +36,9 @@
     self.lblHora.text = [self.dicDadosConfirmacao valueForKey:@"Hora"];
 
     // verifica se habilita ou não os botões
+    [self.btnParticipar setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [self.btnNaoParticipar setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    
     NSString *statusIncricao = [self.dicDadosConfirmacao valueForKey:@"Inscrito"];
     if ([statusIncricao isEqualToString:@"S"]) {
         self.btnParticipar.enabled = FALSE;
@@ -45,18 +48,13 @@
     
     // ajustes layout botoes
     self.btnListaJogadores.layer.borderColor = [UIColor grayColor].CGColor;
-    self.btnListaJogadores.layer.backgroundColor = [UIColor colorWithRed:98/255.0f
-                                                             green:161/255.0f
-                                                              blue:37/255.0f
-                                                             alpha:1.0f].CGColor;
+    self.btnListaJogadores.layer.backgroundColor = [PokerGamesUtil colorFromHexString:@"068fd5" alpha:1.0].CGColor;
+    
     self.btnListaJogadores.layer.borderWidth = 0.5;
     self.btnListaJogadores.layer.cornerRadius = 3;
 
     self.btnNaoParticipar.layer.borderColor = [UIColor grayColor].CGColor;
-    self.btnNaoParticipar.layer.backgroundColor = [UIColor colorWithRed:130/255.0f
-                                                                   green:101/255.0f
-                                                                    blue:17/255.0f
-                                                                   alpha:1.0f].CGColor;
+    self.btnNaoParticipar.layer.backgroundColor = [PokerGamesUtil colorFromHexString:@"fe4533" alpha:1.0].CGColor;
     self.btnNaoParticipar.layer.borderWidth = 0.5;
     self.btnNaoParticipar.layer.cornerRadius = 3;
 

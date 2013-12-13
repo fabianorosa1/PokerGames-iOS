@@ -35,6 +35,7 @@
 {
     [super viewDidLoad];
     
+    [self.loginButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     self.loginButton.enabled = FALSE;
     
     [self.userTextField setPlaceholder:@"Apelido"];
