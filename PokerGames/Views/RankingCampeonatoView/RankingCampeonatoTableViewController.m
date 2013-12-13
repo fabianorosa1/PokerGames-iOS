@@ -58,7 +58,7 @@
     // corrige o bug do header da table
     self.tableView.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
     self.tableView.contentSize = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height+44);
-    
+
     // busca os rankings
     [self buscaRanking];
 }

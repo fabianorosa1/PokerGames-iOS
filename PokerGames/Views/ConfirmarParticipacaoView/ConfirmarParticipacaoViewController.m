@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import <QuartzCore/QuartzCore.h>
 #import "JogadoresConfirmadosTableViewController.h"
+#import "MenuViewController.h"
 
 @interface ConfirmarParticipacaoViewController ()
 
@@ -48,7 +49,10 @@
     
     // ajustes layout botoes
     self.btnListaJogadores.layer.borderColor = [UIColor grayColor].CGColor;
-    self.btnListaJogadores.layer.backgroundColor = [PokerGamesUtil colorFromHexString:@"068fd5" alpha:1.0].CGColor;
+    self.btnListaJogadores.layer.backgroundColor = [UIColor colorWithRed:98/255.0f
+                                                                   green:161/255.0f
+                                                                    blue:37/255.0f
+                                                                   alpha:1.0f].CGColor;
     
     self.btnListaJogadores.layer.borderWidth = 0.5;
     self.btnListaJogadores.layer.cornerRadius = 3;
@@ -168,8 +172,7 @@
 
 - (void) saiTela {
     // instancia a tela principal do ranking
-    //TODO ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
-    //TODO slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveisView"];
+    [self chamaTela:@"TorneiosDisponiveisView"];
 }
 
 - (void) verificaAdicaoEventoCalendario {
@@ -300,6 +303,12 @@
         vc.dataTorneio = [self.dicDadosConfirmacao valueForKey:@"Data"];
         vc.horaTorneio = [self.dicDadosConfirmacao valueForKey:@"Hora"];
       }
+}
+
+-(void) chamaTela:(NSString*)identifier {
+    UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
+    UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    navigationController.viewControllers = @[newTopViewController];
 }
 
 @end
