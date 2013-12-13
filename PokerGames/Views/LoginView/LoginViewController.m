@@ -165,20 +165,20 @@
         [[PokerGamesFacade sharedInstance] setJogadorLogin:jogador];
                 
         // registra o dispositivo
-        [[PokerGamesFacade sharedInstance] registraDispositivoWithBlock:[[PokerGamesFacade sharedInstance] apnsToken]
-                                                             deviceUUID:[PokerGamesUtil deviceUUID]
-                                                             idJogador:jogador.idJogador
-                                              constructingBodyWithBlock:^(NSString *result, NSError *error) {
-                                                  
-            if (error) {
-              NSLog(@"Erro ao registrar dispositivo ao efetuar login: %@", error);
-            } 
-        }];
+        // [[PokerGamesFacade sharedInstance] registraDispositivoWithBlock:[[PokerGamesFacade sharedInstance] apnsToken]
+        //                                                     deviceUUID:[PokerGamesUtil deviceUUID]
+        //                                                     idJogador:jogador.idJogador
+        //                                      constructingBodyWithBlock:^(NSString *result, NSError *error) {
+    
+        //    if (error) {
+        //      NSLog(@"Erro ao registrar dispositivo ao efetuar login: %@", error);
+        //    }
+        //}];
 
         [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
     }
     
-}];
+    }];
 }
 
 @end

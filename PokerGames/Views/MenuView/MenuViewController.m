@@ -190,9 +190,9 @@
 {
     if( IS_IPHONE_5 )
     {
-        return 45;
+        return 44.5;
     }
-    return 35;
+    return 34.5;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -240,14 +240,14 @@
 		[[PokerGamesFacade sharedInstance] setJogadorLogin:nil];
         
         // desregistra o dispositivo
-        [[PokerGamesFacade sharedInstance] registraDispositivoWithBlock:[[PokerGamesFacade sharedInstance] apnsToken]
-                                                             deviceUUID:[PokerGamesUtil deviceUUID]
-                                                              idJogador:nil
-                                              constructingBodyWithBlock:^(NSString *result, NSError *error) {
-            if (error) {
-              NSLog(@"Erro ao desregistrar dispositivo ao efetuar logout: %@", error);
-            }
-        }];
+        //[[PokerGamesFacade sharedInstance] registraDispositivoWithBlock:[[PokerGamesFacade sharedInstance] apnsToken]
+        //                                                     deviceUUID:[PokerGamesUtil deviceUUID]
+        //                                                      idJogador:nil
+        //                                      constructingBodyWithBlock:^(NSString *result, NSError *error) {
+        //    if (error) {
+        //      NSLog(@"Erro ao desregistrar dispositivo ao efetuar logout: %@", error);
+        //    }
+        //}];
         
         [hud hide:YES];
         

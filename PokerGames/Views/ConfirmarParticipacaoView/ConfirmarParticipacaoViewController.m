@@ -42,7 +42,33 @@
     } else if ([statusIncricao isEqualToString:@"N"]) {
         self.btnNaoParticipar.enabled = FALSE;
     }
-        
+    
+    // ajustes layout botoes
+    self.btnListaJogadores.layer.borderColor = [UIColor grayColor].CGColor;
+    self.btnListaJogadores.layer.backgroundColor = [UIColor colorWithRed:98/255.0f
+                                                             green:161/255.0f
+                                                              blue:37/255.0f
+                                                             alpha:1.0f].CGColor;
+    self.btnListaJogadores.layer.borderWidth = 0.5;
+    self.btnListaJogadores.layer.cornerRadius = 3;
+
+    self.btnNaoParticipar.layer.borderColor = [UIColor grayColor].CGColor;
+    self.btnNaoParticipar.layer.backgroundColor = [UIColor colorWithRed:130/255.0f
+                                                                   green:101/255.0f
+                                                                    blue:17/255.0f
+                                                                   alpha:1.0f].CGColor;
+    self.btnNaoParticipar.layer.borderWidth = 0.5;
+    self.btnNaoParticipar.layer.cornerRadius = 3;
+
+    self.btnParticipar.layer.borderColor = [UIColor grayColor].CGColor;
+    self.btnParticipar.layer.backgroundColor = [UIColor colorWithRed:98/255.0f
+                                                                   green:161/255.0f
+                                                                    blue:37/255.0f
+                                                                   alpha:1.0f].CGColor;
+    self.btnParticipar.layer.borderWidth = 0.5;
+    self.btnParticipar.layer.cornerRadius = 3;
+
+    
     // mostra os dados na tela
     [self buscaDadosConfirmacao];
 }
