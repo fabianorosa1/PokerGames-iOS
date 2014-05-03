@@ -71,10 +71,7 @@
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:self.view.bounds];
         toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         toolbar.barStyle = (UIBarStyle)self.frostedViewController.liveBlurBackgroundStyle;
-        if ([toolbar respondsToSelector:@selector(setBarTintColor:)])
-            [toolbar performSelector:@selector(setBarTintColor:) withObject:self.frostedViewController.blurTintColor];
         [self.containerView addSubview:toolbar];
-
     } else {
         self.backgroundImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
         [self.containerView addSubview:self.backgroundImageView];
@@ -92,45 +89,30 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.frostedViewController.menuViewController beginAppearanceTransition:YES animated:animated];
-    
-    self.backgroundImageView.image = self.screenshotImage;
-    self.backgroundImageView.frame = self.view.bounds;
-    self.frostedViewController.menuViewController.view.frame = self.containerView.bounds;
-    
-    if (self.frostedViewController.direction == REFrostedViewControllerDirectionLeft) {
-        [self setContainerFrame:CGRectMake(- self.frostedViewController.calculatedMenuViewSize.width, 0, self.frostedViewController.calculatedMenuViewSize.width, self.frostedViewController.calculatedMenuViewSize.height)];
+    if(!self.frostedViewController.visible) {
+        self.backgroundImageView.image = self.screenshotImage;
+        self.backgroundImageView.frame = self.view.bounds;
+        self.frostedViewController.menuViewController.view.frame = self.containerView.bounds;
+        
+        if (self.frostedViewController.direction == REFrostedViewControllerDirectionLeft) {
+            [self setContainerFrame:CGRectMake(- self.frostedViewController.calculatedMenuViewSize.width, 0, self.frostedViewController.calculatedMenuViewSize.width, self.frostedViewController.calculatedMenuViewSize.height)];
+        }
+        
+        if (self.frostedViewController.direction == REFrostedViewControllerDirectionRight) {
+            [self setContainerFrame:CGRectMake(self.view.frame.size.width, 0, self.frostedViewController.calculatedMenuViewSize.width, self.frostedViewController.calculatedMenuViewSize.height)];
+        }
+        
+        if (self.frostedViewController.direction == REFrostedViewControllerDirectionTop) {
+            [self setContainerFrame:CGRectMake(0, -self.frostedViewController.calculatedMenuViewSize.height, self.frostedViewController.calculatedMenuViewSize.width, self.frostedViewController.calculatedMenuViewSize.height)];
+        }
+        
+        if (self.frostedViewController.direction == REFrostedViewControllerDirectionBottom) {
+            [self setContainerFrame:CGRectMake(0, self.view.frame.size.height, self.frostedViewController.calculatedMenuViewSize.width, self.frostedViewController.calculatedMenuViewSize.height)];
+        }
+        
+        if (self.animateApperance)
+            [self show];
     }
-    
-    if (self.frostedViewController.direction == REFrostedViewControllerDirectionRight) {
-        [self setContainerFrame:CGRectMake(self.view.frame.size.width, 0, self.frostedViewController.calculatedMenuViewSize.width, self.frostedViewController.calculatedMenuViewSize.height)];
-    }
-    
-    if (self.frostedViewController.direction == REFrostedViewControllerDirectionTop) {
-        [self setContainerFrame:CGRectMake(0, -self.frostedViewController.calculatedMenuViewSize.height, self.frostedViewController.calculatedMenuViewSize.width, self.frostedViewController.calculatedMenuViewSize.height)];
-    }
-    
-    if (self.frostedViewController.direction == REFrostedViewControllerDirectionBottom) {
-        [self setContainerFrame:CGRectMake(0, self.view.frame.size.height, self.frostedViewController.calculatedMenuViewSize.width, self.frostedViewController.calculatedMenuViewSize.height)];
-    }
-    
-    if (self.animateApperance)
-        [self show];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self.frostedViewController.menuViewController endAppearanceTransition];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.frostedViewController.menuViewController beginAppearanceTransition:NO animated:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [self.frostedViewController.menuViewController endAppearanceTransition];
 }
 
 - (void)setContainerFrame:(CGRect)frame
@@ -154,6 +136,38 @@
 {
     for (UIView *view in self.backgroundViews) {
         view.alpha = alpha;
+    }
+}
+
+- (void)resizeToSize:(CGSize)size
+{
+    
+    if (self.frostedViewController.direction == REFrostedViewControllerDirectionLeft) {
+        [UIView animateWithDuration:self.frostedViewController.animationDuration animations:^{
+            [self setContainerFrame:CGRectMake(0, 0, size.width, size.height)];
+            [self setBackgroundViewsAlpha:self.frostedViewController.backgroundFadeAmount];
+        } completion:nil];
+    }
+    
+    if (self.frostedViewController.direction == REFrostedViewControllerDirectionRight) {
+        [UIView animateWithDuration:self.frostedViewController.animationDuration animations:^{
+            [self setContainerFrame:CGRectMake(self.view.frame.size.width - size.width, 0, size.width, size.height)];
+            [self setBackgroundViewsAlpha:self.frostedViewController.backgroundFadeAmount];
+        } completion:nil];
+    }
+    
+    if (self.frostedViewController.direction == REFrostedViewControllerDirectionTop) {
+        [UIView animateWithDuration:self.frostedViewController.animationDuration animations:^{
+            [self setContainerFrame:CGRectMake(0, 0, size.width, size.height)];
+            [self setBackgroundViewsAlpha:self.frostedViewController.backgroundFadeAmount];
+        } completion:nil];
+    }
+    
+    if (self.frostedViewController.direction == REFrostedViewControllerDirectionBottom) {
+        [UIView animateWithDuration:self.frostedViewController.animationDuration animations:^{
+            [self setContainerFrame:CGRectMake(0, self.view.frame.size.height - size.height, size.width, size.height)];
+            [self setBackgroundViewsAlpha:self.frostedViewController.backgroundFadeAmount];
+        } completion:nil];
     }
 }
 
@@ -197,16 +211,17 @@
 
 - (void)hide
 {
-	[self hideWithCompletitionHandler:^{}];
+	[self hideWithCompletionHandler:nil];
 }
 
-- (void)hideWithCompletitionHandler:(void(^)(void))completition
+- (void)hideWithCompletionHandler:(void(^)(void))completionHandler
 {
-    void (^completionHandler)(void) = ^{
+    void (^completionHandlerBlock)(void) = ^{
         if ([self.frostedViewController.delegate conformsToProtocol:@protocol(REFrostedViewControllerDelegate)] && [self.frostedViewController.delegate respondsToSelector:@selector(frostedViewController:didHideMenuViewController:)]) {
             [self.frostedViewController.delegate frostedViewController:self.frostedViewController didHideMenuViewController:self.frostedViewController.menuViewController];
         }
-		completition();		
+        if (completionHandler)
+            completionHandler();
     };
     
     if ([self.frostedViewController.delegate conformsToProtocol:@protocol(REFrostedViewControllerDelegate)] && [self.frostedViewController.delegate respondsToSelector:@selector(frostedViewController:willHideMenuViewController:)]) {
@@ -220,7 +235,7 @@
         } completion:^(BOOL finished) {
             self.frostedViewController.visible = NO;
             [self.frostedViewController re_hideController:self];
-            completionHandler();
+            completionHandlerBlock();
         }];
     }
     
@@ -231,7 +246,7 @@
         } completion:^(BOOL finished) {
             self.frostedViewController.visible = NO;
             [self.frostedViewController re_hideController:self];
-            completionHandler();
+            completionHandlerBlock();
         }];
     }
     
@@ -242,7 +257,7 @@
         } completion:^(BOOL finished) {
             self.frostedViewController.visible = NO;
             [self.frostedViewController re_hideController:self];
-            completionHandler();
+            completionHandlerBlock();
         }];
     }
     
@@ -253,7 +268,7 @@
         } completion:^(BOOL finished) {
             self.frostedViewController.visible = NO;
             [self.frostedViewController re_hideController:self];
-            completionHandler();
+            completionHandlerBlock();
         }];
     }
 }

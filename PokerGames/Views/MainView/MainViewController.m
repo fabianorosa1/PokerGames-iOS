@@ -32,7 +32,7 @@
 
     // configurações do menu
     self.limitMenuViewSize = YES;
-    self.liveBlur = YES;
+    self.liveBlur = NO;
     
     // verifica se já está logado
     Jogador *jogador = [[PokerGamesFacade sharedInstance] loadJogadorEntity];

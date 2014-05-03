@@ -80,10 +80,12 @@
 
 -(void)viewDidUnload {
     // desregistra o evento de push
-    [[NSNotificationCenter defaultCenter]
+    /*
+     [[NSNotificationCenter defaultCenter]
      removeObserver:self
      name:@"UIApplicationDidReceiveRemoteNotification"
      object:nil];
+     */
 }
 
 -(void)didReceiveRemoteNotification:(NSDictionary *)userInfo {
