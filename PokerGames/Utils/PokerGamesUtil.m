@@ -10,11 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 
 // variaveis estaticas
-static UIImage* imgPlaceholder = nil;
-static UIImage* imgPrimeiroLugar = nil;
-static UIImage* imgSegundoLugar = nil;
-static UIImage* imgTerceiroLugar = nil;
-static UIImage* imgFotoJogador = nil;
+static UIImage* imgMenu = nil;
 
 static NSNumberFormatter *numberFormatter;
 
@@ -22,35 +18,33 @@ static NSNumberFormatter *numberFormatter;
 
 +(void)initialize
 {
-    imgPlaceholder = [UIImage imageNamed:@"profile-image-placeholder"];
-    imgPrimeiroLugar = [UIImage imageNamed:@"primeiro"];
-    imgSegundoLugar = [UIImage imageNamed:@"segundo"];
-    imgTerceiroLugar = [UIImage imageNamed:@"terceiro"];
-    imgFotoJogador = [UIImage imageNamed:@"jogador"];    
     numberFormatter = [[NSNumberFormatter alloc] init];
 }
 
 + (UIImage *)menuImage {
-	static UIImage *defaultImage = nil;
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		UIGraphicsBeginImageContextWithOptions(CGSizeMake(20.f, 13.f), NO, 0.0f);
-		
-		[[UIColor blackColor] setFill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 20, 1)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 5, 20, 1)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 10, 20, 1)] fill];
-		
-		[[UIColor whiteColor] setFill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 1, 20, 2)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 6,  20, 2)] fill];
-		[[UIBezierPath bezierPathWithRect:CGRectMake(0, 11, 20, 2)] fill];
-		
-		defaultImage = UIGraphicsGetImageFromCurrentImageContext();
-		UIGraphicsEndImageContext();
-        
-	});
-    return defaultImage;
+    if (imgMenu == nil) {
+        static UIImage *defaultImage = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(20.f, 13.f), NO, 0.0f);
+            
+            [[UIColor blackColor] setFill];
+            [[UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 20, 1)] fill];
+            [[UIBezierPath bezierPathWithRect:CGRectMake(0, 5, 20, 1)] fill];
+            [[UIBezierPath bezierPathWithRect:CGRectMake(0, 10, 20, 1)] fill];
+            
+            [[UIColor whiteColor] setFill];
+            [[UIBezierPath bezierPathWithRect:CGRectMake(0, 1, 20, 2)] fill];
+            [[UIBezierPath bezierPathWithRect:CGRectMake(0, 6,  20, 2)] fill];
+            [[UIBezierPath bezierPathWithRect:CGRectMake(0, 11, 20, 2)] fill];
+            
+            defaultImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+        });
+        imgMenu = defaultImage;
+    }
+    return imgMenu;
 }
 
 + (NSString *)baseURL {
@@ -66,32 +60,16 @@ static NSNumberFormatter *numberFormatter;
     // seta a foto do jogador
     //NSLog(@">>> FOTO: %@", foto);
     if ([foto isKindOfClass:[NSNull class]] || [@"" isEqualToString:foto]) {
-        [imgViewFoto setImage:imgFotoJogador];
+        [imgViewFoto setImage:[UIImage imageNamed:@"jogador"]];
     } else {
          NSString *pathFoto = [NSString stringWithFormat:@"%@%@", [PokerGamesUtil baseURLFoto],  foto];
-        [imgViewFoto setImageWithURL:[NSURL URLWithString:pathFoto] placeholderImage:[PokerGamesUtil imgPlaceholder]];
+        [imgViewFoto setImageWithURL:[NSURL URLWithString:pathFoto] placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
     }
 }
 
 + (NSURL*) retornaUrlFoto:(NSString*)fileFoto {
     NSString *pathFoto = [NSString stringWithFormat:@"%@%@", [PokerGamesUtil baseURLFoto],  fileFoto];
     return [NSURL URLWithString:pathFoto];
-}
-
-+ (UIImage *) imgPlaceholder {
-    return imgPlaceholder;
-}
-
-+ (UIImage *)imgPrimeiroLugar {
-    return imgPrimeiroLugar;
-}
-
-+ (UIImage *)imgSegundoLugar {
-    return imgSegundoLugar;
-}
-
-+ (UIImage *)imgTerceiroLugar {
-    return imgTerceiroLugar;
 }
 
 + (NSNumberFormatter*) currencyFormatter {
@@ -102,6 +80,28 @@ static NSNumberFormatter *numberFormatter;
 + (NSString *)deviceUUID {
     UIDevice *myDevice=[UIDevice currentDevice];
     return [[myDevice identifierForVendor] UUIDString];
+}
+
++ (UIColor *) colorFromHexString:(NSString *)hexString alpha: (CGFloat)alpha {
+    NSString *cleanString = [hexString stringByReplacingOccurrencesOfString:@"#" withString:@""];
+    if([cleanString length] == 3) {
+        cleanString = [NSString stringWithFormat:@"%@%@%@%@%@%@",
+                       [cleanString substringWithRange:NSMakeRange(0, 1)],[cleanString substringWithRange:NSMakeRange(0, 1)],
+                       [cleanString substringWithRange:NSMakeRange(1, 1)],[cleanString substringWithRange:NSMakeRange(1, 1)],
+                       [cleanString substringWithRange:NSMakeRange(2, 1)],[cleanString substringWithRange:NSMakeRange(2, 1)]];
+    }
+    if([cleanString length] == 6) {
+        cleanString = [cleanString stringByAppendingString:@"ff"];
+    }
+    
+    unsigned int baseValue;
+    [[NSScanner scannerWithString:cleanString] scanHexInt:&baseValue];
+    
+    float red = ((baseValue >> 24) & 0xFF)/255.0f;
+    float green = ((baseValue >> 16) & 0xFF)/255.0f;
+    float blue = ((baseValue >> 8) & 0xFF)/255.0f;
+    
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
 @end

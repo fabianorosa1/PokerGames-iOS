@@ -12,16 +12,14 @@
 + (NSString *)baseURL;
 + (NSString *)baseURLFoto;
 
-+ (UIImage *)imgPlaceholder;
-+ (UIImage *)imgPrimeiroLugar;
-+ (UIImage *)imgSegundoLugar;
-+ (UIImage *)imgTerceiroLugar;
-
 + (NSNumberFormatter*) currencyFormatter;
 
 + (void) setaImagemJogador:(UIImageView*)imgViewFoto foto:(NSString*)foto;
+
 + (NSURL*) retornaUrlFoto:(NSString*)fileFoto;
 
 + (NSString *)deviceUUID;
+
++ (UIColor *) colorFromHexString:(NSString *)hexString alpha: (CGFloat)alpha;
 
 @end

@@ -13,8 +13,6 @@
 #import "MBProgressHUD.h"
 #import "TorneiosConcluidosCell.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ADVTheme.h"
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 #import "RankingTorneioTableViewController.h"
 
@@ -39,21 +37,15 @@
 {
     [super viewDidLoad];
     
-    // configura o header
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    [ADVThemeManager customizeTableView:self.tableView];
-    
-    [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
+    // adiciona gesto para chamar o menu
+    [self.navigationController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     
     // botao de configuracoes
     UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
-                                   initWithImage:[PokerGamesUtil menuImage]
-                                   style:UIBarButtonItemStyleBordered
-                                   target:self
-                                   action:@selector(configAction)];
+                                initWithImage:[PokerGamesUtil menuImage]
+                                style:UIBarButtonItemStyleBordered
+                                target:self
+                                action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
     
     // adiciona controle de refresh
@@ -67,7 +59,15 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
+}
+
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+{
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -89,11 +89,14 @@
     self.title =  @"Torneios Realizados";
     self.lblCampeonato.text = [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido];
     
+    //TODO
+    /*
     if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
         self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
     
     [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
+     */
 }
 
 #pragma mark - Table view data source

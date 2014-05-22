@@ -7,11 +7,10 @@
 //
 
 #import "ConfirmarParticipacaoViewController.h"
-#import "ADVTheme.h"
 #import "MBProgressHUD.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ECSlidingViewController.h"
 #import "JogadoresConfirmadosTableViewController.h"
+#import "MenuViewController.h"
 
 @interface ConfirmarParticipacaoViewController ()
 
@@ -32,34 +31,46 @@
 {
     [super viewDidLoad];
     
-    // configura o header
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    
-    [self.btnParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    [self.btnParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
-
-    [self.btnNaoParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    [self.btnNaoParticipar setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
-
-    [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
-
     // popula dados cabecalho
     self.lblNome.text = [self.dicDadosConfirmacao valueForKey:@"Nome"];
     self.lblData.text = [self.dicDadosConfirmacao valueForKey:@"Data"];
     self.lblHora.text = [self.dicDadosConfirmacao valueForKey:@"Hora"];
 
     // verifica se habilita ou não os botões
+    [self.btnParticipar setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    [self.btnNaoParticipar setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+    
     NSString *statusIncricao = [self.dicDadosConfirmacao valueForKey:@"Inscrito"];
     if ([statusIncricao isEqualToString:@"S"]) {
         self.btnParticipar.enabled = FALSE;
     } else if ([statusIncricao isEqualToString:@"N"]) {
         self.btnNaoParticipar.enabled = FALSE;
     }
-        
+    
+    // ajustes layout botoes
+    self.btnListaJogadores.layer.borderColor = [UIColor grayColor].CGColor;
+    self.btnListaJogadores.layer.backgroundColor = [UIColor colorWithRed:98/255.0f
+                                                                   green:161/255.0f
+                                                                    blue:37/255.0f
+                                                                   alpha:1.0f].CGColor;
+    
+    self.btnListaJogadores.layer.borderWidth = 0.5;
+    self.btnListaJogadores.layer.cornerRadius = 3;
+
+    self.btnNaoParticipar.layer.borderColor = [UIColor grayColor].CGColor;
+    self.btnNaoParticipar.layer.backgroundColor = [PokerGamesUtil colorFromHexString:@"fe4533" alpha:1.0].CGColor;
+    self.btnNaoParticipar.layer.borderWidth = 0.5;
+    self.btnNaoParticipar.layer.cornerRadius = 3;
+
+    self.btnParticipar.layer.borderColor = [UIColor grayColor].CGColor;
+    self.btnParticipar.layer.backgroundColor = [UIColor colorWithRed:98/255.0f
+                                                                   green:161/255.0f
+                                                                    blue:37/255.0f
+                                                                   alpha:1.0f].CGColor;
+    self.btnParticipar.layer.borderWidth = 0.5;
+    self.btnParticipar.layer.cornerRadius = 3;
+
+    
     // mostra os dados na tela
     [self buscaDadosConfirmacao];
 }
@@ -161,8 +172,7 @@
 
 - (void) saiTela {
     // instancia a tela principal do ranking
-    ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
-    slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveisView"];
+    [self chamaTela:@"TorneiosDisponiveisView"];
 }
 
 - (void) verificaAdicaoEventoCalendario {
@@ -293,6 +303,12 @@
         vc.dataTorneio = [self.dicDadosConfirmacao valueForKey:@"Data"];
         vc.horaTorneio = [self.dicDadosConfirmacao valueForKey:@"Hora"];
       }
+}
+
+-(void) chamaTela:(NSString*)identifier {
+    UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
+    UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    navigationController.viewControllers = @[newTopViewController];
 }
 
 @end

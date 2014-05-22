@@ -12,8 +12,6 @@
 #import "Campeonato.h"
 #import "MBProgressHUD.h"
 #import "DetalhesJogadorCell.h"
-#import "ADVTheme.h"
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 #import "RankingTorneioTableViewController.h"
 #import "UIImageView+AFNetworking.h"
@@ -40,18 +38,12 @@
 {
     [super viewDidLoad];
     
-    // configura o header
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    [ADVThemeManager customizeTableView:self.tableView];
-    
-    [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
-    
     // verifica se foi passado o jogador como parametro
     if (!self.jogador) {
         self.jogador = [[PokerGamesFacade sharedInstance] jogadorLogin];
+        
+        // adiciona gesto para chamar o menu
+        [self.navigationController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
         
         // botao de configuracoes
         UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
@@ -60,12 +52,6 @@
                                     target:self
                                     action:@selector(configAction)];
         self.navigationItem.leftBarButtonItem = btnMenu;
-        
-        if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-            self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-        }
-        
-        [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
     }
     
     // reconhecimento de long press na table
@@ -75,13 +61,9 @@
     lpgr.delegate = self;
     [self.tableView addGestureRecognizer:lpgr];
     
-    // adiciona canto arredonado
-    self.imgViewFoto.layer.cornerRadius = 5.0;
+    // arredonda a imagem
     self.imgViewFoto.layer.masksToBounds = YES;
-    
-    // adiciona borda
-    self.imgViewFoto.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.imgViewFoto.layer.borderWidth = 1.0;
+    self.imgViewFoto.layer.cornerRadius = 22.0;
     
     // busca os resultados dos torneios do jogador
     [self buscaResultadosTorneio];
@@ -89,7 +71,15 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
+}
+
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+{
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -115,12 +105,6 @@
     
     // seta a foto do jogador
     [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:self.jogador.foto];
-    
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-    }
-    
-    [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
 }
 
 #pragma mark - Table view data source
@@ -135,6 +119,12 @@
 {
     // Return the number of rows in the section.
     return arResultadosTorneios.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    return (CGFloat)60.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

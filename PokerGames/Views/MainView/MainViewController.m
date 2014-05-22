@@ -24,32 +24,33 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)awakeFromNib
 {
-    [super viewDidLoad];
-
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+
+    self.menuViewController = [storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+
+    // configurações do menu
+    self.limitMenuViewSize = YES;
+    self.liveBlur = NO;
     
-    // verifica se já está logado                                
+    // verifica se já está logado
     Jogador *jogador = [[PokerGamesFacade sharedInstance] loadJogadorEntity];
     
     if (jogador == nil) {
         [[PokerGamesFacade sharedInstance] setIsFirstTime:TRUE];
         //NSLog(@">>> Configuração inicial!");
-        //[self performSegueWithIdentifier:@"LoginJogador" sender:self];
-        
-        self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginJogador"];
+        self.contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginJogador"];
     } else {
         [[PokerGamesFacade sharedInstance] setIsFirstTime:FALSE];
         //NSLog(@">>> Já configurado!");
         [[PokerGamesFacade sharedInstance] setJogadorLogin:jogador];
-        //[self performSegueWithIdentifier:@"RankingCampeonato" sender:self];
         
         // verifica se recebeu alguma notificacao via push
         if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
-            self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveisView"];
+            self.contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveis"];
         } else {
-            self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];   
+            self.contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
         }
     }
 }

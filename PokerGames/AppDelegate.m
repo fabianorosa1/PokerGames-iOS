@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "ADVDefaultTheme.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import <CoreData/CoreData.h>
 
@@ -20,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // ativa o tema
-    [ADVThemeManager customizeAppAppearance];
+    [self initAppearance];
     
     NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
@@ -42,6 +41,27 @@
     return YES;
 }
 
+- (void)initAppearance
+{
+    UIColor *byteClubBlue = [UIColor colorWithRed:98/255.0f
+                                            green:161/255.0f
+                                             blue:37/255.0f
+                                            alpha:1.0f];
+    
+    //UIColor *byteClubBlue = [self colorFromHexString:@"#4CD964" alpha:1.0f];
+    
+    // Set appearance info
+    [[UITabBar appearance] setBarTintColor:byteClubBlue];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    [[UINavigationBar appearance] setBarTintColor:byteClubBlue];
+    
+    [[UIToolbar appearance] setBarStyle:UIBarStyleBlackOpaque];
+    [[UIToolbar appearance] setBarTintColor:byteClubBlue];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];    
+}
+
+/*
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {    
 	NSString* newToken = [deviceToken description];
 	newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
@@ -88,6 +108,7 @@
         [[[UIAlertView alloc] initWithTitle:@"PokerGames" message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil] show];
     }
 }
+*/
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
@@ -113,6 +134,7 @@
     //NSLog(@"applicationWillEnterForeground");
 }
 
+/*
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
@@ -125,6 +147,7 @@
         self.window.rootViewController = controller;
     }
 }
+*/
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

@@ -7,7 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "ADVTheme.h"
 #import "Jogador.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
@@ -36,32 +35,13 @@
 {
     [super viewDidLoad];
     
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    self.loginTableView = [[UITableView alloc] initWithFrame:CGRectMake(16, 50, 294, 110) style:UITableViewStyleGrouped];
-    
-    [self.loginTableView setScrollEnabled:NO];
-    [self.loginTableView setBackgroundView:nil];
-    [self.view addSubview:self.loginTableView];
-    
-    [self.loginTableView setDataSource:self];
-    [self.loginTableView setDelegate:self];
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    
-    [self.loginButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    [self.loginButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
+    [self.loginButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     self.loginButton.enabled = FALSE;
-
-    [self.demoButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    [self.demoButton setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
     
-    self.userTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 260, 50)];
     [self.userTextField setPlaceholder:@"Apelido"];
     [self.userTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     self.userTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     
-    self.passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 260, 50)];
     [self.passwordTextField setPlaceholder:@"Senha"];
     [self.passwordTextField setSecureTextEntry:YES];
     [self.passwordTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
@@ -69,6 +49,24 @@
     
     self.userTextField.delegate = self;
     self.passwordTextField.delegate = self;
+    
+    // ajustes layout botoes
+    self.loginButton.layer.borderColor = [UIColor grayColor].CGColor;
+    self.loginButton.layer.backgroundColor = [UIColor colorWithRed:98/255.0f
+                                                             green:161/255.0f
+                                                              blue:37/255.0f
+                                                             alpha:1.0f].CGColor;
+    self.loginButton.layer.borderWidth = 0.5;
+    self.loginButton.layer.cornerRadius = 3;
+    
+    self.demoButton.layer.borderColor = [UIColor grayColor].CGColor;
+    self.demoButton.layer.backgroundColor = [UIColor colorWithRed:29/255.0f
+                                                            green:50/255.0f
+                                                             blue:60/255.0f
+                                                            alpha:1.0f].CGColor;
+    self.demoButton.layer.borderWidth = 0.5;
+    self.demoButton.layer.cornerRadius = 3;
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -98,30 +96,6 @@
     // Release any retained subviews of the main view.
     self.userTextField = nil;
     self.passwordTextField = nil;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    UITableViewCell* cell = nil;
-    
-    if(indexPath.row == 0){
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UsernameCell"];
-
-        [cell addSubview:self.userTextField];
-        
-    }else {
-        
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PasswordCell"];
-        
-        [cell addSubview:self.passwordTextField];
-    }
-    
-    return cell;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -192,20 +166,20 @@
         [[PokerGamesFacade sharedInstance] setJogadorLogin:jogador];
                 
         // registra o dispositivo
-        [[PokerGamesFacade sharedInstance] registraDispositivoWithBlock:[[PokerGamesFacade sharedInstance] apnsToken]
-                                                             deviceUUID:[PokerGamesUtil deviceUUID]
-                                                             idJogador:jogador.idJogador
-                                              constructingBodyWithBlock:^(NSString *result, NSError *error) {
-                                                  
-            if (error) {
-              NSLog(@"Erro ao registrar dispositivo ao efetuar login: %@", error);
-            } 
-        }];
+        // [[PokerGamesFacade sharedInstance] registraDispositivoWithBlock:[[PokerGamesFacade sharedInstance] apnsToken]
+        //                                                     deviceUUID:[PokerGamesUtil deviceUUID]
+        //                                                     idJogador:jogador.idJogador
+        //                                      constructingBodyWithBlock:^(NSString *result, NSError *error) {
+    
+        //    if (error) {
+        //      NSLog(@"Erro ao registrar dispositivo ao efetuar login: %@", error);
+        //    }
+        //}];
 
         [self performSegueWithIdentifier:@"SelecaoLiga" sender:self];
     }
     
-}];
+    }];
 }
 
 @end

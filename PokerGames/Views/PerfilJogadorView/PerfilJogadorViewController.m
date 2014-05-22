@@ -7,9 +7,7 @@
 //
 
 #import "PerfilJogadorViewController.h"
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
-#import "ADVTheme.h"
 #import "MBProgressHUD.h"
 #import "UIImageView+AFNetworking.h"
 
@@ -34,16 +32,11 @@
 {
     [super viewDidLoad];
 
-    // configura o header
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    
-    [self.btnOpcoes setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    [self.btnOpcoes setBackgroundImage:[theme colorButtonBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
-
     // verifica se foi chamado do menu
     if (!self.idJogadorParametro) {
+        // adiciona gesto para chamar o menu
+    [self.navigationController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+        
         // botao de configuracoes
         UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
                                     initWithImage:[PokerGamesUtil menuImage]
@@ -53,34 +46,33 @@
         self.navigationItem.leftBarButtonItem = btnMenu;
     }
     
-    // adiciona canto arredonado
-    self.imgViewFoto.layer.cornerRadius = 5.0;
+    // arredonda a imagem
     self.imgViewFoto.layer.masksToBounds = YES;
+    self.imgViewFoto.layer.cornerRadius = 40.0;
     
-    // adiciona borda
-    self.imgViewFoto.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.imgViewFoto.layer.borderWidth = 1.0;
-    
+    // ajustes layout botoes
+    self.btnOpcoes.layer.borderColor = [UIColor grayColor].CGColor;
+    self.btnOpcoes.layer.backgroundColor = [UIColor colorWithRed:98/255.0f
+                                                             green:161/255.0f
+                                                              blue:37/255.0f
+                                                             alpha:1.0f].CGColor;
+    self.btnOpcoes.layer.borderWidth = 0.5;
+    self.btnOpcoes.layer.cornerRadius = 3;
+
     [self buscaPerfilJogador];
 }
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
 }
 
--(void) viewWillAppear:(BOOL)animated
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
 {
-    [super viewWillAppear:animated];
-    
-    // verifica se foi chamado do menu
-    if (!self.idJogadorParametro) {
-        if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-            self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-        }
-        
-        [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];        
-    }
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 -(IBAction)opcoesPressed:(id)sender {

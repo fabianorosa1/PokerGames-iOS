@@ -11,8 +11,6 @@
 #import "Campeonato.h"
 #import "Liga.h"
 #import "Jogador.h"
-#import "ADVTheme.h"
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 
 @interface CampeonatoTableViewController () {
@@ -87,18 +85,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // configura o header
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    [ADVThemeManager customizeTableView:self.tableView];
-    
-    [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
     
     // verifica se deve adicionar o botao de menu
     if ( !((self.ligaSelecionada) || ([[PokerGamesFacade sharedInstance] isFirstTime])) ) {
+
+        // adiciona gesto para chamar o menu
+        [self.navigationController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+        
         // botao de configuracoes
         UIBarButtonItem *btnMenu = [[UIBarButtonItem alloc]
                                     initWithImage:[PokerGamesUtil menuImage]
@@ -106,12 +99,6 @@
                                     target:self
                                     action:@selector(configAction)];
         self.navigationItem.leftBarButtonItem = btnMenu;
-        
-        if (![self.slidingViewController.underLeftViewController isKindOfClass:[MenuViewController class]]) {
-            self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-        }
-        
-        [self.navigationController.view addGestureRecognizer:self.slidingViewController.panGesture];
     }
     
     [self buscaCampeonatosLiga];
@@ -119,7 +106,15 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
+}
+
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+{
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 #pragma mark - Table view data source
@@ -194,13 +189,17 @@
     // verifica se recebeu alguma notificacao via push
     if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
         // instancia a tela de torneios disponiveis
-        ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
-        slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveisView"];
+        [self chamaTela:@"TorneiosDisponiveisView"];
     } else {
         // instancia a tela principal do ranking
-        ECSlidingViewController *slidingViewController = (ECSlidingViewController *)self.view.window.rootViewController;
-        slidingViewController.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
+        [self chamaTela:@"RankingCampeonatoView"];
     }
+}
+
+-(void) chamaTela:(NSString*)identifier {
+    UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
+    UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    navigationController.viewControllers = @[newTopViewController];
 }
 
 @end

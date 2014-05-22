@@ -13,8 +13,6 @@
 #import "MBProgressHUD.h"
 #import "RankingTorneioCell.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ADVTheme.h"
-#import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 
 @interface RankingTorneioTableViewController () {
@@ -38,14 +36,8 @@
 {
     [super viewDidLoad];
     
-    // configura o header
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    [ADVThemeManager customizeTableView:self.tableView];
-    
-    [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
+    // adiciona gesto para chamar o menu
+    [self.navigationController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     
     // adiciona controle de refresh
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
@@ -58,7 +50,15 @@
 
 -(IBAction)configAction
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    [self.frostedViewController presentMenuViewController];
+}
+
+#pragma mark -
+#pragma mark Gesture recognizer
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)sender
+{
+    [self.frostedViewController panGestureRecognized:sender];
 }
 
 -(void) viewDidDisappear:(BOOL)animated

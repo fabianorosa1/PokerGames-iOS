@@ -39,14 +39,18 @@
     NSString *imgStatus = nil;
     
     if ([statusIncricao isEqualToString:@"S"]) {
-        imgStatus = @"confirmado.png";
+        imgStatus = @"confirmado";
     } else if ([statusIncricao isEqualToString:@"N"]) {
-        imgStatus = @"pendente-confirmacao.png";
+        imgStatus = @"pendente-confirmacao";
     }
     [self.imgViewStatus setImage:[UIImage imageNamed:imgStatus]];
     
     // seta a foto do jogador
     [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:[_dados valueForKey:@"Foto"]];
+    
+    // arredonda a imagem
+    self.imgViewFoto.layer.masksToBounds = YES;
+    self.imgViewFoto.layer.cornerRadius = 22.0;
 }
 
 @end

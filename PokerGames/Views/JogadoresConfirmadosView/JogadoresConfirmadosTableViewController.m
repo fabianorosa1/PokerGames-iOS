@@ -8,7 +8,6 @@
 
 #import "JogadoresConfirmadosTableViewController.h"
 #import "MenuViewController.h"
-#import "ADVTheme.h"
 #import "JogadoresConfirmadosCell.h"
 #import "MBProgressHUD.h"
 
@@ -33,15 +32,6 @@
 {
     [super viewDidLoad];
     
-    // configura o header
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-    [ADVThemeManager customizeTableView:self.tableView];
-    
-    [self.viewHeader setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-    self.viewHeader.layer.borderColor = [UIColor grayColor].CGColor;
-    self.viewHeader.layer.borderWidth = 0.4f;
-
     // popula dados cabecalho
     self.lblNome.text = self.nomeTorneio;
     self.lblData.text = self.dataTorneio;
@@ -87,6 +77,12 @@
 {
     // Return the number of rows in the section.
     return arJogadores.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    return (CGFloat)60.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

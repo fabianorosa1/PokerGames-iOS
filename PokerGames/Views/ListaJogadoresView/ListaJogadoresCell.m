@@ -49,6 +49,10 @@
     
     // seta a foto do jogador
     [PokerGamesUtil setaImagemJogador:self.imgViewFoto foto:jogador.foto];
+    
+    // arredonda a imagem
+    self.imgViewFoto.layer.masksToBounds = YES;
+    self.imgViewFoto.layer.cornerRadius = 22.0;
 }
 
 @end

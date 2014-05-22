@@ -44,15 +44,15 @@
     if (posicao == 1) {
         self.lblPosicao.hidden = true;
         self.imgViewPosicao.hidden = false;
-        [self.imgViewPosicao setImage:[PokerGamesUtil imgPrimeiroLugar]];
+        [self.imgViewPosicao setImage:[UIImage imageNamed:@"medal_award_gold"]];
     } else if (posicao == 2) {
         self.lblPosicao.hidden = true;
         self.imgViewPosicao.hidden = false;
-        [self.imgViewPosicao setImage:[PokerGamesUtil imgSegundoLugar]];
+        [self.imgViewPosicao setImage:[UIImage imageNamed:@"medal_award_silver"]];
     } else if (posicao == 3) {
         self.lblPosicao.hidden = true;
         self.imgViewPosicao.hidden = false;
-        [self.imgViewPosicao setImage:[PokerGamesUtil imgTerceiroLugar]];
+        [self.imgViewPosicao setImage:[UIImage imageNamed:@"medal_award_bronze"]];
     } else {
         self.lblPosicao.hidden = false;
         self.imgViewPosicao.hidden = true;
