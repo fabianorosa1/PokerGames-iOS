@@ -26,6 +26,23 @@
 
 - (void)awakeFromNib
 {
+    // verifica se foi passado parametros para o app
+    NSArray *args = [[NSProcessInfo processInfo] arguments];
+    
+    // verifica se vai obter os dados localmente ou remotamente
+    if ([args containsObject:[PokerGamesUtil paramLocalDataApp]]) {
+        [PokerGamesUtil setIndLocalData:YES];
+    } else {
+        [PokerGamesUtil setIndLocalData:NO];
+    }
+    
+    // verifica se deve ser exibida as mensagens de log ou não
+    if ([args containsObject:[PokerGamesUtil paramDebugApp]]) {
+        [[PokerGamesUtil pokerGamesFacadeInstance] setIsDebugApp:YES];
+    } else {
+        [[PokerGamesUtil pokerGamesFacadeInstance] setIsDebugApp:NO];
+    }
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
 
     self.menuViewController = [storyboard instantiateViewControllerWithIdentifier:@"Menu"];
@@ -35,16 +52,16 @@
     self.liveBlur = NO;
     
     // verifica se já está logado
-    Jogador *jogador = [[PokerGamesFacade sharedInstance] loadJogadorEntity];
+    Jogador *jogador = [[PokerGamesUtil pokerGamesFacadeInstance] loadJogadorEntity];
     
     if (jogador == nil) {
-        [[PokerGamesFacade sharedInstance] setIsFirstTime:TRUE];
+        [[PokerGamesUtil pokerGamesFacadeInstance] setIsFirstTime:TRUE];
         //NSLog(@">>> Configuração inicial!");
         self.contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginJogador"];
     } else {
-        [[PokerGamesFacade sharedInstance] setIsFirstTime:FALSE];
+        [[PokerGamesUtil pokerGamesFacadeInstance] setIsFirstTime:FALSE];
         //NSLog(@">>> Já configurado!");
-        [[PokerGamesFacade sharedInstance] setJogadorLogin:jogador];
+        [[PokerGamesUtil pokerGamesFacadeInstance] setJogadorLogin:jogador];
         
         // verifica se recebeu alguma notificacao via push
         if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {

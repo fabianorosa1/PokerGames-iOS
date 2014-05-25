@@ -45,7 +45,7 @@
                                 action:@selector(configAction)];
     self.navigationItem.leftBarButtonItem = btnMenu;
     
-    self.lblCampeonato.text =  [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido];
+    self.lblCampeonato.text =  [NSString stringWithFormat:@"%@", [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin].liga.campeonato.apelido];
 
     // adiciona controle de refresh
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
@@ -136,11 +136,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Buscando torneios";
     
-    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
+    Jogador *jogadorLogin = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin];
     //NSLog(@"Busca jogadores da liga %@", jogadorLogin.idJogador);
     
     // busca lista de torneios disponiveis do campeonato
-    [[PokerGamesFacade sharedInstance] buscaTorneiosDisponiveisWithBlock:jogadorLogin.idLiga
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaTorneiosDisponiveisWithBlock:jogadorLogin.idLiga
                                                             idCampeonato:jogadorLogin.liga.idCampeonato
                                                                idJogador:jogadorLogin.idJogador
                                              constructingBodyWithBlock:^(NSArray *torneios, NSError *error) {

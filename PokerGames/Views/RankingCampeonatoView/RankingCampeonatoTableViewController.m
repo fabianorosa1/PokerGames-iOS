@@ -141,7 +141,7 @@
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, headerView.frame.size.width, headerView.frame.size.height)];
     
     headerLabel.textAlignment = NSTextAlignmentCenter;
-    headerLabel.text = [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido;
+    headerLabel.text = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin].liga.campeonato.apelido;
     headerLabel.backgroundColor = [UIColor clearColor];
     headerLabel.font = [UIFont boldSystemFontOfSize:19.0f];
     [headerView addSubview:headerLabel];
@@ -194,7 +194,7 @@
         [jogadorSelecionado setNome:rankingSelecionado.nome];
         [jogadorSelecionado setIdLiga:rankingSelecionado.idLiga];
         [jogadorSelecionado setFoto:rankingSelecionado.foto];
-        jogadorSelecionado.liga = [[PokerGamesFacade sharedInstance] jogadorLogin].liga;
+        jogadorSelecionado.liga = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin].liga;
         // parametros
         vc.jogador = jogadorSelecionado;
     }
@@ -245,11 +245,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Buscando ranking";
     
-    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
+    Jogador *jogadorLogin = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin];
     //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
     
     // busca lista de campeonatos da liga
-    [[PokerGamesFacade sharedInstance] buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaRankingCampeonatosWithBlock:jogadorLogin.liga.idLiga
                               idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
                  constructingBodyWithBlock:^(NSArray *ranking, NSError *error) {
                      

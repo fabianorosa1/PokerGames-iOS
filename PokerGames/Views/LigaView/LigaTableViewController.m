@@ -34,11 +34,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Buscando ligas";
     
-    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
+    Jogador *jogadorLogin = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin];
     //NSLog(@"Busca ligas do jogador %@", jogadorLogin.idJogador);
     
     // busca lista de ligas do jogador
-    [[PokerGamesFacade sharedInstance] buscaLigasPlayerWithBlock:jogadorLogin.idJogador
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaLigasPlayerWithBlock:jogadorLogin.idJogador
           constructingBodyWithBlock:^(NSArray *ligas, NSError *error) {
               
       [hud hide:YES];
@@ -77,7 +77,7 @@
     [super viewDidLoad];
     
     // verifica se deve adicionar o botao de menu
-    if (![[PokerGamesFacade sharedInstance] isFirstTime]) {
+    if (![[PokerGamesUtil pokerGamesFacadeInstance] isFirstTime]) {
 
         // adiciona gesto para chamar o menu
         [self.navigationController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];

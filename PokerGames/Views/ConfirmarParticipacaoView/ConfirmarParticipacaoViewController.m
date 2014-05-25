@@ -122,11 +122,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Atualizando torneio";
 
-    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
+    Jogador *jogadorLogin = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin];
     
     if (confirmado) {
         // confirma participacao no torneio
-        [[PokerGamesFacade sharedInstance] confirmarParticipacaoWithBlock:[self.dicDadosConfirmacao valueForKey:@"IdTorneio"]
+        [[PokerGamesUtil pokerGamesFacadeInstance] confirmarParticipacaoWithBlock:[self.dicDadosConfirmacao valueForKey:@"IdTorneio"]
                                                             idJogador:jogadorLogin.idJogador
                                                             indParticipar:@"S"
                                                     constructingBodyWithBlock:^(NSString *result, NSError *error) {
@@ -144,7 +144,7 @@
     } else {
         // Não confirmou!
         // confirma participacao no torneio
-        [[PokerGamesFacade sharedInstance] confirmarParticipacaoWithBlock:[self.dicDadosConfirmacao valueForKey:@"IdTorneio"]
+        [[PokerGamesUtil pokerGamesFacadeInstance] confirmarParticipacaoWithBlock:[self.dicDadosConfirmacao valueForKey:@"IdTorneio"]
                                                             idJogador:jogadorLogin.idJogador
                                                             indParticipar:@"N"
                                                 constructingBodyWithBlock:^(NSString *result, NSError *error) {
@@ -242,7 +242,7 @@
     hud.labelText = @"Buscando dados";
     
     // busca dados da participacao do torneio
-    [[PokerGamesFacade sharedInstance] buscaDadosConfirmacaoParticipacaoWithBlock:[self.dicDadosConfirmacao valueForKey:@"IdTorneio"]
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaDadosConfirmacaoParticipacaoWithBlock:[self.dicDadosConfirmacao valueForKey:@"IdTorneio"]
                                             constructingBodyWithBlock:^(NSDictionary *dados, NSError *error) {
                     
         [hud hide:YES];

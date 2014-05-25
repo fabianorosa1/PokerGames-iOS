@@ -141,7 +141,7 @@
     hud.labelText = @"Autenticando";
     
     // efetua validacao do login
-    [[PokerGamesFacade sharedInstance] efetuaLoginPlayerWithBlock:user
+    [[PokerGamesUtil pokerGamesFacadeInstance] efetuaLoginPlayerWithBlock:user
                                                             passw:passw
                                         constructingBodyWithBlock:^(Jogador *jogador, NSError *error) {
                                             
@@ -163,7 +163,7 @@
         // login com sucesso
         
         //NSLog(@"Jogador: %@", jogador );
-        [[PokerGamesFacade sharedInstance] setJogadorLogin:jogador];
+        [[PokerGamesUtil pokerGamesFacadeInstance] setJogadorLogin:jogador];
                 
         // registra o dispositivo
         // [[PokerGamesFacade sharedInstance] registraDispositivoWithBlock:[[PokerGamesFacade sharedInstance] apnsToken]

@@ -63,6 +63,10 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-br.com.pokergames.Pokergames.localData"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-br.com.pokergames.Pokergames.debug"
             isEnabled = "NO">
          </CommandLineArgument>

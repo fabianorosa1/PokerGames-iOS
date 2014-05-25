@@ -39,11 +39,11 @@
     if (self.ligaSelecionada) {
         idLiga = self.ligaSelecionada.idLiga;
     } else {
-        idLiga = [[PokerGamesFacade sharedInstance] jogadorLogin].liga.idLiga;
+        idLiga = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin].liga.idLiga;
     }
     
     // busca lista de campeonatos da liga
-    [[PokerGamesFacade sharedInstance] buscaCampeonatosLigaWithBlock:idLiga
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaCampeonatosLigaWithBlock:idLiga
                     constructingBodyWithBlock:^(NSArray *campeonatos, NSError *error) {
         
         [hud hide:YES];
@@ -71,7 +71,7 @@
     if (self.ligaSelecionada) {
         self.lblLiga.text = [NSString stringWithFormat:@"%@", self.ligaSelecionada.apelido];
     } else {
-        self.lblLiga.text = [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.apelido];
+        self.lblLiga.text = [NSString stringWithFormat:@"%@", [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin].liga.apelido];
     }
 }
 
@@ -87,7 +87,7 @@
     [super viewDidLoad];
     
     // verifica se deve adicionar o botao de menu
-    if ( !((self.ligaSelecionada) || ([[PokerGamesFacade sharedInstance] isFirstTime])) ) {
+    if ( !((self.ligaSelecionada) || ([[PokerGamesUtil pokerGamesFacadeInstance] isFirstTime])) ) {
 
         // adiciona gesto para chamar o menu
         [self.navigationController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
@@ -155,7 +155,7 @@
     hud.labelText = @"Salvando dados";
 
     // associa o campeonato selecionado na liga do jogador
-    Jogador *jogador = [[PokerGamesFacade sharedInstance] jogadorLogin];
+    Jogador *jogador = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin];
     // associa a liga ao jogador
     
     // verifica se foi passa a liga de parametro
@@ -170,18 +170,18 @@
     jogador.liga.idCampeonato = campeonato.idCampeonato;
     
     // verifica se é configuração inicial ou não
-    if ([[PokerGamesFacade sharedInstance] isFirstTime]) {
+    if ([[PokerGamesUtil pokerGamesFacadeInstance] isFirstTime]) {
         // limpa a base de dados
-        [[PokerGamesFacade sharedInstance] excluirTodosJogadoresDependencias];
+        [[PokerGamesUtil pokerGamesFacadeInstance] excluirTodosJogadoresDependencias];
         
         // insere o jogador, liga e campeonato
-        [[PokerGamesFacade sharedInstance] insertJogadorEntity:jogador];
+        [[PokerGamesUtil pokerGamesFacadeInstance] insertJogadorEntity:jogador];
         
         // já configurado
-        [[PokerGamesFacade sharedInstance] setIsFirstTime:FALSE];
+        [[PokerGamesUtil pokerGamesFacadeInstance] setIsFirstTime:FALSE];
     } else {
         // verifica se foi alterado a liga ou o campeonato
-        [[PokerGamesFacade sharedInstance] atualizaLigaCampeonatoJogadorEntity:jogador];
+        [[PokerGamesUtil pokerGamesFacadeInstance] atualizaLigaCampeonatoJogadorEntity:jogador];
     }
     
     [hud hide:YES];

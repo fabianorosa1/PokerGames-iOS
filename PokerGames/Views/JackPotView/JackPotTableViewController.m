@@ -72,7 +72,7 @@
     [super viewWillAppear:animated];
     
     self.title = @"JackPot";
-    self.lblLiga.text =  [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.apelido];
+    self.lblLiga.text =  [NSString stringWithFormat:@"%@", [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin].liga.apelido];
 }
 
 #pragma mark -
@@ -113,11 +113,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Buscando jackpot";
     
-    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
+    Jogador *jogadorLogin = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin];
     //NSLog(@"Busca jackpot da liga %@", jogadorLogin.idJogador);
     
     // busca cabecalho do jackpot
-    [[PokerGamesFacade sharedInstance] buscaCabecalhoJackPotWithBlock:jogadorLogin.idLiga
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaCabecalhoJackPotWithBlock:jogadorLogin.idLiga
                                             constructingBodyWithBlock:^(NSString *saldo, NSError *error) {
                                                 
         if (error) {
@@ -141,7 +141,7 @@
     }];
     
     // busca lista de jackpots da liga
-    [[PokerGamesFacade sharedInstance] buscaJackPotWithBlock:jogadorLogin.idLiga
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaJackPotWithBlock:jogadorLogin.idLiga
                                           constructingBodyWithBlock:^(NSArray *jackpots, NSError *error) {
                                               
       [hud hide:YES];

@@ -11,8 +11,8 @@
 
 // variaveis estaticas
 static UIImage* imgMenu = nil;
-
 static NSNumberFormatter *numberFormatter;
+static BOOL indLocalData;
 
 @implementation PokerGamesUtil
 
@@ -59,7 +59,7 @@ static NSNumberFormatter *numberFormatter;
 + (void) setaImagemJogador:(UIImageView*)imgViewFoto foto:(NSString*)foto {
     // seta a foto do jogador
     //NSLog(@">>> FOTO: %@", foto);
-    if ([foto isKindOfClass:[NSNull class]] || [@"" isEqualToString:foto]) {
+    if ([foto isKindOfClass:[NSNull class]] || [@"" isEqualToString:foto] || indLocalData == YES) {
         [imgViewFoto setImage:[UIImage imageNamed:@"jogador"]];
     } else {
          NSString *pathFoto = [NSString stringWithFormat:@"%@%@", [PokerGamesUtil baseURLFoto],  foto];
@@ -102,6 +102,30 @@ static NSNumberFormatter *numberFormatter;
     float blue = ((baseValue >> 8) & 0xFF)/255.0f;
     
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
+
++ (NSString*) paramDebugApp {
+    return @"-br.com.pokergames.Pokergames.debug";
+}
+
++ (NSString*) paramLocalDataApp {
+    return @"-br.com.pokergames.Pokergames.localData";
+}
+
++ (BOOL)getIndLocalData {
+    return indLocalData;
+}
+
++ (void)setIndLocalData:(BOOL)value {
+    indLocalData = value;
+}
+
++ (id <PokerGamesFacade>)pokerGamesFacadeInstance {
+    if (indLocalData == YES) {
+        return [PokerGamesLocalFacade sharedInstance];
+    } else {
+        return [PokerGamesRemoteFacade sharedInstance];
+    }
 }
 
 @end

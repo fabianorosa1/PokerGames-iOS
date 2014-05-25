@@ -40,7 +40,7 @@
     
     // verifica se foi passado o jogador como parametro
     if (!self.jogador) {
-        self.jogador = [[PokerGamesFacade sharedInstance] jogadorLogin];
+        self.jogador = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin];
         
         // adiciona gesto para chamar o menu
         [self.navigationController.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
@@ -166,7 +166,7 @@
     hud.labelText = @"Buscando resultados";
     
     // busca cabecalho dos resultados
-    [[PokerGamesFacade sharedInstance] buscaCabecalhoResultadosWithBlock:self.jogador.idLiga
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaCabecalhoResultadosWithBlock:self.jogador.idLiga
                                      idCampeonato:self.jogador.liga.idCampeonato
                                         idJogador:self.jogador.idJogador
                         constructingBodyWithBlock:^(NSDictionary *cabecalho, NSError *error) {
@@ -202,7 +202,7 @@
     }];
     
     // busca resultados dos torneios
-    [[PokerGamesFacade sharedInstance] buscaResultadosTorneiosJogadorWithBlock:self.jogador.idLiga
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaResultadosTorneiosJogadorWithBlock:self.jogador.idLiga
                               idCampeonato:self.jogador.liga.idCampeonato
                                 idJogador:self.jogador.idJogador
                  constructingBodyWithBlock:^(NSArray *resultados, NSError *error) {

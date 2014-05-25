@@ -101,7 +101,7 @@
     [super viewWillAppear:animated];
     
     // seta os dados do perfil
-    Jogador *jogador = [[PokerGamesFacade sharedInstance] jogadorLogin];
+    Jogador *jogador = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin];
     lblNome.text = jogador.nome;
     
     // seta a foto do jogador
@@ -238,8 +238,8 @@
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"Desconectando";
         
-		[[PokerGamesFacade sharedInstance] efetuaLogout];
-		[[PokerGamesFacade sharedInstance] setJogadorLogin:nil];
+		[[PokerGamesUtil pokerGamesFacadeInstance] efetuaLogout];
+		[[PokerGamesUtil pokerGamesFacadeInstance] setJogadorLogin:nil];
         
         // desregistra o dispositivo
         //[[PokerGamesFacade sharedInstance] registraDispositivoWithBlock:[[PokerGamesFacade sharedInstance] apnsToken]

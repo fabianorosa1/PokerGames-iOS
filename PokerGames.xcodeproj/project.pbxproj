@@ -13,6 +13,24 @@
 		580986E1173DD67F006FA46B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580986E0173DD67F006FA46B /* MessageUI.framework */; };
 		580986E3173DE40D006FA46B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580986E2173DE40C006FA46B /* AddressBook.framework */; };
 		5814AA451773BB0E00AD432F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5814AA441773BB0E00AD432F /* Settings.bundle */; };
+		582A7010192D9783008FC133 /* CredencialJogador.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A700F192D9783008FC133 /* CredencialJogador.json */; };
+		582A7012192D97BA008FC133 /* Liga.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A7011192D97BA008FC133 /* Liga.json */; };
+		582A7014192D9EB6008FC133 /* Campeonatos.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A7013192D9EB6008FC133 /* Campeonatos.json */; };
+		582A7016192D9F35008FC133 /* RankingCampeonatos.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A7015192D9F35008FC133 /* RankingCampeonatos.json */; };
+		582A701B19310E2D008FC133 /* PokerGamesLocalFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 582A701719310E2D008FC133 /* PokerGamesLocalFacade.m */; };
+		582A701C19310E2D008FC133 /* PokerGamesRemoteFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 582A701919310E2D008FC133 /* PokerGamesRemoteFacade.m */; };
+		582A701E193110D6008FC133 /* ResultadosTorneios.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A701D193110D6008FC133 /* ResultadosTorneios.json */; };
+		582A7020193111C5008FC133 /* ResumoResultados.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A701F193111C5008FC133 /* ResumoResultados.json */; };
+		582A702419315E32008FC133 /* TorneiosInativos.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A702319315E32008FC133 /* TorneiosInativos.json */; };
+		582A702619315E82008FC133 /* TorneioCabecalho.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A702519315E82008FC133 /* TorneioCabecalho.json */; };
+		582A702819315EFC008FC133 /* TorneioRanking.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A702719315EFC008FC133 /* TorneioRanking.json */; };
+		582A702A19315F99008FC133 /* LigaSaldoJack.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A702919315F99008FC133 /* LigaSaldoJack.json */; };
+		582A702C19316001008FC133 /* LigaExtratoJack.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A702B19316001008FC133 /* LigaExtratoJack.json */; };
+		582A702E19316081008FC133 /* Jogadores.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A702D19316081008FC133 /* Jogadores.json */; };
+		582A703019316171008FC133 /* TorneiosDisponiveis.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A702F19316171008FC133 /* TorneiosDisponiveis.json */; };
+		582A7032193161E6008FC133 /* Torneio.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A7031193161E6008FC133 /* Torneio.json */; };
+		582A7034193162D3008FC133 /* Jogador.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A7033193162D3008FC133 /* Jogador.json */; };
+		582A703619316352008FC133 /* JogadoresConfirmados.json in Resources */ = {isa = PBXBuildFile; fileRef = 582A703519316352008FC133 /* JogadoresConfirmados.json */; };
 		58325077172462C000D2C825 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325076172462C000D2C825 /* SystemConfiguration.framework */; };
 		58325079172462C700D2C825 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58325078172462C700D2C825 /* MobileCoreServices.framework */; };
 		5832507C172489C100D2C825 /* LigaTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5832507B172489C100D2C825 /* LigaTableViewController.m */; };
@@ -70,7 +88,6 @@
 		58DEBA48180CE3710099A76B /* UIImage+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DEBA40180CE3710099A76B /* UIImage+REFrostedViewController.m */; };
 		58DEBA49180CE3710099A76B /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DEBA42180CE3710099A76B /* UIView+REFrostedViewController.m */; };
 		58DEBA4A180CE3710099A76B /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DEBA44180CE3710099A76B /* UIViewController+REFrostedViewController.m */; };
-		58E546FA1732FDC5000BC308 /* PokerGamesFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546F91732FDC5000BC308 /* PokerGamesFacade.m */; };
 		58E547001734031F000BC308 /* JackPotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FD1734031F000BC308 /* JackPotCell.m */; };
 		58E547011734031F000BC308 /* JackPotTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E546FF1734031F000BC308 /* JackPotTableViewController.m */; };
 		58E547061734659C000BC308 /* ListaJogadoresTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E547051734659C000BC308 /* ListaJogadoresTableViewController.m */; };
@@ -86,6 +103,27 @@
 		580986E0173DD67F006FA46B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		580986E2173DE40C006FA46B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		5814AA441773BB0E00AD432F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		582A700F192D9783008FC133 /* CredencialJogador.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CredencialJogador.json; path = JSON/CredencialJogador.json; sourceTree = "<group>"; };
+		582A7011192D97BA008FC133 /* Liga.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Liga.json; path = JSON/Liga.json; sourceTree = "<group>"; };
+		582A7013192D9EB6008FC133 /* Campeonatos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Campeonatos.json; path = JSON/Campeonatos.json; sourceTree = "<group>"; };
+		582A7015192D9F35008FC133 /* RankingCampeonatos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = RankingCampeonatos.json; path = JSON/RankingCampeonatos.json; sourceTree = "<group>"; };
+		582A701719310E2D008FC133 /* PokerGamesLocalFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PokerGamesLocalFacade.m; sourceTree = "<group>"; };
+		582A701819310E2D008FC133 /* PokerGamesLocalFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerGamesLocalFacade.h; sourceTree = "<group>"; };
+		582A701919310E2D008FC133 /* PokerGamesRemoteFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PokerGamesRemoteFacade.m; sourceTree = "<group>"; };
+		582A701A19310E2D008FC133 /* PokerGamesRemoteFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerGamesRemoteFacade.h; sourceTree = "<group>"; };
+		582A701D193110D6008FC133 /* ResultadosTorneios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ResultadosTorneios.json; path = JSON/ResultadosTorneios.json; sourceTree = "<group>"; };
+		582A701F193111C5008FC133 /* ResumoResultados.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ResumoResultados.json; path = JSON/ResumoResultados.json; sourceTree = "<group>"; };
+		582A702319315E32008FC133 /* TorneiosInativos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TorneiosInativos.json; path = JSON/TorneiosInativos.json; sourceTree = "<group>"; };
+		582A702519315E82008FC133 /* TorneioCabecalho.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TorneioCabecalho.json; path = JSON/TorneioCabecalho.json; sourceTree = "<group>"; };
+		582A702719315EFC008FC133 /* TorneioRanking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TorneioRanking.json; path = JSON/TorneioRanking.json; sourceTree = "<group>"; };
+		582A702919315F99008FC133 /* LigaSaldoJack.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LigaSaldoJack.json; path = JSON/LigaSaldoJack.json; sourceTree = "<group>"; };
+		582A702B19316001008FC133 /* LigaExtratoJack.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LigaExtratoJack.json; path = JSON/LigaExtratoJack.json; sourceTree = "<group>"; };
+		582A702D19316081008FC133 /* Jogadores.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Jogadores.json; path = JSON/Jogadores.json; sourceTree = "<group>"; };
+		582A702F19316171008FC133 /* TorneiosDisponiveis.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TorneiosDisponiveis.json; path = JSON/TorneiosDisponiveis.json; sourceTree = "<group>"; };
+		582A7031193161E6008FC133 /* Torneio.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Torneio.json; path = JSON/Torneio.json; sourceTree = "<group>"; };
+		582A7033193162D3008FC133 /* Jogador.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Jogador.json; path = JSON/Jogador.json; sourceTree = "<group>"; };
+		582A703519316352008FC133 /* JogadoresConfirmados.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = JogadoresConfirmados.json; path = JSON/JogadoresConfirmados.json; sourceTree = "<group>"; };
+		582A703719316DC8008FC133 /* PokerGamesFacade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PokerGamesFacade.h; sourceTree = "<group>"; };
 		58325076172462C000D2C825 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58325078172462C700D2C825 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5832507A172489C100D2C825 /* LigaTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LigaTableViewController.h; path = LigaView/LigaTableViewController.h; sourceTree = "<group>"; };
@@ -187,8 +225,6 @@
 		58DEBA42180CE3710099A76B /* UIView+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+REFrostedViewController.m"; sourceTree = "<group>"; };
 		58DEBA43180CE3710099A76B /* UIViewController+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+REFrostedViewController.h"; sourceTree = "<group>"; };
 		58DEBA44180CE3710099A76B /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
-		58E546F81732FDC5000BC308 /* PokerGamesFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PokerGamesFacade.h; sourceTree = "<group>"; };
-		58E546F91732FDC5000BC308 /* PokerGamesFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PokerGamesFacade.m; sourceTree = "<group>"; };
 		58E546FC1734031F000BC308 /* JackPotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JackPotCell.h; sourceTree = "<group>"; };
 		58E546FD1734031F000BC308 /* JackPotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JackPotCell.m; sourceTree = "<group>"; };
 		58E546FE1734031F000BC308 /* JackPotTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JackPotTableViewController.h; sourceTree = "<group>"; };
@@ -230,6 +266,29 @@
 				580986DC173C771F006FA46B /* ConfirmarParticipacaoViewController.m */,
 			);
 			name = ConfirmarParticipacaoView;
+			sourceTree = "<group>";
+		};
+		582A700E192D9772008FC133 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				582A703519316352008FC133 /* JogadoresConfirmados.json */,
+				582A7033193162D3008FC133 /* Jogador.json */,
+				582A7031193161E6008FC133 /* Torneio.json */,
+				582A702F19316171008FC133 /* TorneiosDisponiveis.json */,
+				582A702D19316081008FC133 /* Jogadores.json */,
+				582A702B19316001008FC133 /* LigaExtratoJack.json */,
+				582A702919315F99008FC133 /* LigaSaldoJack.json */,
+				582A702719315EFC008FC133 /* TorneioRanking.json */,
+				582A702519315E82008FC133 /* TorneioCabecalho.json */,
+				582A702319315E32008FC133 /* TorneiosInativos.json */,
+				582A701F193111C5008FC133 /* ResumoResultados.json */,
+				582A701D193110D6008FC133 /* ResultadosTorneios.json */,
+				582A7015192D9F35008FC133 /* RankingCampeonatos.json */,
+				582A7013192D9EB6008FC133 /* Campeonatos.json */,
+				582A7011192D97BA008FC133 /* Liga.json */,
+				582A700F192D9783008FC133 /* CredencialJogador.json */,
+			);
+			name = JSON;
 			sourceTree = "<group>";
 		};
 		5832507D172489C700D2C825 /* LigaView */ = {
@@ -292,10 +351,13 @@
 		584E50CC172CA7190007D4B7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				582A701719310E2D008FC133 /* PokerGamesLocalFacade.m */,
+				582A701819310E2D008FC133 /* PokerGamesLocalFacade.h */,
+				582A701919310E2D008FC133 /* PokerGamesRemoteFacade.m */,
+				582A701A19310E2D008FC133 /* PokerGamesRemoteFacade.h */,
 				584E50CD172CA7190007D4B7 /* PokerGamesUtil.h */,
 				584E50CE172CA7190007D4B7 /* PokerGamesUtil.m */,
-				58E546F81732FDC5000BC308 /* PokerGamesFacade.h */,
-				58E546F91732FDC5000BC308 /* PokerGamesFacade.m */,
+				582A703719316DC8008FC133 /* PokerGamesFacade.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -452,6 +514,7 @@
 		58967C10171DD66E003FCF47 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				582A700E192D9772008FC133 /* JSON */,
 				58967C14171DD69E003FCF47 /* pokergames.xcdatamodeld */,
 				58BCC5E317484408006D1752 /* Ranking.m */,
 				58BCC5E417484408006D1752 /* Ranking.h */,
@@ -624,12 +687,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				582A701E193110D6008FC133 /* ResultadosTorneios.json in Resources */,
+				582A702C19316001008FC133 /* LigaExtratoJack.json in Resources */,
 				58967B64171DCE8E003FCF47 /* InfoPlist.strings in Resources */,
+				582A702419315E32008FC133 /* TorneiosInativos.json in Resources */,
+				582A702A19315F99008FC133 /* LigaSaldoJack.json in Resources */,
+				582A7020193111C5008FC133 /* ResumoResultados.json in Resources */,
 				58967B73171DCE8E003FCF47 /* MainStoryboard_iPhone.storyboard in Resources */,
+				582A7014192D9EB6008FC133 /* Campeonatos.json in Resources */,
+				582A7034193162D3008FC133 /* Jogador.json in Resources */,
+				582A702E19316081008FC133 /* Jogadores.json in Resources */,
+				582A703619316352008FC133 /* JogadoresConfirmados.json in Resources */,
 				588EB6C318551BC900E82DDE /* Media.xcassets in Resources */,
 				584E50C6172CA3120007D4B7 /* .gitattributes in Resources */,
 				584E50C7172CA3120007D4B7 /* .gitignore in Resources */,
+				582A7032193161E6008FC133 /* Torneio.json in Resources */,
+				582A703019316171008FC133 /* TorneiosDisponiveis.json in Resources */,
+				582A702819315EFC008FC133 /* TorneioRanking.json in Resources */,
+				582A702619315E82008FC133 /* TorneioCabecalho.json in Resources */,
 				5814AA451773BB0E00AD432F /* Settings.bundle in Resources */,
+				582A7012192D97BA008FC133 /* Liga.json in Resources */,
+				582A7010192D9783008FC133 /* CredencialJogador.json in Resources */,
+				582A7016192D9F35008FC133 /* RankingCampeonatos.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +724,7 @@
 				58967C16171DD69E003FCF47 /* pokergames.xcdatamodeld in Sources */,
 				58967C19171DD7E3003FCF47 /* Jogador.m in Sources */,
 				58967C26171DE2A1003FCF47 /* LoginViewController.m in Sources */,
+				582A701C19310E2D008FC133 /* PokerGamesRemoteFacade.m in Sources */,
 				589B3B631721DAA100AAC977 /* AFAppDotNetAPIClient.m in Sources */,
 				5832507C172489C100D2C825 /* LigaTableViewController.m in Sources */,
 				587109AE17257D85001A2455 /* Liga.m in Sources */,
@@ -652,6 +732,7 @@
 				587109B51725BADD001A2455 /* CampeonatoTableViewController.m in Sources */,
 				587109BC1725DB95001A2455 /* MainViewController.m in Sources */,
 				580649BC1727535A00516B5F /* RankingCampeonatoTableViewController.m in Sources */,
+				582A701B19310E2D008FC133 /* PokerGamesLocalFacade.m in Sources */,
 				583D9D401728B7B500249207 /* RankingCampeonatoJogadorCell.m in Sources */,
 				584E506F172C96FC0007D4B7 /* MenuViewController.m in Sources */,
 				584E50BB172CA3120007D4B7 /* AFHTTPClient.m in Sources */,
@@ -677,7 +758,6 @@
 				5875D9DC1731EA64007A5397 /* TorneiosConcluidosTableViewController.m in Sources */,
 				5875D9E21731F4D3007A5397 /* RankingTorneioCell.m in Sources */,
 				5875D9E31731F4D3007A5397 /* RankingTorneioTableViewController.m in Sources */,
-				58E546FA1732FDC5000BC308 /* PokerGamesFacade.m in Sources */,
 				58E547001734031F000BC308 /* JackPotCell.m in Sources */,
 				58E547011734031F000BC308 /* JackPotTableViewController.m in Sources */,
 				58E547061734659C000BC308 /* ListaJogadoresTableViewController.m in Sources */,
@@ -782,7 +862,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PokerGames/PokerGames-Prefix.pch";
 				INFOPLIST_FILE = "PokerGames/PokerGames-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -800,7 +880,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PokerGames/PokerGames-Prefix.pch";
 				INFOPLIST_FILE = "PokerGames/PokerGames-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -847,7 +927,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PokerGames/PokerGames-Prefix.pch";
 				INFOPLIST_FILE = "PokerGames/PokerGames-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

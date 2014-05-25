@@ -87,7 +87,7 @@
     [super viewWillAppear:animated];
     
     self.title =  @"Torneios Realizados";
-    self.lblCampeonato.text = [NSString stringWithFormat:@"%@", [[PokerGamesFacade sharedInstance] jogadorLogin].liga.campeonato.apelido];
+    self.lblCampeonato.text = [NSString stringWithFormat:@"%@", [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin].liga.campeonato.apelido];
     
     //TODO
     /*
@@ -151,11 +151,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Buscando torneios";
     
-    Jogador *jogadorLogin = [[PokerGamesFacade sharedInstance] jogadorLogin];
+    Jogador *jogadorLogin = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin];
     //NSLog(@"Busca campeonatos da liga %@", jogadorLogin.idJogador);
     
     // busca lista de campeonatos da liga
-    [[PokerGamesFacade sharedInstance] buscaTorneiosConcluidosWithBlock:jogadorLogin.liga.idLiga
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaTorneiosConcluidosWithBlock:jogadorLogin.liga.idLiga
                               idCampeonato:jogadorLogin.liga.campeonato.idCampeonato
                  constructingBodyWithBlock:^(NSArray *torneios, NSError *error) {
                      

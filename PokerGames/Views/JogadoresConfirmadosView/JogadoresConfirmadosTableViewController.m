@@ -102,7 +102,7 @@
     hud.labelText = @"Buscando jogadores";
         
     // busca lista de jogadores confirmados no torneio
-    [[PokerGamesFacade sharedInstance] buscaJogadoresConfirmadosWithBlock:self.idTorneio
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaJogadoresConfirmadosWithBlock:self.idTorneio
                                              constructingBodyWithBlock:^(NSArray *jogadores, NSError *error) {
                                                  
      [hud hide:YES];

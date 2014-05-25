@@ -114,7 +114,7 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", self.lblTelefone.text]]];
         }
     } else if ([buttonTitle isEqualToString:@"Enviar e-mail"]) {
-        MFMailComposeViewController *mailer = [[PokerGamesFacade sharedInstance] enviaEmailJogador:self.lblEmail.text delegate:self];
+        MFMailComposeViewController *mailer = [[PokerGamesUtil pokerGamesFacadeInstance] enviaEmailJogador:self.lblEmail.text delegate:self];
         if (mailer) {
             // ipad: mailer.modalPresentationStyle = UIModalPresentationPageSheet;
             [self presentViewController:mailer animated:TRUE completion:nil];   
@@ -125,7 +125,7 @@
         // mostra view do iOS para criar novo contato
         ABNewPersonViewController* npvc = [ABNewPersonViewController new];
         npvc.newPersonViewDelegate = self;
-        npvc.displayedPerson = [[PokerGamesFacade sharedInstance] retornaContatoJogador:jogador];
+        npvc.displayedPerson = [[PokerGamesUtil pokerGamesFacadeInstance] retornaContatoJogador:jogador];
         
         UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:npvc];
         [self presentViewController:nc animated:YES completion:nil];
@@ -136,7 +136,7 @@
 
 - (void)newPersonViewController:(ABNewPersonViewController*)newPersonViewController didCompleteWithNewPerson:(ABRecordRef)person {
     if (person) {
-        [[PokerGamesFacade sharedInstance] gravaNovoContato:person];
+        [[PokerGamesUtil pokerGamesFacadeInstance] gravaNovoContato:person];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -157,11 +157,11 @@
     if (self.idJogadorParametro) {
         idJogador = self.idJogadorParametro;
     } else {
-        idJogador = [[PokerGamesFacade sharedInstance] jogadorLogin].idJogador;
+        idJogador = [[PokerGamesUtil pokerGamesFacadeInstance] jogadorLogin].idJogador;
     }
     
     // busca dados da participacao do torneio
-    [[PokerGamesFacade sharedInstance] buscaPerfilJogadorWithBlock:idJogador
+    [[PokerGamesUtil pokerGamesFacadeInstance] buscaPerfilJogadorWithBlock:idJogador
                         constructingBodyWithBlock:^(NSDictionary *dados, NSError *error) {
                                                             
         [hud hide:YES];

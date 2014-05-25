@@ -27,16 +27,8 @@
     // seta indicador de atividade de rede visivel
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
         
-    // verifica se foi passado parametros para o app
-    NSArray *args = [[NSProcessInfo processInfo] arguments];    
-    if ([args containsObject:[PokerGamesFacade paramDebugApp]]) {
-        [[PokerGamesFacade sharedInstance] setIsDebugApp:YES];
-    } else {
-        [[PokerGamesFacade sharedInstance] setIsDebugApp:NO];
-    }
-
     // registra para receber o push da APNS
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    //[[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         
     return YES;
 }

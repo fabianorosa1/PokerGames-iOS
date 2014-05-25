@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Fabiano Rosa. All rights reserved.
 //
 
-#import "PokerGamesFacade.h"
+#import "PokerGamesRemoteFacade.h"
 #import "AFAppDotNetAPIClient.h"
 #import "Liga.h"
 #import "AppDelegate.h"
@@ -14,14 +14,17 @@
 #import <CoreData/CoreData.h>
 #import "Ranking.h"
 
-@implementation PokerGamesFacade
+@implementation PokerGamesRemoteFacade
+
+@synthesize jogadorLogin, isDebugApp, isFirstTime, apnsTokenRegister;
 
 #pragma mark Singleton Methods
 
 + (id)sharedInstance {
-    static PokerGamesFacade *sharedInstance = nil;
+    static PokerGamesRemoteFacade *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        NSLog(@"Instancia PokerGamesFacade REMOTE!");
         sharedInstance = [[self alloc] init];
     });
     return sharedInstance;
@@ -39,10 +42,6 @@
 
 - (AppDelegate *)appDelegate {
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
-}
-
-+ (NSString*) paramDebugApp {
-        return @"-br.com.pokergames.Pokergames.debug";
 }
 
 - (void) logServicos:(NSString*)label text:(id)text {
