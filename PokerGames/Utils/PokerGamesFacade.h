@@ -2,22 +2,18 @@
 //  PokerGamesFacade.h
 //  PokerGames
 //
-//  Created by Fabiano Rosa on 02/05/13.
-//  Copyright (c) 2013 Fabiano Rosa. All rights reserved.
+//  Created by Fabiano Rosa on 24/05/14.
+//  Copyright (c) 2014 Fabiano Rosa. All rights reserved.
 //
 
-#import "Jogador.h"
-#import <MessageUI/MessageUI.h>
-#import <AddressBook/AddressBook.h>
+#import <Foundation/Foundation.h>
 
-@interface PokerGamesFacade : NSObject
+@protocol PokerGamesFacade <NSObject>
 
 @property (strong, nonatomic) Jogador *jogadorLogin;
 @property (nonatomic) BOOL isFirstTime;
 @property (nonatomic) BOOL isDebugApp;
-@property (strong, nonatomic) NSString *apnsToken;
-
-+ (NSString*) paramDebugApp;
+@property (strong, nonatomic) NSString *apnsTokenRegister;
 
 #pragma mark Singleton Methods
 
