@@ -50,7 +50,9 @@
     [[UIToolbar appearance] setBarStyle:UIBarStyleBlackOpaque];
     [[UIToolbar appearance] setBarTintColor:byteClubBlue];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];    
+    [[UISearchBar appearance] setTintColor:[UIColor blackColor]];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 /*
