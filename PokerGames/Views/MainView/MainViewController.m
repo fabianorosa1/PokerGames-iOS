@@ -63,14 +63,12 @@
         //NSLog(@">>> Já configurado!");
         [[PokerGamesUtil pokerGamesFacadeInstance] setJogadorLogin:jogador];
         
-        /*
         // verifica se recebeu alguma notificacao via push
-        if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
-            self.contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveis"];
-        } else {
+        //if ([[UIApplication sharedApplication] applicationIconBadgeNumber] > 0) {
+        //    self.contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"TorneiosDisponiveis"];
+        //} else {
             self.contentViewController = [storyboard instantiateViewControllerWithIdentifier:@"RankingCampeonato"];
-        }
-         */
+        //}
     }
 }
 
